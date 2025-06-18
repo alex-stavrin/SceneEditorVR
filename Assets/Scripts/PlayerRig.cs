@@ -1,7 +1,6 @@
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.XR;
-
 public class PlayerRig : MonoBehaviour
 {
     [SerializeField] Transform playerHead;
@@ -35,7 +34,7 @@ public class PlayerRig : MonoBehaviour
             {
                 Vector3 leftControllerPosition = leftController.transform.position;
                 translationVector = currentGrabMovingPoint - leftControllerPosition;
-                
+
             }
             else if (currentGrabMovingSide == InputDeviceRole.RightHanded)
             {
@@ -43,6 +42,15 @@ public class PlayerRig : MonoBehaviour
                 translationVector = currentGrabMovingPoint - rightControllerPosition;
             }
         }
+
+        //    DebugDrawVR.DrawCapsule(bodyCollider.center + bodyCollider.transform.position, Quaternion.identity, bodyCollider.radius,
+        //        bodyCollider.height, Color.magenta);
+
+        //    DebugDrawVR.DrawCapsule(bodyCollider.center, Quaternion.identity, bodyCollider.radius,
+        //bodyCollider.height, Color.green);
+
+        //    DebugDrawVR.DrawCapsule(transform.position, Quaternion.identity, bodyCollider.radius,
+        //bodyCollider.height, Color.red);
     }
 
     private void FixedUpdate()
@@ -90,5 +98,19 @@ public class PlayerRig : MonoBehaviour
             rb.AddForce(-controllerVelocity * grabEndForce, ForceMode.Impulse);
             isAirGrabbing = false;
         }
+    }
+
+    public void TeleportToPosition(Vector3 position)
+    {
+        isAirGrabbing = false;
+        Vector3 bodyPosition = bodyCollider.center + bodyCollider.transform.position;
+        Vector3 origin = transform.position;
+        Vector3 offset = origin - bodyPosition;
+        rb.MovePosition(position + new Vector3(offset.x,0, offset.z));
+    }
+
+    public void RotateAround(float amount)
+    {
+        rb.rotation = rb.rotation * Quaternion.AngleAxis(amount, Vector3.up);  
     }
 }
