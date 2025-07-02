@@ -65,7 +65,6 @@ public class Grabbable : MonoBehaviour
             lastValidPosition = limitedPosition;
 
             limitOffset = Vector3.Distance(limitedPosition, desiredPosition);
-            VirtualRealityConsole.PrintMessage(limitOffset.ToString(), PrintTypeVRC.Clear);
 
             if(movePosition)
             {

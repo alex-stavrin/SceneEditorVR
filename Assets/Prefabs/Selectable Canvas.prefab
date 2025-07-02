@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5455524346058438436}
   - component: {fileID: 6712612021125758510}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Delete Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,7 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924869a14cae657438b619e5347baa09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnObject: {fileID: 0}
 --- !u!1 &4105851064816026285
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,7 +719,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!222 &1171120679042227539
 CanvasRenderer:
   m_ObjectHideFlags: 0

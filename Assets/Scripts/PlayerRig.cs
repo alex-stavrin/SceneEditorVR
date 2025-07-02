@@ -1,25 +1,72 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.XR;
+
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerRig : MonoBehaviour
 {
-    [SerializeField] Transform playerHead;
-    [SerializeField] CapsuleCollider bodyCollider;
 
-    [SerializeField] Controller leftController;
-    [SerializeField] Controller rightController;
-    [SerializeField] Rigidbody rb;
-    [SerializeField] float grabEndForce = 100f;
+    public static PlayerRig Instance { get; private set; }
 
-    public float bodyHeightMin = 0.5f;
-    public float bodyHeightMax = 2;
+    /// PUBLIC ///
+
+    [Header("Player")]
+
+    [SerializeField] 
+    Transform playerHead;
+
+    [SerializeField] 
+    Transform cameraOffset;
+
+    [SerializeField] 
+    CapsuleCollider bodyCollider;
+
+    [SerializeField]
+    float bodyHeightMin = 0.5f;
+
+    [SerializeField]
+    float bodyHeightMax = 2;
+
+    [Header("Controllers")]
+
+    [SerializeField] 
+    Controller leftController;
+
+    [SerializeField] 
+    Controller rightController;
+
+    [Header("Air Grabbing")]
+
+    [SerializeField]
+    bool canAirGrab = true;
+    [SerializeField]
+    float grabEndForce = 100f;
+
+    [Header("Teleporting")]
+    public bool canTeleport = true;
+    
+
+    /// PRIVATE ///
 
     bool isAirGrabbing = false;
     Vector3 currentGrabMovingPoint;
     InputDeviceRole currentGrabMovingSide;
     Vector3 startingGrabOriginPosition;
-
     Vector3 translationVector;
+    Rigidbody rb;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
+        rb = GetComponent<Rigidbody>();
+        //DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {
@@ -28,7 +75,7 @@ public class PlayerRig : MonoBehaviour
 
     void Update()
     {
-        if (isAirGrabbing)
+        if (isAirGrabbing && canAirGrab)
         {
             if (currentGrabMovingSide == InputDeviceRole.LeftHanded)
             {
@@ -43,14 +90,14 @@ public class PlayerRig : MonoBehaviour
             }
         }
 
-        //    DebugDrawVR.DrawCapsule(bodyCollider.center + bodyCollider.transform.position, Quaternion.identity, bodyCollider.radius,
-        //        bodyCollider.height, Color.magenta);
-
-        //    DebugDrawVR.DrawCapsule(bodyCollider.center, Quaternion.identity, bodyCollider.radius,
-        //bodyCollider.height, Color.green);
+        //DebugDrawVR.DrawCapsule(bodyCollider.center + bodyCollider.transform.position, Quaternion.identity, bodyCollider.radius,
+        //    bodyCollider.height, Color.magenta);
 
         //    DebugDrawVR.DrawCapsule(transform.position, Quaternion.identity, bodyCollider.radius,
         //bodyCollider.height, Color.red);
+
+        //DebugDrawVR.DrawCapsule(rb.position, Quaternion.identity, bodyCollider.radius,
+        //    bodyCollider.height, Color.green);
     }
 
     private void FixedUpdate()
@@ -59,7 +106,7 @@ public class PlayerRig : MonoBehaviour
         bodyCollider.center = new Vector3(playerHead.localPosition.x, bodyCollider.height / 2,
             playerHead.localPosition.z);
 
-        if (isAirGrabbing)
+        if (isAirGrabbing && canAirGrab)
         {
             Vector3 targetPos = startingGrabOriginPosition + translationVector;
             Vector3 desiredVel = (targetPos - rb.position) / Time.fixedDeltaTime;
@@ -69,6 +116,8 @@ public class PlayerRig : MonoBehaviour
 
     public void StartAirGrab(InputDeviceRole controllerSide, Vector3 grabMovingPoint)
     {
+        if (!canAirGrab) return;
+
         if(isAirGrabbing)
         {
             // if we are requested to start air grab from left handed and we are already grabbing that means right hand
@@ -93,7 +142,7 @@ public class PlayerRig : MonoBehaviour
 
     public void StopAirGrab(InputDeviceRole controllerSide, Vector3 controllerVelocity)
     {
-        if(controllerSide == currentGrabMovingSide)
+        if(controllerSide == currentGrabMovingSide && isAirGrabbing)
         {
             rb.AddForce(-controllerVelocity * grabEndForce, ForceMode.Impulse);
             isAirGrabbing = false;
@@ -111,6 +160,6 @@ public class PlayerRig : MonoBehaviour
 
     public void RotateAround(float amount)
     {
-        rb.rotation = rb.rotation * Quaternion.AngleAxis(amount, Vector3.up);  
+        cameraOffset.Rotate(Vector3.up, amount);
     }
 }

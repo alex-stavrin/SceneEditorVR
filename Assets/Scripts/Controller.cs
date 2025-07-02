@@ -101,6 +101,8 @@ public class Controller : MonoBehaviour
         currentGrabRotationSpeed = startingGrabRotationSpeed;
 
         snapTurnTimer = 0;
+
+        
     }
 
     void Update()
@@ -177,9 +179,6 @@ public class Controller : MonoBehaviour
 
                 }
 
-                VirtualRealityConsole.PrintMessage("Grab rotation speed " + currentGrabRotationSpeed.ToString() +
-                    ".Grab move speed" + currentGrabMoveSpeed, PrintTypeVRC.Clear);
-
                 currentGrabbable.UpdateGrab(grabDistance, grabOffset, grabDistance < minDistanceToRotate);
             }
         }
@@ -205,6 +204,7 @@ public class Controller : MonoBehaviour
     }
     void TeleportUpdate()
     {
+        if (PlayerRig.Instance.canTeleport == false) return;
 
         Vector3 lineStart = grabPoint.transform.position +
             grabPoint.transform.forward * grabPoint.radius * grabPoint.transform.localScale.x;
@@ -234,11 +234,6 @@ public class Controller : MonoBehaviour
                 Vector3 newPosition = points[i - 1] + launchVelocity / maxTeleportLineResolution;
                 launchVelocity += Physics.gravity * teleportGravityMultiplier;
                 points.Add(newPosition);
-
-                if(drawDebugPoints)
-                {
-                    DebugDrawVR.DrawSphere(newPosition, Quaternion.identity, navMeshAssist, Color.red);
-                }
 
                 // because we will have like 1000 points lets look for the navmesh on ones that are divisible 2
                 // to save some perfomance
