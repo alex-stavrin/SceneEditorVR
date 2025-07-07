@@ -9,7 +9,6 @@ public class Grabbable : MonoBehaviour
     [SerializeField] bool moveRotation = true;
     [SerializeField] public bool snapGrab = true;
     [SerializeField] public bool allowDirectGrab = true;
-    [SerializeField] public bool stayInRoom = true;
 
     [Header("Grab Move Limits")]
     [SerializeField] public bool limitGrabMove = true;
@@ -92,7 +91,7 @@ public class Grabbable : MonoBehaviour
     {
         BoxCollider roomBound1 = RoomManager.Instance.GetRoomBound(0);
         BoxCollider roomBound2 = RoomManager.Instance.GetRoomBound(1);
-        if(roomBound1.bounds.Contains(desiredPosition) || roomBound2.bounds.Contains(desiredPosition) || !stayInRoom)
+        if(roomBound1.bounds.Contains(desiredPosition) || roomBound2.bounds.Contains(desiredPosition))
         {
             
             return (desiredPosition, desiredRotation);

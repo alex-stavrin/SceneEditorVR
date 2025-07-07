@@ -564,6 +564,7 @@ GameObject:
   - component: {fileID: 192003083}
   - component: {fileID: 192003082}
   - component: {fileID: 192003081}
+  - component: {fileID: 192003084}
   m_Layer: 5
   m_Name: InputField (TMP)
   m_TagString: Untagged
@@ -730,6 +731,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 192003079}
   m_CullTransparentMesh: 1
+--- !u!114 &192003084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192003079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aebc07bfebe2aed43bd146459a8408e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyboardPrefab: {fileID: 7074895632317427693, guid: 388904b7a322fbf428f7ed29bb0c2d11, type: 3}
 --- !u!1001 &197940664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -908,7 +922,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9053411938446784560, guid: 123e428f4e79f7e4a97330e69e2706f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.54
+      value: 2.303
       objectReference: {fileID: 0}
     - target: {fileID: 9053411938446784560, guid: 123e428f4e79f7e4a97330e69e2706f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

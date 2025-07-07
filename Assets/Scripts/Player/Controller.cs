@@ -3,11 +3,11 @@ using UnityEngine.InputSystem;
 using UnityEngine.XR;
 using System.Collections.Generic;
 using UnityEngine.AI;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 public class Controller : MonoBehaviour
 {
+
+    /// PUBLIC ///
 
     [Header("World")]
     [SerializeField] PlayerRig player;
@@ -49,6 +49,12 @@ public class Controller : MonoBehaviour
     [SerializeField] float snapTurnAmount = 45f;
     [SerializeField] float snapTurnCooldown = 0.5f;
 
+    // Raycast global values
+    [HideInInspector] public bool bRaycastHit;
+    [HideInInspector] public RaycastHit rayHitResult;
+
+    /// PRIVATE /// 
+
     Vector3 velocity;
     Vector3 lastPosition;
     bool isAirGrabbing = false;
@@ -63,10 +69,6 @@ public class Controller : MonoBehaviour
     MeshRenderer grabPointMesh;
 
     Vector2 thumbstickInputValue;
-
-    // Raycast global values
-    [HideInInspector] public bool bRaycastHit;
-    [HideInInspector] public RaycastHit rayHitResult;
 
     // the start of the rays of the controllers
     Vector3 lineStart;
@@ -102,7 +104,11 @@ public class Controller : MonoBehaviour
 
         snapTurnTimer = 0;
 
-        
+        if(PlayerRig.Instance.canTeleport == false)
+        {
+            rectile.gameObject.SetActive(false);
+            teleportLineRenderer.gameObject.SetActive(false);
+        }
     }
 
     void Update()
@@ -220,7 +226,7 @@ public class Controller : MonoBehaviour
             isTryingToTeleport = false;
         }
 
-        if (isTryingToTeleport && !isGrabbing)
+        if (isTryingToTeleport && !isGrabbing && PointingAtUI() == false)
         {
             rayLineRenderer.gameObject.SetActive(false);
             teleportLineRenderer.gameObject.SetActive(true);
@@ -464,5 +470,23 @@ public class Controller : MonoBehaviour
     public float GetRayRange()
     {
         return rayRange;
+    }
+
+    public Vector2 GetThumbstickValue()
+    {
+        return thumbstickInputValue;
+    }
+
+    public bool PointingAtUI()
+    {
+        if(bRaycastHit)
+        {
+            return rayHitResult.collider.gameObject.layer == LayerMask.NameToLayer("UI");
+
+        }
+        else
+        {
+            return false;
+        }
     }
 }

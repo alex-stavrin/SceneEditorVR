@@ -4,6 +4,12 @@ using UnityEngine.EventSystems;
 
 public class InputModuleVR : PointerInputModule
 {
+
+    [SerializeField]
+    float scrollSpeed = 300f;
+
+    /// PRIVATE ///
+
     Camera playerCamera;
 
     Dictionary<int, PointerEventDataVR> cache = new();
@@ -17,19 +23,16 @@ public class InputModuleVR : PointerInputModule
 
     public override void Process()
     {
-        if(VRManager.Instance)
-        {
-            if(VRManager.Instance.leftController)
-            {
-                HandleController(VRManager.Instance.leftController);
-            }
-        }
-
-        if(VRManager.Instance)
+        if(VRManager.Instance != null)
         {
             if (VRManager.Instance.rightController)
             {
                 HandleController(VRManager.Instance.rightController);
+            }
+
+            if (VRManager.Instance.leftController)
+            {
+                HandleController(VRManager.Instance.leftController);
             }
         }
     }
@@ -58,7 +61,9 @@ public class InputModuleVR : PointerInputModule
         }
 
         pointerData.delta = pointerData.position - lastPointerPosition;
-        //data.scrollDelta = scrollDelta;                      // for ScrollRects
+
+        float axisY = controller.GetThumbstickValue().y;
+        pointerData.scrollDelta = new Vector2(0f, axisY * scrollSpeed * Time.unscaledDeltaTime);
 
         m_RaycastResultCache.Clear();
         eventSystem.RaycastAll(pointerData, m_RaycastResultCache);
@@ -76,15 +81,15 @@ public class InputModuleVR : PointerInputModule
             ProcessPress(pointerData, false, true);
         }
 
-        if(pointerData.IsPointerMoving() && pointerData.pointerDrag != null && pointerData.dragging)
+        if(pointerData.IsPointerMoving() && pointerData.pointerDrag != null)
         {
             ProcessDrag(pointerData);
         }
 
-        // ---------- 7. Scroll wheel / joystick ----------
-        //if (scrollDelta.sqrMagnitude > 0.0f)
-        //    ExecuteEvents.ExecuteHierarchy(data.pointerCurrentRaycast.gameObject,
-        //                                   data, ExecuteEvents.scrollHandler);
+        if(pointerData.scrollDelta.sqrMagnitude > 0f && pointerData.pointerCurrentRaycast.gameObject != null)
+        {
+            ExecuteEvents.ExecuteHierarchy(pointerData.pointerCurrentRaycast.gameObject, pointerData, ExecuteEvents.scrollHandler);
+        }
     }
 
     void ProcessPress(PointerEventData pointerData, bool pressed, bool released)

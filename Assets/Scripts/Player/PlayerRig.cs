@@ -162,4 +162,9 @@ public class PlayerRig : MonoBehaviour
     {
         cameraOffset.Rotate(Vector3.up, amount);
     }
+
+    public Transform GetPlayerHead()
+    {
+        return playerHead;
+    }
 }
