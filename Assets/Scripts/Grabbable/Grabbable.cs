@@ -60,19 +60,15 @@ public class Grabbable : MonoBehaviour
                 desiredRotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
             }
 
-            (Vector3 limitedPosition, Quaternion limitedRotation) = LimitPositionAndRotation(desiredPosition, desiredRotation, offset);
-            lastValidPosition = limitedPosition;
-
-            limitOffset = Vector3.Distance(limitedPosition, desiredPosition);
 
             if(movePosition)
             {
-                transform.position = limitedPosition;
+                transform.position = desiredPosition;
             }
 
             if(moveRotation)
             {
-                transform.rotation = limitedRotation;
+                transform.rotation = desiredRotation;
             }
         }
     }
@@ -86,22 +82,6 @@ public class Grabbable : MonoBehaviour
         }
     }
 
-    public virtual (Vector3 limitedPosition, Quaternion limitedRotation) LimitPositionAndRotation
-        (Vector3 desiredPosition, Quaternion desiredRotation, Vector3 offset)
-    {
-        BoxCollider roomBound1 = RoomManager.Instance.GetRoomBound(0);
-        BoxCollider roomBound2 = RoomManager.Instance.GetRoomBound(1);
-        if(roomBound1.bounds.Contains(desiredPosition) || roomBound2.bounds.Contains(desiredPosition))
-        {
-            
-            return (desiredPosition, desiredRotation);
-        }
-        else // this means we are outside the bounds
-        {
-            return (new Vector3(lastValidPosition.x, desiredPosition.y, lastValidPosition.z), desiredRotation);
-        }
-
-    }
 
     public Vector3 GetLineEndPoint()
     {

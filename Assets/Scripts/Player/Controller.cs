@@ -82,6 +82,7 @@ public class Controller : MonoBehaviour
 
     // select
     Selectable currentSelectable;
+    Selectable currentHoverable;
     bool hasSelected = false;
 
     void Start()
@@ -142,6 +143,7 @@ public class Controller : MonoBehaviour
         GrabUpdate();
         TeleportUpdate();
         SnapTurnUpdate();
+        HoverTest();
     }
 
     void GrabUpdate()
@@ -398,6 +400,28 @@ public class Controller : MonoBehaviour
     public void StopAirGrab()
     {
         isAirGrabbing = false;
+    }
+    
+    void HoverTest()
+    {
+        bool foundHover = false;
+        if(!isGrabbing)
+        {
+            if (bRaycastHit)
+            {
+                Selectable selectable = rayHitResult.collider.transform.root.GetComponent<Selectable>();
+                if(selectable)
+                {
+                    SelectionManager.Instance.SetCurrentHover(selectable);
+                    foundHover = true;
+                }
+            }
+        }
+
+        if(!foundHover)
+        {
+            SelectionManager.Instance.SetCurrentHover(null);
+        }
     }
 
     void NorthButtonPressed(InputAction.CallbackContext context)

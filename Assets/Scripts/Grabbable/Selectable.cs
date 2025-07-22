@@ -2,20 +2,36 @@ using UnityEngine;
 
 public class Selectable : MonoBehaviour
 {
-    [SerializeField] GameObject selectableCanvas;
+    [SerializeField] GameObject recticle;
+
+    Renderer renderer;
 
     private void Start()
     {
-        selectableCanvas.SetActive(false);
+        if(recticle)
+        {
+            recticle.SetActive(false);
+
+
+        }
     }
 
     public void StartSelect()
     {
-        selectableCanvas.SetActive(true);
+
     }
 
     public void StopSelect()
     {
-        selectableCanvas.SetActive(false);
+    }
+
+    public void StartHover()
+    {
+        recticle.SetActive(true);
+    }
+
+    public void StopHover()
+    {
+        recticle.SetActive(false);
     }
 }
