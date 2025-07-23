@@ -5,7 +5,12 @@ public class SelectionManager : MonoBehaviour
     public static SelectionManager Instance { get; private set; }
 
     Selectable currentSelectable;
-    Selectable currentHover;
+
+    [SerializeField]
+    Color hoverColor = Color.white;
+
+    [SerializeField]
+    Color selectedColor = Color.yellow;
 
     void Awake()
     {
@@ -21,28 +26,24 @@ public class SelectionManager : MonoBehaviour
 
     public void SetCurrentSelectable(Selectable newSelectable)
     {
+        if(currentSelectable)
+        {
+            currentSelectable.StopSelect();
+        }
 
+        currentSelectable = newSelectable;
+        currentSelectable.StartSelect();
+
+        InspectorManager.Instance.SetInspected(currentSelectable.gameObject);
     }
 
-    public void SetCurrentHover(Selectable newHover)
+    public Color GetSelectedColor()
     {
-        if (newHover == currentHover) return;
+        return selectedColor;
+    }
 
-        // is null or new hover
-
-        if(currentHover)
-        {
-            currentHover.StopHover();
-        }
-
-        if(!newHover)
-        {
-            currentHover = null;
-        }
-        else
-        {
-            newHover.StartHover();
-            currentHover = newHover;
-        }
+    public Color GetHoverColor()
+    {
+        return hoverColor;
     }
 }

@@ -292,62 +292,19 @@ public class Controller : MonoBehaviour
 
     void TriggerPressed(InputAction.CallbackContext context)
     {
-        bool shouldRayCast = false;
-
-        Collider[] hits = Physics.OverlapSphere(grabPoint.transform.position, grabPoint.radius * grabPoint.transform.localScale.x);
-        if (hits.Length > 0)
+        if (currentHoverable)
         {
-            List<Grabbable> grabbables = new List<Grabbable>();
-            foreach (Collider hit in hits)
+            if(currentHoverable.GetSelected())
             {
-                Grabbable grabbable = hit.transform.root.GetComponent<Grabbable>();
+                Grabbable grabbable = currentHoverable.gameObject.GetComponent<Grabbable>();
                 if(grabbable)
-                {
-                    grabbables.Add(grabbable);
-                }
-            }
-
-            if(grabbables.Count > 0)
-            {
-                Grabbable minGrabbableDirect = grabbables[0];
-                float minDistance = Vector3.Distance(minGrabbableDirect.transform.position, grabPoint.transform.position);
-                foreach (Grabbable grabbable in grabbables)
-                {
-                    float distanceFromGrabPoint = Vector3.Distance(grabbable.transform.position, grabPoint.transform.position);
-                    if(distanceFromGrabPoint < minDistance)
-                    {
-                        minDistance = distanceFromGrabPoint;
-                        minGrabbableDirect = grabbable;
-                    }
-                }
-
-                if(minGrabbableDirect)
-                {
-                    minGrabbableDirect.StopGrab();
-                }
-
-                StartGrab(minGrabbableDirect, 0, minGrabbableDirect.transform.position - grabPoint.transform.position);
-            }
-            else
-            {
-                shouldRayCast = true;
-            }
-        }
-        else
-        {
-            shouldRayCast = true;
-        }
-
-        if(shouldRayCast)
-        {
-            if (bRaycastHit)
-            {
-                Grabbable grabbable = rayHitResult.collider.transform.root.GetComponent<Grabbable>();
-                Canvas canvas = rayHitResult.collider.transform.GetComponent<Canvas>();
-                if (grabbable && !canvas)
                 {
                     StartGrab(grabbable, rayHitResult.distance, grabbable.transform.position - rayHitResult.point);
                 }
+            }
+            else
+            {
+                SelectionManager.Instance.SetCurrentSelectable(currentHoverable);
             }
         }
     }
@@ -412,7 +369,20 @@ public class Controller : MonoBehaviour
                 Selectable selectable = rayHitResult.collider.transform.root.GetComponent<Selectable>();
                 if(selectable)
                 {
-                    SelectionManager.Instance.SetCurrentHover(selectable);
+                    if(currentHoverable)
+                    {
+                        if(selectable != currentHoverable)
+                        {
+                            currentHoverable.StopHover();
+                        }
+                    }
+
+                    if(selectable.IsHovered() == false)
+                    {
+                        currentHoverable = selectable;
+                        selectable.StartHover();
+                    }
+
                     foundHover = true;
                 }
             }
@@ -420,7 +390,11 @@ public class Controller : MonoBehaviour
 
         if(!foundHover)
         {
-            SelectionManager.Instance.SetCurrentHover(null);
+            if(currentHoverable)
+            {
+                currentHoverable.StopHover();
+                currentHoverable = null;
+            }
         }
     }
 
