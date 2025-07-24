@@ -12,11 +12,11 @@ public class SpawnerButton : MonoBehaviour, IPointerDownHandler
             if(controller)
             {
                 var spawnedObject = Instantiate(spawnObject, controller.rayHitResult.point, Quaternion.identity);
-                Grabbable grabbable = spawnedObject.GetComponent<Grabbable>();
-                if(grabbable)
-                {
-                    controller.StartGrab(grabbable, controller.rayHitResult.distance, Vector3.zero);
-                }
+                //Grabbable grabbable = spawnedObject.GetComponent<Grabbable>();
+                //if(grabbable)
+                //{
+                //    controller.StartGrab(grabbable, controller.rayHitResult.distance, Vector3.zero);
+                //}
             }
         }
     }

@@ -59,7 +59,7 @@ public class Controller : MonoBehaviour
     Vector3 lastPosition;
     bool isAirGrabbing = false;
 
-    Grabbable currentGrabbable;
+    Interactable currentGrabbable;
     bool isGrabbing = false;
     float grabDistance = 0;
     Vector3 grabOffset;
@@ -81,8 +81,8 @@ public class Controller : MonoBehaviour
     float snapTurnTimer;
 
     // select
-    Selectable currentSelectable;
-    Selectable currentHoverable;
+    Interactable currentSelectable;
+    Interactable currentHoverable;
     bool hasSelected = false;
 
     void Start()
@@ -130,8 +130,8 @@ public class Controller : MonoBehaviour
 
         if(currentGrabbable)
         {
-            grabPointMesh.enabled = !isTryingToTeleport && grabDistance <= minDistanceToRotate
-                && currentGrabbable.allowDirectGrab;
+            //grabPointMesh.enabled = !isTryingToTeleport && grabDistance <= minDistanceToRotate
+            //    && currentGrabbable.allowDirectGrab;
         }
         else
         {
@@ -154,16 +154,16 @@ public class Controller : MonoBehaviour
             {
                 if (Mathf.Abs(thumbstickInputValue.y) > 0.5)
                 {
-                    if(thumbstickInputValue.y < -0.5f || currentGrabbable.limitOffset < currentGrabbable.stopGrabMoveThreshold || !(currentGrabbable.limitGrabMove))
-                    {
-                        if (currentGrabMoveSpeed < maxGrabMoveSpeed)
-                        {
-                            currentGrabMoveSpeed += grabMoveAcceleration * Time.deltaTime;
-                        }
+                    //if(thumbstickInputValue.y < -0.5f || currentGrabbable.limitOffset < currentGrabbable.stopGrabMoveThreshold || !(currentGrabbable.limitGrabMove))
+                    //{
+                    //    if (currentGrabMoveSpeed < maxGrabMoveSpeed)
+                    //    {
+                    //        currentGrabMoveSpeed += grabMoveAcceleration * Time.deltaTime;
+                    //    }
 
-                        float newGrabDistance = grabDistance + thumbstickInputValue.y * Time.deltaTime * currentGrabMoveSpeed;
-                        grabDistance = Mathf.Clamp(newGrabDistance, 0, rayRange);
-                    }
+                    //    float newGrabDistance = grabDistance + thumbstickInputValue.y * Time.deltaTime * currentGrabMoveSpeed;
+                    //    grabDistance = Mathf.Clamp(newGrabDistance, 0, rayRange);
+                    //}
                 }
                 else
                 {
@@ -178,7 +178,7 @@ public class Controller : MonoBehaviour
                     }
 
                     float angleDelta = thumbstickInputValue.x * Time.deltaTime * currentGrabRotationSpeed;
-                    currentGrabbable.transform.RotateAround(currentGrabbable.GetLineEndPoint(), -Vector3.up, angleDelta);
+                    //currentGrabbable.transform.RotateAround(currentGrabbable.GetLineEndPoint(), -Vector3.up, angleDelta);
 
                 }
                 else
@@ -187,7 +187,7 @@ public class Controller : MonoBehaviour
 
                 }
 
-                currentGrabbable.UpdateGrab(grabDistance, grabOffset, grabDistance < minDistanceToRotate);
+                //currentGrabbable.UpdateGrab(grabDistance, grabOffset, grabDistance < minDistanceToRotate);
             }
         }
     }
@@ -294,17 +294,20 @@ public class Controller : MonoBehaviour
     {
         if (currentHoverable)
         {
-            if(currentHoverable.GetSelected())
+            if(currentHoverable.GrabImmediately)
             {
-                Grabbable grabbable = currentHoverable.gameObject.GetComponent<Grabbable>();
-                if(grabbable)
-                {
-                    StartGrab(grabbable, rayHitResult.distance, grabbable.transform.position - rayHitResult.point);
-                }
+                StartGrab(currentHoverable, rayHitResult.distance, currentHoverable.transform.position - rayHitResult.point);
             }
             else
             {
-                SelectionManager.Instance.SetCurrentSelectable(currentHoverable);
+                if (currentHoverable.GetState() == InteractableState.IE_SELECTED)
+                {
+                    StartGrab(currentHoverable, rayHitResult.distance, currentHoverable.transform.position - rayHitResult.point);
+                }
+                else
+                {
+                    SelectionManager.Instance.SetCurrentSelectable(currentHoverable);
+                }
             }
         }
     }
@@ -319,7 +322,7 @@ public class Controller : MonoBehaviour
         bRaycastHit = Physics.Raycast(grabPoint.transform.position, grabPoint.transform.forward, out rayHitResult, rayRange);
         if(isGrabbing)
         {
-            rayLineRenderer.SetPosition(1, currentGrabbable.GetLineEndPoint());
+           // rayLineRenderer.SetPosition(1, currentGrabbable.GetLineEndPoint());
         }
         else
         {
@@ -334,13 +337,11 @@ public class Controller : MonoBehaviour
         }
     }
 
-    public void StartGrab(Grabbable grabbable, float startGrabbingOffset, Vector3 startGrabOffset)
+    public void StartGrab(Interactable grabbable, float startGrabbingOffset, Vector3 startGrabOffset)
     {
-        grabOffset = startGrabOffset;
         currentGrabbable = grabbable;
         isGrabbing = true;
-        currentGrabbable.StartGrab(this);
-        grabDistance = startGrabbingOffset;
+        //currentGrabbable.StartGrab(this);
     }
 
     public void StopGrab()
@@ -348,9 +349,8 @@ public class Controller : MonoBehaviour
         if (isGrabbing)
         {
             isGrabbing = false;
-            currentGrabbable.StopGrab();
+            //currentGrabbable.StopGrab();
             currentGrabbable = null;
-            grabDistance = 0;
         }
     }
 
@@ -366,7 +366,7 @@ public class Controller : MonoBehaviour
         {
             if (bRaycastHit)
             {
-                Selectable selectable = rayHitResult.collider.transform.root.GetComponent<Selectable>();
+                Interactable selectable = rayHitResult.collider.transform.root.GetComponent<Interactable>();
                 if(selectable)
                 {
                     if(currentHoverable)
@@ -377,12 +377,8 @@ public class Controller : MonoBehaviour
                         }
                     }
 
-                    if(selectable.IsHovered() == false)
-                    {
-                        currentHoverable = selectable;
-                        selectable.StartHover();
-                    }
-
+                    currentHoverable = selectable;
+                    selectable.StartHover();
                     foundHover = true;
                 }
             }
@@ -400,44 +396,7 @@ public class Controller : MonoBehaviour
 
     void NorthButtonPressed(InputAction.CallbackContext context)
     {
-        bool foundSelectable = false;
-        if(bRaycastHit)
-        {
-            Selectable selectable = rayHitResult.collider.transform.root.gameObject.GetComponent<Selectable>();
-            if(selectable && selectable != currentGrabbable)
-            {
-                foundSelectable = true;
-                StartSelect(selectable);
-            }
-        }
 
-        if(!foundSelectable)
-        {
-            StopSelect();
-        }
-    }
-
-    void StartSelect(Selectable selectable)
-    {
-        if (currentSelectable)
-        {
-            currentSelectable.StopSelect();
-        }
-
-        selectable.StartSelect();
-        currentSelectable = selectable;
-        hasSelected = true;
-    }
-
-    void StopSelect()
-    {
-        if (currentSelectable)
-        {
-            currentSelectable.StopSelect();
-        }
-
-        currentSelectable = null;
-        hasSelected = false;
     }
 
     public Transform GetGrabPoint()

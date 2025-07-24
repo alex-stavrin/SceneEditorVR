@@ -4,7 +4,7 @@ public class SelectionManager : MonoBehaviour
 {
     public static SelectionManager Instance { get; private set; }
 
-    Selectable currentSelectable;
+    Interactable currentSelectable;
 
     [SerializeField]
     Color hoverColor = Color.white;
@@ -24,7 +24,7 @@ public class SelectionManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void SetCurrentSelectable(Selectable newSelectable)
+    public void SetCurrentSelectable(Interactable newSelectable)
     {
         if(currentSelectable)
         {
