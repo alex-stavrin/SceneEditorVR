@@ -65,7 +65,6 @@ public class PlayerRig : MonoBehaviour
         Instance = this;
 
         rb = GetComponent<Rigidbody>();
-        //DontDestroyOnLoad(gameObject);
     }
 
     void Start()

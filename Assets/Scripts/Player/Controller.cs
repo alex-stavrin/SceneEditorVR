@@ -6,7 +6,6 @@ using UnityEngine.AI;
 
 public class Controller : MonoBehaviour
 {
-
     /// PUBLIC ///
 
     [Header("World")]
@@ -57,12 +56,10 @@ public class Controller : MonoBehaviour
 
     Vector3 velocity;
     Vector3 lastPosition;
-    bool isAirGrabbing = false;
 
     Interactable currentGrabbable;
     bool isGrabbing = false;
     float grabDistance = 0;
-    Vector3 grabOffset;
 
     bool isTryingToTeleport = false;
 
@@ -73,17 +70,11 @@ public class Controller : MonoBehaviour
     // the start of the rays of the controllers
     Vector3 lineStart;
 
-    // grab move movement (rotation and position)
-    float currentGrabMoveSpeed;
-    float currentGrabRotationSpeed;
-
     // snap turn
     float snapTurnTimer;
 
     // select
-    Interactable currentSelectable;
     Interactable currentHoverable;
-    bool hasSelected = false;
 
     void Start()
     {
@@ -99,9 +90,6 @@ public class Controller : MonoBehaviour
         northButtonAction.action.started += NorthButtonPressed;
 
         grabPointMesh = grabPoint.gameObject.GetComponent<MeshRenderer>();
-
-        currentGrabMoveSpeed = startingGrabMoveSpeed;
-        currentGrabRotationSpeed = startingGrabRotationSpeed;
 
         snapTurnTimer = 0;
 
@@ -128,16 +116,6 @@ public class Controller : MonoBehaviour
         // read thumbstick input
         thumbstickInputValue = thumbstickAction.action.ReadValue<Vector2>();
 
-        if(currentGrabbable)
-        {
-            //grabPointMesh.enabled = !isTryingToTeleport && grabDistance <= minDistanceToRotate
-            //    && currentGrabbable.allowDirectGrab;
-        }
-        else
-        {
-            grabPointMesh.enabled = !isTryingToTeleport && grabDistance <= minDistanceToRotate;
-        }
-
         DoRaycast();
 
         GrabUpdate();
@@ -150,44 +128,9 @@ public class Controller : MonoBehaviour
     {
         if (isGrabbing)
         {
-            if (currentGrabbable)
+            if(currentGrabbable)
             {
-                if (Mathf.Abs(thumbstickInputValue.y) > 0.5)
-                {
-                    //if(thumbstickInputValue.y < -0.5f || currentGrabbable.limitOffset < currentGrabbable.stopGrabMoveThreshold || !(currentGrabbable.limitGrabMove))
-                    //{
-                    //    if (currentGrabMoveSpeed < maxGrabMoveSpeed)
-                    //    {
-                    //        currentGrabMoveSpeed += grabMoveAcceleration * Time.deltaTime;
-                    //    }
-
-                    //    float newGrabDistance = grabDistance + thumbstickInputValue.y * Time.deltaTime * currentGrabMoveSpeed;
-                    //    grabDistance = Mathf.Clamp(newGrabDistance, 0, rayRange);
-                    //}
-                }
-                else
-                {
-                    currentGrabMoveSpeed = startingGrabMoveSpeed;
-                }
-
-                if (Mathf.Abs(thumbstickInputValue.x) > 0.5)
-                {
-                    if (currentGrabRotationSpeed < maxGrabRotationSpeed)
-                    {
-                        currentGrabRotationSpeed += grabRotationAcceleration * Time.deltaTime;
-                    }
-
-                    float angleDelta = thumbstickInputValue.x * Time.deltaTime * currentGrabRotationSpeed;
-                    //currentGrabbable.transform.RotateAround(currentGrabbable.GetLineEndPoint(), -Vector3.up, angleDelta);
-
-                }
-                else
-                {
-                    currentGrabRotationSpeed = startingGrabRotationSpeed;
-
-                }
-
-                //currentGrabbable.UpdateGrab(grabDistance, grabOffset, grabDistance < minDistanceToRotate);
+                currentGrabbable.UpdateGrab(grabDistance);
             }
         }
     }
@@ -320,43 +263,39 @@ public class Controller : MonoBehaviour
     void DoRaycast()
     {
         bRaycastHit = Physics.Raycast(grabPoint.transform.position, grabPoint.transform.forward, out rayHitResult, rayRange);
-        if(isGrabbing)
+
+        if(bRaycastHit)
         {
-           // rayLineRenderer.SetPosition(1, currentGrabbable.GetLineEndPoint());
+            rayLineRenderer.SetPosition(1, rayHitResult.point);
         }
         else
         {
-            if(bRaycastHit)
-            {
-                rayLineRenderer.SetPosition(1, rayHitResult.point);
-            }
-            else
-            {
-                rayLineRenderer.SetPosition(1, GetMaxRayPosition());
-            }
+            rayLineRenderer.SetPosition(1, GetMaxRayPosition());
         }
+
     }
 
-    public void StartGrab(Interactable grabbable, float startGrabbingOffset, Vector3 startGrabOffset)
+    public void StartGrab(Interactable grabbable, float startingGrabDistance, Vector3 startGrabOffset)
     {
         currentGrabbable = grabbable;
+        grabDistance = startingGrabDistance;
         isGrabbing = true;
-        //currentGrabbable.StartGrab(this);
+        currentGrabbable.StartGrab(this, startGrabOffset);
     }
 
     public void StopGrab()
     {
         if (isGrabbing)
         {
+            currentGrabbable.StopGrab();
             isGrabbing = false;
-            //currentGrabbable.StopGrab();
             currentGrabbable = null;
         }
     }
 
     public void StopAirGrab()
     {
-        isAirGrabbing = false;
+
     }
     
     void HoverTest()
@@ -367,7 +306,8 @@ public class Controller : MonoBehaviour
             if (bRaycastHit)
             {
                 Interactable selectable = rayHitResult.collider.transform.root.GetComponent<Interactable>();
-                if(selectable)
+
+                if(selectable && rayHitResult.collider.gameObject.layer != LayerMask.NameToLayer("UI"))
                 {
                     if(currentHoverable)
                     {

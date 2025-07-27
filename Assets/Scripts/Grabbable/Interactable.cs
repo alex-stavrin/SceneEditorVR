@@ -25,76 +25,99 @@ public class Interactable : MonoBehaviour
     Material rectileMaterial;
 
     Controller currentGrabber = null;
-    float grabDistance;
     Vector3 grabOffset;
 
     private void Start()
     {
-        state = InteractableState.IE_IDLE;
         if(recticle)
         {
-            recticle.SetActive(false);
-            
             rectileMaterial = recticle.GetComponent<Renderer>().material;
-            rectileMaterial.SetColor("_Color", SelectionManager.Instance.GetHoverColor());
         }
+
+        // dont put this before getting access to rectile material
+        UpdateState(InteractableState.IE_IDLE);
     }
 
-    private void Update()
+    public void UpdateGrab(float distance)
     {
         if (state == InteractableState.IE_GRABBED)
         {
-            if(currentGrabber)
+            if (currentGrabber)
             {
                 Vector3 grabPointPos = currentGrabber.GetGrabPoint().position;
                 Vector3 grabPointDirection = currentGrabber.GetGrabPoint().forward;
-                //////
+                
+                transform.position = (grabPointPos + grabPointDirection * distance) + grabOffset;
             }
         }
     }
 
-    public void StartGrab(float grabDistance, Vector3 grabOffset)
+    public void StartGrab(Controller grabber, Vector3 grabOffset)
     {
-        state = InteractableState.IE_GRABBED;
+        currentGrabber = grabber;
+        this.grabOffset = grabOffset;
+        UpdateState(InteractableState.IE_GRABBED);
     }
 
     public void StopGrab()
     {
-        state = InteractableState.IE_SELECTED;
+        if(!grabImmediately)
+        {
+            UpdateState(InteractableState.IE_SELECTED);
+        }
+        else
+        {
+            UpdateState(InteractableState.IE_IDLE);
+        }
     }
 
     public void StartSelect()
     {
-        rectileMaterial.SetColor("_Color", SelectionManager.Instance.GetSelectedColor());
-        recticle.SetActive(true);
-        state = InteractableState.IE_SELECTED;
+        UpdateState(InteractableState.IE_SELECTED);
     }
 
     public void StopSelect()
     {
-        rectileMaterial.SetColor("_Color", SelectionManager.Instance.GetHoverColor());
-        recticle.SetActive(false);
-        state = InteractableState.IE_IDLE;
+        UpdateState(InteractableState.IE_IDLE);
     }
 
     public void StartHover()
     {
         if (state != InteractableState.IE_IDLE) return;
 
-        recticle.SetActive(true);
-        state = InteractableState.IE_HOVERED;
+        UpdateState(InteractableState.IE_HOVERED);
     }
 
     public void StopHover()
     {
         if (state != InteractableState.IE_HOVERED) return;
 
-        recticle.SetActive(false);
-        state = InteractableState.IE_IDLE;
+        UpdateState(InteractableState.IE_IDLE);
     }
 
     public InteractableState GetState()
     {
         return state;
+    }
+
+    void UpdateState(InteractableState newState)
+    {
+        state = newState;
+        switch (state) 
+        {
+            case InteractableState.IE_IDLE:
+                rectileMaterial.SetColor("_Color", SelectionManager.Instance.GetHoverColor());
+                recticle.SetActive(false);
+                break;
+            case InteractableState.IE_HOVERED:
+                recticle.SetActive(true);
+                break;
+            case InteractableState.IE_SELECTED:
+                recticle.SetActive(true);
+                rectileMaterial.SetColor("_Color", SelectionManager.Instance.GetSelectedColor());
+                break;
+            case InteractableState.IE_GRABBED:
+                break;
+        }
     }
 }
