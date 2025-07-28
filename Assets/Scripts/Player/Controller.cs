@@ -20,7 +20,8 @@ public class Controller : MonoBehaviour
     [SerializeField] InputActionProperty northButtonAction;
     [SerializeField] InputActionProperty southButtonAction;
     [SerializeField] InputActionProperty triggerAction;
-
+    [SerializeField] InputActionProperty settingsAction;
+ 
     [Header("Ray Interaction")]
     [SerializeField] float startingGrabMoveSpeed;
     [SerializeField] float maxGrabMoveSpeed;
@@ -88,6 +89,8 @@ public class Controller : MonoBehaviour
         triggerAction.action.canceled += TriggerReleased;
 
         northButtonAction.action.started += NorthButtonPressed;
+
+        settingsAction.action.started += SettingsButtonPressed;
 
         grabPointMesh = grabPoint.gameObject.GetComponent<MeshRenderer>();
 
@@ -294,6 +297,11 @@ public class Controller : MonoBehaviour
     }
 
     public void StopAirGrab()
+    {
+
+    }
+
+    public void SettingsButtonPressed(InputAction.CallbackContext context)
     {
 
     }
