@@ -308,7 +308,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6788061989587607339}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.5, y: 0, z: -1.0969999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -376,12 +376,13 @@ MonoBehaviour:
   playerHead: {fileID: 929001826385092467}
   cameraOffset: {fileID: 4825481740499100272}
   bodyCollider: {fileID: 187533746816981145}
-  leftController: {fileID: 4870878855019534909}
-  rightController: {fileID: 5288957902577284575}
-  rb: {fileID: 3787267064880991857}
-  grabEndForce: 6
   bodyHeightMin: 0.5
   bodyHeightMax: 2
+  leftController: {fileID: 4870878855019534909}
+  rightController: {fileID: 5288957902577284575}
+  canAirGrab: 1
+  grabEndForce: 6
+  canTeleport: 1
 --- !u!1 &9180987316195927790
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,6 +623,18 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 6368324486861407531}
+    - target: {fileID: 1139880735933221261, guid: fb960abb9a6badc439320cf85a46d05c, type: 3}
+      propertyPath: settingsAction.m_Reference
+      value: 
+      objectReference: {fileID: 8071127159479364408, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 1139880735933221261, guid: fb960abb9a6badc439320cf85a46d05c, type: 3}
+      propertyPath: settingsAction.m_UseReference
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1139880735933221261, guid: fb960abb9a6badc439320cf85a46d05c, type: 3}
+      propertyPath: settingsAction.m_Action.m_Name
+      value: Settings
+      objectReference: {fileID: 0}
     - target: {fileID: 1447512869267103693, guid: fb960abb9a6badc439320cf85a46d05c, type: 3}
       propertyPath: m_Name
       value: Left Controller

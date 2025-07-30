@@ -303,7 +303,10 @@ public class Controller : MonoBehaviour
 
     public void SettingsButtonPressed(InputAction.CallbackContext context)
     {
-
+        if(ControlPanel.Instance)
+        {
+            ControlPanel.Instance.GoToPlayer();
+        }
     }
     
     void HoverTest()
