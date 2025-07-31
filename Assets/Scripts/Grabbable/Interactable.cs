@@ -35,7 +35,7 @@ public class Interactable : MonoBehaviour
         }
 
         // dont put this before getting access to rectile material
-        UpdateState(InteractableState.IE_IDLE);
+        SetState(InteractableState.IE_IDLE);
     }
 
     public void UpdateGrab(float distance)
@@ -46,8 +46,10 @@ public class Interactable : MonoBehaviour
             {
                 Vector3 grabPointPos = currentGrabber.GetGrabPoint().position;
                 Vector3 grabPointDirection = currentGrabber.GetGrabPoint().forward;
-                
-                transform.position = (grabPointPos + grabPointDirection * distance) + grabOffset;
+
+                transform.position = grabPointPos + grabPointDirection * distance + grabOffset;
+
+                transform.rotation = currentGrabber.transform.rotation;
             }
         }
     }
@@ -56,43 +58,49 @@ public class Interactable : MonoBehaviour
     {
         currentGrabber = grabber;
         this.grabOffset = grabOffset;
-        UpdateState(InteractableState.IE_GRABBED);
+        SetState(InteractableState.IE_GRABBED);
     }
 
     public void StopGrab()
     {
         if(!grabImmediately)
         {
-            UpdateState(InteractableState.IE_SELECTED);
+            SetState(InteractableState.IE_SELECTED);
         }
         else
         {
-            UpdateState(InteractableState.IE_IDLE);
+            SetState(InteractableState.IE_IDLE);
         }
+    }
+
+    public void ForceStopGrab()
+    {
+        currentGrabber.StopGrab();
+        StopGrab();
     }
 
     public void StartSelect()
     {
-        UpdateState(InteractableState.IE_SELECTED);
+        SetState(InteractableState.IE_SELECTED);
     }
 
     public void StopSelect()
     {
-        UpdateState(InteractableState.IE_IDLE);
+        SetState(InteractableState.IE_IDLE);
     }
 
     public void StartHover()
     {
         if (state != InteractableState.IE_IDLE) return;
 
-        UpdateState(InteractableState.IE_HOVERED);
+        SetState(InteractableState.IE_HOVERED);
     }
 
     public void StopHover()
     {
         if (state != InteractableState.IE_HOVERED) return;
 
-        UpdateState(InteractableState.IE_IDLE);
+        SetState(InteractableState.IE_IDLE);
     }
 
     public InteractableState GetState()
@@ -100,7 +108,7 @@ public class Interactable : MonoBehaviour
         return state;
     }
 
-    void UpdateState(InteractableState newState)
+    void SetState(InteractableState newState)
     {
         state = newState;
         switch (state) 

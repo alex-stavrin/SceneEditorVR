@@ -24,13 +24,7 @@ public class Controller : MonoBehaviour
  
     [Header("Ray Interaction")]
     [SerializeField] float startingGrabMoveSpeed;
-    [SerializeField] float maxGrabMoveSpeed;
-    [SerializeField] float grabMoveAcceleration;
-    [SerializeField] float startingGrabRotationSpeed;
-    [SerializeField] float maxGrabRotationSpeed;
-    [SerializeField] float grabRotationAcceleration;
     [SerializeField] float rayRange;
-    [SerializeField] float minDistanceToRotate;
     [SerializeField] LineRenderer rayLineRenderer;
 
     [Header("Teleport")]
@@ -77,7 +71,10 @@ public class Controller : MonoBehaviour
     // select
     Interactable currentHoverable;
 
-    void Start()
+    // grab move
+    float currentGrabMoveSpeed;
+
+    public void Start()
     {
         // reset any changes made in the editor
         rayLineRenderer.positionCount = 2;
@@ -96,14 +93,16 @@ public class Controller : MonoBehaviour
 
         snapTurnTimer = 0;
 
-        if(PlayerRig.Instance.canTeleport == false)
+        currentGrabMoveSpeed = startingGrabMoveSpeed;
+
+        if (PlayerRig.Instance.canTeleport == false)
         {
             rectile.gameObject.SetActive(false);
             teleportLineRenderer.gameObject.SetActive(false);
         }
     }
 
-    void Update()
+    public void Update()
     {
         // calculate velocity
         Vector3 currentPosition = transform.position;
@@ -133,6 +132,7 @@ public class Controller : MonoBehaviour
         {
             if(currentGrabbable)
             {
+                grabDistance += thumbstickInputValue.y * Time.deltaTime * currentGrabMoveSpeed;
                 currentGrabbable.UpdateGrab(grabDistance);
             }
         }
@@ -255,6 +255,10 @@ public class Controller : MonoBehaviour
                     SelectionManager.Instance.SetCurrentSelectable(currentHoverable);
                 }
             }
+        }
+        else
+        {
+            SelectionManager.Instance.UnselectCurrent();
         }
     }
     

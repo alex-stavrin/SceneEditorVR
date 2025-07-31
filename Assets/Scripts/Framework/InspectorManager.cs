@@ -29,5 +29,9 @@ public class InspectorManager : MonoBehaviour
             currentInspected = inspected;
             inspectedNameText.text = inspected.name;
         }
+        else
+        {
+            inspectedNameText.text = "";
+        }
     }
 }

@@ -12,7 +12,7 @@ public class SelectionManager : MonoBehaviour
     [SerializeField]
     Color selectedColor = Color.yellow;
 
-    void Awake()
+    public void Awake()
     {
         if (Instance != null && Instance != this)
         {
@@ -26,15 +26,29 @@ public class SelectionManager : MonoBehaviour
 
     public void SetCurrentSelectable(Interactable newSelectable)
     {
-        if(currentSelectable)
+        if (currentSelectable)
         {
             currentSelectable.StopSelect();
+
+            if (currentSelectable.GetState() == InteractableState.IE_GRABBED)
+            {
+                currentSelectable.ForceStopGrab();
+            }
         }
 
         currentSelectable = newSelectable;
         currentSelectable.StartSelect();
 
         InspectorManager.Instance.SetInspected(currentSelectable.gameObject);
+    }
+
+    public void UnselectCurrent()
+    {
+        if(currentSelectable)
+        {
+            currentSelectable.StopSelect();
+            InspectorManager.Instance.SetInspected(null);
+        }
     }
 
     public Color GetSelectedColor()

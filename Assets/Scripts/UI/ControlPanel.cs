@@ -11,16 +11,10 @@ public class ControlPanel : MonoBehaviour
     [SerializeField]
     GameObject worldPanel;
 
-    [SerializeField]
-    Vector3 worldPanelOffsetFromControlPanel;
-
     [Header("Content Panel")]
 
     [SerializeField]
     GameObject contentPanel;
-
-    [SerializeField]
-    Vector3 contentPanelOffsetFromControlPanel;
 
 
     [Header("Inspector Panel")]
@@ -28,15 +22,12 @@ public class ControlPanel : MonoBehaviour
     [SerializeField]
     GameObject inspectorPanel;
 
-    [SerializeField]
-    Vector3 inspectorPanelOffsetFromControlPanel;
-
 
     Transform playerHead;
 
     public static ControlPanel Instance { get; private set; }
 
-    void Awake()
+    public void Awake()
     {
         if (Instance != null && Instance != this)
         {
@@ -49,7 +40,7 @@ public class ControlPanel : MonoBehaviour
     }
 
 
-    void Start()
+    public void Start()
     {
         playerHead = PlayerRig.Instance.GetPlayerHead();
     }
@@ -73,25 +64,22 @@ public class ControlPanel : MonoBehaviour
 
     public void OnWorldButtonPressed()
     {
-        ActivatePanel(worldPanel, worldPanelOffsetFromControlPanel);
+        ActivatePanel(worldPanel);
     }
 
     public void OnInspectorButtonPressed()
     {
-        ActivatePanel(inspectorPanel, inspectorPanelOffsetFromControlPanel);
+        ActivatePanel(inspectorPanel);
     }
 
     public void OnContentButtonPressed()
     {
-        ActivatePanel(contentPanel, contentPanelOffsetFromControlPanel);
+        ActivatePanel(contentPanel);
     }
 
-    void ActivatePanel(GameObject panel, Vector3 offset)
+    void ActivatePanel(GameObject panel)
     {
         panel.SetActive(true);
         panel.transform.rotation = transform.rotation;
-        panel.transform.position = transform.position + transform.forward * offset.z
-            + transform.right * offset.x +
-            transform.up * offset.y;
     }
 }
