@@ -30,9 +30,9 @@ public class SelectionManager : MonoBehaviour
         {
             currentSelectable.StopSelect();
 
-            if (currentSelectable.GetState() == InteractableState.IE_GRABBED)
+            if (currentSelectable.GetState() == InteractableState.IE_INTERACTING)
             {
-                currentSelectable.ForceStopGrab();
+                currentSelectable.ForceStopInteracting();
             }
         }
 

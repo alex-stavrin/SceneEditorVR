@@ -120,22 +120,9 @@ public class Controller : MonoBehaviour
 
         DoRaycast();
 
-        GrabUpdate();
         TeleportUpdate();
         SnapTurnUpdate();
         HoverTest();
-    }
-
-    void GrabUpdate()
-    {
-        if (isGrabbing)
-        {
-            if(currentGrabbable)
-            {
-                grabDistance += thumbstickInputValue.y * Time.deltaTime * currentGrabMoveSpeed;
-                currentGrabbable.UpdateGrab(grabDistance);
-            }
-        }
     }
 
     void SnapTurnUpdate()
@@ -240,21 +227,21 @@ public class Controller : MonoBehaviour
     {
         if (currentHoverable)
         {
-            if(currentHoverable.GrabImmediately)
-            {
-                StartGrab(currentHoverable, rayHitResult.distance, currentHoverable.transform.position - rayHitResult.point);
-            }
-            else
-            {
-                if (currentHoverable.GetState() == InteractableState.IE_SELECTED)
-                {
-                    StartGrab(currentHoverable, rayHitResult.distance, currentHoverable.transform.position - rayHitResult.point);
-                }
-                else
-                {
-                    SelectionManager.Instance.SetCurrentSelectable(currentHoverable);
-                }
-            }
+            // if(currentHoverable.GrabImmediately)
+            // {
+            //     StartGrab(currentHoverable, rayHitResult.distance, currentHoverable.transform.position - rayHitResult.point);
+            // }
+            // else
+            // {
+            //     if (currentHoverable.GetState() == InteractableState.IE_SELECTED)
+            //     {
+            //         StartGrab(currentHoverable, rayHitResult.distance, currentHoverable.transform.position - rayHitResult.point);
+            //     }
+            //     else
+            //     {
+            //         SelectionManager.Instance.SetCurrentSelectable(currentHoverable);
+            //     }
+            // }
         }
         else
         {
@@ -264,7 +251,7 @@ public class Controller : MonoBehaviour
     
     void TriggerReleased(InputAction.CallbackContext context)
     {
-        StopGrab();
+        
     }
 
     void DoRaycast()
@@ -280,24 +267,6 @@ public class Controller : MonoBehaviour
             rayLineRenderer.SetPosition(1, GetMaxRayPosition());
         }
 
-    }
-
-    public void StartGrab(Interactable grabbable, float startingGrabDistance, Vector3 startGrabOffset)
-    {
-        currentGrabbable = grabbable;
-        grabDistance = startingGrabDistance;
-        isGrabbing = true;
-        currentGrabbable.StartGrab(this, startGrabOffset);
-    }
-
-    public void StopGrab()
-    {
-        if (isGrabbing)
-        {
-            currentGrabbable.StopGrab();
-            isGrabbing = false;
-            currentGrabbable = null;
-        }
     }
 
     public void StopAirGrab()
