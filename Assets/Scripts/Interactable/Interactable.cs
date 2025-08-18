@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public enum InteractableState
@@ -17,6 +18,9 @@ public class Interactable : MonoBehaviour
     InteractableState state;
 
     Controller currentInteractor = null;
+
+    public event Action OnStartSelect;
+    public event Action OnStopSelect;
 
     private void Start()
     {
@@ -81,6 +85,11 @@ public class Interactable : MonoBehaviour
 
     void SetState(InteractableState newState)
     {
+        if (state == InteractableState.IE_SELECTED && newState != InteractableState.IE_SELECTED)
+        {
+            OnStopSelect.Invoke();
+        }
+        
         state = newState;
         switch (state) 
         {
@@ -90,6 +99,7 @@ public class Interactable : MonoBehaviour
                 OnHoverStart();
                 break;
             case InteractableState.IE_SELECTED:
+                OnStartSelect.Invoke();
                 break;
             case InteractableState.IE_INTERACTING:
                 break;
