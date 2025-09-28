@@ -6,11 +6,7 @@ public class SelectionManager : MonoBehaviour
 
     Interactable currentSelectable;
 
-    [SerializeField]
-    Color hoverColor = Color.white;
 
-    [SerializeField]
-    Color selectedColor = Color.yellow;
 
     public void Awake()
     {
@@ -49,15 +45,5 @@ public class SelectionManager : MonoBehaviour
             currentSelectable.StopSelect();
             InspectorManager.Instance.SetInspected(null);
         }
-    }
-
-    public Color GetSelectedColor()
-    {
-        return selectedColor;
-    }
-
-    public Color GetHoverColor()
-    {
-        return hoverColor;
     }
 }

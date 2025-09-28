@@ -129,15 +129,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   playerCamera: {fileID: 0}
-  grabPoint: {fileID: 8130492592128920339}
+  interactPoint: {fileID: 8130492592128920339}
   controllerSide: 2
-  grabAction:
+  gripAction:
     m_UseReference: 1
     m_Action:
-      m_Name: Grab
+      m_Name: Grip
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 751aed15-dfac-478a-a295-cf7e17afc3c3
+      m_Id: b6385744-3e5f-4e8c-a055-c8118efae8b5
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -211,7 +211,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  startingGrabMoveSpeed: 2.5
+  startingInteractMoveSpeed: 0
   rayRange: 1500
   rayLineRenderer: {fileID: 364160724500201215}
   teleportLineRenderer: {fileID: 4533917780836189275}
@@ -516,7 +516,7 @@ GameObject:
   - component: {fileID: 1919972055405776246}
   - component: {fileID: 8130492592128920339}
   m_Layer: 0
-  m_Name: GrabPoint
+  m_Name: InteractPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

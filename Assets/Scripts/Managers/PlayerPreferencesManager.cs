@@ -5,11 +5,7 @@ public class PlayerPreferencesManager : MonoBehaviour
 {
 
     public static PlayerPreferencesManager Instance { get; private set; }
-
-    public bool useAxes;
-
-    public event Action<bool> OnUseAxesChanged;
-
+    public float axisMultiplier = 2.0f;
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -20,11 +16,5 @@ public class PlayerPreferencesManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-    }
-
-    public void SetUseAxes(bool newUseAxes)
-    {
-        useAxes = newUseAxes;
-        OnUseAxesChanged.Invoke(useAxes);
     }
 }

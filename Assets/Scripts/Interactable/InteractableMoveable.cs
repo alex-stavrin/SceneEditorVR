@@ -1,16 +1,21 @@
+using System;
 using UnityEngine;
 
-public class InteractableMoveable : MonoBehaviour
+public class InteractableMoveable : Interactable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void MoveTo(Vector3 newPosition)
     {
-        
+        SetPosition(newPosition);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void MoveBy(Vector3 offset)
     {
-        
+        SetPosition(transform.position + offset);
+    }
+
+    // global
+    private void SetPosition(Vector3 newPosition)
+    {
+        transform.position = newPosition;
     }
 }

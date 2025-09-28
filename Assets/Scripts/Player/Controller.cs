@@ -11,11 +11,11 @@ public class Controller : MonoBehaviour
     [Header("World")]
     [SerializeField] PlayerRig player;
     [SerializeField] Camera playerCamera;
-    [SerializeField] SphereCollider grabPoint;
+    [SerializeField] SphereCollider interactPoint;
 
     [Header("Input")]
     [SerializeField] InputDeviceRole controllerSide;
-    [SerializeField] InputActionProperty grabAction;
+    [SerializeField] InputActionProperty gripAction;
     [SerializeField] InputActionProperty thumbstickAction;
     [SerializeField] InputActionProperty northButtonAction;
     [SerializeField] InputActionProperty southButtonAction;
@@ -23,7 +23,7 @@ public class Controller : MonoBehaviour
     [SerializeField] InputActionProperty settingsAction;
  
     [Header("Ray Interaction")]
-    [SerializeField] float startingGrabMoveSpeed;
+    [SerializeField] float startingInteractMoveSpeed;
     [SerializeField] float rayRange;
     [SerializeField] LineRenderer rayLineRenderer;
 
@@ -52,13 +52,13 @@ public class Controller : MonoBehaviour
     Vector3 velocity;
     Vector3 lastPosition;
 
-    Interactable currentGrabbable;
-    bool isGrabbing = false;
-    float grabDistance = 0;
+    Interactable currentInteractable;
+    bool isInteracting = false;
+    float interactDistance = 0;
 
     bool isTryingToTeleport = false;
 
-    MeshRenderer grabPointMesh;
+    MeshRenderer interactPointMesh;
 
     Vector2 thumbstickInputValue;
 
@@ -71,16 +71,16 @@ public class Controller : MonoBehaviour
     // select
     Interactable currentHoverable;
 
-    // grab move
-    float currentGrabMoveSpeed;
+    float currentInteractMoveSpeed;
+
 
     public void Start()
     {
         // reset any changes made in the editor
         rayLineRenderer.positionCount = 2;
 
-        grabAction.action.started += GrabStarted;
-        grabAction.action.canceled += GrabEnded;
+        gripAction.action.started += GripStarted;
+        gripAction.action.canceled += GripEnded;
 
         triggerAction.action.started += TriggerPressed;
         triggerAction.action.canceled += TriggerReleased;
@@ -89,11 +89,11 @@ public class Controller : MonoBehaviour
 
         settingsAction.action.started += SettingsButtonPressed;
 
-        grabPointMesh = grabPoint.gameObject.GetComponent<MeshRenderer>();
+        interactPointMesh = interactPoint.gameObject.GetComponent<MeshRenderer>();
 
         snapTurnTimer = 0;
 
-        currentGrabMoveSpeed = startingGrabMoveSpeed;
+        currentInteractMoveSpeed = startingInteractMoveSpeed;
 
         if (PlayerRig.Instance.canTeleport == false)
         {
@@ -111,8 +111,8 @@ public class Controller : MonoBehaviour
         lastPosition = currentPosition;
 
         // set ray to start
-        lineStart = grabPoint.transform.position +
-            grabPoint.transform.forward * grabPoint.radius * grabPoint.transform.localScale.x;
+        lineStart = interactPoint.transform.position +
+            interactPoint.transform.forward * interactPoint.radius * interactPoint.transform.localScale.x;
         rayLineRenderer.SetPosition(0, lineStart);
 
         // read thumbstick input
@@ -132,7 +132,7 @@ public class Controller : MonoBehaviour
             snapTurnTimer -= Time.deltaTime;
         }
 
-        if(!isGrabbing && !isTryingToTeleport)
+        if(!isInteracting && !isTryingToTeleport)
         {
             if(Mathf.Abs( thumbstickInputValue.x) > 0.2 && snapTurnTimer <= 0)
             {
@@ -147,10 +147,10 @@ public class Controller : MonoBehaviour
     {
         if (PlayerRig.Instance.canTeleport == false) return;
 
-        Vector3 lineStart = grabPoint.transform.position +
-            grabPoint.transform.forward * grabPoint.radius * grabPoint.transform.localScale.x;
+        Vector3 lineStart = interactPoint.transform.position +
+            interactPoint.transform.forward * interactPoint.radius * interactPoint.transform.localScale.x;
 
-        if (!isTryingToTeleport && thumbstickInputValue.y > 0.4f && !isGrabbing)
+        if (!isTryingToTeleport && thumbstickInputValue.y > 0.4f && !isInteracting)
         {
             isTryingToTeleport = true;
         }
@@ -161,13 +161,13 @@ public class Controller : MonoBehaviour
             isTryingToTeleport = false;
         }
 
-        if (isTryingToTeleport && !isGrabbing && PointingAtUI() == false)
+        if (isTryingToTeleport && !isInteracting && PointingAtUI() == false)
         {
             rayLineRenderer.gameObject.SetActive(false);
             teleportLineRenderer.gameObject.SetActive(true);
 
             List<Vector3> points = new List<Vector3>();
-            Vector3 launchVelocity = grabPoint.transform.forward * teleportLineRange;
+            Vector3 launchVelocity = interactPoint.transform.forward * teleportLineRange;
             points.Add(lineStart);
             bool foundPoint = false;
             for (int i = 1; i < maxTeleportLineResolution; i++)
@@ -195,7 +195,7 @@ public class Controller : MonoBehaviour
             rectile.gameObject.SetActive(foundPoint);
             teleportLineRenderer.positionCount = points.Count;
             teleportLineRenderer.SetPositions(points.ToArray());
-            grabPointMesh.enabled = false;
+            interactPointMesh.enabled = false;
         }
         else
         {
@@ -213,12 +213,12 @@ public class Controller : MonoBehaviour
         }
     }
 
-    void GrabStarted(InputAction.CallbackContext context)
+    void GripStarted(InputAction.CallbackContext context)
     {
         player.StartAirGrab(controllerSide, transform.position);
     }
 
-    void GrabEnded(InputAction.CallbackContext context)
+    void GripEnded(InputAction.CallbackContext context)
     {
         player.StopAirGrab(controllerSide, velocity);
     }
@@ -227,36 +227,43 @@ public class Controller : MonoBehaviour
     {
         if (currentHoverable)
         {
-            // if(currentHoverable.GrabImmediately)
-            // {
-            //     StartGrab(currentHoverable, rayHitResult.distance, currentHoverable.transform.position - rayHitResult.point);
-            // }
-            // else
-            // {
-            //     if (currentHoverable.GetState() == InteractableState.IE_SELECTED)
-            //     {
-            //         StartGrab(currentHoverable, rayHitResult.distance, currentHoverable.transform.position - rayHitResult.point);
-            //     }
-            //     else
-            //     {
-            //         SelectionManager.Instance.SetCurrentSelectable(currentHoverable);
-            //     }
-            // }
+            if (currentHoverable.interactImmediately)
+            {
+                currentHoverable.StartInteract(this);
+                currentInteractable = currentHoverable;
+                currentHoverable = null;
+            }
+            else
+            {
+                if (currentHoverable.GetState() == InteractableState.IE_SELECTED)
+                {
+                    currentHoverable.StartInteract(this);
+                    currentInteractable = currentHoverable;
+                    currentHoverable = null;
+                }
+                else
+                {
+                    SelectionManager.Instance.SetCurrentSelectable(currentHoverable);
+                }
+            }
         }
         else
         {
             SelectionManager.Instance.UnselectCurrent();
         }
     }
-    
+
     void TriggerReleased(InputAction.CallbackContext context)
     {
-        
+        if (currentInteractable)
+        {
+            currentInteractable.StopInteract();
+        }
     }
 
     void DoRaycast()
     {
-        bRaycastHit = Physics.Raycast(grabPoint.transform.position, grabPoint.transform.forward, out rayHitResult, rayRange);
+        bRaycastHit = Physics.Raycast(interactPoint.transform.position, interactPoint.transform.forward, out rayHitResult, rayRange);
 
         if(bRaycastHit)
         {
@@ -266,11 +273,6 @@ public class Controller : MonoBehaviour
         {
             rayLineRenderer.SetPosition(1, GetMaxRayPosition());
         }
-
-    }
-
-    public void StopAirGrab()
-    {
 
     }
 
@@ -285,24 +287,24 @@ public class Controller : MonoBehaviour
     void HoverTest()
     {
         bool foundHover = false;
-        if(!isGrabbing)
+        if(!isInteracting)
         {
             if (bRaycastHit)
             {
-                Interactable selectable = rayHitResult.collider.transform.root.GetComponent<Interactable>();
+                Interactable interactable = rayHitResult.collider.transform.GetComponent<Interactable>();
 
-                if(selectable && rayHitResult.collider.gameObject.layer != LayerMask.NameToLayer("UI"))
+                if(interactable && rayHitResult.collider.gameObject.layer != LayerMask.NameToLayer("UI"))
                 {
                     if(currentHoverable)
                     {
-                        if(selectable != currentHoverable)
+                        if(interactable != currentHoverable)
                         {
                             currentHoverable.StopHover();
                         }
                     }
 
-                    currentHoverable = selectable;
-                    selectable.StartHover();
+                    currentHoverable = interactable;
+                    interactable.StartHover();
                     foundHover = true;
                 }
             }
@@ -323,14 +325,14 @@ public class Controller : MonoBehaviour
 
     }
 
-    public Transform GetGrabPoint()
+    public Transform GetInteractPoint()
     {
-        return grabPoint.transform;
+        return interactPoint.transform;
     }
 
     public Vector3 GetMaxRayPosition()
     {
-        return lineStart + grabPoint.transform.forward * rayRange;
+        return lineStart + interactPoint.transform.forward * rayRange;
     }
 
     public Vector3 GetRayStart()

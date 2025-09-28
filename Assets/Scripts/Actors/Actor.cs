@@ -8,34 +8,46 @@ public class Actor : MonoBehaviour
 
     Interactable interactable;
 
+    [SerializeField] public GameObject recticle;
+
+    Collider actorCollider;
+
     void Start()
     {
         interactable = GetComponent<Interactable>();
+        actorCollider = GetComponent<Collider>();
+
         interactable.OnStartSelect += OnInteractableStartSelect;
         interactable.OnStopSelect += OnInteractableStopSelect;
-        PlayerPreferencesManager.Instance.OnUseAxesChanged += OnUseAxesChanged;
 
-        // on start actor is not selected
-        UpdateArrows(false);
+        interactable.OnStartHover += OnInteractableStartHover;
+        interactable.OnStopHover += OnInteractableStopHover;
+
+        recticle?.SetActive(false);
+        arrows?.SetActive(false);
     }
 
     void OnInteractableStartSelect()
     {
-        UpdateArrows(true);
+        arrows?.SetActive(true);
+        recticle?.SetActive(false);
+        actorCollider.enabled = false;
     }
 
     void OnInteractableStopSelect()
     {
-        UpdateArrows(false);
+        arrows?.SetActive(false);
+        recticle?.SetActive(false);
+         actorCollider.enabled = true;
     }
 
-    void OnUseAxesChanged(bool newUseAxes)
+    void OnInteractableStartHover()
     {
-        UpdateArrows(interactable.GetState() == InteractableState.IE_SELECTED);
+        recticle.SetActive(true);
     }
 
-    void UpdateArrows(bool selectionState)
+    void OnInteractableStopHover()
     {
-        arrows.SetActive(PlayerPreferencesManager.Instance.useAxes && selectionState);
+        recticle.SetActive(false);
     }
 }

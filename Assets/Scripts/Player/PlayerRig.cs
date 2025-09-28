@@ -54,6 +54,7 @@ public class PlayerRig : MonoBehaviour
     Vector3 translationVector;
     Rigidbody rb;
 
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -80,7 +81,6 @@ public class PlayerRig : MonoBehaviour
             {
                 Vector3 leftControllerPosition = leftController.transform.position;
                 translationVector = currentGrabMovingPoint - leftControllerPosition;
-
             }
             else if (currentGrabMovingSide == InputDeviceRole.RightHanded)
             {
@@ -119,18 +119,18 @@ public class PlayerRig : MonoBehaviour
 
         if(isAirGrabbing)
         {
-            // if we are requested to start air grab from left handed and we are already grabbing that means right hand
-            // is doing air grab.
-            if (controllerSide == InputDeviceRole.LeftHanded)
-            {
-                rightController.StopAirGrab();
-            }
-            // if we are requested to start air grab from right handed and we are already grabbing that means left hand
-            // is doing air grab.
-            else if (controllerSide == InputDeviceRole.RightHanded)
-            {
-                leftController.StopAirGrab();
-            }
+            // // if we are requested to start air grab from left handed and we are already grabbing that means right hand
+            // // is doing air grab.
+            // if (controllerSide == InputDeviceRole.LeftHanded)
+            // {
+            //     rightController.StopAirGrab();
+            // }
+            // // if we are requested to start air grab from right handed and we are already grabbing that means left hand
+            // // is doing air grab.
+            // else if (controllerSide == InputDeviceRole.RightHanded)
+            // {
+            //     leftController.StopAirGrab();
+            // }
         }
 
         startingGrabOriginPosition = rb.position;

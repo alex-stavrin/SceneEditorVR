@@ -15,21 +15,32 @@ public class Interactable : MonoBehaviour
     [Header("Interaction")]
     [SerializeField] public bool interactImmediately = false;
 
-    InteractableState state;
+    protected InteractableState state;
 
-    Controller currentInteractor = null;
+    protected Controller interactor = null;
 
     public event Action OnStartSelect;
     public event Action OnStopSelect;
+    public event Action OnStartHover;
+    public event Action OnStopHover;
+    public event Action OnStartInteract;
+    public event Action OnStopInteract;
 
-    private void Start()
+    public virtual void Start()
     {
         SetState(InteractableState.IE_IDLE);
     }
 
-    public void StartInteract(Controller interactor)
+    public void ForceStopInteracting()
     {
-        currentInteractor = interactor;
+        StopInteract();
+    }
+
+    // Functions below used to set the state mainly
+
+    public void StartInteract(Controller _interactor)
+    {
+        interactor = _interactor;
         SetState(InteractableState.IE_INTERACTING);
     }
 
@@ -43,11 +54,6 @@ public class Interactable : MonoBehaviour
         {
             SetState(InteractableState.IE_IDLE);
         }
-    }
-
-    public void ForceStopInteracting()
-    {
-        StopInteract();
     }
 
     public void StartSelect()
@@ -66,16 +72,42 @@ public class Interactable : MonoBehaviour
         SetState(InteractableState.IE_HOVERED);
     }
 
-    public virtual void OnHoverStart()
-    {
-
-    }
-
     public void StopHover()
     {
         if (state != InteractableState.IE_HOVERED) return;
 
         SetState(InteractableState.IE_IDLE);
+    }
+
+    // Events based on state changes
+    public virtual void OnHoverStart()
+    {
+        OnStartHover?.Invoke();
+    }
+
+    public virtual void OnHoverStop()
+    {
+        OnStopHover?.Invoke();
+    }
+
+    public virtual void OnSelectStart()
+    {
+        OnStartSelect?.Invoke();
+    }
+
+    public virtual void OnSelectStop()
+    {
+        OnStopSelect?.Invoke();
+    }
+
+    public virtual void OnInteractStart()
+    {
+        OnStartInteract?.Invoke();
+    }
+
+    public virtual void OnInteractStop()
+    {
+        OnStopInteract?.Invoke();
     }
 
     public InteractableState GetState()
@@ -85,13 +117,25 @@ public class Interactable : MonoBehaviour
 
     void SetState(InteractableState newState)
     {
-        if (state == InteractableState.IE_SELECTED && newState != InteractableState.IE_SELECTED)
+        InteractableState previousState = state;
+        state = newState;
+
+        if (previousState == InteractableState.IE_SELECTED && newState != InteractableState.IE_SELECTED)
         {
-            OnStopSelect.Invoke();
+            OnSelectStop();
+        }
+
+        if (previousState == InteractableState.IE_HOVERED && newState != InteractableState.IE_HOVERED)
+        {
+            OnHoverStop();
+        }
+
+        if (previousState == InteractableState.IE_INTERACTING && newState != InteractableState.IE_INTERACTING)
+        {
+            OnInteractStop();
         }
         
-        state = newState;
-        switch (state) 
+        switch (state)
         {
             case InteractableState.IE_IDLE:
                 break;
@@ -99,9 +143,10 @@ public class Interactable : MonoBehaviour
                 OnHoverStart();
                 break;
             case InteractableState.IE_SELECTED:
-                OnStartSelect.Invoke();
+                OnSelectStart();
                 break;
             case InteractableState.IE_INTERACTING:
+                OnInteractStart();
                 break;
         }
     }
