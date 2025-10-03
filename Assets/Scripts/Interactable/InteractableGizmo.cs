@@ -19,6 +19,26 @@ public class InteractableGizmo : Interactable
         }
     }
 
+    public override void OnInteractStart()
+    {
+        base.OnInteractStart();
+
+        if (arrowMaterial)
+        {
+            arrowMaterial.SetColor("_Color", ColorManager.Instance.arrowsHoverColor);
+        }
+    }
+
+    public override void OnInteractStop()
+    {
+        base.OnInteractStop();
+
+        if (arrowMaterial)
+        {
+            arrowMaterial.SetColor("_Color", startingColor);
+        }       
+    }
+
     public override void OnHoverStart()
     {
         base.OnHoverStart();

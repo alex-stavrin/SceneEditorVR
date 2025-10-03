@@ -1,21 +1,12 @@
-using System;
 using UnityEngine;
 
 public class InteractableMoveable : Interactable
 {
-    public void MoveTo(Vector3 newPosition)
+    [SerializeField]
+    public bool allowDirect = true;
+    
+    public override void OnHoverStart()
     {
-        SetPosition(newPosition);
-    }
-
-    public void MoveBy(Vector3 offset)
-    {
-        SetPosition(transform.position + offset);
-    }
-
-    // global
-    private void SetPosition(Vector3 newPosition)
-    {
-        transform.position = newPosition;
+        base.OnHoverStart();
     }
 }

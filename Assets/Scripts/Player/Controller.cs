@@ -54,7 +54,6 @@ public class Controller : MonoBehaviour
 
     Interactable currentInteractable;
     bool isInteracting = false;
-    float interactDistance = 0;
 
     bool isTryingToTeleport = false;
 
@@ -71,7 +70,14 @@ public class Controller : MonoBehaviour
     // select
     Interactable currentHoverable;
 
+
+    // interactable moveable handling
     float currentInteractMoveSpeed;
+    float interactDistance = 0;
+    Vector3 interactOffset;
+
+    // spawning edge case
+    public bool isInteractingSpawned = false;
 
 
     public void Start()
@@ -123,6 +129,7 @@ public class Controller : MonoBehaviour
         TeleportUpdate();
         SnapTurnUpdate();
         HoverTest();
+        HandleInteractableMoveable();
     }
 
     void SnapTurnUpdate()
@@ -143,6 +150,25 @@ public class Controller : MonoBehaviour
             }
         }
     }
+
+    void HandleInteractableMoveable()
+    {
+        if (currentInteractable)
+        {
+            // cast to interactable moveable
+            if (currentInteractable is InteractableMoveable interactableMoveable)
+            {
+                if (interactableMoveable.allowDirect)
+                {
+                    Vector3 interactPointPosition = GetInteractPoint().transform.position;
+                    Vector3 interactPointForward = GetInteractPoint().forward;
+                    interactableMoveable.transform.position = interactOffset + interactPointPosition + interactPointForward * interactDistance; 
+                }
+            }
+        }
+    }
+
+
     void TeleportUpdate()
     {
         if (PlayerRig.Instance.canTeleport == false) return;
@@ -229,17 +255,13 @@ public class Controller : MonoBehaviour
         {
             if (currentHoverable.interactImmediately)
             {
-                currentHoverable.StartInteract(this);
-                currentInteractable = currentHoverable;
-                currentHoverable = null;
+                StartInteract(currentHoverable);
             }
             else
             {
                 if (currentHoverable.GetState() == InteractableState.IE_SELECTED)
                 {
-                    currentHoverable.StartInteract(this);
-                    currentInteractable = currentHoverable;
-                    currentHoverable = null;
+                    StartInteract(currentHoverable);
                 }
                 else
                 {
@@ -253,11 +275,30 @@ public class Controller : MonoBehaviour
         }
     }
 
+    public void StartInteract(Interactable hoverable)
+    {
+        hoverable.StartInteract(this);
+        currentInteractable = hoverable;
+        interactDistance = rayHitResult.distance;
+        interactOffset = currentInteractable.transform.position - rayHitResult.point;
+        currentHoverable = null;
+    }
+
     void TriggerReleased(InputAction.CallbackContext context)
     {
         if (currentInteractable)
         {
             currentInteractable.StopInteract();
+
+            if (isInteractingSpawned)
+            {
+                if (currentInteractable is InteractableMoveable interactableMoveable)
+                {
+                    interactableMoveable.allowDirect = false;
+                }
+            }
+
+            currentInteractable = null;
         }
     }
 
@@ -293,11 +334,11 @@ public class Controller : MonoBehaviour
             {
                 Interactable interactable = rayHitResult.collider.transform.GetComponent<Interactable>();
 
-                if(interactable && rayHitResult.collider.gameObject.layer != LayerMask.NameToLayer("UI"))
+                if (interactable && rayHitResult.collider.gameObject.layer != LayerMask.NameToLayer("UI"))
                 {
-                    if(currentHoverable)
+                    if (currentHoverable)
                     {
-                        if(interactable != currentHoverable)
+                        if (interactable != currentHoverable)
                         {
                             currentHoverable.StopHover();
                         }
@@ -306,6 +347,26 @@ public class Controller : MonoBehaviour
                     currentHoverable = interactable;
                     interactable.StartHover();
                     foundHover = true;
+                }
+
+                // if the component is on the same object it may be in the root
+                if (!interactable)
+                {
+                    interactable = rayHitResult.collider.transform.root.GetComponent<Interactable>();
+                    if (interactable && rayHitResult.collider.gameObject.layer != LayerMask.NameToLayer("UI"))
+                    {
+                        if (currentHoverable)
+                        {
+                            if (interactable != currentHoverable)
+                            {
+                                currentHoverable.StopHover();
+                            }
+                        }
+
+                        currentHoverable = interactable;
+                        interactable.StartHover();
+                        foundHover = true;
+                    }
                 }
             }
         }

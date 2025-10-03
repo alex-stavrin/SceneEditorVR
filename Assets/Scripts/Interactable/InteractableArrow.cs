@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class InteractableArrow : InteractableGizmo
 {
-    InteractableMoveable interactableMoveable;
+    Moveable moveable;
 
     [SerializeField]
     Vector3 direction;
@@ -15,21 +15,21 @@ public class InteractableArrow : InteractableGizmo
     {
         base.Start();
 
-        interactableMoveable = transform.root.GetComponent<InteractableMoveable>();
+        moveable = transform.root.GetComponent<Moveable>();
     }
 
     void Update()
     {
         if (state == InteractableState.IE_INTERACTING)
         {
-            if (interactableMoveable)
+            if (moveable)
             {
 
                 Vector3 interactorOffset = interactor.transform.position - interactorStartingPosition;
 
                 Vector3 projectedOffset = Vector3.Dot(interactorOffset, direction) * direction;
 
-                interactableMoveable.MoveTo(interactableMoveableStartingPosition + projectedOffset * PlayerPreferencesManager.Instance.axisMultiplier);
+                moveable.MoveTo(interactableMoveableStartingPosition + projectedOffset * PlayerPreferencesManager.Instance.axisMultiplier);
             }
         }
     }
@@ -38,7 +38,7 @@ public class InteractableArrow : InteractableGizmo
     {
         base.OnInteractStart();
 
-        interactableMoveableStartingPosition = interactableMoveable.transform.position;
+        interactableMoveableStartingPosition = moveable.transform.position;
 
         interactorStartingPosition = interactor.transform.position;
     }
