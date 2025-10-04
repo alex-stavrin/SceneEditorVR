@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class InteractableArrow : InteractableGizmo
 {
-    Moveable moveable;
+    Moveable moveable = null;
 
     [SerializeField]
     Vector3 direction;
@@ -11,11 +11,9 @@ public class InteractableArrow : InteractableGizmo
 
     Vector3 interactorStartingPosition;
 
-    public override void Start()
+    public void SetMoveable(Moveable _moveable)
     {
-        base.Start();
-
-        moveable = transform.root.GetComponent<Moveable>();
+        moveable = _moveable;
     }
 
     void Update()

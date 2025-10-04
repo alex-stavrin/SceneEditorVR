@@ -92,6 +92,7 @@ public class Controller : MonoBehaviour
         triggerAction.action.canceled += TriggerReleased;
 
         northButtonAction.action.started += NorthButtonPressed;
+        northButtonAction.action.canceled += NorthButtonReleased;
 
         settingsAction.action.started += SettingsButtonPressed;
 
@@ -383,7 +384,18 @@ public class Controller : MonoBehaviour
 
     void NorthButtonPressed(InputAction.CallbackContext context)
     {
+        if (controllerSide == InputDeviceRole.RightHanded)
+        {
+            RadialManager.Instance.CallRadial(this);
+        }
+    }
 
+    void NorthButtonReleased(InputAction.CallbackContext context)
+    {
+        if (controllerSide == InputDeviceRole.RightHanded)
+        {
+            RadialManager.Instance.DismissRadial();
+        }
     }
 
     public Transform GetInteractPoint()
