@@ -19,6 +19,8 @@ public class InteractableScaler : InteractableGizmo
 
     public override void Update()
     {
+        base.Update();
+
         if (state == InteractableState.IE_INTERACTING)
         {
             if (scaleable)

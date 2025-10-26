@@ -59,7 +59,6 @@ public class GizmosManager : MonoBehaviour
         {
             gizmos.SetActive(true);
             gizmos.transform.position = interactable.transform.position;
-            //gizmos.transform.SetParent(interactable.transform);
 
             Moveable moveable = interactable.transform.root.GetComponent<Moveable>();
             if (moveable)

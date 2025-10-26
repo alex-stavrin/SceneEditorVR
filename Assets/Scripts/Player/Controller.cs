@@ -386,7 +386,11 @@ public class Controller : MonoBehaviour
     {
         if (controllerSide == InputDeviceRole.RightHanded)
         {
-            RadialManager.Instance.CallRadial(this);
+            RadialManagerGizmos.Instance.CallRadial(this);
+        }
+        else if (controllerSide == InputDeviceRole.LeftHanded)
+        {
+            RadialManagerActions.Instance.CallRadial(this);
         }
     }
 
@@ -394,7 +398,11 @@ public class Controller : MonoBehaviour
     {
         if (controllerSide == InputDeviceRole.RightHanded)
         {
-            RadialManager.Instance.DismissRadial();
+            RadialManagerGizmos.Instance.DismissRadial();
+        }
+        else if (controllerSide == InputDeviceRole.LeftHanded)
+        {
+            RadialManagerActions.Instance.DismissRadial();
         }
     }
 

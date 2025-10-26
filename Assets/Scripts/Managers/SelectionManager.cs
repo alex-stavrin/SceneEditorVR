@@ -43,6 +43,11 @@ public class SelectionManager : MonoBehaviour
         OnSelected.Invoke(currentSelectable);
     }
 
+    public Interactable GetCurrentSelectable()
+    {
+        return currentSelectable;
+    }
+
     public void UnselectCurrent()
     {
         if (currentSelectable)
@@ -51,6 +56,8 @@ public class SelectionManager : MonoBehaviour
             InspectorManager.Instance.SetInspected(null);
 
             OnUnSelected.Invoke();
+
+            currentSelectable = null;
         }
     }
 }

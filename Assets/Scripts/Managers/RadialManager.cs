@@ -1,8 +1,8 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RadialManager : MonoBehaviour
 {
-    public static RadialManager Instance { get; private set; }
 
     [SerializeField]
     GameObject radialsRoot;
@@ -10,40 +10,16 @@ public class RadialManager : MonoBehaviour
     [SerializeField]
     GameObject[] radials;
 
-    [Header("Option 0 angles")]
     [SerializeField]
-    float option0Min;
-    [SerializeField]
-    float option0Max;
+    Vector2[] minMaxOptions;
 
-    [Header("Option 1 angles")]
     [SerializeField]
-    float option1Min;
-    [SerializeField]
-    float option1Max;
-
-    [Header("Option 2 angles")]
-    [SerializeField]
-    float option2Min;
-    [SerializeField]
-    float option2Max;
+    UnityEvent[] functions;
 
     private Controller currentController;
     private Material[] radialMaterials = new Material[3];
 
     int currentPick = -1;
-
-    void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
 
     void Start()
     {
@@ -69,17 +45,13 @@ public class RadialManager : MonoBehaviour
             Vector3 projectedControllerDirection = Vector3.ProjectOnPlane(controllerDirection, radialPlane);
             float radialAngle = Vector3.SignedAngle(radialUp, projectedControllerDirection, radialPlane);
 
-            if (radialAngle >= option0Min && radialAngle <= option0Max)
+            for(int i = 0; i < minMaxOptions.Length; i++)
             {
-                PickRadial(0);
-            }
-            else if (radialAngle >= option1Min && radialAngle <= option1Max)
-            {
-                PickRadial(1);
-            }
-            else if (radialAngle >= option2Min && radialAngle <= option2Max)
-            {
-                PickRadial(2);
+                if(radialAngle >= minMaxOptions[i].x && radialAngle <= minMaxOptions[i].y)
+                {
+                    PickRadial(i);
+                    break;
+                }
             }
         }
     }
@@ -118,19 +90,7 @@ public class RadialManager : MonoBehaviour
     {
         if (currentController)
         {
-            PlayerPreferencesManager ppmInstance = PlayerPreferencesManager.Instance;
-            switch (currentPick)
-            {
-                case 0:
-                    ppmInstance.SetGizmoType(GizmoType.Arrows);
-                    break;
-                case 1:
-                    ppmInstance.SetGizmoType(GizmoType.Rotators);
-                    break;
-                case 2:
-                    ppmInstance.SetGizmoType(GizmoType.Scalers);
-                    break;
-            }
+            functions[currentPick].Invoke();
 
             currentController = null;
             radialsRoot.SetActive(false);

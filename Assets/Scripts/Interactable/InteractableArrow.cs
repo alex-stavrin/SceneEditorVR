@@ -18,6 +18,8 @@ public class InteractableArrow : InteractableGizmo
 
     public override void  Update()
     {
+        base.Update();
+
         if (state == InteractableState.IE_INTERACTING)
         {
             if (moveable)
