@@ -71,15 +71,6 @@ public class Controller : MonoBehaviour
     Interactable currentHoverable;
 
 
-    // interactable moveable handling
-    float currentInteractMoveSpeed;
-    float interactDistance = 0;
-    Vector3 interactOffset;
-
-    // spawning edge case
-    public bool isInteractingSpawned = false;
-
-
     public void Start()
     {
         // reset any changes made in the editor
@@ -99,8 +90,6 @@ public class Controller : MonoBehaviour
         interactPointMesh = interactPoint.gameObject.GetComponent<MeshRenderer>();
 
         snapTurnTimer = 0;
-
-        currentInteractMoveSpeed = startingInteractMoveSpeed;
 
         if (PlayerRig.Instance.canTeleport == false)
         {
@@ -130,7 +119,6 @@ public class Controller : MonoBehaviour
         TeleportUpdate();
         SnapTurnUpdate();
         HoverTest();
-        HandleInteractableMoveable();
     }
 
     void SnapTurnUpdate()
@@ -148,23 +136,6 @@ public class Controller : MonoBehaviour
 
                 player.RotateAround(snapTurnAmount * direction);
                 snapTurnTimer = snapTurnCooldown;
-            }
-        }
-    }
-
-    void HandleInteractableMoveable()
-    {
-        if (currentInteractable)
-        {
-            // cast to interactable moveable
-            if (currentInteractable is InteractableMoveable interactableMoveable)
-            {
-                if (interactableMoveable.allowDirect)
-                {
-                    Vector3 interactPointPosition = GetInteractPoint().transform.position;
-                    Vector3 interactPointForward = GetInteractPoint().forward;
-                    interactableMoveable.transform.position = interactOffset + interactPointPosition + interactPointForward * interactDistance; 
-                }
             }
         }
     }
@@ -280,8 +251,6 @@ public class Controller : MonoBehaviour
     {
         hoverable.StartInteract(this);
         currentInteractable = hoverable;
-        interactDistance = rayHitResult.distance;
-        interactOffset = currentInteractable.transform.position - rayHitResult.point;
         currentHoverable = null;
     }
 
@@ -290,14 +259,6 @@ public class Controller : MonoBehaviour
         if (currentInteractable)
         {
             currentInteractable.StopInteract();
-
-            if (isInteractingSpawned)
-            {
-                if (currentInteractable is InteractableMoveable interactableMoveable)
-                {
-                    interactableMoveable.allowDirect = false;
-                }
-            }
 
             currentInteractable = null;
         }

@@ -15,7 +15,7 @@ public class Interactable : MonoBehaviour
     [Header("Interaction")]
     [SerializeField] public bool interactImmediately = false;
 
-    protected InteractableState state;
+    protected InteractableState state = InteractableState.IE_IDLE;
 
     protected Controller interactor = null;
 
@@ -28,7 +28,7 @@ public class Interactable : MonoBehaviour
 
     public virtual void Start()
     {
-        SetState(InteractableState.IE_IDLE);
+        
     }
 
     public void ForceStopInteracting()

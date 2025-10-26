@@ -14,11 +14,11 @@ public class SpawnerButton :  MonoBehaviour, IPointerDownHandler
         {
             Vector3 spawnPosition = eventDataVR.controller.rayHitResult.point;
             GameObject spawned = Instantiate(gameObjectToSpawn, spawnPosition, Quaternion.identity);
-            InteractableMoveable interactableMoveable = spawned.GetComponent<InteractableMoveable>();
-            if (interactableMoveable)
+
+            InteractableMoveableDraggable interactableMoveableDraggable = spawned.GetComponent<InteractableMoveableDraggable>();
+            if(interactableMoveableDraggable)
             {
-                interactableMoveable.allowDirect = true;
-                eventDataVR.controller.StartInteract(interactableMoveable);
+                eventDataVR.controller.StartInteract(interactableMoveableDraggable);
             }
         }
     }
