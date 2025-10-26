@@ -6,6 +6,7 @@ public class InteractableGizmo : Interactable
 
     Color startingColor;
 
+    Interactable currentInteractable;
 
     public override void Start()
     {
@@ -17,6 +18,19 @@ public class InteractableGizmo : Interactable
             arrowMaterial = renderer.material;
             startingColor = arrowMaterial.GetColor("_Color");
         }
+    }
+
+    public virtual void Update()
+    {
+        if (currentInteractable)
+        {
+            transform.position = currentInteractable.transform.position;
+        }
+    }
+    
+    public void SetInteractable(Interactable _interactable)
+    {
+        currentInteractable = _interactable;
     }
 
     public override void OnInteractStart()

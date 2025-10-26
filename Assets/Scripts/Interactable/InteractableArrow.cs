@@ -16,7 +16,7 @@ public class InteractableArrow : InteractableGizmo
         moveable = _moveable;
     }
 
-    void Update()
+    public override void  Update()
     {
         if (state == InteractableState.IE_INTERACTING)
         {
@@ -37,7 +37,6 @@ public class InteractableArrow : InteractableGizmo
         base.OnInteractStart();
 
         interactableMoveableStartingPosition = moveable.transform.position;
-
         interactorStartingPosition = interactor.transform.position;
     }
 }

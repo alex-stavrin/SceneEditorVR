@@ -9,6 +9,8 @@ public class PlayerPreferencesManager : MonoBehaviour
 
     public GizmoType currentGizmoType = GizmoType.Arrows;
 
+    public event Action<GizmoType> OnGizmoTypeChanged;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -19,5 +21,11 @@ public class PlayerPreferencesManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void SetGizmoType(GizmoType newGizmoType)
+    {
+        currentGizmoType = newGizmoType;
+        OnGizmoTypeChanged.Invoke(currentGizmoType);
     }
 }

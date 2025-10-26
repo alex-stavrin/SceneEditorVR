@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum GizmoType
@@ -36,10 +37,20 @@ public class GizmosManager : MonoBehaviour
     {
         SelectionManager.Instance.OnSelected += OnSelected;
         SelectionManager.Instance.OnUnSelected += OnUnSelected;
+        PlayerPreferencesManager.Instance.OnGizmoTypeChanged += OnGizmoTypeChanged;
 
         interactableArrows = gizmos.GetComponentsInChildren<InteractableArrow>();
         interactableRotators = gizmos.GetComponentsInChildren<InteractableRotator>();
         interactableScalers = gizmos.GetComponentsInChildren<InteractableScaler>();
+
+        gizmos.SetActive(false);
+
+        UpdateGizmoTypeVisual(PlayerPreferencesManager.Instance.currentGizmoType);
+    }
+
+    void OnGizmoTypeChanged(GizmoType gizmoType)
+    {
+        UpdateGizmoTypeVisual(gizmoType);
     }
 
     void OnSelected(Interactable interactable)
@@ -48,11 +59,36 @@ public class GizmosManager : MonoBehaviour
         {
             gizmos.SetActive(true);
             gizmos.transform.position = interactable.transform.position;
-            gizmos.transform.SetParent(interactable.transform);
-            Moveable moveable = interactable.gameObject.GetComponent<Moveable>();
+            //gizmos.transform.SetParent(interactable.transform);
+
+            Moveable moveable = interactable.transform.root.GetComponent<Moveable>();
             if (moveable)
             {
+                foreach (InteractableArrow interactableArrow in interactableArrows)
+                {
+                    interactableArrow.SetMoveable(moveable);
+                    interactableArrow.SetInteractable(interactable);
+                }
+            }
 
+            Rotateable rotateable = interactable.transform.root.GetComponent<Rotateable>();
+            if (rotateable)
+            {
+                foreach (InteractableRotator interactableRotator in interactableRotators)
+                {
+                    interactableRotator.SetRotateable(rotateable);
+                    interactableRotator.SetInteractable(interactable);
+                }
+            }
+            
+            Scaleable scaleable = interactable.transform.root.GetComponent<Scaleable>();
+            if (scaleable)
+            {
+                foreach (InteractableScaler interactableScaler in interactableScalers)
+                {
+                    interactableScaler.SetScaleable(scaleable);
+                    interactableScaler.SetInteractable(interactable);
+                }
             }
         }
     }
@@ -61,17 +97,17 @@ public class GizmosManager : MonoBehaviour
     {
         if (gizmos)
         {
-
+            gizmos.SetActive(false);
         }
     }
 
-    void UpdateGizmos()
+    void UpdateGizmoTypeVisual(GizmoType gizmoType)
     {
         SetArrows(false);
         SetRotators(false);
         SetScalers(false);
 
-        switch (PlayerPreferencesManager.Instance.currentGizmoType)
+        switch (gizmoType)
         {
             case GizmoType.Arrows:
                 SetArrows(true);
@@ -92,7 +128,7 @@ public class GizmosManager : MonoBehaviour
         {
             if (interactableArrow)
             {
-                interactableArrow.gameObject.SetActive(true);
+                interactableArrow.gameObject.SetActive(bActive);
             }
         }
     }
