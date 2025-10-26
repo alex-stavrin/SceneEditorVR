@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 3039790768567876314}
   - component: {fileID: 1575629524563710975}
   - component: {fileID: 4498602290232295753}
+  - component: {fileID: 5798916108981795780}
+  - component: {fileID: 6006327967007563653}
   m_Layer: 0
   m_Name: CubeActor
   m_TagString: Untagged
@@ -152,3 +154,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactImmediately: 0
   allowDirect: 0
+--- !u!114 &5798916108981795780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6374225804914503648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa1f7fab3e695b4f91ed83d984a0372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Scaleable
+--- !u!114 &6006327967007563653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6374225804914503648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09cd73d94f42354888b605743c7bf35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Rotateable
