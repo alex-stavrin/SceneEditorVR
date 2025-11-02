@@ -19,7 +19,6 @@ public class InspectorManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void SetInspected(GameObject inspected)

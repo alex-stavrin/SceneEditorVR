@@ -15,6 +15,5 @@ public class VRManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 }

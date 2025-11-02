@@ -13,7 +13,6 @@ public class ActionsManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void DuplicateSelected()

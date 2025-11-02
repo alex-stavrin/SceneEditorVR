@@ -17,12 +17,12 @@ public class Actor : MonoBehaviour
         interactable.OnStopSelect += OnInteractableStopSelect;
     }
 
-    void OnInteractableStartSelect()
+    public void OnInteractableStartSelect()
     {
         actorCollider.enabled = false;
     }
 
-    void OnInteractableStopSelect()
+    public void OnInteractableStopSelect()
     {
         actorCollider.enabled = true;
     }

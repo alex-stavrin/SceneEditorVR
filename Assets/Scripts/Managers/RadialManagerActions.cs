@@ -13,7 +13,6 @@ public class RadialManagerActions : RadialManager
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void DuplicateSelected()

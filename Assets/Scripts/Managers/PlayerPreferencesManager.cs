@@ -20,7 +20,6 @@ public class PlayerPreferencesManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void SetGizmoType(GizmoType newGizmoType)

@@ -13,7 +13,6 @@ public class RadialManagerGizmos : RadialManager
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
     
     public void SetArrowGizmo()

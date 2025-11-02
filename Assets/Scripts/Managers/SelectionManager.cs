@@ -5,7 +5,7 @@ public class SelectionManager : MonoBehaviour
 {
     public static SelectionManager Instance { get; private set; }
 
-    Interactable currentSelectable;
+    Interactable currentSelectable = null;
 
     public event Action<Interactable> OnSelected;
 
@@ -20,7 +20,14 @@ public class SelectionManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+    }
+
+    void Update()
+    {
+        if(currentSelectable)
+        {
+            VirtualRealityConsole.PrintMessage("CS: " + currentSelectable.gameObject.name, PrintTypeVRC.Clear);
+        }
     }
 
     public void SetCurrentSelectable(Interactable newSelectable)
@@ -52,12 +59,17 @@ public class SelectionManager : MonoBehaviour
     {
         if (currentSelectable)
         {
+            VirtualRealityConsole.PrintMessage("CS: " + currentSelectable.gameObject.name, PrintTypeVRC.Clear);
             currentSelectable.StopSelect();
             InspectorManager.Instance.SetInspected(null);
 
             OnUnSelected.Invoke();
 
             currentSelectable = null;
+        }
+        else
+        {
+            VirtualRealityConsole.PrintMessage("No thing to unselect: " + gameObject.name);
         }
     }
 }

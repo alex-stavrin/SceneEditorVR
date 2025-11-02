@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MapPresets/CrossRoom.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Menu.unity
+    guid: be36b8178a375e94dacf96b4604999b8
+  - enabled: 1
+    path: Assets/Scenes/MapPresets/Plane Room.unity
+    guid: 0d30b814e3fd2314f83f763b87a562d7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 0ef04eab847040643bc4e66c13802ea4, type: 2}

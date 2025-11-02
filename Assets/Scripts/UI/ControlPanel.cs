@@ -36,7 +36,6 @@ public class ControlPanel : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
 

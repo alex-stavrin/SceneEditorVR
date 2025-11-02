@@ -227,23 +227,26 @@ public class Controller : MonoBehaviour
         {
             if (currentHoverable.interactImmediately)
             {
+                VirtualRealityConsole.PrintMessage("Interact imm", PrintTypeVRC.Append);
                 StartInteract(currentHoverable);
             }
             else
             {
+                VirtualRealityConsole.PrintMessage("Select...", PrintTypeVRC.Append);
                 if (currentHoverable.GetState() == InteractableState.IE_SELECTED)
                 {
                     StartInteract(currentHoverable);
                 }
                 else
                 {
-                    SelectionManager.Instance.SetCurrentSelectable(currentHoverable);
+                    SelectionManager.Instance?.SetCurrentSelectable(currentHoverable);
                 }
             }
         }
         else
         {
-            SelectionManager.Instance.UnselectCurrent();
+            VirtualRealityConsole.PrintMessage("Unselect...", PrintTypeVRC.Append);
+            SelectionManager.Instance?.UnselectCurrent();
         }
     }
 

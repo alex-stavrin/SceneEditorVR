@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -17,12 +18,26 @@ public class MenuManager : MonoBehaviour
 
     public void GoToPage(int newPage)
     {
-        if(currentPage != -1)
+        if (currentPage != -1)
         {
             pages[currentPage].SetActive(false);
         }
 
         pages[newPage].SetActive(true);
         currentPage = newPage;
+    }
+    
+    public void Quit()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else         
+            Application.Quit();
+        #endif
+    }
+
+    public void GoToScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }

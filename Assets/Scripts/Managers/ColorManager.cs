@@ -18,6 +18,5 @@ public class ColorManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 }
