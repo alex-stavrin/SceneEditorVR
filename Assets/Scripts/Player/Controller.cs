@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
-using System.Collections.Generic;
-using UnityEngine.AI;
 
 public class Controller : MonoBehaviour
 {
@@ -27,15 +25,6 @@ public class Controller : MonoBehaviour
     [SerializeField] float rayRange;
     [SerializeField] LineRenderer rayLineRenderer;
 
-    [Header("Teleport")]
-    [SerializeField] LineRenderer teleportLineRenderer;
-    [SerializeField] int maxTeleportLineResolution = 30;
-    [SerializeField] float teleportLineRange = 10f;
-    [SerializeField] float teleportGravityMultiplier = 0.5f;
-    [SerializeField] float navMeshAssist = 1f;
-    [SerializeField] Transform rectile;
-    [SerializeField] bool drawDebugPoints = false;
-
     [Header("UI Interactions")]
     [SerializeField] public int pointerId;
 
@@ -54,10 +43,6 @@ public class Controller : MonoBehaviour
 
     Interactable currentInteractable;
     bool isInteracting = false;
-
-    bool isTryingToTeleport = false;
-
-    MeshRenderer interactPointMesh;
 
     Vector2 thumbstickInputValue;
 
@@ -87,15 +72,7 @@ public class Controller : MonoBehaviour
 
         settingsAction.action.started += SettingsButtonPressed;
 
-        interactPointMesh = interactPoint.gameObject.GetComponent<MeshRenderer>();
-
         snapTurnTimer = 0;
-
-        if (PlayerRig.Instance.canTeleport == false)
-        {
-            rectile.gameObject.SetActive(false);
-            teleportLineRenderer.gameObject.SetActive(false);
-        }
     }
 
     public void Update()
@@ -116,9 +93,22 @@ public class Controller : MonoBehaviour
 
         DoRaycast();
 
-        TeleportUpdate();
         SnapTurnUpdate();
         HoverTest();
+    }
+
+    void OnDisable()
+    {
+        gripAction.action.started -= GripStarted;
+        gripAction.action.canceled -= GripEnded;
+
+        triggerAction.action.started -= TriggerPressed;
+        triggerAction.action.canceled -= TriggerReleased;
+
+        northButtonAction.action.started -= NorthButtonPressed;
+        northButtonAction.action.canceled -= NorthButtonReleased;
+
+        settingsAction.action.started -= SettingsButtonPressed;
     }
 
     void SnapTurnUpdate()
@@ -128,7 +118,7 @@ public class Controller : MonoBehaviour
             snapTurnTimer -= Time.deltaTime;
         }
 
-        if(!isInteracting && !isTryingToTeleport)
+        if(!isInteracting)
         {
             if(Mathf.Abs( thumbstickInputValue.x) > 0.2 && snapTurnTimer <= 0)
             {
@@ -137,77 +127,6 @@ public class Controller : MonoBehaviour
                 player.RotateAround(snapTurnAmount * direction);
                 snapTurnTimer = snapTurnCooldown;
             }
-        }
-    }
-
-
-    void TeleportUpdate()
-    {
-        if (PlayerRig.Instance.canTeleport == false) return;
-
-        Vector3 lineStart = interactPoint.transform.position +
-            interactPoint.transform.forward * interactPoint.radius * interactPoint.transform.localScale.x;
-
-        if (!isTryingToTeleport && thumbstickInputValue.y > 0.4f && !isInteracting)
-        {
-            isTryingToTeleport = true;
-        }
-
-        if (isTryingToTeleport && thumbstickInputValue.y <= 0.4f)
-        {
-            Teleport();
-            isTryingToTeleport = false;
-        }
-
-        if (isTryingToTeleport && !isInteracting && PointingAtUI() == false)
-        {
-            rayLineRenderer.gameObject.SetActive(false);
-            teleportLineRenderer.gameObject.SetActive(true);
-
-            List<Vector3> points = new List<Vector3>();
-            Vector3 launchVelocity = interactPoint.transform.forward * teleportLineRange;
-            points.Add(lineStart);
-            bool foundPoint = false;
-            for (int i = 1; i < maxTeleportLineResolution; i++)
-            {
-                Vector3 newPosition = points[i - 1] + launchVelocity / maxTeleportLineResolution;
-                launchVelocity += Physics.gravity * teleportGravityMultiplier;
-                points.Add(newPosition);
-
-                // because we will have like 1000 points lets look for the navmesh on ones that are divisible 2
-                // to save some perfomance
-                if (!foundPoint)
-                {
-                    NavMeshHit navHit;
-                    bool navRes = NavMesh.SamplePosition(points[i], out navHit, navMeshAssist, NavMesh.AllAreas);
-                    if (navRes)
-                    {
-                        foundPoint = true;
-                        rectile.position = navHit.position;
-                        rectile.rotation = Quaternion.identity;
-                        break;
-                    }
-                }
-            }
-
-            rectile.gameObject.SetActive(foundPoint);
-            teleportLineRenderer.positionCount = points.Count;
-            teleportLineRenderer.SetPositions(points.ToArray());
-            interactPointMesh.enabled = false;
-        }
-        else
-        {
-            teleportLineRenderer.gameObject.SetActive(false);
-            rayLineRenderer.gameObject.SetActive(true);
-            rectile.gameObject.SetActive(false);
-        }
-    }
-
-    void Teleport()
-    {
-        if(rectile.gameObject.activeSelf)
-        {
-            player.TeleportToPosition(rectile.position);
         }
     }
 
@@ -245,7 +164,9 @@ public class Controller : MonoBehaviour
         }
         else
         {
-            VirtualRealityConsole.PrintMessage("Unselect...", PrintTypeVRC.Append);
+            if (SelectionManager.Instance == null) return;
+            if (SelectionManager.Instance.GetCurrentSelectable() == null) return;
+            // VirtualRealityConsole.PrintMessage("Unselect...", PrintTypeVRC.Append);
             SelectionManager.Instance?.UnselectCurrent();
         }
     }

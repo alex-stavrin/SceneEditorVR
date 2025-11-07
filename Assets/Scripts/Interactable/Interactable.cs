@@ -28,7 +28,7 @@ public class Interactable : MonoBehaviour
 
     public virtual void Start()
     {
-        
+
     }
 
     public void ForceStopInteracting()

@@ -70,7 +70,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -138.3, y: 112.4}
+  m_AnchoredPosition: {x: -138.3, y: 154}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5441934898909087048
@@ -208,7 +208,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -83.6, y: -19.9}
+  m_AnchoredPosition: {x: -83.6, y: 21.699987}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6465582158762481367
@@ -346,7 +346,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 100}
+  m_SizeDelta: {x: 0, y: 60.1}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &778057802034008870
 CanvasRenderer:
@@ -1007,7 +1007,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -7.4999847, y: -0.5}
+  m_AnchoredPosition: {x: -7.5000305, y: -0.5}
   m_SizeDelta: {x: -35, y: -13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6234994784018066198
@@ -1432,7 +1432,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -105.85, y: 57.18}
+  m_AnchoredPosition: {x: -105.85, y: 98.77998}
   m_SizeDelta: {x: 263.3, y: 50.64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6728138783437355557
@@ -1871,7 +1871,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -148.5, y: -13.4}
+  m_AnchoredPosition: {x: -148.5, y: 28.199987}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7764407797101312523
@@ -1978,6 +1978,9 @@ PrefabInstance:
     - {fileID: 8549112711117897515, guid: b3b7ec61088421a44be1b8509a33a74f, type: 3}
     m_RemovedGameObjects:
     - {fileID: 5078623291682017434, guid: b3b7ec61088421a44be1b8509a33a74f, type: 3}
+    - {fileID: 7942786176199571626, guid: b3b7ec61088421a44be1b8509a33a74f, type: 3}
+    - {fileID: 4734049812532872921, guid: b3b7ec61088421a44be1b8509a33a74f, type: 3}
+    - {fileID: 4898311733530370985, guid: b3b7ec61088421a44be1b8509a33a74f, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 879953680670724715, guid: b3b7ec61088421a44be1b8509a33a74f, type: 3}
       insertIndex: -1

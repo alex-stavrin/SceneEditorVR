@@ -16,10 +16,8 @@ public class InteractableArrow : InteractableGizmo
         moveable = _moveable;
     }
 
-    public override void  Update()
+    public void  Update()
     {
-        base.Update();
-
         if (state == InteractableState.IE_INTERACTING)
         {
             if (moveable)

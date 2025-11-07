@@ -19,14 +19,6 @@ public class InteractableGizmo : Interactable
             startingColor = arrowMaterial.GetColor("_Color");
         }
     }
-
-    public virtual void Update()
-    {
-        if (currentInteractable)
-        {
-            transform.position = currentInteractable.transform.position;
-        }
-    }
     
     public void SetInteractable(Interactable _interactable)
     {

@@ -21,6 +21,8 @@ public class GizmosManager : MonoBehaviour
 
     InteractableScaler[] interactableScalers;
 
+    Interactable currentInteractableSelected = null;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -47,6 +49,14 @@ public class GizmosManager : MonoBehaviour
         UpdateGizmoTypeVisual(PlayerPreferencesManager.Instance.currentGizmoType);
     }
 
+    void Update()
+    {
+        if(currentInteractableSelected)
+        {
+            gizmos.transform.position = currentInteractableSelected.transform.position;
+        }
+    }
+
     void OnGizmoTypeChanged(GizmoType gizmoType)
     {
         UpdateGizmoTypeVisual(gizmoType);
@@ -58,6 +68,8 @@ public class GizmosManager : MonoBehaviour
         {
             gizmos.SetActive(true);
             gizmos.transform.position = interactable.transform.position;
+
+            currentInteractableSelected = interactable;
 
             Moveable moveable = interactable.transform.root.GetComponent<Moveable>();
             if (moveable)
@@ -96,6 +108,7 @@ public class GizmosManager : MonoBehaviour
         if (gizmos)
         {
             gizmos.SetActive(false);
+            currentInteractableSelected = null;
         }
     }
 
