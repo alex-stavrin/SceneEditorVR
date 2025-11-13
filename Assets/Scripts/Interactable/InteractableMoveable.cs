@@ -22,4 +22,9 @@ public class InteractableMoveable : Interactable
         currentInteractDistance = Vector3.Distance(transform.position, interactor.GetInteractPoint().position);
         interactionOffset = transform.position - interactor.rayHitResult.point;
     }
+
+    public void AddDistanceOffset(float offset)
+    {
+        currentInteractDistance = Mathf.Clamp(currentInteractDistance + offset, 0, Mathf.Infinity);
+    }
 }

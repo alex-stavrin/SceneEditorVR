@@ -25,6 +25,8 @@ public class Controller : MonoBehaviour
     [SerializeField] float rayRange;
     [SerializeField] LineRenderer rayLineRenderer;
 
+    [SerializeField] LayerMask gizmoLayer;
+
     [Header("UI Interactions")]
     [SerializeField] public int pointerId;
 
@@ -35,6 +37,9 @@ public class Controller : MonoBehaviour
     // Raycast global values
     [HideInInspector] public bool bRaycastHit;
     [HideInInspector] public RaycastHit rayHitResult;
+
+    [Header("Moveable Handling")]
+    [SerializeField] float moveableMoveSpeed = 5f;
 
     /// PRIVATE /// 
 
@@ -94,7 +99,10 @@ public class Controller : MonoBehaviour
         DoRaycast();
 
         SnapTurnUpdate();
+
         HoverTest();
+
+        MoveableHandling();
     }
 
     void OnDisable()
@@ -113,19 +121,34 @@ public class Controller : MonoBehaviour
 
     void SnapTurnUpdate()
     {
-        if(snapTurnTimer > 0)
+        if (snapTurnTimer > 0)
         {
             snapTurnTimer -= Time.deltaTime;
         }
 
-        if(!isInteracting)
+        if (!isInteracting)
         {
-            if(Mathf.Abs( thumbstickInputValue.x) > 0.2 && snapTurnTimer <= 0)
+            if (Mathf.Abs(thumbstickInputValue.x) > 0.2 && snapTurnTimer <= 0)
             {
                 int direction = thumbstickInputValue.x > 0 ? 1 : -1;
 
                 player.RotateAround(snapTurnAmount * direction);
                 snapTurnTimer = snapTurnCooldown;
+            }
+        }
+    }
+    
+    void MoveableHandling()
+    {
+        if(currentInteractable)
+        {
+            InteractableMoveable interactableMoveable = currentInteractable as InteractableMoveable;
+            if (interactableMoveable)
+            {
+                if(Mathf.Abs(thumbstickInputValue.y) > 0.1)
+                {
+                    interactableMoveable.AddDistanceOffset(thumbstickInputValue.y * Time.deltaTime * moveableMoveSpeed);
+                }
             }
         }
     }
@@ -166,7 +189,6 @@ public class Controller : MonoBehaviour
         {
             if (SelectionManager.Instance == null) return;
             if (SelectionManager.Instance.GetCurrentSelectable() == null) return;
-            // VirtualRealityConsole.PrintMessage("Unselect...", PrintTypeVRC.Append);
             SelectionManager.Instance?.UnselectCurrent();
         }
     }
@@ -190,7 +212,13 @@ public class Controller : MonoBehaviour
 
     void DoRaycast()
     {
-        bRaycastHit = Physics.Raycast(interactPoint.transform.position, interactPoint.transform.forward, out rayHitResult, rayRange);
+
+        bRaycastHit = Physics.Raycast(interactPoint.transform.position, interactPoint.transform.forward, out rayHitResult, rayRange, gizmoLayer);
+
+        if(!bRaycastHit)
+        {
+            bRaycastHit = Physics.Raycast(interactPoint.transform.position, interactPoint.transform.forward, out rayHitResult, rayRange);            
+        }
 
         if(bRaycastHit)
         {

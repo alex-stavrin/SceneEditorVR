@@ -40,9 +40,6 @@ public class PlayerRig : MonoBehaviour
     bool canAirGrab = true;
     [SerializeField]
     float grabEndForce = 100f;
-
-    [Header("Teleporting")]
-    public bool canTeleport = true;
     
 
     /// PRIVATE ///
@@ -117,8 +114,8 @@ public class PlayerRig : MonoBehaviour
     {
         if (!canAirGrab) return;
 
-        if(isAirGrabbing)
-        {
+        // if(isAirGrabbing)
+        // {
             // // if we are requested to start air grab from left handed and we are already grabbing that means right hand
             // // is doing air grab.
             // if (controllerSide == InputDeviceRole.LeftHanded)
@@ -131,7 +128,7 @@ public class PlayerRig : MonoBehaviour
             // {
             //     leftController.StopAirGrab();
             // }
-        }
+        // }
 
         startingGrabOriginPosition = rb.position;
         currentGrabMovingPoint = grabMovingPoint;
@@ -148,18 +145,15 @@ public class PlayerRig : MonoBehaviour
         }
     }
 
-    public void TeleportToPosition(Vector3 position)
-    {
-        isAirGrabbing = false;
-        Vector3 bodyPosition = bodyCollider.center + bodyCollider.transform.position;
-        Vector3 origin = transform.position;
-        Vector3 offset = origin - bodyPosition;
-        rb.MovePosition(position + new Vector3(offset.x,0, offset.z));
-    }
-
     public void RotateAround(float amount)
     {
-        cameraOffset.Rotate(Vector3.up, amount);
+        Quaternion newRotation = Quaternion.AngleAxis(amount, Vector3.up);
+
+        rb.MoveRotation(rb.rotation * newRotation);
+
+        Vector3 newPosition = newRotation * (rb.position - playerHead.position) + playerHead.position;
+
+        rb.MovePosition(newPosition);
     }
 
     public Transform GetPlayerHead()

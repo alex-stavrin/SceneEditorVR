@@ -212,11 +212,14 @@ MonoBehaviour:
   startingInteractMoveSpeed: 0
   rayRange: 1500
   rayLineRenderer: {fileID: 364160724500201215}
-  rectile: {fileID: 0}
+  gizmoLayer:
+    serializedVersion: 2
+    m_Bits: 256
   pointerId: 1
   snapTurnAmount: 45
   snapTurnCooldown: 0.5
   bRaycastHit: 0
+  moveableMoveSpeed: 5
 --- !u!1 &5317627964935155599
 GameObject:
   m_ObjectHideFlags: 0

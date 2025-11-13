@@ -6,6 +6,8 @@ public class InspectorManager : MonoBehaviour
     public static InspectorManager Instance { get; private set; }
 
     [Header("General")]
+    [SerializeField]
+    GameObject inspectedElements;
 
     [SerializeField]
     TextMeshProUGUI inspectedNameText;
@@ -57,37 +59,44 @@ public class InspectorManager : MonoBehaviour
         Instance = this;
     }
 
+    void Start()
+    {
+        inspectedElements.SetActive(false);
+    }
+
     void Update()
     {
         if(currentInspected)
         {
             Vector3 inspectedPosition = currentInspected.transform.position;
-            labelLocationX.text = inspectedPosition.x.ToString();
-            labelLocationY.text = inspectedPosition.y.ToString();
-            labelLocationZ.text = inspectedPosition.z.ToString();
+            labelLocationX.text = inspectedPosition.x.ToString("F2");
+            labelLocationY.text = inspectedPosition.y.ToString("F2");
+            labelLocationZ.text = inspectedPosition.z.ToString("F2");
 
             Vector3 inspectedRotation = currentInspected.transform.rotation.eulerAngles;
-            labelRotationX.text = inspectedRotation.x.ToString();
-            labelRotationY.text = inspectedRotation.y.ToString();
-            labelRotationZ.text = inspectedRotation.z.ToString();
+            labelRotationX.text = inspectedRotation.x.ToString("F2");
+            labelRotationY.text = inspectedRotation.y.ToString("F2");
+            labelRotationZ.text = inspectedRotation.z.ToString("F2");
 
             Vector3 inspectedScale = currentInspected.transform.localScale;
-            labelScaleX.text = inspectedScale.x.ToString();
-            labelScaleY.text = inspectedScale.y.ToString();
-            labelScaleZ.text = inspectedScale.z.ToString();
+            labelScaleX.text = inspectedScale.x.ToString("F2");
+            labelScaleY.text = inspectedScale.y.ToString("F2");
+            labelScaleZ.text = inspectedScale.z.ToString("F2");
         }
     }
 
     public void SetInspected(GameObject inspected)
     {
+        
         if(inspected)
         {
+            inspectedElements.SetActive(true);
             currentInspected = inspected;
             inspectedNameText.text = inspected.name;
         }
         else
         {
-            inspectedNameText.text = "";
+            inspectedElements.SetActive(false);
         }
     }
 }
