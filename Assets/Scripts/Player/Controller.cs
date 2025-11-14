@@ -60,6 +60,8 @@ public class Controller : MonoBehaviour
     // select
     Interactable currentHoverable;
 
+    bool isMovingMoveable = false;
+
 
     public void Start()
     {
@@ -128,7 +130,7 @@ public class Controller : MonoBehaviour
 
         if (!isInteracting)
         {
-            if (Mathf.Abs(thumbstickInputValue.x) > 0.2 && snapTurnTimer <= 0)
+            if (Mathf.Abs(thumbstickInputValue.x) > 0.2 && snapTurnTimer <= 0 && !isMovingMoveable)
             {
                 int direction = thumbstickInputValue.x > 0 ? 1 : -1;
 
@@ -140,6 +142,7 @@ public class Controller : MonoBehaviour
     
     void MoveableHandling()
     {
+        isMovingMoveable = false;
         if(currentInteractable)
         {
             InteractableMoveable interactableMoveable = currentInteractable as InteractableMoveable;
@@ -147,6 +150,7 @@ public class Controller : MonoBehaviour
             {
                 if(Mathf.Abs(thumbstickInputValue.y) > 0.1)
                 {
+                    isMovingMoveable = true;
                     interactableMoveable.AddDistanceOffset(thumbstickInputValue.y * Time.deltaTime * moveableMoveSpeed);
                 }
             }
@@ -169,12 +173,10 @@ public class Controller : MonoBehaviour
         {
             if (currentHoverable.interactImmediately)
             {
-                VirtualRealityConsole.PrintMessage("Interact imm", PrintTypeVRC.Append);
                 StartInteract(currentHoverable);
             }
             else
             {
-                VirtualRealityConsole.PrintMessage("Select...", PrintTypeVRC.Append);
                 if (currentHoverable.GetState() == InteractableState.IE_SELECTED)
                 {
                     StartInteract(currentHoverable);

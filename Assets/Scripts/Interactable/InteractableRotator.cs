@@ -61,8 +61,6 @@ public class InteractableRotator : InteractableGizmo
 
                 rotateable.gameObject.transform.rotation = Quaternion.AngleAxis(angle - startingAngle, new Vector3(0,0,1)) * startingRotation;
             }
-
-            VirtualRealityConsole.PrintMessage(angle.ToString(), PrintTypeVRC.Clear);          
         }
     }
 

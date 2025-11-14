@@ -8688,9 +8688,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8451400853326875721}
-  - component: {fileID: 7993433512705620506}
-  - component: {fileID: 8840673607337632725}
   - component: {fileID: 5331986123764130734}
+  - component: {fileID: 2190291633558750026}
+  - component: {fileID: 6357614171018818234}
   m_Layer: 0
   m_Name: Keyboard Grabbable
   m_TagString: Untagged
@@ -8715,38 +8715,6 @@ Transform:
   - {fileID: 4251080903424469250}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7993433512705620506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7074895632317427693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e68879eeafd60f40895125a36c1f9ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8840673607337632725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7074895632317427693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b920eb0b6b5e95b428e17467ec965cc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movePosition: 1
-  moveRotation: 0
-  snapGrab: 0
-  allowDirectGrab: 0
-  stayInRoom: 0
-  limitGrabMove: 1
-  stopGrabMoveThreshold: 0.5
-  limitOffset: 0
 --- !u!114 &5331986123764130734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8763,6 +8731,32 @@ MonoBehaviour:
   spawnHeight: 0.5
   caps: 0
   capsText: {fileID: 5938779236572145589}
+--- !u!114 &2190291633558750026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7074895632317427693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8483f6bc6828077419191d495fb54800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableMoveable
+  interactImmediately: 1
+--- !u!114 &6357614171018818234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7074895632317427693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8582b4807212f1343886b9cbce930d7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RotateToMainCamera
+  onlyYaw: 1
 --- !u!1 &7119743175304371674
 GameObject:
   m_ObjectHideFlags: 0
@@ -10040,6 +10034,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -10061,6 +10057,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0

@@ -22,14 +22,6 @@ public class SelectionManager : MonoBehaviour
         Instance = this;
     }
 
-    void Update()
-    {
-        if(currentSelectable)
-        {
-            VirtualRealityConsole.PrintMessage("CS: " + currentSelectable.gameObject.name, PrintTypeVRC.Clear);
-        }
-    }
-
     public void SetCurrentSelectable(Interactable newSelectable)
     {
         if (currentSelectable)
@@ -59,17 +51,12 @@ public class SelectionManager : MonoBehaviour
     {
         if (currentSelectable)
         {
-            VirtualRealityConsole.PrintMessage("CS: " + currentSelectable.gameObject.name, PrintTypeVRC.Clear);
             currentSelectable.StopSelect();
             InspectorManager.Instance.SetInspected(null);
 
             OnUnSelected.Invoke();
 
             currentSelectable = null;
-        }
-        else
-        {
-            VirtualRealityConsole.PrintMessage("No thing to unselect: " + gameObject.name);
         }
     }
 }
