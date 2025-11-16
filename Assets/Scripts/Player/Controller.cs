@@ -62,6 +62,8 @@ public class Controller : MonoBehaviour
 
     bool isMovingMoveable = false;
 
+    public bool pointingAtUI = false;
+
 
     public void Start()
     {
@@ -97,6 +99,7 @@ public class Controller : MonoBehaviour
 
         // read thumbstick input
         thumbstickInputValue = thumbstickAction.action.ReadValue<Vector2>();
+        
 
         DoRaycast();
 
@@ -183,7 +186,7 @@ public class Controller : MonoBehaviour
                 }
                 else
                 {
-                    SelectionManager.Instance?.SetCurrentSelectable(currentHoverable);
+                    SelectionManager.Instance?.SetCurrentSelectable(currentHoverable, this);
                 }
             }
         }
@@ -206,7 +209,7 @@ public class Controller : MonoBehaviour
     {
         if (currentInteractable)
         {
-            currentInteractable.StopInteract();
+            currentInteractable.StopInteract(this);
 
             currentInteractable = null;
         }
@@ -243,6 +246,7 @@ public class Controller : MonoBehaviour
     
     void HoverTest()
     {
+        pointingAtUI = false;
         bool foundHover = false;
         if(!isInteracting)
         {
@@ -250,39 +254,45 @@ public class Controller : MonoBehaviour
             {
                 Interactable interactable = rayHitResult.collider.transform.GetComponent<Interactable>();
 
-                if (interactable && rayHitResult.collider.gameObject.layer != LayerMask.NameToLayer("UI"))
+                if(rayHitResult.collider.gameObject.layer == LayerMask.NameToLayer("UI"))
                 {
-                    if (currentHoverable)
-                    {
-                        if (interactable != currentHoverable)
-                        {
-                            currentHoverable.StopHover();
-                        }
-                    }
-
-                    currentHoverable = interactable;
-                    interactable.StartHover();
-                    foundHover = true;
+                    pointingAtUI = true;
                 }
-
-                // if the component is on the same object it may be in the root
-                if (!interactable)
+                else
                 {
-                    interactable = rayHitResult.collider.transform.root.GetComponent<Interactable>();
-                    if (interactable && rayHitResult.collider.gameObject.layer != LayerMask.NameToLayer("UI"))
+                    if (interactable)
                     {
                         if (currentHoverable)
                         {
                             if (interactable != currentHoverable)
                             {
-                                currentHoverable.StopHover();
+                                currentHoverable.StopHover(this);
                             }
                         }
 
                         currentHoverable = interactable;
-                        interactable.StartHover();
+                        interactable.StartHover(this);
                         foundHover = true;
                     }
+                    // if the component is on the same object it may be in the root
+                    else
+                    {
+                        interactable = rayHitResult.collider.transform.root.GetComponent<Interactable>();
+                        if (interactable && rayHitResult.collider.gameObject.layer != LayerMask.NameToLayer("UI"))
+                        {
+                            if (currentHoverable)
+                            {
+                                if (interactable != currentHoverable)
+                                {
+                                    currentHoverable.StopHover(this);
+                                }
+                            }
+
+                            currentHoverable = interactable;
+                            interactable.StartHover(this);
+                            foundHover = true;
+                        }
+                    } 
                 }
             }
         }
@@ -291,7 +301,7 @@ public class Controller : MonoBehaviour
         {
             if(currentHoverable)
             {
-                currentHoverable.StopHover();
+                currentHoverable.StopHover(this);
                 currentHoverable = null;
             }
         }
@@ -356,16 +366,8 @@ public class Controller : MonoBehaviour
         return thumbstickInputValue;
     }
 
-    public bool PointingAtUI()
+    public InputDeviceRole GetSide()
     {
-        if(bRaycastHit)
-        {
-            return rayHitResult.collider.gameObject.layer == LayerMask.NameToLayer("UI");
-
-        }
-        else
-        {
-            return false;
-        }
+        return controllerSide;
     }
 }

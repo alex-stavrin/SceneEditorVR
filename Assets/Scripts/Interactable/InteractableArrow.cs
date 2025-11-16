@@ -32,9 +32,9 @@ public class InteractableArrow : InteractableGizmo
         }
     }
 
-    public override void OnInteractStart()
+    public override void OnInteractStart(Controller controllerInteractor)
     {
-        base.OnInteractStart();
+        base.OnInteractStart(controllerInteractor);
 
         interactableMoveableStartingPosition = moveable.transform.position;
         interactorStartingPosition = interactor.transform.position;

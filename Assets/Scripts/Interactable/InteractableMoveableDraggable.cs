@@ -3,9 +3,9 @@ using UnityEngine;
 [RequireComponent(typeof(Actor))]
 public class InteractableMoveableDraggable : InteractableMoveable
 {
-    public override void OnInteractStop()
+    public override void OnInteractStop(Controller controllerInteractor)
     {
-        base.OnInteractStop();
+        base.OnInteractStop(controllerInteractor);
         
         Interactable interactable = gameObject.AddComponent<Interactable>();
 
@@ -18,7 +18,7 @@ public class InteractableMoveableDraggable : InteractableMoveable
         }
         
         // this must after we pass the events
-        SelectionManager.Instance.SetCurrentSelectable(interactable);
+        SelectionManager.Instance.SetCurrentSelectable(interactable, controllerInteractor);
 
         Destroy(this);
     }

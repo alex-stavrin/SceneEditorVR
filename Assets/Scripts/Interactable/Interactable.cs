@@ -1,8 +1,10 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum InteractableState
 {
+    IE_INACTIVE,
     IE_IDLE,
     IE_HOVERED,
     IE_SELECTED,
@@ -23,89 +25,123 @@ public class Interactable : MonoBehaviour
     public event Action OnStopSelect;
     public event Action OnStartHover;
     public event Action OnStopHover;
-    public event Action OnStartInteract;
+    public event Action<Interactable> OnStartInteract;
     public event Action OnStopInteract;
 
     public virtual void Start()
     {
-
+        
     }
 
     public void ForceStopInteracting()
     {
-        StopInteract();
+        StopInteract(null);
     }
 
     // Functions below used to set the state mainly
 
-    public void StartInteract(Controller _interactor)
+    public void StartInactive(Controller controllerInteractor)
     {
-        interactor = _interactor;
-        SetState(InteractableState.IE_INTERACTING);
+        SetState(controllerInteractor, InteractableState.IE_INACTIVE);
     }
 
-    public void StopInteract()
+    public void StopInactive(Controller controllerInteractor)
     {
+        if(state != InteractableState.IE_INACTIVE) return;
+
+        SetState(controllerInteractor, InteractableState.IE_IDLE);
+    }
+
+    public void StartInteract(Controller controllerInteractor)
+    {
+        if(state == InteractableState.IE_INACTIVE) return;
+
+        interactor = controllerInteractor;
+        SetState(controllerInteractor, InteractableState.IE_INTERACTING);
+    }
+
+    public void StopInteract(Controller controllerInteractor)
+    {
+        if(state == InteractableState.IE_INACTIVE) return;
+
         if(!interactImmediately)
         {
-            SetState(InteractableState.IE_SELECTED);
+            SetState(controllerInteractor, InteractableState.IE_SELECTED);
         }
         else
         {
-            SetState(InteractableState.IE_IDLE);
+            SetState(controllerInteractor, InteractableState.IE_IDLE);
         }
     }
 
-    public void StartSelect()
+    public void StartSelect(Controller controllerInteractor)
     {
-        SetState(InteractableState.IE_SELECTED);
+        if(state == InteractableState.IE_INACTIVE) return;
+
+        SetState(controllerInteractor, InteractableState.IE_SELECTED);
     }
 
-    public void StopSelect()
+    public void StopSelect(Controller controllerInteractor)
     {
-        SetState(InteractableState.IE_IDLE);
+        if(state == InteractableState.IE_INACTIVE) return;
+        SetState(controllerInteractor, InteractableState.IE_IDLE);
     }
 
-    public void StartHover()
+    public void StartHover(Controller controllerInteractor)
     {
+        if(state == InteractableState.IE_INACTIVE) return;
+
         if (state != InteractableState.IE_IDLE) return;
-        SetState(InteractableState.IE_HOVERED);
+        SetState(controllerInteractor, InteractableState.IE_HOVERED);
     }
 
-    public void StopHover()
+    public void StopHover(Controller controllerInteractor)
     {
+        if(state == InteractableState.IE_INACTIVE) return;
         if (state != InteractableState.IE_HOVERED) return;
 
-        SetState(InteractableState.IE_IDLE);
+        SetState(controllerInteractor, InteractableState.IE_IDLE);
     }
 
     // Events based on state changes
-    public virtual void OnHoverStart()
+
+    public virtual void OnInactiveStart(Controller controllerInteractor)
+    {
+        
+    }
+
+    public virtual void OnInactiveStop(Controller controllerInteractor)
+    {
+        
+    }
+
+
+    public virtual void OnHoverStart(Controller controllerInteractor)
     {
         OnStartHover?.Invoke();
     }
 
-    public virtual void OnHoverStop()
+    public virtual void OnHoverStop(Controller controllerInteractor)
     {
         OnStopHover?.Invoke();
     }
 
-    public virtual void OnSelectStart()
+    public virtual void OnSelectStart(Controller controllerInteractor)
     {
         OnStartSelect?.Invoke();
     }
 
-    public virtual void OnSelectStop()
+    public virtual void OnSelectStop(Controller controllerInteractor)
     {
         OnStopSelect?.Invoke();
     }
 
-    public virtual void OnInteractStart()
+    public virtual void OnInteractStart(Controller controllerInteractor)
     {
-        OnStartInteract?.Invoke();
+        OnStartInteract?.Invoke(this);
     }
 
-    public virtual void OnInteractStop()
+    public virtual void OnInteractStop(Controller controllerInteractor)
     {
         OnStopInteract?.Invoke();
     }
@@ -115,38 +151,46 @@ public class Interactable : MonoBehaviour
         return state;
     }
 
-    void SetState(InteractableState newState)
+    void SetState(Controller instigator, InteractableState newState)
     {
         InteractableState previousState = state;
         state = newState;
 
+        if (previousState == InteractableState.IE_INACTIVE && newState != InteractableState.IE_INACTIVE)
+        {
+            OnInactiveStop(instigator);
+        }
+
         if (previousState == InteractableState.IE_SELECTED && newState != InteractableState.IE_SELECTED)
         {
-            OnSelectStop();
+            OnSelectStop(instigator);
         }
 
         if (previousState == InteractableState.IE_HOVERED && newState != InteractableState.IE_HOVERED)
         {
-            OnHoverStop();
+            OnHoverStop(instigator);
         }
 
         if (previousState == InteractableState.IE_INTERACTING && newState != InteractableState.IE_INTERACTING)
         {
-            OnInteractStop();
+            OnInteractStop(instigator);
         }
         
         switch (state)
         {
+            case InteractableState.IE_INACTIVE:
+                OnInactiveStart(instigator);
+                break;
             case InteractableState.IE_IDLE:
                 break;
             case InteractableState.IE_HOVERED:
-                OnHoverStart();
+                OnHoverStart(instigator);
                 break;
             case InteractableState.IE_SELECTED:
-                OnSelectStart();
+                OnSelectStart(instigator);
                 break;
             case InteractableState.IE_INTERACTING:
-                OnInteractStart();
+                OnInteractStart(instigator);
                 break;
         }
     }

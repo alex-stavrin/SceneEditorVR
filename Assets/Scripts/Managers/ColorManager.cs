@@ -9,6 +9,9 @@ public class ColorManager : MonoBehaviour
     [SerializeField]
     public Color arrowsHoverColor = Color.yellow;
 
+    [SerializeField]
+    public Color inactiveColor = Color.grey;
+
     void Awake()
     {
         if (Instance != null && Instance != this)

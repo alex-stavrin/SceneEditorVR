@@ -22,11 +22,11 @@ public class SelectionManager : MonoBehaviour
         Instance = this;
     }
 
-    public void SetCurrentSelectable(Interactable newSelectable)
+    public void SetCurrentSelectable(Interactable newSelectable, Controller instigator)
     {
         if (currentSelectable)
         {
-            currentSelectable.StopSelect();
+            currentSelectable.StopSelect(instigator);
 
             if (currentSelectable.GetState() == InteractableState.IE_INTERACTING)
             {
@@ -35,7 +35,7 @@ public class SelectionManager : MonoBehaviour
         }
 
         currentSelectable = newSelectable;
-        currentSelectable.StartSelect();
+        currentSelectable.StartSelect(instigator);
 
         InspectorManager.Instance.SetInspected(currentSelectable.gameObject);
 
@@ -51,7 +51,7 @@ public class SelectionManager : MonoBehaviour
     {
         if (currentSelectable)
         {
-            currentSelectable.StopSelect();
+            currentSelectable.StopSelect(null);
             InspectorManager.Instance.SetInspected(null);
 
             OnUnSelected.Invoke();

@@ -25,9 +25,25 @@ public class InteractableGizmo : Interactable
         currentInteractable = _interactable;
     }
 
-    public override void OnInteractStart()
+    public override void OnInactiveStart(Controller controllerInteractor)
     {
-        base.OnInteractStart();
+        base.OnInactiveStart(controllerInteractor);
+
+        arrowMaterial.SetColor("_Color", ColorManager.Instance.inactiveColor);
+    }
+
+    public override void OnInactiveStop(Controller controllerInteractor)
+    {
+        base.OnInactiveStop(controllerInteractor);
+
+        arrowMaterial.SetColor("_Color", startingColor);
+    }
+
+    public override void OnInteractStart(Controller controllerInteractor)
+    {
+        base.OnInteractStart(controllerInteractor);
+
+
 
         if (arrowMaterial)
         {
@@ -35,9 +51,9 @@ public class InteractableGizmo : Interactable
         }
     }
 
-    public override void OnInteractStop()
+    public override void OnInteractStop(Controller controllerInteractor)
     {
-        base.OnInteractStop();
+        base.OnInteractStop(controllerInteractor);
 
         if (arrowMaterial)
         {
@@ -45,9 +61,11 @@ public class InteractableGizmo : Interactable
         }       
     }
 
-    public override void OnHoverStart()
+    public override void OnHoverStart(Controller controllerInteractor)
     {
-        base.OnHoverStart();
+        base.OnHoverStart(controllerInteractor);
+
+        HapticsManager.SendHaptic(controllerInteractor.GetSide(), HapticsManager.GetHoverAmplitude(), HapticsManager.GetHoverDuration());
 
         if (arrowMaterial)
         {
@@ -55,9 +73,9 @@ public class InteractableGizmo : Interactable
         }
     }
 
-    public override void OnHoverStop()
+    public override void OnHoverStop(Controller controllerInteractor)
     {
-        base.OnHoverStop();
+        base.OnHoverStop(controllerInteractor);
 
         if (arrowMaterial)
         {

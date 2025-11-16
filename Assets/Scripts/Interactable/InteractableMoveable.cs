@@ -15,9 +15,9 @@ public class InteractableMoveable : Interactable
         }
     }
 
-    public override void OnInteractStart()
+    public override void OnInteractStart(Controller controllerInteractor)
     {
-        base.OnInteractStart();
+        base.OnInteractStart(controllerInteractor);
 
         currentInteractDistance = Vector3.Distance(transform.position, interactor.GetInteractPoint().position);
         interactionOffset = transform.position - interactor.rayHitResult.point;

@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "XRI Default Input Actions",
     "maps": [
         {
@@ -2560,6 +2561,62 @@
                     "processors": "",
                     "groups": "",
                     "action": "Snap Turn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "XRI Haptics Left",
+            "id": "840ded0a-f335-4f7d-af7e-aab12bc2bbdc",
+            "actions": [
+                {
+                    "name": "HapticLeft",
+                    "type": "PassThrough",
+                    "id": "e813d0ef-8078-4d15-9d53-d6eda294d279",
+                    "expectedControlType": "Haptic",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0f879e92-145c-457e-b5a1-f6e9cc4c01a4",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HapticLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "XRI Haptics Right",
+            "id": "13b3c5bb-cef8-4f5c-9bcf-1e581c9d22de",
+            "actions": [
+                {
+                    "name": "HapticRight",
+                    "type": "PassThrough",
+                    "id": "92b54993-bca0-4902-80f2-efaea8232abc",
+                    "expectedControlType": "Haptic",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cf04496b-d3cf-4a36-921f-e21932a36f69",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HapticRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

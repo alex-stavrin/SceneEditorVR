@@ -71,22 +71,22 @@ public class InputModuleVR : PointerInputModule
 
         HandlePointerExitAndEnter(pointerData, pointerData.pointerCurrentRaycast.gameObject);
 
-        if(controller.TriggerPressedThisFrame())
+        if(controller.TriggerPressedThisFrame() && controller.pointingAtUI)
         {
             ProcessPress(pointerData, true, false);
         }
 
-        if(controller.TriggerReleasedThisFrame())
+        if(controller.TriggerReleasedThisFrame() )
         {
             ProcessPress(pointerData, false, true);
         }
 
-        if(pointerData.IsPointerMoving() && pointerData.pointerDrag != null)
+        if(pointerData.IsPointerMoving() && pointerData.pointerDrag != null  && controller.pointingAtUI)
         {
             ProcessDrag(pointerData);
         }
 
-        if(pointerData.scrollDelta.sqrMagnitude > 0f && pointerData.pointerCurrentRaycast.gameObject != null)
+        if(pointerData.scrollDelta.sqrMagnitude > 0f && pointerData.pointerCurrentRaycast.gameObject != null  && controller.pointingAtUI)
         {
             ExecuteEvents.ExecuteHierarchy(pointerData.pointerCurrentRaycast.gameObject, pointerData, ExecuteEvents.scrollHandler);
         }

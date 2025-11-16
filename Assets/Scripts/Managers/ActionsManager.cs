@@ -29,7 +29,7 @@ public class ActionsManager : MonoBehaviour
                     Interactable interactable = duplicatedObject.GetComponent<Interactable>();
                     if (interactable)
                     {
-                        SelectionManager.Instance.SetCurrentSelectable(interactable);
+                        SelectionManager.Instance.SetCurrentSelectable(interactable, null);
                     }
                 }
             }

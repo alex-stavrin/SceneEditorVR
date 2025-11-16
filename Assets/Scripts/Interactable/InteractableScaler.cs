@@ -33,9 +33,9 @@ public class InteractableScaler : InteractableGizmo
         }
     }
 
-    public override void OnInteractStart()
+    public override void OnInteractStart(Controller controllerInteractor)
     {
-        base.OnInteractStart();
+        base.OnInteractStart(controllerInteractor);
 
         interactableScaleableStartingScale = scaleable.transform.localScale;
         interactorStartingPosition = interactor.transform.position;

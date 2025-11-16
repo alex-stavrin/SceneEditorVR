@@ -1,0 +1,145 @@
+using UnityEngine;
+using UnityEngine.XR;
+using System.Collections.Generic;
+public class HapticsManager : MonoBehaviour
+{
+    public static HapticsManager Instance { get; private set; }
+
+    private InputDevice leftInputDevice;
+    private InputDevice rightInputDevice;
+
+    [Header("General")]
+
+    [SerializeField]
+    bool disableHaptics = false;
+
+    [Header("Hover")]
+
+    [SerializeField]
+    float hoverAmplitude;
+
+    [SerializeField]
+    float hoverDuration;
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(this);
+    }
+
+    void OnEnable()
+    {
+        InitDevices();
+
+        InputDevices.deviceConnected += OnDeviceConnected;
+        InputDevices.deviceDisconnected += OnDeviceDisconnected;
+    }
+
+    void OnDisable()
+    {
+        InputDevices.deviceConnected -= OnDeviceConnected;
+        InputDevices.deviceDisconnected -= OnDeviceDisconnected;
+    }
+
+    void OnDeviceConnected(InputDevice device)
+    {
+        DetectDevice(device);
+    }
+
+    void OnDeviceDisconnected(InputDevice device)
+    {
+        if(device == leftInputDevice)
+        {
+            leftInputDevice = default;
+        }
+
+        if(device == rightInputDevice)
+        {
+            rightInputDevice = default;
+        }
+    }
+
+    void DetectDevice(InputDevice device)
+    {
+        if(!device.isValid) return;
+
+        var characteristics = device.characteristics;
+
+        bool isController = (characteristics & InputDeviceCharacteristics.HeldInHand) != 0 && (characteristics & InputDeviceCharacteristics.Controller) != 0;
+
+        if(!isController) return;
+
+        bool isLeft = (characteristics & InputDeviceCharacteristics.Left) != 0;
+        bool isRight = (characteristics & InputDeviceCharacteristics.Right) != 0;
+
+        if(isLeft)
+        {
+            leftInputDevice = device;
+        }
+
+        if(isRight)
+        {   
+            rightInputDevice = device;
+        }
+    }
+
+    void InitDevices()
+    {
+        var leftHandDevices = new List<InputDevice>();
+        var rightHandDevices = new List<InputDevice>();
+
+        InputDevices.GetDevicesAtXRNode(XRNode.LeftHand, leftHandDevices);
+        InputDevices.GetDevicesAtXRNode(XRNode.RightHand, rightHandDevices);
+
+        if(leftHandDevices.Count > 0)
+        {
+            leftInputDevice = leftHandDevices[0];
+        }
+
+        if(rightHandDevices.Count > 0)
+        {
+            rightInputDevice = rightHandDevices[0];
+        }
+    }
+
+    public static void SendHaptic(InputDeviceRole inputDeviceRole, float amplitude, float duration)
+    {
+        if(inputDeviceRole == InputDeviceRole.LeftHanded && Instance.leftInputDevice.isValid)
+        {
+            SendHaptic(Instance.leftInputDevice, amplitude, duration);
+        }
+        else if (inputDeviceRole == InputDeviceRole.RightHanded && Instance.rightInputDevice.isValid)
+        {
+            SendHaptic(Instance.rightInputDevice, amplitude, duration);
+        }
+    }
+
+    private static void SendHaptic(InputDevice device, float amplitude, float duration)
+    {
+        if (!device.isValid) return;
+
+        if (Instance.disableHaptics) return;
+
+        HapticCapabilities hapticCapabilities;
+        if(device.TryGetHapticCapabilities(out hapticCapabilities) && hapticCapabilities.supportsImpulse)
+        {
+            device.SendHapticImpulse(0, amplitude, duration);
+        }
+    }
+
+    public static float GetHoverAmplitude()
+    {
+        return Instance.hoverAmplitude;
+    }
+
+    public static float GetHoverDuration()
+    {
+        return Instance.hoverDuration;
+    } 
+}

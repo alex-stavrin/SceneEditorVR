@@ -47,6 +47,31 @@ public class GizmosManager : MonoBehaviour
         gizmos.SetActive(false);
 
         UpdateGizmoTypeVisual(PlayerPreferencesManager.Instance.currentGizmoType);
+
+        foreach(InteractableArrow interactableArrow in interactableArrows)
+        {
+            interactableArrow.OnStartInteract += OnArrowStartInteract;
+            interactableArrow.OnStopInteract += OnArrowStopInteract;
+        }
+    }
+
+    void OnArrowStartInteract(Interactable interactable)
+    {
+        foreach(InteractableArrow interactableArrow in interactableArrows)
+        {
+            if(interactable != interactableArrow)
+            {
+                interactableArrow.StartInactive(null);
+            }
+        }
+    }
+
+    void OnArrowStopInteract()
+    {
+        foreach(InteractableArrow interactableArrow in interactableArrows)
+        {
+            interactableArrow.StopInactive(null);
+        }       
     }
 
     void Update()
@@ -107,6 +132,32 @@ public class GizmosManager : MonoBehaviour
     {
         if (gizmos)
         {
+
+            foreach(InteractableArrow interactableArrow in interactableArrows)
+            {
+                if(interactableArrow.GetState() == InteractableState.IE_INTERACTING)
+                {
+                    interactableArrow.StopInteract(null);
+                }
+            }
+
+            foreach(InteractableRotator interactableRotator in interactableRotators)
+            {
+                if(interactableRotator.GetState() == InteractableState.IE_INTERACTING)
+                {
+                    interactableRotator.StopInteract(null);
+                }               
+            }
+
+            
+            foreach(InteractableScaler interactableScaler in interactableScalers)
+            {
+                if(interactableScaler.GetState() == InteractableState.IE_INTERACTING)
+                {
+                    interactableScaler.StopInteract(null);
+                }               
+            }
+
             gizmos.SetActive(false);
             currentInteractableSelected = null;
         }

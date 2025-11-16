@@ -10,6 +10,9 @@ public class RotationVisualizerManager : MonoBehaviour
     [SerializeField]
     Transform rotationTargetVisualizer;
 
+    [SerializeField]
+    public float visualizationRadius = 0.2f;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
