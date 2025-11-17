@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public enum GizmoType
@@ -14,6 +13,9 @@ public class GizmosManager : MonoBehaviour
 
     [SerializeField]
     GameObject gizmos;
+
+    [SerializeField]
+    float gizmosSizeMultiplier = 0.2f;
 
     InteractableArrow[] interactableArrows;
 
@@ -53,6 +55,30 @@ public class GizmosManager : MonoBehaviour
             interactableArrow.OnStartInteract += OnArrowStartInteract;
             interactableArrow.OnStopInteract += OnArrowStopInteract;
         }
+
+        foreach(InteractableRotator interactableRotator in interactableRotators)
+        {
+            interactableRotator.OnStartInteract += OnRotatorStartInteract;
+            interactableRotator.OnStopInteract += OnRotatorStopInteract;
+        }
+
+        foreach(InteractableScaler interactableScaler in interactableScalers)
+        {
+            interactableScaler.OnStartInteract += OnScalerStartInteract;
+            interactableScaler.OnStopInteract += OnScalerStopInteract;
+        }
+    }
+
+    void Update()
+    {
+        if(currentInteractableSelected)
+        {
+            gizmos.transform.position = currentInteractableSelected.transform.position;
+
+            Vector3 playerPosition = PlayerRig.Instance.gameObject.transform.position;
+            float distance = Vector3.Distance(playerPosition, gizmos.transform.position);
+            gizmos.transform.localScale = new Vector3(distance * gizmosSizeMultiplier,distance * gizmosSizeMultiplier,distance * gizmosSizeMultiplier);
+        }
     }
 
     void OnArrowStartInteract(Interactable interactable)
@@ -74,12 +100,42 @@ public class GizmosManager : MonoBehaviour
         }       
     }
 
-    void Update()
+    void OnRotatorStartInteract(Interactable interactable)
     {
-        if(currentInteractableSelected)
+        foreach(InteractableRotator interactableRotator in interactableRotators)
         {
-            gizmos.transform.position = currentInteractableSelected.transform.position;
-        }
+            if(interactable != interactableRotator)
+            {
+                interactableRotator.StartInactive(null);
+            }
+        }       
+    }
+
+    void OnRotatorStopInteract()
+    {
+        foreach(InteractableRotator interactableRotator in interactableRotators)
+        {
+            interactableRotator.StopInactive(null);
+        }           
+    }
+
+    void OnScalerStartInteract(Interactable interactable)
+    {
+        foreach(InteractableScaler interactableScaler in interactableScalers)
+        {
+            if(interactable != interactableScaler)
+            {
+                interactableScaler.StartInactive(null);
+            }
+        }         
+    }
+
+    void OnScalerStopInteract()
+    {
+        foreach(InteractableScaler interactableScaler in interactableScalers)
+        {
+            interactableScaler.StopInactive(null);
+        }        
     }
 
     void OnGizmoTypeChanged(GizmoType gizmoType)

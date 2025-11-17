@@ -2,15 +2,8 @@ using UnityEngine;
 
 public class Rotateable : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void SetRotationAroundAxis(Vector3 axis, Quaternion startingRotation, float angle)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        transform.rotation = Quaternion.AngleAxis(PlayerPreferencesManager.GetIfSnappedAngle(angle), axis) * startingRotation;
     }
 }

@@ -41,7 +41,7 @@ public class InteractableRotator : InteractableGizmo
                 RotationVisualizerManager.Instance.SetTargetVisualizerLocation(interactionStartingPosition +
                     new Vector3(visRadius * circleX, 0, visRadius * circleZ));
 
-                rotateable.gameObject.transform.rotation = Quaternion.AngleAxis(angle - startingAngle, new Vector3(0,1,0)) * startingRotation;
+                rotateable.SetRotationAroundAxis(new Vector3(0,1,0), startingRotation, angle - startingAngle);
             }
             else if (rotatingVector == new Vector3(1, 0, 0)) // x axis
             {
@@ -51,7 +51,7 @@ public class InteractableRotator : InteractableGizmo
                 RotationVisualizerManager.Instance.SetTargetVisualizerLocation(interactionStartingPosition +
                     new Vector3(0, visRadius * circleY, visRadius * circleZ));
 
-                rotateable.gameObject.transform.rotation = Quaternion.AngleAxis(angle - startingAngle, new Vector3(1,0,0)) * startingRotation;
+                rotateable.SetRotationAroundAxis(new Vector3(1,0,0), startingRotation, angle - startingAngle);
             }
             else if (rotatingVector == new Vector3(0,0,1)) // z axis
             {
@@ -61,7 +61,7 @@ public class InteractableRotator : InteractableGizmo
                 RotationVisualizerManager.Instance.SetTargetVisualizerLocation(interactionStartingPosition +
                     new Vector3(visRadius * circleX, circleY * visRadius, 0));
 
-                rotateable.gameObject.transform.rotation = Quaternion.AngleAxis(angle - startingAngle, new Vector3(0,0,1)) * startingRotation;
+                rotateable.SetRotationAroundAxis(new Vector3(0,0,1), startingRotation, angle - startingAngle);
             }
         }
     }

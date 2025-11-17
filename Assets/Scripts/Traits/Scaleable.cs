@@ -14,6 +14,6 @@ public class Scaleable : MonoBehaviour
 
     private void SetScale(Vector3 newScale)
     {
-        transform.localScale = newScale;
+        transform.localScale = PlayerPreferencesManager.GetIfSnappedScale(newScale);
     }
 }

@@ -12,9 +12,8 @@ public class Moveable : MonoBehaviour
         SetPosition(transform.position + offset);
     }
 
-    // global
     private void SetPosition(Vector3 newPosition)
     {
-        transform.position = newPosition;
+        transform.position = PlayerPreferencesManager.GetIfSnappedPosition(newPosition);
     }
 }
