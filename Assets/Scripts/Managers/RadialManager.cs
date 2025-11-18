@@ -79,6 +79,8 @@ public class RadialManager : MonoBehaviour
 
     public void CallRadial(Controller controllerCalling)
     {
+        SoundsManager.PlayRadialOpen(radialsRoot.transform.position);
+        
         currentController = controllerCalling;
         radialsRoot.SetActive(true);
         radialsRoot.transform.position = controllerCalling.transform.position;
@@ -92,6 +94,8 @@ public class RadialManager : MonoBehaviour
     {
         if (currentController)
         {
+            SoundsManager.PlayRadialClose(radialsRoot.transform.position);
+
             functions[currentPick].Invoke();
 
             currentController = null;
