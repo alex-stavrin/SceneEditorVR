@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum GizmoType
@@ -38,7 +39,7 @@ public class GizmosManager : MonoBehaviour
 
     void Start()
     {
-        SelectionManager.Instance.OnSelected += OnSelected;
+        SelectionManager.Instance.OnSelectedAdded += OnSelectedAdded;
         SelectionManager.Instance.OnUnSelected += OnUnSelected;
         PlayerPreferencesManager.Instance.OnGizmoTypeChanged += OnGizmoTypeChanged;
 
@@ -143,45 +144,42 @@ public class GizmosManager : MonoBehaviour
         UpdateGizmoTypeVisual(gizmoType);
     }
 
-    void OnSelected(Interactable interactable)
+    void OnSelectedAdded(Interactable newInteractable, List<Interactable> selected)
     {
-        if (interactable)
-        {
-            gizmos.SetActive(true);
-            gizmos.transform.position = interactable.transform.position;
+        // gizmos.SetActive(true);
+        // gizmos.transform.position = interactable.transform.position;
 
-            currentInteractableSelected = interactable;
+        // currentInteractableSelected = interactable;
 
-            Moveable moveable = interactable.transform.root.GetComponent<Moveable>();
-            if (moveable)
-            {
-                foreach (InteractableArrow interactableArrow in interactableArrows)
-                {
-                    interactableArrow.SetMoveable(moveable);
-                    interactableArrow.SetInteractable(interactable);
-                }
-            }
+        // Moveable moveable = interactable.transform.root.GetComponent<Moveable>();
+        // if (moveable)
+        // {
+        //     foreach (InteractableArrow interactableArrow in interactableArrows)
+        //     {
+        //         interactableArrow.SetMoveable(moveable);
+        //         interactableArrow.SetInteractable(interactable);
+        //     }
+        // }
 
-            Rotateable rotateable = interactable.transform.root.GetComponent<Rotateable>();
-            if (rotateable)
-            {
-                foreach (InteractableRotator interactableRotator in interactableRotators)
-                {
-                    interactableRotator.SetRotateable(rotateable);
-                    interactableRotator.SetInteractable(interactable);
-                }
-            }
-            
-            Scaleable scaleable = interactable.transform.root.GetComponent<Scaleable>();
-            if (scaleable)
-            {
-                foreach (InteractableScaler interactableScaler in interactableScalers)
-                {
-                    interactableScaler.SetScaleable(scaleable);
-                    interactableScaler.SetInteractable(interactable);
-                }
-            }
-        }
+        // Rotateable rotateable = interactable.transform.root.GetComponent<Rotateable>();
+        // if (rotateable)
+        // {
+        //     foreach (InteractableRotator interactableRotator in interactableRotators)
+        //     {
+        //         interactableRotator.SetRotateable(rotateable);
+        //         interactableRotator.SetInteractable(interactable);
+        //     }
+        // }
+        
+        // Scaleable scaleable = interactable.transform.root.GetComponent<Scaleable>();
+        // if (scaleable)
+        // {
+        //     foreach (InteractableScaler interactableScaler in interactableScalers)
+        //     {
+        //         interactableScaler.SetScaleable(scaleable);
+        //         interactableScaler.SetInteractable(interactable);
+        //     }
+        // }
     }
 
     void OnUnSelected()

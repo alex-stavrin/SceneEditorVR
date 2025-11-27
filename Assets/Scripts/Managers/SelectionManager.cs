@@ -1,13 +1,16 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SelectionManager : MonoBehaviour
 {
     public static SelectionManager Instance { get; private set; }
 
-    Interactable currentSelectable = null;
+    List<Interactable> selected;
 
-    public event Action<Interactable> OnSelected;
+    public event Action<Interactable, List<Interactable>> OnSelectedAdded;
+
+    public event Action<Interactable> OnReplaced;
 
     public event Action OnUnSelected;
 
@@ -22,41 +25,52 @@ public class SelectionManager : MonoBehaviour
         Instance = this;
     }
 
-    public void SetCurrentSelectable(Interactable newSelectable, Controller instigator)
+    public static void AddSelectable(Interactable newSelectable, Controller instigator)
     {
-        if (currentSelectable)
-        {
-            currentSelectable.StopSelect(instigator);
+        newSelectable.StartSelect(instigator);
 
-            if (currentSelectable.GetState() == InteractableState.IE_INTERACTING)
-            {
-                currentSelectable.ForceStopInteracting();
-            }
-        }
+        Instance?.selected.Add(newSelectable);
 
-        currentSelectable = newSelectable;
-        currentSelectable.StartSelect(instigator);
-
-        InspectorManager.Instance.SetInspected(currentSelectable.gameObject);
-
-        OnSelected.Invoke(currentSelectable);
+        Instance?.OnSelectedAdded.Invoke(newSelectable, Instance?.selected);
     }
 
-    public Interactable GetCurrentSelectable()
+    public static void ReplaceSelectablesWithOne(Interactable newSelectable, Controller instigator)
     {
-        return currentSelectable;
+        UnselectCurrents();   
+
+        newSelectable.StartSelect(instigator);
+
+        Instance?.selected.Add(newSelectable);
+
+        InspectorManager.Instance.SetInspected(newSelectable.gameObject);
+
+        Instance?.OnReplaced.Invoke(newSelectable);
+        Instance?.OnSelectedAdded.Invoke(newSelectable, Instance?.selected);
     }
 
-    public void UnselectCurrent()
+    public List<Interactable> GetCurrentSelectables()
     {
-        if (currentSelectable)
-        {
-            currentSelectable.StopSelect(null);
-            InspectorManager.Instance.SetInspected(null);
+        return selected;
+    }
 
-            OnUnSelected.Invoke();
-
-            currentSelectable = null;
+    public static void UnselectCurrents()
+    {
+        foreach(Interactable interactable in Instance.selected)
+        {            
+            interactable.StopSelect(null);
+            // InspectorManager.Instance.SetInspected(null);
         }
+        Instance.OnUnSelected.Invoke();
+        Instance.selected.Clear();
+    }
+
+    public static List<Interactable> GetSelected()
+    {
+        return Instance.selected;
+    }
+
+    public static void ReplaceAllSelected(List<Interactable> newSelectedList)
+    {
+        Instance.selected = newSelectedList;
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ActionsManager : MonoBehaviour
@@ -17,35 +18,30 @@ public class ActionsManager : MonoBehaviour
 
     public void DuplicateSelected()
     {
-        if(SelectionManager.Instance.GetCurrentSelectable() != null)
-        {            
-            GameObject currentSelectedGameobject = SelectionManager.Instance.GetCurrentSelectable().gameObject;
-            if (currentSelectedGameobject)
+        if(SelectionManager.GetSelected().Count > 0)
+        {
+            List<Interactable> tempList = new List<Interactable>();
+            foreach(Interactable interactable in SelectionManager.GetSelected())
             {
-                GameObject duplicatedObject = Instantiate(currentSelectedGameobject);
-                if (duplicatedObject)
+                GameObject newObject = Instantiate(interactable.gameObject);
+                if(newObject)
                 {
-                    SelectionManager.Instance.UnselectCurrent();
-                    Interactable interactable = duplicatedObject.GetComponent<Interactable>();
-                    if (interactable)
-                    {
-                        SelectionManager.Instance.SetCurrentSelectable(interactable, null);
-                    }
+                    Interactable newInteractable = newObject.GetComponent<Interactable>();
+                    tempList.Add(newInteractable);
                 }
-            }
+            }          
+            SelectionManager.UnselectCurrents();
+
+            SelectionManager.ReplaceAllSelected(tempList);
         }
     }
 
     public void DeleteSelected()
     {
-        if(SelectionManager.Instance.GetCurrentSelectable() != null)
-        {            
-            GameObject currentSelectedGameobject = SelectionManager.Instance.GetCurrentSelectable().gameObject;
-            if (currentSelectedGameobject)
-            {
-                SelectionManager.Instance.UnselectCurrent();
-                Destroy(currentSelectedGameobject);
-            }
+        foreach(Interactable interactable in SelectionManager.GetSelected())
+        {
+            interactable.StopSelect(null);
+            Destroy(interactable.gameObject);
         }
     }
 }

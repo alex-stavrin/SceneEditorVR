@@ -43,11 +43,15 @@ public class Controller : MonoBehaviour
 
     /// PRIVATE /// 
 
+    // controller movement tracking (for air grabbing)
     Vector3 velocity;
     Vector3 lastPosition;
 
+    // interacting
     Interactable currentInteractable;
     bool isInteracting = false;
+
+    // input
 
     Vector2 thumbstickInputValue;
 
@@ -60,9 +64,16 @@ public class Controller : MonoBehaviour
     // select
     Interactable currentHoverable;
 
+    // interaction
+
     bool isMovingMoveable = false;
 
+    // ui
+
     public bool pointingAtUI = false;
+
+    // multi select
+    bool isTryingToMultiSelect = false;
 
 
     public void Start()
@@ -120,6 +131,8 @@ public class Controller : MonoBehaviour
 
         northButtonAction.action.started -= NorthButtonPressed;
         northButtonAction.action.canceled -= NorthButtonReleased;
+
+
 
         settingsAction.action.started -= SettingsButtonPressed;
     }
@@ -186,15 +199,20 @@ public class Controller : MonoBehaviour
                 }
                 else
                 {
-                    SelectionManager.Instance?.SetCurrentSelectable(currentHoverable, this);
+                    if(isTryingToMultiSelect)
+                    {
+                        SelectionManager.AddSelectable(currentHoverable, this);
+                    }
+                    else
+                    {
+                        SelectionManager.ReplaceSelectablesWithOne(currentHoverable, this);
+                    }
                 }
             }
         }
         else
         {
-            if (SelectionManager.Instance == null) return;
-            if (SelectionManager.Instance.GetCurrentSelectable() == null) return;
-            SelectionManager.Instance?.UnselectCurrent();
+            SelectionManager.UnselectCurrents();
         }
     }
 
@@ -329,6 +347,16 @@ public class Controller : MonoBehaviour
         {
             RadialManagerActions.Instance.DismissRadial();
         }
+    }
+
+    void SouthButtonPressed(InputAction.CallbackContext context)
+    {
+        isTryingToMultiSelect = true;
+    }
+
+    void SouthButtonReleased(InputAction.CallbackContext context)
+    {
+        isTryingToMultiSelect = false;
     }
 
     public Transform GetInteractPoint()
