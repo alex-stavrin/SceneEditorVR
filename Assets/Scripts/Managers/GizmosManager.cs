@@ -24,8 +24,6 @@ public class GizmosManager : MonoBehaviour
 
     InteractableScaler[] interactableScalers;
 
-    Interactable currentInteractableSelected = null;
-
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -41,6 +39,9 @@ public class GizmosManager : MonoBehaviour
     {
         SelectionManager.Instance.OnSelectedAdded += OnSelectedAdded;
         SelectionManager.Instance.OnUnSelected += OnUnSelected;
+        SelectionManager.Instance.OnReplaced += OnSelectedReplaced;
+
+
         PlayerPreferencesManager.Instance.OnGizmoTypeChanged += OnGizmoTypeChanged;
 
         interactableArrows = gizmos.GetComponentsInChildren<InteractableArrow>();
@@ -72,10 +73,17 @@ public class GizmosManager : MonoBehaviour
 
     void Update()
     {
-        if(currentInteractableSelected)
+        if(SelectionManager.GetSelected().Count > 0)
         {
-            gizmos.transform.position = currentInteractableSelected.transform.position;
+            Vector3 vectorsSum = new Vector3(0,0,0);
+            foreach(Interactable interactable in SelectionManager.GetSelected())
+            {
+                vectorsSum += interactable.transform.position;
+            }
+            Vector3 gizmoPosition = vectorsSum / SelectionManager.GetSelected().Count;
+            gizmos.transform.position = gizmoPosition;
 
+            // scale gizmo size relative to player distance from gizmo
             Vector3 playerPosition = PlayerRig.Instance.gameObject.transform.position;
             float distance = Vector3.Distance(playerPosition, gizmos.transform.position);
             gizmos.transform.localScale = new Vector3(distance * gizmosSizeMultiplier,distance * gizmosSizeMultiplier,distance * gizmosSizeMultiplier);
@@ -146,74 +154,87 @@ public class GizmosManager : MonoBehaviour
 
     void OnSelectedAdded(Interactable newInteractable, List<Interactable> selected)
     {
-        // gizmos.SetActive(true);
-        // gizmos.transform.position = interactable.transform.position;
+        // first selected
+        if(selected.Count == 1)
+        {
+            gizmos.SetActive(true);
+        }
 
-        // currentInteractableSelected = interactable;
+        Moveable moveable = newInteractable.transform.root.GetComponent<Moveable>();
+        if (moveable)
+        {
+            foreach (InteractableArrow interactableArrow in interactableArrows)
+            {
+                interactableArrow.AddMoveable(moveable);
+            }
+        }
 
-        // Moveable moveable = interactable.transform.root.GetComponent<Moveable>();
-        // if (moveable)
-        // {
-        //     foreach (InteractableArrow interactableArrow in interactableArrows)
-        //     {
-        //         interactableArrow.SetMoveable(moveable);
-        //         interactableArrow.SetInteractable(interactable);
-        //     }
-        // }
-
-        // Rotateable rotateable = interactable.transform.root.GetComponent<Rotateable>();
-        // if (rotateable)
-        // {
-        //     foreach (InteractableRotator interactableRotator in interactableRotators)
-        //     {
-        //         interactableRotator.SetRotateable(rotateable);
-        //         interactableRotator.SetInteractable(interactable);
-        //     }
-        // }
+        Rotateable rotateable = newInteractable.transform.root.GetComponent<Rotateable>();
+        if (rotateable)
+        {
+            foreach (InteractableRotator interactableRotator in interactableRotators)
+            {
+                interactableRotator.SetRotateable(rotateable);
+            }
+        }
         
-        // Scaleable scaleable = interactable.transform.root.GetComponent<Scaleable>();
-        // if (scaleable)
-        // {
-        //     foreach (InteractableScaler interactableScaler in interactableScalers)
-        //     {
-        //         interactableScaler.SetScaleable(scaleable);
-        //         interactableScaler.SetInteractable(interactable);
-        //     }
-        // }
+        Scaleable scaleable = newInteractable.transform.root.GetComponent<Scaleable>();
+        if (scaleable)
+        {
+            foreach (InteractableScaler interactableScaler in interactableScalers)
+            {
+                interactableScaler.AddScaleable(scaleable);
+            }
+        }
+    }
+
+    void OnSelectedReplaced(Interactable newInteractable)
+    {
+        Moveable moveable = newInteractable.transform.root.GetComponent<Moveable>();
+        if (moveable)
+        {
+            foreach (InteractableArrow interactableArrow in interactableArrows)
+            {
+                interactableArrow.ClearMoveables();
+                interactableArrow.AddMoveable(moveable);
+            }
+        }
+
+        Scaleable scaleable = newInteractable.transform.root.GetComponent<Scaleable>();
+        if (scaleable)
+        {
+            foreach (InteractableScaler interactableScaler in interactableScalers)
+            {
+                interactableScaler.ClearScaleables();
+                interactableScaler.AddScaleable(scaleable);
+            }
+        }        
     }
 
     void OnUnSelected()
     {
         if (gizmos)
         {
-
             foreach(InteractableArrow interactableArrow in interactableArrows)
             {
-                if(interactableArrow.GetState() == InteractableState.IE_INTERACTING)
-                {
-                    interactableArrow.StopInteract(null);
-                }
+                interactableArrow.StopInteract(null);
+                interactableArrow.ClearMoveables();
             }
 
             foreach(InteractableRotator interactableRotator in interactableRotators)
             {
-                if(interactableRotator.GetState() == InteractableState.IE_INTERACTING)
-                {
-                    interactableRotator.StopInteract(null);
-                }               
+                interactableRotator.StopInteract(null);
+                
             }
 
             
             foreach(InteractableScaler interactableScaler in interactableScalers)
             {
-                if(interactableScaler.GetState() == InteractableState.IE_INTERACTING)
-                {
-                    interactableScaler.StopInteract(null);
-                }               
+                interactableScaler.StopInteract(null);  
+                interactableScaler.ClearScaleables();       
             }
 
             gizmos.SetActive(false);
-            currentInteractableSelected = null;
         }
     }
 

@@ -92,6 +92,9 @@ public class Controller : MonoBehaviour
 
         settingsAction.action.started += SettingsButtonPressed;
 
+        southButtonAction.action.started += SouthButtonPressed;
+        southButtonAction.action.canceled += SouthButtonReleased;
+
         snapTurnTimer = 0;
     }
 

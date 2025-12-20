@@ -6,7 +6,7 @@ public class SelectionManager : MonoBehaviour
 {
     public static SelectionManager Instance { get; private set; }
 
-    List<Interactable> selected;
+    List<Interactable> selected = new List<Interactable>();
 
     public event Action<Interactable, List<Interactable>> OnSelectedAdded;
 
@@ -23,6 +23,21 @@ public class SelectionManager : MonoBehaviour
         }
 
         Instance = this;
+    }
+
+    void Update()
+    {
+        string selectedList = "";
+        foreach(Interactable interactable in selected)
+        {
+            selectedList += interactable.name + "\n";
+        }
+        if(selectedList.Length == 0)
+        {
+            selectedList = "Empty";
+        }
+    
+        VirtualRealityConsole.PrintMessage(selectedList, PrintTypeVRC.Clear);
     }
 
     public static void AddSelectable(Interactable newSelectable, Controller instigator)
@@ -44,8 +59,8 @@ public class SelectionManager : MonoBehaviour
 
         InspectorManager.Instance.SetInspected(newSelectable.gameObject);
 
-        Instance?.OnReplaced.Invoke(newSelectable);
-        Instance?.OnSelectedAdded.Invoke(newSelectable, Instance?.selected);
+        Instance?.OnReplaced?.Invoke(newSelectable);
+        Instance?.OnSelectedAdded?.Invoke(newSelectable, Instance?.selected);
     }
 
     public List<Interactable> GetCurrentSelectables()
@@ -58,10 +73,24 @@ public class SelectionManager : MonoBehaviour
         foreach(Interactable interactable in Instance.selected)
         {            
             interactable.StopSelect(null);
-            // InspectorManager.Instance.SetInspected(null);
         }
+        InspectorManager.Instance.SetInspected(null);
         Instance.OnUnSelected.Invoke();
         Instance.selected.Clear();
+    }
+
+    public static void UnselectAndDestroyCurrents()
+    {
+        foreach(Interactable interactable in Instance.selected)
+        {            
+            interactable.StopSelect(null);
+            Destroy(interactable.gameObject);
+        }
+
+        InspectorManager.Instance.SetInspected(null);
+        Instance.OnUnSelected.Invoke();
+
+        Instance.selected.Clear();      
     }
 
     public static List<Interactable> GetSelected()
@@ -70,7 +99,10 @@ public class SelectionManager : MonoBehaviour
     }
 
     public static void ReplaceAllSelected(List<Interactable> newSelectedList)
-    {
-        Instance.selected = newSelectedList;
+    {        
+        foreach(Interactable interactable in newSelectedList)
+        {
+            AddSelectable(interactable, null);
+        }
     }
 }

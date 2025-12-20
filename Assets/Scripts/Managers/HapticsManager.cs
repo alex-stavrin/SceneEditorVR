@@ -30,7 +30,6 @@ public class HapticsManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(this);
     }
 
     void OnEnable()

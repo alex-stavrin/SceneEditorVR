@@ -25,7 +25,6 @@ public class SoundsManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     private static void PlayAudioSource(AudioSource audioSource, Vector3 position)

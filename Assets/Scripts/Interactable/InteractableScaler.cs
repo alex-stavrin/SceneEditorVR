@@ -1,34 +1,44 @@
+using System.Collections.Generic;
 using UnityEngine;
+
+public class ScaleableInfo
+{
+    public Scaleable scaleable;
+    public Vector3 startingScale;
+}
 
 public class InteractableScaler : InteractableGizmo
 {
-    private Scaleable scaleable;
+    private List<ScaleableInfo> scaleableInfos = new List<ScaleableInfo>();
 
     [SerializeField]
     Vector3 direction;
 
-    Vector3 interactableScaleableStartingScale;
-
     Vector3 interactorStartingPosition;
 
-
-    public void SetScaleable(Scaleable _scaleable)
+    public void AddScaleable(Scaleable newScaleable)
     {
-        scaleable = _scaleable;
+        ScaleableInfo newScaleableInfo = new ScaleableInfo();
+        newScaleableInfo.scaleable = newScaleable;
+        scaleableInfos.Add(newScaleableInfo);
+    }
+
+    public void ClearScaleables()
+    {
+        scaleableInfos.Clear();
     }
 
     public void Update()
     {
         if (state == InteractableState.IE_INTERACTING)
         {
-            if (scaleable)
-            {
-
+            foreach(ScaleableInfo scaleableInfo in scaleableInfos)
+            {                
                 Vector3 interactorOffset = interactor.transform.position - interactorStartingPosition;
 
                 Vector3 projectedOffset = Vector3.Dot(interactorOffset, direction) * direction;
 
-                scaleable.ScaleTo(interactableScaleableStartingScale + projectedOffset * PlayerPreferencesManager.Instance.axisMultiplier);
+                scaleableInfo.scaleable.ScaleTo(scaleableInfo.startingScale + projectedOffset * PlayerPreferencesManager.Instance.axisMultiplier);
             }
         }
     }
@@ -37,7 +47,11 @@ public class InteractableScaler : InteractableGizmo
     {
         base.OnInteractStart(controllerInteractor);
 
-        interactableScaleableStartingScale = scaleable.transform.localScale;
+        foreach(ScaleableInfo scaleableInfo in scaleableInfos)
+        {
+            scaleableInfo.startingScale = scaleableInfo.scaleable.transform.localScale;
+        }
+
         interactorStartingPosition = interactor.transform.position;
     }
 }

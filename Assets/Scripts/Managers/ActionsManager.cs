@@ -31,17 +31,12 @@ public class ActionsManager : MonoBehaviour
                 }
             }          
             SelectionManager.UnselectCurrents();
-
             SelectionManager.ReplaceAllSelected(tempList);
         }
     }
 
     public void DeleteSelected()
     {
-        foreach(Interactable interactable in SelectionManager.GetSelected())
-        {
-            interactable.StopSelect(null);
-            Destroy(interactable.gameObject);
-        }
+        SelectionManager.UnselectAndDestroyCurrents();
     }
 }

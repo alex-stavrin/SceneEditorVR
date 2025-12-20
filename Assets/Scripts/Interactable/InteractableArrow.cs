@@ -1,33 +1,47 @@
+using System.Collections.Generic;
 using UnityEngine;
+
+public class MoveableInfo
+{
+    public Moveable moveable;
+    public Vector3 startingPosition;
+}
 
 public class InteractableArrow : InteractableGizmo
 {
-    Moveable moveable = null;
-
     [SerializeField]
     Vector3 direction;
 
-    Vector3 interactableMoveableStartingPosition;
-
     Vector3 interactorStartingPosition;
 
-    public void SetMoveable(Moveable _moveable)
+    List<MoveableInfo> moveableInfos = new List<MoveableInfo>();
+
+    public void AddMoveable(Moveable newMoveable)
     {
-        moveable = _moveable;
+        MoveableInfo newMoveableI = new MoveableInfo();
+        newMoveableI.moveable = newMoveable;
+        newMoveableI.startingPosition = newMoveable.transform.position;
+        moveableInfos.Add(newMoveableI);
+    }
+
+    public void ClearMoveables()
+    {
+        moveableInfos.Clear();
     }
 
     public void  Update()
     {
         if (state == InteractableState.IE_INTERACTING)
         {
-            if (moveable)
+            foreach(MoveableInfo moveableInfo in moveableInfos)
             {
-
-                Vector3 interactorOffset = interactor.transform.position - interactorStartingPosition;
-
-                Vector3 projectedOffset = Vector3.Dot(interactorOffset, direction) * direction;
-
-                moveable.MoveTo(interactableMoveableStartingPosition + projectedOffset * PlayerPreferencesManager.Instance.axisMultiplier);
+                Moveable currentMoveable = moveableInfo.moveable;
+                if(currentMoveable)
+                {
+                    Vector3 interactorOffset = interactor.transform.position - interactorStartingPosition;
+                    Vector3 projectedOffset = Vector3.Dot(interactorOffset, direction) * direction;
+                    currentMoveable.MoveTo(moveableInfo.startingPosition + projectedOffset * PlayerPreferencesManager.Instance.axisMultiplier);
+                }
             }
         }
     }
@@ -36,7 +50,11 @@ public class InteractableArrow : InteractableGizmo
     {
         base.OnInteractStart(controllerInteractor);
 
-        interactableMoveableStartingPosition = moveable.transform.position;
+        foreach(MoveableInfo mi in moveableInfos)
+        {
+            mi.startingPosition = mi.moveable.transform.position;
+        }
+        
         interactorStartingPosition = interactor.transform.position;
     }
 }
