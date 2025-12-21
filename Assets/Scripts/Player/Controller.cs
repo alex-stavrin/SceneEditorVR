@@ -97,7 +97,7 @@ public class Controller : MonoBehaviour
 
         snapTurnTimer = 0;
 
-        SetRayGradientLastColor(ColorManager.rayColor);
+        SetRayGradientLastColor(ColorManager.GetRayColor());
     }
 
     public void Update()
@@ -358,21 +358,25 @@ public class Controller : MonoBehaviour
     {
         isTryingToMultiSelect = true;
 
-        SetRayGradientLastColor(ColorManager.rayMultiSelectColor);
+        SetRayGradientLastColor(ColorManager.GetRayMultiSelectColor());
     }
 
     void SouthButtonReleased(InputAction.CallbackContext context)
     {
         isTryingToMultiSelect = false;
 
-        SetRayGradientLastColor(ColorManager.rayColor);
+        SetRayGradientLastColor(ColorManager.GetRayColor());
     }
 
     void SetRayGradientLastColor(Color newColor)
     {
         if (rayLineRenderer)
         {
-            rayLineRenderer.colorGradient.colorKeys[1].color = newColor;
+            Gradient gradient = rayLineRenderer.colorGradient;
+            GradientColorKey[] colorKeys = gradient.colorKeys;
+            colorKeys[0].color = newColor;
+            gradient.colorKeys = colorKeys;
+            rayLineRenderer.colorGradient = gradient;
         }
     }
 

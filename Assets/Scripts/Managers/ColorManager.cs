@@ -7,16 +7,16 @@ public class ColorManager : MonoBehaviour
     [Header("Arrows")]
 
     [SerializeField]
-    public static Color arrowsHoverColor = Color.yellow;
+    public Color arrowsHoverColor = Color.yellow;
 
     [SerializeField]
-    public static Color inactiveColor = Color.grey;
+    public Color inactiveColor = Color.grey;
 
     [SerializeField]
-    public static Color rayColor = Color.cyan;
+    public Color rayColor = Color.cyan;
 
     [SerializeField]
-    public static Color rayMultiSelectColor = Color.red;
+    public Color rayMultiSelectColor = Color.red;
 
     void Awake()
     {
@@ -28,4 +28,9 @@ public class ColorManager : MonoBehaviour
 
         Instance = this;
     }
+
+    public static Color GetArrowsHoverColor() {return Instance.arrowsHoverColor;}
+    public static Color GetInactiveColor() {return Instance.inactiveColor;}
+    public static Color GetRayColor() {return Instance.rayColor;}
+    public static Color GetRayMultiSelectColor() {return Instance.rayMultiSelectColor;}
 }
