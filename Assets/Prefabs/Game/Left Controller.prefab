@@ -220,6 +220,7 @@ MonoBehaviour:
   snapTurnCooldown: 0.5
   bRaycastHit: 0
   moveableMoveSpeed: 5
+  pointingAtUI: 0
 --- !u!1 &5317627964935155599
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +324,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 0}
       key1: {r: 0, g: 0.75449467, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 1}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -332,7 +333,7 @@ LineRenderer:
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 65535
+      ctime1: 32768
       ctime2: 0
       ctime3: 0
       ctime4: 0

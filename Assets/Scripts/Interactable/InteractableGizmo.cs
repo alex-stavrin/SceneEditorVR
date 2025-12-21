@@ -23,7 +23,7 @@ public class InteractableGizmo : Interactable
     {
         base.OnInactiveStart(controllerInteractor);
 
-        arrowMaterial.SetColor("_Color", ColorManager.Instance.inactiveColor);
+        arrowMaterial.SetColor("_Color", ColorManager.inactiveColor);
     }
 
     public override void OnInactiveStop(Controller controllerInteractor)
@@ -41,7 +41,7 @@ public class InteractableGizmo : Interactable
 
         if (arrowMaterial)
         {
-            arrowMaterial.SetColor("_Color", ColorManager.Instance.arrowsHoverColor);
+            arrowMaterial.SetColor("_Color", ColorManager.arrowsHoverColor);
         }
     }
 
@@ -63,7 +63,7 @@ public class InteractableGizmo : Interactable
 
         if (arrowMaterial)
         {
-            arrowMaterial.SetColor("_Color", ColorManager.Instance.arrowsHoverColor);
+            arrowMaterial.SetColor("_Color", ColorManager.arrowsHoverColor);
         }
     }
 

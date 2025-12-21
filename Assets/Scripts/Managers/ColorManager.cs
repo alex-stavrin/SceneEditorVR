@@ -7,10 +7,16 @@ public class ColorManager : MonoBehaviour
     [Header("Arrows")]
 
     [SerializeField]
-    public Color arrowsHoverColor = Color.yellow;
+    public static Color arrowsHoverColor = Color.yellow;
 
     [SerializeField]
-    public Color inactiveColor = Color.grey;
+    public static Color inactiveColor = Color.grey;
+
+    [SerializeField]
+    public static Color rayColor = Color.cyan;
+
+    [SerializeField]
+    public static Color rayMultiSelectColor = Color.red;
 
     void Awake()
     {

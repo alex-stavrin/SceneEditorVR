@@ -86,7 +86,8 @@ public class GizmosManager : MonoBehaviour
             // scale gizmo size relative to player distance from gizmo
             Vector3 playerPosition = PlayerRig.Instance.gameObject.transform.position;
             float distance = Vector3.Distance(playerPosition, gizmos.transform.position);
-            gizmos.transform.localScale = new Vector3(distance * gizmosSizeMultiplier,distance * gizmosSizeMultiplier,distance * gizmosSizeMultiplier);
+            gizmos.transform.localScale = new Vector3(distance * gizmosSizeMultiplier,distance * gizmosSizeMultiplier,
+                distance * gizmosSizeMultiplier);
         }
     }
 
@@ -174,7 +175,7 @@ public class GizmosManager : MonoBehaviour
         {
             foreach (InteractableRotator interactableRotator in interactableRotators)
             {
-                interactableRotator.SetRotateable(rotateable);
+                interactableRotator.AddRotateable(rotateable);
             }
         }
         
@@ -208,7 +209,17 @@ public class GizmosManager : MonoBehaviour
                 interactableScaler.ClearScaleables();
                 interactableScaler.AddScaleable(scaleable);
             }
-        }        
+        }
+
+        Rotateable rotateable = newInteractable.transform.root.GetComponent<Rotateable>();
+        if (rotateable)
+        {
+            foreach (InteractableRotator interactableRotator in interactableRotators)
+            {
+                interactableRotator.ClearRotateables();
+                interactableRotator.AddRotateable(rotateable);
+            }
+        }       
     }
 
     void OnUnSelected()
@@ -224,7 +235,7 @@ public class GizmosManager : MonoBehaviour
             foreach(InteractableRotator interactableRotator in interactableRotators)
             {
                 interactableRotator.StopInteract(null);
-                
+                interactableRotator.ClearRotateables();
             }
 
             

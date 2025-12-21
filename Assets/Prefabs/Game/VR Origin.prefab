@@ -382,7 +382,6 @@ MonoBehaviour:
   rightController: {fileID: 5288957902577284575}
   canAirGrab: 1
   grabEndForce: 6
-  canTeleport: 0
 --- !u!1 &9180987316195927790
 GameObject:
   m_ObjectHideFlags: 0

@@ -96,6 +96,8 @@ public class Controller : MonoBehaviour
         southButtonAction.action.canceled += SouthButtonReleased;
 
         snapTurnTimer = 0;
+
+        SetRayGradientLastColor(ColorManager.rayColor);
     }
 
     public void Update()
@@ -355,11 +357,23 @@ public class Controller : MonoBehaviour
     void SouthButtonPressed(InputAction.CallbackContext context)
     {
         isTryingToMultiSelect = true;
+
+        SetRayGradientLastColor(ColorManager.rayMultiSelectColor);
     }
 
     void SouthButtonReleased(InputAction.CallbackContext context)
     {
         isTryingToMultiSelect = false;
+
+        SetRayGradientLastColor(ColorManager.rayColor);
+    }
+
+    void SetRayGradientLastColor(Color newColor)
+    {
+        if (rayLineRenderer)
+        {
+            rayLineRenderer.colorGradient.colorKeys[1].color = newColor;
+        }
     }
 
     public Transform GetInteractPoint()
