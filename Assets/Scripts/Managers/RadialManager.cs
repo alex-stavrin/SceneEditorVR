@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,11 +18,9 @@ public class RadialManager : MonoBehaviour
     UnityEvent[] functions;
 
     private Controller currentController;
-    private Material[] radialMaterials = new Material[3];
+    private List<Material> radialMaterials = new List<Material>();
 
     int currentPick = -1;
-
-
 
     void Start()
     {
@@ -32,7 +31,7 @@ public class RadialManager : MonoBehaviour
             MeshRenderer meshRenderer = radials[i].GetComponent<MeshRenderer>();
             if (meshRenderer)
             {
-                radialMaterials[i] = meshRenderer.material;
+                radialMaterials.Add(meshRenderer.material);
             }
         }
     }
@@ -60,7 +59,7 @@ public class RadialManager : MonoBehaviour
 
     void PickRadial(int i)
     {
-        for (int j = 0; j < radialMaterials.Length; j++)
+        for (int j = 0; j < radialMaterials.Count; j++)
         {
             if (j == i)
             {

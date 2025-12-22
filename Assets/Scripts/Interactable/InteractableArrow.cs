@@ -57,4 +57,22 @@ public class InteractableArrow : InteractableGizmo
         
         interactorStartingPosition = interactor.transform.position;
     }
+
+    public override void OnInteractStop(Controller controllerInteractor)
+    {
+        base.OnInteractStop(controllerInteractor);
+
+        List<GameObject> movedObjects = new List<GameObject>();
+        List<Vector3> oldPositions = new List<Vector3>();
+        List<Vector3> newPositions = new List<Vector3>();
+        foreach(MoveableInfo mi in moveableInfos)
+        {
+            movedObjects.Add(mi.moveable.gameObject);
+            oldPositions.Add(mi.startingPosition);
+            newPositions.Add(mi.moveable.transform.position);
+        }
+
+        MoveAction moveAction = new MoveAction(movedObjects, oldPositions, newPositions);
+        ActionsManager.AddAction(moveAction);
+    }
 }

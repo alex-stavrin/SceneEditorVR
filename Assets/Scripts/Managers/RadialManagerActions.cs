@@ -15,6 +15,16 @@ public class RadialManagerActions : RadialManager
         Instance = this;
     }
 
+    public void Undo()
+    {
+        ActionsManager.Undo();
+    }
+
+    public void Redo()
+    {
+        ActionsManager.Redo();     
+    }
+
     public void DuplicateSelected()
     {
         ActionsManager.Instance.DuplicateSelected();
