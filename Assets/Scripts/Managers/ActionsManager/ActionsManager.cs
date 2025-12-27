@@ -21,26 +21,51 @@ public class ActionsManager : MonoBehaviour
 
     public void DuplicateSelected()
     {
-        if(SelectionManager.GetSelected().Count > 0)
+        if(SelectionManager.GetSelectedInteractables().Count > 0)
         {
-            List<Interactable> tempList = new List<Interactable>();
-            foreach(Interactable interactable in SelectionManager.GetSelected())
+            List<GameObject> gameObjectPrefabs = new List<GameObject>();
+            List<Pose> poses = new List<Pose>();
+            for(int i = 0; i < SelectionManager.GetSelectedGameobjects().Count; i++)
             {
-                GameObject newObject = Instantiate(interactable.gameObject);
-                if(newObject)
-                {
-                    Interactable newInteractable = newObject.GetComponent<Interactable>();
-                    tempList.Add(newInteractable);
-                }
+                gameObjectPrefabs.Add(SelectionManager.GetSelectedGameobjects()[i]);
+                Transform newTransform = SelectionManager.GetSelectedGameobjects()[i].transform;
+                poses.Add(new Pose(newTransform.position, newTransform.rotation));
             }          
+
             SelectionManager.UnselectCurrents();
-            SelectionManager.ReplaceAllSelected(tempList);
+
+            List<GameObject> spawnedObjcets = SpawnGameObjects(gameObjectPrefabs, poses);
+
+            List<Interactable> newInteractables = new List<Interactable>();
+            foreach(GameObject currentGameObject in spawnedObjcets)
+            {
+                Interactable interactable = currentGameObject.GetComponent<Interactable>();
+                if(interactable)
+                {
+                    newInteractables.Add(interactable);
+                }
+            }
+
+            SelectionManager.ReplaceAllSelected(newInteractables);
         }
     }
 
     public void DeleteSelected()
     {
-        SelectionManager.UnselectAndDestroyCurrents();
+        DeleteAction deleteAction = new DeleteAction(SelectionManager.GetSelectedGameobjects());
+
+        // this has to be after making the action, because we are going to lose the selected gameobjects
+        SelectionManager.UnselectCurrents();
+
+        ExecuteAction(deleteAction);
+    }
+
+    public static List<GameObject> SpawnGameObjects(List<GameObject> gameObjectPrefabs, List<Pose> poses)
+    {
+        SpawnAction spawnAction = new SpawnAction(gameObjectPrefabs, poses);
+        ExecuteAction(spawnAction);
+
+        return spawnAction.GetSpawned();
     }
 
     public static void ExecuteAction(UserAction userAction)
@@ -57,15 +82,25 @@ public class ActionsManager : MonoBehaviour
 
     public static void Undo()
     {
+        if(Instance.undoStack.Count <= 0) return;
+
         UserAction poppedAction = Instance.undoStack.Pop();
-        poppedAction.Undo();
-        Instance.redoStack.Push(poppedAction);
+        if(poppedAction != null)
+        {            
+            poppedAction.Undo();
+            Instance.redoStack.Push(poppedAction);
+        }
     }
 
     public static void Redo()
     {
+        if(Instance.redoStack.Count <= 0) return;
+
         UserAction poppedAction = Instance.redoStack.Pop();
-        poppedAction.Do();
-        Instance.undoStack.Push(poppedAction);
+        if (poppedAction != null)
+        {            
+            poppedAction.Do();
+            Instance.undoStack.Push(poppedAction);
+        }
     }
 }

@@ -37,7 +37,7 @@ public class SelectionManager : MonoBehaviour
             selectedList = "Empty";
         }
     
-        VirtualRealityConsole.PrintMessage(selectedList, PrintTypeVRC.Clear);
+        //VirtualRealityConsole.PrintMessage(selectedList, PrintTypeVRC.Clear);
     }
 
     public static void AddSelectable(Interactable newSelectable, Controller instigator)
@@ -63,11 +63,6 @@ public class SelectionManager : MonoBehaviour
         Instance?.OnSelectedAdded?.Invoke(newSelectable, Instance?.selected);
     }
 
-    public List<Interactable> GetCurrentSelectables()
-    {
-        return selected;
-    }
-
     public static void UnselectCurrents()
     {
         foreach(Interactable interactable in Instance.selected)
@@ -79,23 +74,19 @@ public class SelectionManager : MonoBehaviour
         Instance.selected.Clear();
     }
 
-    public static void UnselectAndDestroyCurrents()
-    {
-        foreach(Interactable interactable in Instance.selected)
-        {            
-            interactable.StopSelect(null);
-            Destroy(interactable.gameObject);
-        }
-
-        InspectorManager.Instance.SetInspected(null);
-        Instance.OnUnSelected.Invoke();
-
-        Instance.selected.Clear();      
-    }
-
-    public static List<Interactable> GetSelected()
+    public static List<Interactable> GetSelectedInteractables()
     {
         return Instance.selected;
+    }
+
+    public static List<GameObject> GetSelectedGameobjects()
+    {
+        List<GameObject> temp = new List<GameObject>();
+        foreach(Interactable interactable in Instance.selected)
+        {
+            temp.Add(interactable.gameObject);
+        }
+        return temp;
     }
 
     public static void ReplaceAllSelected(List<Interactable> newSelectedList)

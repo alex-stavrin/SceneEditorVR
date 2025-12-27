@@ -73,14 +73,14 @@ public class GizmosManager : MonoBehaviour
 
     void Update()
     {
-        if(SelectionManager.GetSelected().Count > 0)
+        if(SelectionManager.GetSelectedInteractables().Count > 0)
         {
             Vector3 vectorsSum = new Vector3(0,0,0);
-            foreach(Interactable interactable in SelectionManager.GetSelected())
+            foreach(Interactable interactable in SelectionManager.GetSelectedInteractables())
             {
                 vectorsSum += interactable.transform.position;
             }
-            Vector3 gizmoPosition = vectorsSum / SelectionManager.GetSelected().Count;
+            Vector3 gizmoPosition = vectorsSum / SelectionManager.GetSelectedInteractables().Count;
             gizmos.transform.position = gizmoPosition;
 
             // scale gizmo size relative to player distance from gizmo

@@ -1,30 +1,16 @@
 using UnityEngine;
 
-public class InteractableMoveable : Interactable
+public class InteractableMoveable : InteractableMove
 {
+    Moveable moveable;
 
-    private float currentInteractDistance;
-    private Vector3 interactionOffset;
-
-    void Update()
+    public override void Start()
     {
-        if (state == InteractableState.IE_INTERACTING)
-        {
-            transform.position = interactionOffset +
-                interactor.GetInteractPoint().position + interactor.GetInteractPoint().forward * currentInteractDistance;
-        }
+        moveable = GetComponent<Moveable>();
     }
 
-    public override void OnInteractStart(Controller controllerInteractor)
+    public override void UpdatePosition()
     {
-        base.OnInteractStart(controllerInteractor);
-
-        currentInteractDistance = Vector3.Distance(transform.position, interactor.GetInteractPoint().position);
-        interactionOffset = transform.position - interactor.rayHitResult.point;
-    }
-
-    public void AddDistanceOffset(float offset)
-    {
-        currentInteractDistance = Mathf.Clamp(currentInteractDistance + offset, 0, Mathf.Infinity);
+        moveable.MoveTo(newPosition);
     }
 }
