@@ -141,5 +141,18 @@ public class InteractableRotator : InteractableGizmo
         base.OnInteractStop(controllerInteractor);
 
         RotationVisualizerManager.Instance.DismissVisualizers();
+
+        List<GameObject> gameObjects = new List<GameObject>();
+        List<Quaternion> oldRotations = new List<Quaternion>();
+        List<Quaternion> newRotations = new List<Quaternion>();
+        foreach(RotateableInfo rotateableInfo in rotateableInfos)
+        {
+            gameObjects.Add(rotateableInfo.rotateable.gameObject);
+            oldRotations.Add(rotateableInfo.startingRotation);
+            newRotations.Add(rotateableInfo.rotateable.transform.rotation);
+        }
+
+        RotateAction rotateAction = new RotateAction(gameObjects, oldRotations, newRotations);
+        ActionsManager.AddAction(rotateAction);
     }
 }

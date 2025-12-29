@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ScaleableInfo
@@ -53,5 +54,23 @@ public class InteractableScaler : InteractableGizmo
         }
 
         interactorStartingPosition = interactor.transform.position;
+    }
+
+    public override void OnInteractStop(Controller controllerInteractor)
+    {
+        base.OnInteractStop(controllerInteractor);
+
+        List<GameObject> gameObjects = new List<GameObject>();
+        List<Vector3> newScales = new List<Vector3>();
+        List<Vector3> oldScales = new List<Vector3>();
+        foreach(ScaleableInfo scaleableInfo in scaleableInfos)
+        {
+            gameObjects.Add(scaleableInfo.scaleable.gameObject);
+            newScales.Add(scaleableInfo.scaleable.transform.localScale);
+            oldScales.Add(scaleableInfo.startingScale);
+        }
+
+        ScaleAction scaleAction = new ScaleAction(gameObjects, oldScales, newScales);
+        ActionsManager.AddAction(scaleAction);
     }
 }

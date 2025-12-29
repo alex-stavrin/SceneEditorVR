@@ -224,6 +224,7 @@ public class Controller : MonoBehaviour
     public void StartInteract(Interactable hoverable)
     {
         hoverable.StartInteract(this);
+        isInteracting = true;
         currentInteractable = hoverable;
         currentHoverable = null;
     }
@@ -233,7 +234,7 @@ public class Controller : MonoBehaviour
         if (currentInteractable)
         {
             currentInteractable.StopInteract(this);
-
+            isInteracting = false;
             currentInteractable = null;
         }
     }

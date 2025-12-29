@@ -14,7 +14,6 @@ public class InputModuleVR : PointerInputModule
 
     Dictionary<int, PointerEventDataVR> cache = new();
 
-
     protected override void Start()
     {
         base.Start();
@@ -63,7 +62,7 @@ public class InputModuleVR : PointerInputModule
         pointerData.delta = pointerData.position - lastPointerPosition;
 
         float axisY = controller.GetThumbstickValue().y;
-        pointerData.scrollDelta = new Vector2(0f, axisY * scrollSpeed * Time.unscaledDeltaTime);
+        pointerData.scrollDelta = new Vector2(0f, axisY * scrollSpeed);
 
         m_RaycastResultCache.Clear();
         eventSystem.RaycastAll(pointerData, m_RaycastResultCache);
