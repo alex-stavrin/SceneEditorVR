@@ -25,60 +25,46 @@ public class SelectionManager : MonoBehaviour
         Instance = this;
     }
 
-    void Update()
-    {
-        string selectedList = "";
-        foreach(Interactable interactable in selected)
-        {
-            selectedList += interactable.name + "\n";
-        }
-        if(selectedList.Length == 0)
-        {
-            selectedList = "Empty";
-        }
-    
-        //VirtualRealityConsole.PrintMessage(selectedList, PrintTypeVRC.Clear);
-    }
-
     public static void AddSelectable(Interactable newSelectable, Controller instigator)
     {
         newSelectable.StartSelect(instigator);
-
         Instance?.selected.Add(newSelectable);
-
         Instance?.OnSelectedAdded.Invoke(newSelectable, Instance?.selected);
     }
 
-    public static void ReplaceSelectablesWithOne(Interactable newSelectable, Controller instigator)
+    public static void ReplaceSelectableWithOne(Interactable newSelectable, Controller instigator)
     {
-        UnselectCurrents();   
-
-        newSelectable.StartSelect(instigator);
-
-        Instance?.selected.Add(newSelectable);
-
-        InspectorManager.Instance.SetInspected(newSelectable.gameObject);
-
+        UnselectCurrents();
+        AddSelectable(newSelectable, instigator);
         Instance?.OnReplaced?.Invoke(newSelectable);
-        Instance?.OnSelectedAdded?.Invoke(newSelectable, Instance?.selected);
     }
 
     public static void UnselectCurrents()
     {
-        foreach(Interactable interactable in Instance.selected)
+        foreach(Interactable interactable in Instance?.selected)
         {            
             interactable.StopSelect(null);
         }
-        InspectorManager.Instance.SetInspected(null);
-        Instance.OnUnSelected.Invoke();
-        Instance.selected.Clear();
+        
+        Instance?.OnUnSelected.Invoke();
+        Instance?.selected.Clear();
     }
+
+    public static void UnselectInteractable(Interactable interactableToUnselect)
+    {
+        interactableToUnselect.StopSelect(null);
+        Instance?.selected.Remove(interactableToUnselect);
+        Instance?.OnUnSelected.Invoke();
+    }
+
 
     public static List<Interactable> GetSelectedInteractables()
     {
         return Instance.selected;
     }
 
+    // Because we have a List of Interactables this returns a List of the Gameobject owners
+    // of these interactable components
     public static List<GameObject> GetSelectedGameobjects()
     {
         List<GameObject> temp = new List<GameObject>();
@@ -89,8 +75,11 @@ public class SelectionManager : MonoBehaviour
         return temp;
     }
 
+    // Replace the entire Interactables List with another one
+    // Events are called because we do AddSelectable()
     public static void ReplaceAllSelected(List<Interactable> newSelectedList)
-    {        
+    {
+        UnselectCurrents();
         foreach(Interactable interactable in newSelectedList)
         {
             AddSelectable(interactable, null);

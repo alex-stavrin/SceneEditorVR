@@ -57,18 +57,38 @@ public class ActionsManager : MonoBehaviour
         // this has to be after making the action, because we are going to lose the selected gameobjects
         SelectionManager.UnselectCurrents();
 
-        ExecuteAction(deleteAction);
+        ExecuteAndAddAction(deleteAction);
     }
 
     public static List<GameObject> SpawnGameObjects(List<GameObject> gameObjectPrefabs, List<Pose> poses)
     {
         SpawnAction spawnAction = new SpawnAction(gameObjectPrefabs, poses);
-        ExecuteAction(spawnAction);
+        ExecuteAndAddAction(spawnAction);
 
         return spawnAction.GetSpawned();
     }
 
-    public static void ExecuteAction(UserAction userAction)
+    public static void AddSelectableAction(Interactable newSelectable, Controller instigator)
+    {
+        SelectionAction selectionAction = new SelectionAction(newSelectable);
+        ExecuteAndAddAction(selectionAction);       
+    }
+
+    public static void ReplaceSelectablesWithOneAction(Interactable newSelectable, Controller instigator)
+    {
+        ReplaceAction replaceAction = new ReplaceAction(SelectionManager.GetSelectedInteractables(), newSelectable);
+        ExecuteAndAddAction(replaceAction);
+    }
+
+    public static void UnselectCurrentsAction()
+    {
+        UnselectAction unselectAction = new UnselectAction(SelectionManager.GetSelectedInteractables());
+        ExecuteAndAddAction(unselectAction);
+    }
+
+    // === Internal functions of ActionsManager === //
+
+    public static void ExecuteAndAddAction(UserAction userAction)
     {
         userAction.Do();
         AddAction(userAction);
@@ -103,4 +123,6 @@ public class ActionsManager : MonoBehaviour
             Instance.undoStack.Push(poppedAction);
         }
     }
+
+
 }

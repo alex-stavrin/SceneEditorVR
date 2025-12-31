@@ -206,18 +206,18 @@ public class Controller : MonoBehaviour
                 {
                     if(isTryingToMultiSelect)
                     {
-                        SelectionManager.AddSelectable(currentHoverable, this);
+                        ActionsManager.AddSelectableAction(currentHoverable, this);
                     }
                     else
                     {
-                        SelectionManager.ReplaceSelectablesWithOne(currentHoverable, this);
+                        ActionsManager.ReplaceSelectablesWithOneAction(currentHoverable, this);
                     }
                 }
             }
         }
         else
         {
-            SelectionManager.UnselectCurrents();
+            ActionsManager.UnselectCurrentsAction();
         }
     }
 

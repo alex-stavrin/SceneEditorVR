@@ -18,7 +18,7 @@ public class InteractableMoveableDraggable : InteractableMoveable
         }
         
         // this must after we pass the events
-        SelectionManager.ReplaceSelectablesWithOne(interactable, controllerInteractor);
+        SelectionManager.ReplaceSelectableWithOne(interactable, controllerInteractor);
 
         Destroy(this);
     }
