@@ -9,8 +9,6 @@ public class MoveableInfo
 
 public class InteractableArrow : InteractableGizmo
 {
-    [SerializeField]
-    Vector3 direction;
 
     Vector3 interactorStartingPosition;
 
@@ -33,13 +31,18 @@ public class InteractableArrow : InteractableGizmo
     {
         if (state == InteractableState.IE_INTERACTING)
         {
+            Vector3 interactorOffset = interactor.transform.position - interactorStartingPosition;
+            Vector3 direction = GetWorldVectorBasedOnAxis();
+            if(moveableInfos.Count == 1)
+            {
+                direction = GetLocalVectorBasedOnAxis(moveableInfos[0].moveable.transform);
+            }
+            Vector3 projectedOffset = Vector3.Dot(interactorOffset, direction) * direction;
             foreach(MoveableInfo moveableInfo in moveableInfos)
             {
                 Moveable currentMoveable = moveableInfo.moveable;
                 if(currentMoveable)
-                {
-                    Vector3 interactorOffset = interactor.transform.position - interactorStartingPosition;
-                    Vector3 projectedOffset = Vector3.Dot(interactorOffset, direction) * direction;
+                {                    
                     currentMoveable.MoveTo(moveableInfo.startingPosition + projectedOffset * PlayerPreferencesManager.Instance.axisMultiplier);
                 }
             }

@@ -1800,7 +1800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactImmediately: 1
-  targetAxis: 1
+  targetAxis: 0
 --- !u!64 &705761252
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2051,6 +2051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   interactImmediately: 1
   targetAxis: 0
+  direction: {x: 1, y: 0, z: 0}
 --- !u!64 &788730339
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2343,7 +2344,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableScaler
   interactImmediately: 1
-  targetAxis: 3
+  targetAxis: 0
+  direction: {x: 1, y: 1, z: 1}
 --- !u!1001 &877720346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2831,6 +2833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   interactImmediately: 1
   targetAxis: 0
+  rotatingVector: {x: 1, y: 0, z: 0}
 --- !u!1 &937875499
 GameObject:
   m_ObjectHideFlags: 0
@@ -6008,7 +6011,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   interactImmediately: 1
-  targetAxis: 1
+  targetAxis: 0
+  rotatingVector: {x: 0, y: 1, z: 0}
 --- !u!1 &1243791355
 GameObject:
   m_ObjectHideFlags: 0
@@ -6970,7 +6974,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   interactImmediately: 1
-  targetAxis: 2
+  targetAxis: 0
+  rotatingVector: {x: 0, y: 0, z: 1}
 --- !u!114 &1534073232 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5055809054122239416, guid: f6cfdc02c4decdd44a5d6984803a353b, type: 3}
@@ -7076,7 +7081,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   interactImmediately: 1
-  targetAxis: 1
+  targetAxis: 0
+  direction: {x: 0, y: 1, z: 0}
 --- !u!64 &1546146836
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7193,7 +7199,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   interactImmediately: 1
-  targetAxis: 2
+  targetAxis: 0
+  direction: {x: 0, y: 0, z: 1}
 --- !u!64 &1579288437
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7366,7 +7373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactImmediately: 1
-  targetAxis: 2
+  targetAxis: 0
 --- !u!64 &1828150953
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -24,6 +24,8 @@ public class GizmosManager : MonoBehaviour
 
     InteractableScaler[] interactableScalers;
 
+    private Vector3 center;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -80,14 +82,21 @@ public class GizmosManager : MonoBehaviour
             {
                 vectorsSum += interactable.transform.position;
             }
-            Vector3 gizmoPosition = vectorsSum / SelectionManager.GetSelectedInteractables().Count;
-            gizmos.transform.position = gizmoPosition;
+            center = vectorsSum / SelectionManager.GetSelectedInteractables().Count;
+            gizmos.transform.position = center;
 
             // scale gizmo size relative to player distance from gizmo
             Vector3 playerPosition = PlayerRig.Instance.gameObject.transform.position;
             float distance = Vector3.Distance(playerPosition, gizmos.transform.position);
             gizmos.transform.localScale = new Vector3(distance * gizmosSizeMultiplier,distance * gizmosSizeMultiplier,
                 distance * gizmosSizeMultiplier);
+
+
+            // Handle Rotation
+            if(SelectionManager.GetSelectedInteractables().Count == 1)
+            {
+                gizmos.transform.rotation = SelectionManager.GetSelectedGameobjects()[0].transform.rotation;
+            }
         }
     }
 
@@ -301,5 +310,10 @@ public class GizmosManager : MonoBehaviour
                 interactableScaler.gameObject.SetActive(bActive);
             }
         }       
+    }
+
+    public static Vector3 GetCenter()
+    {
+        return Instance.center;
     }
 }

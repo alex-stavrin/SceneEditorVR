@@ -4,20 +4,18 @@ using UnityEngine;
 public class RotateableInfo
 {
     public Rotateable rotateable;
-    public Vector3 startingScale;
-
     public Quaternion startingRotation;
-
     public float startingAngle;
+    public Vector3 startingPosition;
 }
 
 public class InteractableRotator : InteractableGizmo
 {
     private List<RotateableInfo> rotateableInfos = new List<RotateableInfo>();
-    [SerializeField]
-    Vector3 rotatingVector;
+
     Vector3 interactionStartingPosition;
     Vector3 rotateableReferenceVector;
+    Vector3 interactionCenter;
 
     public void AddRotateable(Rotateable newRotateable)
     {
@@ -35,17 +33,15 @@ public class InteractableRotator : InteractableGizmo
     {
         if(state == InteractableState.IE_INTERACTING)
         {
+            Vector3 interactorCurrentPosition = interactor.gameObject.transform.position;
+            Vector3 controllerDirection = (interactorCurrentPosition - interactionStartingPosition).normalized;
+            Vector3 rotatingVector = GetWorldVectorBasedOnAxis();
+            Vector3 projectedControllerDirection = Vector3.ProjectOnPlane(controllerDirection, rotatingVector);
+            float angle = Vector3.SignedAngle(rotateableReferenceVector, projectedControllerDirection, rotatingVector);
+            float visRadius = RotationVisualizerManager.Instance.visualizationRadius;
+
             foreach(RotateableInfo rotateableInfo in rotateableInfos)
             {                
-                Vector3 interactorCurrentPosition = interactor.gameObject.transform.position;
-
-                Vector3 controllerDirection = (interactorCurrentPosition - interactionStartingPosition).normalized;
-                Vector3 projectedControllerDirection = Vector3.ProjectOnPlane(controllerDirection, rotatingVector);
-
-                float angle = Vector3.SignedAngle(rotateableReferenceVector, projectedControllerDirection, rotatingVector);
-
-                float visRadius = RotationVisualizerManager.Instance.visualizationRadius;
-
                 if (rotatingVector == new Vector3(0, 1, 0)) // y axis
                 {
                     float circleX = Mathf.Sin(angle * Mathf.Deg2Rad);
@@ -54,8 +50,11 @@ public class InteractableRotator : InteractableGizmo
                     RotationVisualizerManager.Instance.SetTargetVisualizerLocation(interactionStartingPosition +
                         new Vector3(visRadius * circleX, 0, visRadius * circleZ));
 
-                    rotateableInfo.rotateable.SetRotationAroundAxis(new Vector3(0,1,0), rotateableInfo.startingRotation,
-                     angle - rotateableInfo.startingAngle);
+                    // rotateableInfo.rotateable.SetRotationAroundAxis(new Vector3(0,1,0), rotateableInfo.startingRotation,
+                    //  angle - rotateableInfo.startingAngle);
+
+                    rotateableInfo.rotateable.SetRotationAroundAxisAndPoint(interactionCenter,
+                        new Vector3(0,1,0), rotateableInfo.startingRotation, rotateableInfo.startingPosition, angle - rotateableInfo.startingAngle);                
                 }
                 else if (rotatingVector == new Vector3(1, 0, 0)) // x axis
                 {
@@ -87,9 +86,13 @@ public class InteractableRotator : InteractableGizmo
     {
         base.OnInteractStart(controllerInteractor);
 
+        Vector3 rotatingVector = GetWorldVectorBasedOnAxis();
+        interactionCenter = GizmosManager.GetCenter();
         foreach(RotateableInfo rotateableInfo in rotateableInfos)
         {
             rotateableInfo.startingRotation = rotateableInfo.rotateable.transform.rotation;
+            rotateableInfo.startingPosition = rotateableInfo.rotateable.transform.position;
+
 
             if (rotatingVector == new Vector3(0, 1, 0)) // y axis
             {

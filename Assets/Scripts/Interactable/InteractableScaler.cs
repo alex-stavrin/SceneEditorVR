@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ScaleableInfo
@@ -11,9 +10,6 @@ public class ScaleableInfo
 public class InteractableScaler : InteractableGizmo
 {
     private List<ScaleableInfo> scaleableInfos = new List<ScaleableInfo>();
-
-    [SerializeField]
-    Vector3 direction;
 
     Vector3 interactorStartingPosition;
 
@@ -33,13 +29,36 @@ public class InteractableScaler : InteractableGizmo
     {
         if (state == InteractableState.IE_INTERACTING)
         {
+            Vector3 interactorOffset = interactor.transform.position - interactorStartingPosition;
+            
+            Vector3 dragDirection = GetWorldVectorBasedOnAxis();
+            if(SelectionManager.GetSelectedGameobjects().Count == 1)
+            {
+               dragDirection = GetLocalVectorBasedOnAxis(SelectionManager.GetSelectedGameobjects()[0].transform);
+            }
+
+            float dragMagnitude = Vector3.Dot(interactorOffset, dragDirection) * PlayerPreferencesManager.Instance.axisMultiplier;
+            Vector3 localScaleAdjustment = Vector3.zero;
+
+            switch (targetAxis)
+            {
+                case Axis.X:
+                    localScaleAdjustment.x = dragMagnitude;
+                    break;
+                case Axis.Y:
+                    localScaleAdjustment.y = dragMagnitude;
+                    break;
+                case Axis.Z:
+                    localScaleAdjustment.z = dragMagnitude;
+                    break;
+                case Axis.All:
+                    localScaleAdjustment = Vector3.one * dragMagnitude;
+                    break;
+            }
+
             foreach(ScaleableInfo scaleableInfo in scaleableInfos)
             {                
-                Vector3 interactorOffset = interactor.transform.position - interactorStartingPosition;
-
-                Vector3 projectedOffset = Vector3.Dot(interactorOffset, direction) * direction;
-
-                scaleableInfo.scaleable.ScaleTo(scaleableInfo.startingScale + projectedOffset * PlayerPreferencesManager.Instance.axisMultiplier);
+                scaleableInfo.scaleable.ScaleTo(scaleableInfo.startingScale + localScaleAdjustment);
             }
         }
     }
