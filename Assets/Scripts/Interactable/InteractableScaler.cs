@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Helper class to store stuff about selected actors
 public class ScaleableInfo
 {
     public Scaleable scaleable;
@@ -9,21 +10,11 @@ public class ScaleableInfo
 
 public class InteractableScaler : InteractableGizmo
 {
+    // List storing info about our currently selected actors
     private List<ScaleableInfo> scaleableInfos = new List<ScaleableInfo>();
 
-    Vector3 interactorStartingPosition;
-
-    public void AddScaleable(Scaleable newScaleable)
-    {
-        ScaleableInfo newScaleableInfo = new ScaleableInfo();
-        newScaleableInfo.scaleable = newScaleable;
-        scaleableInfos.Add(newScaleableInfo);
-    }
-
-    public void ClearScaleables()
-    {
-        scaleableInfos.Clear();
-    }
+    // interactor (controller) starting position
+    private Vector3 interactorStartingPosition;
 
     public void Update()
     {
@@ -63,6 +54,7 @@ public class InteractableScaler : InteractableGizmo
         }
     }
 
+    // On interact start we store info about the selected actors and some info about interactor (controller)
     public override void OnInteractStart(Controller controllerInteractor)
     {
         base.OnInteractStart(controllerInteractor);
@@ -75,6 +67,7 @@ public class InteractableScaler : InteractableGizmo
         interactorStartingPosition = interactor.transform.position;
     }
 
+    // On interact end add the ScaleAction to the Actions stack
     public override void OnInteractStop(Controller controllerInteractor)
     {
         base.OnInteractStop(controllerInteractor);
@@ -91,5 +84,18 @@ public class InteractableScaler : InteractableGizmo
 
         ScaleAction scaleAction = new ScaleAction(gameObjects, oldScales, newScales);
         ActionsManager.AddAction(scaleAction);
+    }
+
+    // === Helper Functions for ScaleableInfo List ===
+    public void AddScaleable(Scaleable newScaleable)
+    {
+        ScaleableInfo newScaleableInfo = new ScaleableInfo();
+        newScaleableInfo.scaleable = newScaleable;
+        scaleableInfos.Add(newScaleableInfo);
+    }
+
+    public void ClearScaleables()
+    {
+        scaleableInfos.Clear();
     }
 }

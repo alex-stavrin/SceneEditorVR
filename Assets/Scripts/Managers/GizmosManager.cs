@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public enum GizmoType
@@ -25,6 +26,8 @@ public class GizmosManager : MonoBehaviour
     InteractableScaler[] interactableScalers;
 
     private Vector3 center;
+
+    private GizmoType currentGizmoType;
 
     void Awake()
     {
@@ -95,7 +98,18 @@ public class GizmosManager : MonoBehaviour
             // Handle Rotation
             if(SelectionManager.GetSelectedInteractables().Count == 1)
             {
-                gizmos.transform.rotation = SelectionManager.GetSelectedGameobjects()[0].transform.rotation;
+                if(currentGizmoType != GizmoType.Rotators)
+                {                    
+                    gizmos.transform.rotation = SelectionManager.GetSelectedGameobjects()[0].transform.rotation;
+                }
+                else
+                {
+                    gizmos.transform.rotation = Quaternion.identity;
+                }
+            }
+            else
+            {
+                gizmos.transform.rotation = Quaternion.identity;
             }
         }
     }
@@ -277,6 +291,7 @@ public class GizmosManager : MonoBehaviour
                 break;
         }
 
+        currentGizmoType = gizmoType;
     }
 
     void SetArrows(bool bActive)

@@ -1,7 +1,11 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
+// This is a state machine
+// That meaning we go linearly from one state to another, starting from IE_INACTIVE and finishing IE_INTERACTING
+// We can go forward and backwards
+// We can skip some states too
+// IE_INACTIVE -> IE_IDLE -> IE_HOVERED -> IE_SELECTED -> IE_INTERACTING
 public enum InteractableState
 {
     IE_INACTIVE,
@@ -11,9 +15,12 @@ public enum InteractableState
     IE_INTERACTING
 }
 
+// This class handles the state of the interactable. Any interactable will inherit from this
 public class Interactable : MonoBehaviour
 {
 
+    // With this bool we skip the selected state. That means we go from hovered to interacting as soon as the user
+    // selects this interactable
     [Header("Interaction")]
     [SerializeField] public bool interactImmediately = false;
 
@@ -38,7 +45,7 @@ public class Interactable : MonoBehaviour
         StopInteract(null);
     }
 
-    // Functions below used to set the state mainly
+    // === Functions below used to set the state mainly ===
 
     public void StartInactive(Controller controllerInteractor)
     {
@@ -103,7 +110,7 @@ public class Interactable : MonoBehaviour
         SetState(controllerInteractor, InteractableState.IE_IDLE);
     }
 
-    // Events based on state changes
+    // === Events based on state changes ===
 
     public virtual void OnInactiveStart(Controller controllerInteractor)
     {

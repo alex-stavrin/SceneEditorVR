@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Helper class to store info about selected object that are Moveable
 public class MoveableInfo
 {
     public Moveable moveable;
@@ -10,22 +11,9 @@ public class MoveableInfo
 public class InteractableArrow : InteractableGizmo
 {
 
-    Vector3 interactorStartingPosition;
+    private Vector3 interactorStartingPosition;
 
-    List<MoveableInfo> moveableInfos = new List<MoveableInfo>();
-
-    public void AddMoveable(Moveable newMoveable)
-    {
-        MoveableInfo newMoveableI = new MoveableInfo();
-        newMoveableI.moveable = newMoveable;
-        newMoveableI.startingPosition = newMoveable.transform.position;
-        moveableInfos.Add(newMoveableI);
-    }
-
-    public void ClearMoveables()
-    {
-        moveableInfos.Clear();
-    }
+    private List<MoveableInfo> moveableInfos = new List<MoveableInfo>();
 
     public void  Update()
     {
@@ -77,5 +65,20 @@ public class InteractableArrow : InteractableGizmo
 
         MoveAction moveAction = new MoveAction(movedObjects, oldPositions, newPositions);
         ActionsManager.AddAction(moveAction);
+    }
+
+    // === Helper classes for List<MoveableInfo> ===
+
+    public void AddMoveable(Moveable newMoveable)
+    {
+        MoveableInfo newMoveableI = new MoveableInfo();
+        newMoveableI.moveable = newMoveable;
+        newMoveableI.startingPosition = newMoveable.transform.position;
+        moveableInfos.Add(newMoveableI);
+    }
+
+    public void ClearMoveables()
+    {
+        moveableInfos.Clear();
     }
 }

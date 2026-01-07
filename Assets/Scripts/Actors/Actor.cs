@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// This class will represent any object that can be placed in our world
 [RequireComponent(typeof(Interactable))]
 public class Actor : MonoBehaviour
 {
