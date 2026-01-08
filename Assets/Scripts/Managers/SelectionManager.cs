@@ -14,6 +14,8 @@ public class SelectionManager : MonoBehaviour
 
     public event Action OnUnSelected;
 
+    public event Action OnSelectedChanged;
+
     public void Awake()
     {
         if (Instance != null && Instance != this)
@@ -30,6 +32,7 @@ public class SelectionManager : MonoBehaviour
         newSelectable.StartSelect(instigator);
         Instance?.selected.Add(newSelectable);
         Instance?.OnSelectedAdded.Invoke(newSelectable, Instance?.selected);
+        Instance.SelectedChanged();
     }
 
     public static void ReplaceSelectableWithOne(Interactable newSelectable, Controller instigator)
@@ -45,7 +48,7 @@ public class SelectionManager : MonoBehaviour
         {            
             interactable.StopSelect(null);
         }
-        
+        Instance.SelectedChanged();
         Instance?.OnUnSelected.Invoke();
         Instance?.selected.Clear();
     }
@@ -53,11 +56,25 @@ public class SelectionManager : MonoBehaviour
     public static void UnselectInteractable(Interactable interactableToUnselect)
     {
         interactableToUnselect.StopSelect(null);
+        Instance.SelectedChanged();
         Instance?.selected.Remove(interactableToUnselect);
         Instance?.OnUnSelected.Invoke();
     }
 
+    private void SelectedChanged()
+    {
+        if(selected.Count == 1)
+        {            
+            InspectorManager.SetInspected(selected[0].gameObject);
+        }
+        else
+        {
+            InspectorManager.SetInspected(null);
+        }
+        OnSelectedChanged?.Invoke();
+    }
 
+    // Returns the list of selected interactables
     public static List<Interactable> GetSelectedInteractables()
     {
         return Instance.selected;

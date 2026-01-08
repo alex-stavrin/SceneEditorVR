@@ -52,7 +52,6 @@ public class Controller : MonoBehaviour
     bool isInteracting = false;
 
     // input
-
     Vector2 thumbstickInputValue;
 
     // the start of the rays of the controllers
@@ -65,16 +64,13 @@ public class Controller : MonoBehaviour
     Interactable currentHoverable;
 
     // interaction
-
     bool isMovingMoveable = false;
 
     // ui
-
     public bool pointingAtUI = false;
 
     // multi select
     bool isTryingToMultiSelect = false;
-
 
     public void Start()
     {
@@ -137,8 +133,6 @@ public class Controller : MonoBehaviour
         northButtonAction.action.started -= NorthButtonPressed;
         northButtonAction.action.canceled -= NorthButtonReleased;
 
-
-
         settingsAction.action.started -= SettingsButtonPressed;
     }
 
@@ -160,7 +154,6 @@ public class Controller : MonoBehaviour
             }
         }
     }
-    
     void MoveableHandling()
     {
         isMovingMoveable = false;
@@ -177,7 +170,6 @@ public class Controller : MonoBehaviour
             }
         }
     }
-
     void GripStarted(InputAction.CallbackContext context)
     {
         player.StartAirGrab(controllerSide, transform.position);
@@ -187,7 +179,6 @@ public class Controller : MonoBehaviour
     {
         player.StopAirGrab(controllerSide, velocity);
     }
-
     void TriggerPressed(InputAction.CallbackContext context)
     {
         if (currentHoverable)
@@ -220,7 +211,6 @@ public class Controller : MonoBehaviour
             ActionsManager.UnselectCurrentsAction();
         }
     }
-
     public void StartInteract(Interactable hoverable)
     {
         hoverable.StartInteract(this);
@@ -228,7 +218,6 @@ public class Controller : MonoBehaviour
         currentInteractable = hoverable;
         currentHoverable = null;
     }
-
     void TriggerReleased(InputAction.CallbackContext context)
     {
         if (currentInteractable)
@@ -238,7 +227,6 @@ public class Controller : MonoBehaviour
             currentInteractable = null;
         }
     }
-
     void DoRaycast()
     {
 
@@ -259,7 +247,6 @@ public class Controller : MonoBehaviour
         }
 
     }
-
     public void SettingsButtonPressed(InputAction.CallbackContext context)
     {
         if(ControlPanel.Instance)
@@ -267,7 +254,6 @@ public class Controller : MonoBehaviour
             ControlPanel.Instance.GoToPlayer();
         }
     }
-    
     void HoverTest()
     {
         pointingAtUI = false;
@@ -330,7 +316,6 @@ public class Controller : MonoBehaviour
             }
         }
     }
-
     void NorthButtonPressed(InputAction.CallbackContext context)
     {
         if (controllerSide == InputDeviceRole.RightHanded)
@@ -342,7 +327,6 @@ public class Controller : MonoBehaviour
             RadialManagerActions.Instance.CallRadial(this);
         }
     }
-
     void NorthButtonReleased(InputAction.CallbackContext context)
     {
         if (controllerSide == InputDeviceRole.RightHanded)

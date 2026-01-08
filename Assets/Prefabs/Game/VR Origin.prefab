@@ -381,7 +381,7 @@ MonoBehaviour:
   leftController: {fileID: 4870878855019534909}
   rightController: {fileID: 5288957902577284575}
   canAirGrab: 1
-  grabEndForce: 6
+  grabEndForce: 10
 --- !u!1 &9180987316195927790
 GameObject:
   m_ObjectHideFlags: 0

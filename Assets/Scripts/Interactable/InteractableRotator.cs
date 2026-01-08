@@ -170,6 +170,12 @@ public class InteractableRotator : InteractableGizmo
                 float circleY = Mathf.Cos(rotateableInfo.startingAngle * Mathf.Deg2Rad);
                 float circleZ = Mathf.Sin(rotateableInfo.startingAngle * Mathf.Deg2Rad);
 
+                if(SelectionManager.GetSelectedGameobjects().Count > 1)
+                {
+                    circleY = 1;
+                    circleZ = 0;
+                }
+
                 Vector3 deltaVector = new Vector3(0, circleY, circleZ).normalized * RotationVisualizerManager.Instance.visualizationRadius;
 
                 interactionStartingPosition = interactor.gameObject.transform.position - deltaVector;
@@ -183,6 +189,12 @@ public class InteractableRotator : InteractableGizmo
 
                 float circleY = Mathf.Cos(rotateableInfo.startingAngle * Mathf.Deg2Rad);
                 float circleX = -Mathf.Sin(rotateableInfo.startingAngle * Mathf.Deg2Rad);
+
+                if(SelectionManager.GetSelectedGameobjects().Count > 1)
+                {
+                    circleY = 1;
+                    circleX = 0;
+                }
 
                 Vector3 deltaVector = new Vector3(circleX, circleY, 0).normalized * RotationVisualizerManager.Instance.visualizationRadius;
 

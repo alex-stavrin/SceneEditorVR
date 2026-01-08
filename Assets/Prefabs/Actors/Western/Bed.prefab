@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2458785219058438152
+--- !u!1001 &3794877768520819474
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4074486433285678484, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.69099045
+      value: 1.0431173
       objectReference: {fileID: 0}
     - target: {fileID: 4074486433285678484, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000011920929
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4074486433285678484, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.4581156
+      value: 1.6045327
       objectReference: {fileID: 0}
     - target: {fileID: 4074486433285678484, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
       propertyPath: m_LocalRotation.w
@@ -51,10 +51,14 @@ PrefabInstance:
     - target: {fileID: 6023133098437001688, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: -2432090755550338912, guid: eeba439f7de9019479c55b1fb94f8e86, type: 3}
+      objectReference: {fileID: -2432090755550338912, guid: f60e3b50b0b6fb24c8bc8fe44c58a2a2, type: 3}
     - target: {fileID: 6425232659809598164, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
       propertyPath: m_Name
-      value: Alchohol Barrel Variant
+      value: CampBed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8014740045765651749, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
+      propertyPath: actorName
+      value: Bed
       objectReference: {fileID: 0}
     - target: {fileID: 8938233515585142422, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -66,20 +70,20 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6425232659809598164, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2954639481832067057}
+      addedObject: {fileID: 1796890923189388319}
   m_SourcePrefab: {fileID: 100100000, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
---- !u!1 &8877825420515732188 stripped
+--- !u!1 &7890621242116774342 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6425232659809598164, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
-  m_PrefabInstance: {fileID: 2458785219058438152}
+  m_PrefabInstance: {fileID: 3794877768520819474}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &2954639481832067057
+--- !u!64 &1796890923189388319
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8877825420515732188}
+  m_GameObject: {fileID: 7890621242116774342}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -94,4 +98,4 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: -2432090755550338912, guid: eeba439f7de9019479c55b1fb94f8e86, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: f60e3b50b0b6fb24c8bc8fe44c58a2a2, type: 3}

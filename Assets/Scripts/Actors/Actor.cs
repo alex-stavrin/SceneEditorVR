@@ -5,14 +5,14 @@ using UnityEngine;
 public class Actor : MonoBehaviour
 {
 
-    Interactable interactable;
+    [SerializeField]
+    string actorName;
 
-    Collider actorCollider;
+    private Interactable interactable;
 
     void Start()
     {
         interactable = GetComponent<Interactable>();
-        actorCollider = GetComponent<Collider>();
 
         interactable.OnStartSelect += OnInteractableStartSelect;
         interactable.OnStopSelect += OnInteractableStopSelect;
@@ -20,11 +20,16 @@ public class Actor : MonoBehaviour
 
     public void OnInteractableStartSelect()
     {
-        actorCollider.enabled = false;
+        
     }
 
     public void OnInteractableStopSelect()
     {
-        actorCollider.enabled = true;
+        
+    }
+
+    public string GetActorName()
+    {
+        return actorName;
     }
 }

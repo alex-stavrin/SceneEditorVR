@@ -54,7 +54,11 @@ PrefabInstance:
       objectReference: {fileID: -2432090755550338912, guid: f48b31bdccbec9640be434183c97b6d3, type: 3}
     - target: {fileID: 6425232659809598164, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
       propertyPath: m_Name
-      value: BarrelDirt Variant
+      value: BarrelDirt
+      objectReference: {fileID: 0}
+    - target: {fileID: 8014740045765651749, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
+      propertyPath: actorName
+      value: Dirt Barel
       objectReference: {fileID: 0}
     - target: {fileID: 8938233515585142422, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

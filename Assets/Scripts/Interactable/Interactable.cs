@@ -135,11 +135,13 @@ public class Interactable : MonoBehaviour
 
     public virtual void OnSelectStart(Controller controllerInteractor)
     {
+        gameObject.layer = LayerMask.NameToLayer("Outline");
         OnStartSelect?.Invoke();
     }
 
     public virtual void OnSelectStop(Controller controllerInteractor)
     {
+        gameObject.layer = LayerMask.NameToLayer("Default");
         OnStopSelect?.Invoke();
     }
 

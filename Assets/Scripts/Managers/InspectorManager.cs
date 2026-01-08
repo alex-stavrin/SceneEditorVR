@@ -43,10 +43,8 @@ public class InspectorManager : MonoBehaviour
 
     [SerializeField]
     TextMeshProUGUI labelScaleZ;
-    
 
-
-    GameObject currentInspected;
+    Actor currentInspected;
 
     void Awake()
     {
@@ -85,18 +83,21 @@ public class InspectorManager : MonoBehaviour
         }
     }
 
-    public void SetInspected(GameObject inspected)
+    public static void SetInspected(GameObject inspected)
     {
-        
         if(inspected)
-        {
-            inspectedElements.SetActive(true);
-            currentInspected = inspected;
-            inspectedNameText.text = inspected.name;
+        {            
+            Actor inspectedActor = inspected.GetComponent<Actor>();
+            if(inspectedActor)
+            {
+                Instance.inspectedElements.SetActive(true);
+                Instance.currentInspected = inspectedActor;
+                Instance.inspectedNameText.text = inspectedActor.GetActorName();
+            }
         }
         else
         {
-            inspectedElements.SetActive(false);
+            Instance.inspectedElements.SetActive(false);
         }
     }
 }

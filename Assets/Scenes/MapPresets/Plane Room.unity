@@ -1853,7 +1853,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3255852024977977187, guid: df56a45123e0f114bb67627832c5aa8a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4079858691109256037, guid: df56a45123e0f114bb67627832c5aa8a, type: 3}
       propertyPath: m_Pivot.x
@@ -2084,6 +2084,10 @@ PrefabInstance:
     - target: {fileID: 4508946384314692565, guid: 604d9a87a64f82a49a5ee8923284b2a9, type: 3}
       propertyPath: m_Name
       value: ActorPlane
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508946384314692565, guid: 604d9a87a64f82a49a5ee8923284b2a9, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4508946384314692565, guid: 604d9a87a64f82a49a5ee8923284b2a9, type: 3}
       propertyPath: m_IsActive

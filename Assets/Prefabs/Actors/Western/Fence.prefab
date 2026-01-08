@@ -54,7 +54,11 @@ PrefabInstance:
       objectReference: {fileID: -2432090755550338912, guid: ae8e72b5613b3c94f859a56a9406e0df, type: 3}
     - target: {fileID: 6425232659809598164, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
       propertyPath: m_Name
-      value: Fence Variant
+      value: Fence
+      objectReference: {fileID: 0}
+    - target: {fileID: 8014740045765651749, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
+      propertyPath: actorName
+      value: Fence
       objectReference: {fileID: 0}
     - target: {fileID: 8938233515585142422, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
