@@ -195,6 +195,7 @@ public class Controller : MonoBehaviour
                 }
                 else
                 {
+                    SoundsManager.PlaySelect(currentHoverable.transform.position);
                     if(isTryingToMultiSelect)
                     {
                         ActionsManager.AddSelectableAction(currentHoverable, this);

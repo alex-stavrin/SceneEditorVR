@@ -13,6 +13,9 @@ public class RotationVisualizerManager : MonoBehaviour
     [SerializeField]
     public float visualizationRadius = 0.2f;
 
+    private Material rotationCenterMaterial;
+    private Material rotationTargetMaterial;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -28,10 +31,22 @@ public class RotationVisualizerManager : MonoBehaviour
     {
         rotationCenterVisualizer.gameObject.SetActive(false);
         rotationTargetVisualizer.gameObject.SetActive(false);
+
+        rotationCenterMaterial = GetMaterialFromVisualizer(rotationCenterVisualizer);
+        rotationTargetMaterial = GetMaterialFromVisualizer(rotationTargetVisualizer);
     }
 
-    public void InitVisualizers(Vector3 startingLocation)
+    Material GetMaterialFromVisualizer(Transform visualizer)
     {
+        MeshRenderer visualizerMeshRenderer = visualizer.gameObject.GetComponent<MeshRenderer>();
+        return visualizerMeshRenderer.material;
+    }
+
+    public void InitVisualizers(Vector3 startingLocation, Color color)
+    {
+        rotationCenterMaterial.SetColor("_Color", color);
+        rotationTargetMaterial.SetColor("_Color", color);
+
         rotationCenterVisualizer.gameObject.SetActive(true);
         rotationTargetVisualizer.gameObject.SetActive(true);
 

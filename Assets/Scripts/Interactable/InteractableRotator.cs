@@ -160,7 +160,7 @@ public class InteractableRotator : InteractableGizmo
 
                 interactionStartingPosition = interactor.gameObject.transform.position - deltaVector;
 
-                RotationVisualizerManager.Instance.InitVisualizers(interactionStartingPosition);
+                RotationVisualizerManager.Instance.InitVisualizers(interactionStartingPosition, ColorManager.GetYAxisColor());
             }
             else if (rotatingVector == new Vector3(1, 0, 0)) // x axis
             {
@@ -180,7 +180,7 @@ public class InteractableRotator : InteractableGizmo
 
                 interactionStartingPosition = interactor.gameObject.transform.position - deltaVector;
 
-                RotationVisualizerManager.Instance.InitVisualizers(interactionStartingPosition);
+                RotationVisualizerManager.Instance.InitVisualizers(interactionStartingPosition, ColorManager.GetXAxisColor());
             }
             else if (rotatingVector == new Vector3(0,0,1)) // z axis
             {
@@ -200,7 +200,7 @@ public class InteractableRotator : InteractableGizmo
 
                 interactionStartingPosition = interactor.gameObject.transform.position - deltaVector;
 
-                RotationVisualizerManager.Instance.InitVisualizers(interactionStartingPosition);
+                RotationVisualizerManager.Instance.InitVisualizers(interactionStartingPosition, ColorManager.GetZAxisColor());
             }
         }
     }
@@ -216,15 +216,21 @@ public class InteractableRotator : InteractableGizmo
         List<GameObject> gameObjects = new List<GameObject>();
         List<Quaternion> oldRotations = new List<Quaternion>();
         List<Quaternion> newRotations = new List<Quaternion>();
+        List<Vector3> oldPositions = new List<Vector3>();
+        List<Vector3> newPositions = new List<Vector3>();
 
         foreach(RotateableInfo rotateableInfo in rotateableInfos)
         {
             gameObjects.Add(rotateableInfo.rotateable.gameObject);
+
             oldRotations.Add(rotateableInfo.startingRotation);
             newRotations.Add(rotateableInfo.rotateable.transform.rotation);
+
+            oldPositions.Add(rotateableInfo.startingPosition);
+            newPositions.Add(rotateableInfo.rotateable.transform.position);
         }
 
-        RotateAction rotateAction = new RotateAction(gameObjects, oldRotations, newRotations);
+        RotateAction rotateAction = new RotateAction(gameObjects, oldRotations, newRotations, oldPositions, newPositions);
         ActionsManager.AddAction(rotateAction);
     }
 }

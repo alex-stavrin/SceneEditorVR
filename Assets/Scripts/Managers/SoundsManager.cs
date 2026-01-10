@@ -16,6 +16,11 @@ public class SoundsManager : MonoBehaviour
     [SerializeField]
     AudioSource radialCloseAudio;
 
+    [Header("Select Audio")]
+
+    [SerializeField]
+    AudioSource selectAudioSource;
+
     public void Awake()
     {
         if (Instance != null && Instance != this)
@@ -45,5 +50,10 @@ public class SoundsManager : MonoBehaviour
     public static void PlayRadialClose(Vector3 position)
     {
         PlayAudioSource(Instance.radialCloseAudio, position);
+    }
+
+    public static void PlaySelect(Vector3 position)
+    {
+        PlayAudioSource(Instance.selectAudioSource, position);
     }
 }

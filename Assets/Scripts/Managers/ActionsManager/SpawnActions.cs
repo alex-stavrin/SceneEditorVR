@@ -30,13 +30,21 @@ public class SpawnAction : UserAction
         {
             if(spawnInfo.spawnedGameObject == null)
             {                
-                //VirtualRealityConsole.PrintMessage("Spawn???");
                 spawnInfo.spawnedGameObject = Object.Instantiate(spawnInfo.gameObjectPrefab, spawnInfo.spawnPose.position,
                     spawnInfo.spawnPose.rotation);
             }
             else
             {
                 spawnInfo.spawnedGameObject.SetActive(true);
+            }
+            
+            if(spawnInfo.spawnedGameObject)
+            {
+                Actor actor = spawnInfo.spawnedGameObject.GetComponent<Actor>();
+                if (actor)
+                {
+                    ActorsManager.AddActor(actor);
+                }
             }
         }
     }

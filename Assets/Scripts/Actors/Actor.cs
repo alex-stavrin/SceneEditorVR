@@ -4,7 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(Interactable))]
 public class Actor : MonoBehaviour
 {
-
     [SerializeField]
     string actorName;
 
