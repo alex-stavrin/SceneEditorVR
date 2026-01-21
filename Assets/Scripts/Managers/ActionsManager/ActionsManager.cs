@@ -23,30 +23,21 @@ public class ActionsManager : MonoBehaviour
     {
         if(SelectionManager.GetSelectedInteractables().Count > 0)
         {
-            List<GameObject> gameObjectPrefabs = new List<GameObject>();
+            List<string> prefabPaths = new List<string>();
             List<Pose> poses = new List<Pose>();
+            List<Actor> selectedActors = SelectionManager.GetSelectedActors();
             for(int i = 0; i < SelectionManager.GetSelectedGameobjects().Count; i++)
             {
-                gameObjectPrefabs.Add(SelectionManager.GetSelectedGameobjects()[i]);
-                Transform newTransform = SelectionManager.GetSelectedGameobjects()[i].transform;
+                prefabPaths.Add(selectedActors[i].GetResourcesPath());
+                Transform newTransform = selectedActors[i].gameObject.transform;
                 poses.Add(new Pose(newTransform.position, newTransform.rotation));
             }          
 
             SelectionManager.UnselectCurrents();
 
-            List<GameObject> spawnedObjcets = SpawnGameObjects(gameObjectPrefabs, poses);
+            SpawnGameObjects(prefabPaths, poses, null);
 
-            List<Interactable> newInteractables = new List<Interactable>();
-            foreach(GameObject currentGameObject in spawnedObjcets)
-            {
-                Interactable interactable = currentGameObject.GetComponent<Interactable>();
-                if(interactable)
-                {
-                    newInteractables.Add(interactable);
-                }
-            }
 
-            SelectionManager.ReplaceAllSelected(newInteractables);
         }
     }
 
@@ -60,12 +51,10 @@ public class ActionsManager : MonoBehaviour
         ExecuteAndAddAction(deleteAction);
     }
 
-    public static List<GameObject> SpawnGameObjects(List<GameObject> gameObjectPrefabs, List<Pose> poses)
+    public static void SpawnGameObjects(List<string> prefabPaths, List<Pose> poses, Controller instigator)
     {
-        SpawnAction spawnAction = new SpawnAction(gameObjectPrefabs, poses);
+        SpawnAction spawnAction = new SpawnAction(prefabPaths, poses, instigator);
         ExecuteAndAddAction(spawnAction);
-
-        return spawnAction.GetSpawned();
     }
 
     public static void AddSelectableAction(Interactable newSelectable, Controller instigator)

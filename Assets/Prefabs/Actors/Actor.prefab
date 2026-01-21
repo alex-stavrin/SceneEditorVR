@@ -12,10 +12,11 @@ GameObject:
   - component: {fileID: 6023133098437001688}
   - component: {fileID: 8938233515585142422}
   - component: {fileID: 8014740045765651749}
-  - component: {fileID: 4122088547613492687}
   - component: {fileID: 156569602129602268}
   - component: {fileID: 2336182714956770098}
   - component: {fileID: 6111893837216266896}
+  - component: {fileID: 4783598909158029171}
+  - component: {fileID: -6847714573171442736}
   m_Layer: 0
   m_Name: Actor
   m_TagString: Untagged
@@ -93,6 +94,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &8014740045765651749
 MonoBehaviour:
@@ -106,19 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93fd991089b0a64bbcc68bd999c20ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Actor
---- !u!114 &4122088547613492687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6425232659809598164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b96512c7e78e55740894e4c1588cdfe5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractableMoveableDraggable
-  interactImmediately: 0
+  actorName: 
+  resourcesPath: 
 --- !u!114 &156569602129602268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,3 +146,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa1f7fab3e695b4f91ed83d984a0372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Scaleable
+--- !u!114 &4783598909158029171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6425232659809598164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 1
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &-6847714573171442736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6425232659809598164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d8f883443ad3e241a708de45fb2475e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableMoveable
+  interactImmediately: 0
+  canBeInteracted: 1

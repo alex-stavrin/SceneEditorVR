@@ -16,4 +16,13 @@ public class VRManager : MonoBehaviour
 
         Instance = this;
     }
+    
+    public static void InteractDraggable(GameObject gameobject, Controller controller)
+    {
+        InteractableMoveable interactableMoveableDraggable = gameobject.GetComponent<InteractableMoveable>();
+        if(interactableMoveableDraggable)
+        {
+            controller.StartInteract(interactableMoveableDraggable);
+        }
+    }
 }

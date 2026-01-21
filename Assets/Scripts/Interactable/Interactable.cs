@@ -24,6 +24,8 @@ public class Interactable : MonoBehaviour
     [Header("Interaction")]
     [SerializeField] public bool interactImmediately = false;
 
+    [SerializeField] public bool canBeInteractedThroughState = true;
+
     protected InteractableState state = InteractableState.IE_IDLE;
 
     protected Controller interactor = null;
@@ -38,6 +40,11 @@ public class Interactable : MonoBehaviour
     public virtual void Start()
     {
         
+    }
+
+    void Update()
+    {
+        // VirtualRealityConsole.PrintMessage(state.ToString(), PrintTypeVRC.Clear);
     }
 
     public void ForceStopInteracting()
@@ -61,7 +68,7 @@ public class Interactable : MonoBehaviour
 
     public void StartInteract(Controller controllerInteractor)
     {
-        if(state == InteractableState.IE_INACTIVE) return;
+        if(state == InteractableState.IE_INACTIVE || !canBeInteractedThroughState) return;
 
         interactor = controllerInteractor;
         SetState(controllerInteractor, InteractableState.IE_INTERACTING);
@@ -70,6 +77,8 @@ public class Interactable : MonoBehaviour
     public void StopInteract(Controller controllerInteractor)
     {
         if(state == InteractableState.IE_INACTIVE) return;
+
+        interactor = null;
 
         if(!interactImmediately)
         {
@@ -160,6 +169,12 @@ public class Interactable : MonoBehaviour
 
     void SetState(Controller instigator, InteractableState newState)
     {
+
+        if(newState == state)
+        {
+            return;
+        }
+
         InteractableState previousState = state;
         state = newState;
 

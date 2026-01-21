@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Western Assets
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Western Assets
+  m_GUID: abb90e413db47b6409796f929135bb9b
+  m_SerializeEntries:
+  - m_GUID: 2b6a03ba13dc9af4a9c6b8144c7cca30
+    m_Address: Assets/Prefabs/Actors/Western/Table.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2d7ea9f25d103474e935fdc2946df8c7
+    m_Address: Assets/Prefabs/Actors/Western/Fence.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3172b0ff4e22cf54b962542fccd4ff77
+    m_Address: Assets/Prefabs/Actors/Western/Log Bench.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3dc27e4ca07d795468ee6aaa87eaa3c9
+    m_Address: Assets/Prefabs/Actors/Western/Crate.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4bd2b0362608ade468f92f9571cd4b7e
+    m_Address: Assets/Prefabs/Actors/Western/Campfire.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 61ebb6c147e2bec499a99d3c639cdd79
+    m_Address: Assets/Prefabs/Actors/Western/Gate.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6b32392d7331bce4fac52ac6100438f9
+    m_Address: Assets/Prefabs/Actors/Western/Wood.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a2f82131607023d47ac07e479735db6a
+    m_Address: Assets/Prefabs/Actors/Western/Dirt Barel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a4a615d54675b084ea2df6abd2f396c9
+    m_Address: Assets/Prefabs/Actors/Western/Bed.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a57de6b3485c9b143971d0fc41c9b717
+    m_Address: Assets/Prefabs/Actors/Western/TNT Barel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b19d285e419c52b418108c53fd1ac1f0
+    m_Address: Assets/Prefabs/Actors/Western/Cactus.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b6fc6507281b3654e9ac201829cfa994
+    m_Address: Assets/Prefabs/Actors/Western/Chest.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf800ae766382074489c52245c786f1d
+    m_Address: Assets/Prefabs/Actors/Western/Barricade Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d7135efae2dc7af419a3bc92caa86bf5
+    m_Address: Assets/Prefabs/Actors/Western/Rug.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dcedcd92eb2bd1e4c807e763cc34f81a
+    m_Address: Assets/Prefabs/Actors/Western/Totem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dde406af4fae6364bb6c7a684a83459c
+    m_Address: Assets/Prefabs/Actors/Western/Fountain.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e21504301d0315a4280f1851bfe9f5b2
+    m_Address: Assets/Prefabs/Actors/Western/SkullPole.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e38ea2dce1009b04880b7971619537d7
+    m_Address: Assets/Prefabs/Actors/Western/Alcohol Barel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee6fbe7b3dac88b4085085a7cea7b0a0
+    m_Address: Assets/Prefabs/Actors/Western/Cup.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ff8374e496aefcb41a306188bb081ced
+    m_Address: Assets/Prefabs/Actors/Western/Chair.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 21fc21f7fbcb9514eb325a66f550b559, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: dde899eff60426645918e62b2bf8cbfc, type: 2}
+    - {fileID: 11400000, guid: 6ec8abaf19bcd4b478a4114e903c957f, type: 2}

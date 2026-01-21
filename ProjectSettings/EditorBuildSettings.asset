@@ -12,6 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MapPresets/Plane Room.unity
     guid: 0d30b814e3fd2314f83f763b87a562d7
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 13f4b3c7211783949abdee948b7cc3f5, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 0ef04eab847040643bc4e66c13802ea4, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 160fd3b528935d34cae484a6e552cb41, type: 2}

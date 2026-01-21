@@ -169,6 +169,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -305,6 +306,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -535,7 +537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 8877825420515732188, guid: e38ea2dce1009b04880b7971619537d7, type: 3}
+  prefabPath: Assets/Prefabs/Actors/Western/Alcohol Barel.prefab
 --- !u!1 &717894213548016995
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,6 +641,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -805,7 +808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 6297951404952030036, guid: ee6fbe7b3dac88b4085085a7cea7b0a0, type: 3}
+  prefabPath: Assets/Prefabs/Actors/Western/Cup.prefab
 --- !u!1 &768684251135444920
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,6 +912,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1045,6 +1049,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1405,7 +1410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 3139262998852855386, guid: 2b6a03ba13dc9af4a9c6b8144c7cca30, type: 3}
+  prefabPath: Assets/Prefabs/Actors/Western/Table.prefab
 --- !u!1 &1574825060971308793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,7 +1736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 3127837696011709267, guid: b19d285e419c52b418108c53fd1ac1f0, type: 3}
+  prefabPath: Assets/Prefabs/Actors/Western/Cactus.prefab
 --- !u!1 &2042691120299422115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1865,7 +1870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 3948470221480063203, guid: a57de6b3485c9b143971d0fc41c9b717, type: 3}
+  prefabPath: Assets/Prefabs/Actors/Western/TNT Barel.prefab
 --- !u!1 &2112512572416860514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,6 +1976,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -2268,7 +2274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 7890621242116774342, guid: a4a615d54675b084ea2df6abd2f396c9, type: 3}
+  prefabPath: Assets/Prefabs/Actors/Western/Bed.prefab
 --- !u!1 &2495999207880037198
 GameObject:
   m_ObjectHideFlags: 0
@@ -2402,7 +2408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 8346445779419531750, guid: ff8374e496aefcb41a306188bb081ced, type: 3}
+  prefabPath: Assets/Prefabs/Actors/Western/Chair.prefab
 --- !u!1 &2567029850150982262
 GameObject:
   m_ObjectHideFlags: 0
@@ -2508,6 +2514,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -2674,7 +2681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 1722138308571972175, guid: 2d7ea9f25d103474e935fdc2946df8c7, type: 3}
+  prefabPath: Assets/Prefabs/Actors/Western/Fence.prefab
 --- !u!1 &2848754032664168613
 GameObject:
   m_ObjectHideFlags: 0
@@ -2872,7 +2879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 7634297215791384925, guid: e21504301d0315a4280f1851bfe9f5b2, type: 3}
+  prefabPath: Assets/Prefabs/Actors/Western/SkullPole.prefab
 --- !u!1 &3053837211251626955
 GameObject:
   m_ObjectHideFlags: 0
@@ -2978,6 +2985,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -3286,7 +3294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 789573299932298994, guid: 10fbf7362873129469e19286c5cbb9f7, type: 3}
+  prefabPath: 
 --- !u!1 &3361508868239892197
 GameObject:
   m_ObjectHideFlags: 0
@@ -3420,7 +3428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 1501804117783392558, guid: dcedcd92eb2bd1e4c807e763cc34f81a, type: 3}
+  prefabPath: Assets/Prefabs/Actors/Western/Totem.prefab
 --- !u!1 &3541059149560828840
 GameObject:
   m_ObjectHideFlags: 0
@@ -3524,6 +3532,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -3662,6 +3671,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -3800,6 +3810,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -4094,7 +4105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 1199537298737118410, guid: 59dbf90055c6a764780b3b893a950586, type: 3}
+  prefabPath: 
 --- !u!1 &4221253257307891561
 GameObject:
   m_ObjectHideFlags: 0
@@ -4198,6 +4209,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -4334,6 +4346,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -4470,6 +4483,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -4636,7 +4650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 5913672570387582609, guid: 3172b0ff4e22cf54b962542fccd4ff77, type: 3}
+  prefabPath: Assets/Prefabs/Actors/Western/Log Bench.prefab
 --- !u!1 &4611999115529519519
 GameObject:
   m_ObjectHideFlags: 0
@@ -4875,6 +4889,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -5208,6 +5223,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -5374,7 +5390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 5683913152628768092, guid: 6f37617923cadf441b93c3b7a1778bf2, type: 3}
+  prefabPath: 
 --- !u!1 &5165893101526951737
 GameObject:
   m_ObjectHideFlags: 0
@@ -5508,7 +5524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 6764398543103747468, guid: 3dc27e4ca07d795468ee6aaa87eaa3c9, type: 3}
+  prefabPath: Assets/Prefabs/Actors/Western/Chest.prefab
 --- !u!1 &5230714834904725504
 GameObject:
   m_ObjectHideFlags: 0
@@ -5773,7 +5789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 487819711403284959, guid: b6fc6507281b3654e9ac201829cfa994, type: 3}
+  prefabPath: Assets/Prefabs/Actors/Western/Chest.prefab
 --- !u!1 &5406766803679997300
 GameObject:
   m_ObjectHideFlags: 0
@@ -5971,7 +5987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 4508946384314692565, guid: 604d9a87a64f82a49a5ee8923284b2a9, type: 3}
+  prefabPath: 
 --- !u!1 &5513352918405604417
 GameObject:
   m_ObjectHideFlags: 0
@@ -6172,7 +6188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 2404789989415554233, guid: 61ebb6c147e2bec499a99d3c639cdd79, type: 3}
+  prefabPath: Assets/Prefabs/Actors/Western/Gate.prefab
 --- !u!1 &5585237721942131660
 GameObject:
   m_ObjectHideFlags: 0
@@ -6306,7 +6322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 1845067096025592330, guid: a2f82131607023d47ac07e479735db6a, type: 3}
+  prefabPath: Assets/Prefabs/Actors/Western/Dirt Barel.prefab
 --- !u!1 &5707506774633902478
 GameObject:
   m_ObjectHideFlags: 0
@@ -6410,6 +6426,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -6576,7 +6593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 3962727770651777194, guid: 6b32392d7331bce4fac52ac6100438f9, type: 3}
+  prefabPath: Assets/Prefabs/Actors/Western/Wood.prefab
 --- !u!1 &5710943319725794030
 GameObject:
   m_ObjectHideFlags: 0
@@ -6710,7 +6727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 6914810690945981263, guid: dde406af4fae6364bb6c7a684a83459c, type: 3}
+  prefabPath: Assets/Prefabs/Actors/Western/Fountain.prefab
 --- !u!1 &6156528248573517791
 GameObject:
   m_ObjectHideFlags: 0
@@ -7404,6 +7421,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -7570,7 +7588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 8369879070053797342, guid: 6987e79ca5574b04895492f1ab8134e0, type: 3}
+  prefabPath: 
 --- !u!1 &7162190018661615665
 GameObject:
   m_ObjectHideFlags: 0
@@ -7674,6 +7692,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -7812,6 +7831,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -8042,7 +8062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 2123329759325591363, guid: d7135efae2dc7af419a3bc92caa86bf5, type: 3}
+  prefabPath: Assets/Prefabs/Actors/Western/Rug.prefab
 --- !u!1 &7431644328188043523
 GameObject:
   m_ObjectHideFlags: 0
@@ -8176,7 +8196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 6241731310764539647, guid: cf800ae766382074489c52245c786f1d, type: 3}
+  prefabPath: Assets/Prefabs/Actors/Western/Barricade Variant.prefab
 --- !u!1 &7479753539116433036
 GameObject:
   m_ObjectHideFlags: 0
@@ -8280,6 +8300,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -8416,6 +8437,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -8552,6 +8574,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -8846,7 +8869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 831685106198958781, guid: ee15180360e699b428c7271805b2d08c, type: 3}
+  prefabPath: 
 --- !u!1 &8170569536241246109
 GameObject:
   m_ObjectHideFlags: 0
@@ -8950,6 +8973,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -9216,7 +9240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 4218005285440086554, guid: 85c662063b357444aaed13e6b8aa4a73, type: 3}
+  prefabPath: 
 --- !u!1 &9025525489072766400
 GameObject:
   m_ObjectHideFlags: 0
@@ -9320,6 +9344,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -9619,7 +9644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9182831bf9fb17845a8e6acefb395491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToSpawn: {fileID: 7158372056741761731, guid: 4bd2b0362608ade468f92f9571cd4b7e, type: 3}
+  prefabPath: Assets/Prefabs/Actors/Western/Campfire.prefab
 --- !u!1001 &4985080168913623286
 PrefabInstance:
   m_ObjectHideFlags: 0

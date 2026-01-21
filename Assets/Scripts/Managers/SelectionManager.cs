@@ -92,6 +92,17 @@ public class SelectionManager : MonoBehaviour
         return temp;
     }
 
+    public static List<Actor> GetSelectedActors()
+    {
+        List<Actor> temp = new List<Actor>();
+        foreach(Interactable interactable in Instance.selected)
+        {
+            Actor tempActor = interactable.gameObject.GetComponent<Actor>();
+            temp.Add(tempActor);
+        }
+        return temp;
+    }
+
     // Replace the entire Interactables List with another one
     // Events are called because we do AddSelectable()
     public static void ReplaceAllSelected(List<Interactable> newSelectedList)

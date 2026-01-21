@@ -16,6 +16,8 @@ public class ActorsManager : MonoBehaviour
         }
 
         Instance = this;
+
+        actors = new List<Actor>(25);
     }
 
     public static void AddActor(Actor actorToAdd)
@@ -26,5 +28,10 @@ public class ActorsManager : MonoBehaviour
     public static void RemoveActor(Actor actorToRemove)
     {
         Instance.actors.Remove(actorToRemove);
+    }
+
+    public static List<Actor> GetActors()
+    {
+        return Instance.actors;
     }
 }

@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: actorName
       value: Rug
       objectReference: {fileID: 0}
+    - target: {fileID: 8014740045765651749, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
+      propertyPath: resourcesPath
+      value: Assets/Prefabs/Actors/Western/Rug.prefab
+      objectReference: {fileID: 0}
     - target: {fileID: 8938233515585142422, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
