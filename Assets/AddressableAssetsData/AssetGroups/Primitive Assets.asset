@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Primitive Assets
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Primitive Assets
+  m_GUID: 344781f62ef8fe54da03d1aca33255bd
+  m_SerializeEntries:
+  - m_GUID: 10fbf7362873129469e19286c5cbb9f7
+    m_Address: Assets/Prefabs/Actors/Primitives/ActorCube.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 604d9a87a64f82a49a5ee8923284b2a9
+    m_Address: Assets/Prefabs/Actors/Primitives/ActorPlane.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6987e79ca5574b04895492f1ab8134e0
+    m_Address: Assets/Prefabs/Actors/Primitives/ActorCylinder.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f37617923cadf441b93c3b7a1778bf2
+    m_Address: Assets/Prefabs/Actors/Primitives/ActorCone.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee15180360e699b428c7271805b2d08c
+    m_Address: Assets/Prefabs/Actors/Primitives/ActorSphere.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 21fc21f7fbcb9514eb325a66f550b559, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 725200be2a7d7d941a19fc8c4b3b3494, type: 2}
+    - {fileID: 11400000, guid: 3642a0d0f9186ae449bbe712dd1289ff, type: 2}
