@@ -1,0 +1,188 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Fantasy Assets
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Fantasy Assets
+  m_GUID: e90fa29c64116fc4ca1860afd53e304e
+  m_SerializeEntries:
+  - m_GUID: 00727434318fec648997951baae1a092
+    m_Address: Assets/Prefabs/Actors/Fantasy/BookCase.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 472b43526fd117940b63ca212124e49a
+    m_Address: Assets/Prefabs/Actors/Fantasy/Stool.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 51000fd7f79e9784c9598bb871662e53
+    m_Address: Assets/Prefabs/Actors/Fantasy/Barrel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 56e6f26b490189948a9d1e1aae00df9e
+    m_Address: Assets/Prefabs/Actors/Fantasy/LanternSmall.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 58cc89293c7b88d41bdae179801446b1
+    m_Address: Assets/Prefabs/Actors/Fantasy/Chandelier.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5ead51fa5a698a649b48f257689db1b5
+    m_Address: Assets/Prefabs/Actors/Fantasy/BookPile.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5faed4754ac85a5439d1516fdf61c5b0
+    m_Address: Assets/Prefabs/Actors/Fantasy/WallDoor.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 620941c39773496419f87efc92856641
+    m_Address: Assets/Prefabs/Actors/Fantasy/Wall.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 638a4ed0413123848871fb9873016766
+    m_Address: Assets/Prefabs/Actors/Fantasy/Brazier.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63b90e24702f273499d782fae713b91d
+    m_Address: Assets/Prefabs/Actors/Fantasy/TableWood.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 666d592c4901e8441aef5b54ff6c9b8d
+    m_Address: Assets/Prefabs/Actors/Fantasy/Candle.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6b600e2fdc9636f45ac1e5405eec23bf
+    m_Address: Assets/Prefabs/Actors/Fantasy/Throne.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6e6625f3f947e2048b03515a74228411
+    m_Address: Assets/Prefabs/Actors/Fantasy/Potion.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7649397500aff0448892c7ec264b2b79
+    m_Address: Assets/Prefabs/Actors/Fantasy/TableRound.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7c704d20c718c72418d2c15b930d7701
+    m_Address: Assets/Prefabs/Actors/Fantasy/Cauldron.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8334fd60c44370644a6ab1a820044935
+    m_Address: Assets/Prefabs/Actors/Fantasy/Coins.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 84144c824671b1c4d82338810224f388
+    m_Address: Assets/Prefabs/Actors/Fantasy/Banner.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 84fa199fa1555e249bf6b6ab68b913d4
+    m_Address: Assets/Prefabs/Actors/Fantasy/StoneChair.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f6a103d624b61a46b4764e5874929ee
+    m_Address: Assets/Prefabs/Actors/Fantasy/Crystal.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9816bd160ec40194f8240277340bf418
+    m_Address: Assets/Prefabs/Actors/Fantasy/Vase.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a6d67c0972fcd4d4fb6d0f6c0311f56a
+    m_Address: Assets/Prefabs/Actors/Fantasy/CrateWood.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aabf70c8fb73f6641873683dee0515bf
+    m_Address: Assets/Prefabs/Actors/Fantasy/CandleStand.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d09a31e96ac634640b217311e6fcae2f
+    m_Address: Assets/Prefabs/Actors/Fantasy/Tile.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d4550dac8729fd54691f50f1d797ac63
+    m_Address: Assets/Prefabs/Actors/Fantasy/Bonfire.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d6dddf20991ea034697681e00d4b5632
+    m_Address: Assets/Prefabs/Actors/Fantasy/Beds.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d8e5c306d57bb07499418a4d795f2b2c
+    m_Address: Assets/Prefabs/Actors/Fantasy/LanternBig.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dc639b9c6ccc1534693bfcf46c32ee79
+    m_Address: Assets/Prefabs/Actors/Fantasy/Vessel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e03f8e36302e75841a0e0321f9f956eb
+    m_Address: Assets/Prefabs/Actors/Fantasy/StoneTable.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e8f2673e4d811644eb5c2f3abf615d73
+    m_Address: Assets/Prefabs/Actors/Fantasy/Bench.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eee8a69839621ea429dec72fde56d16e
+    m_Address: Assets/Prefabs/Actors/Fantasy/Statue.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef269b9f0f77bac47acbd710dc501583
+    m_Address: Assets/Prefabs/Actors/Fantasy/Pillar.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f15c839c126294644937d4524c2fb3d9
+    m_Address: Assets/Prefabs/Actors/Fantasy/Torch.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f2e61680f8addb443846f0fa8d7a5291
+    m_Address: Assets/Prefabs/Actors/Fantasy/WallWindow.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 21fc21f7fbcb9514eb325a66f550b559, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c390049ca2f58184f975b23f21ecf0c5, type: 2}
+    - {fileID: 11400000, guid: bd771cb13e2a4ed40b7e196a63d39f95, type: 2}

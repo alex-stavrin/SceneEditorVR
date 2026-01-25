@@ -56,6 +56,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ActorCube
       objectReference: {fileID: 0}
+    - target: {fileID: 8014740045765651749, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
+      propertyPath: actorName
+      value: Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 8014740045765651749, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
+      propertyPath: resourcesPath
+      value: Assets/Prefabs/Actors/Primitives/ActorCube.prefab
+      objectReference: {fileID: 0}
     - target: {fileID: 8871099551982178980, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
       propertyPath: m_Mesh
       value: 
