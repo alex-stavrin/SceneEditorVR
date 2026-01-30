@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Vegatation Assets
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Vegatation Assets
+  m_GUID: b0f3f7a2e41f6e341a90561bf4d80257
+  m_SerializeEntries:
+  - m_GUID: 299b519455f5eaa4d96a072e89f25913
+    m_Address: Assets/Prefabs/Actors/Vegatation/TreeRound.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 31500f124d57ee8469621512564eb243
+    m_Address: Assets/Prefabs/Actors/Vegatation/Grass.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4112e280021b3414688f1f7d1c1bde83
+    m_Address: Assets/Prefabs/Actors/Vegatation/Plant2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 48e3381810248fc479a08624072e81b6
+    m_Address: Assets/Prefabs/Actors/Vegatation/Log.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5bc17f1b925b47248ba7572f66a88e1c
+    m_Address: Assets/Prefabs/Actors/Vegatation/Flower.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5c567aa3cc915bc46bf271b42060ef4f
+    m_Address: Assets/Prefabs/Actors/Vegatation/Palm.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5e639613a46899f439b826bac390e5c8
+    m_Address: Assets/Prefabs/Actors/Vegatation/Pine.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6a8131b900dc99f4c8d771a54c6c1cf7
+    m_Address: Assets/Prefabs/Actors/Vegatation/Plant3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 81f68cb2c13362148bf8fcca0ef7f88a
+    m_Address: Assets/Prefabs/Actors/Vegatation/TreeBig.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86e712c5beaa22447b0b0662e6d4fb63
+    m_Address: Assets/Prefabs/Actors/Vegatation/TreeBroken.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8939402c397efbb4ab06e46bf239ed62
+    m_Address: Assets/Prefabs/Actors/Vegatation/Pebbles.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 95b421a7895468c42a8097448653ee67
+    m_Address: Assets/Prefabs/Actors/Vegatation/Plant4.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 95eaf3845873c0c45af65c0fb42e6280
+    m_Address: Assets/Prefabs/Actors/Vegatation/Rock1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b9a2949ddcdd22840ba4e39d7898267d
+    m_Address: Assets/Prefabs/Actors/Vegatation/Tree.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d286e30cefb72a7468731df5f57a8a91
+    m_Address: Assets/Prefabs/Actors/Vegatation/Rock2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e732655fe59e42d4c91796e505bb180b
+    m_Address: Assets/Prefabs/Actors/Vegatation/Bush.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e962de107cfe5e249aca43cc179ad3e4
+    m_Address: Assets/Prefabs/Actors/Vegatation/Plant1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f086431a9aa1b264ab308b8ffed13619
+    m_Address: Assets/Prefabs/Actors/Vegatation/Plant5.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 21fc21f7fbcb9514eb325a66f550b559, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 38ba824ec5087044fb972c631e03f465, type: 2}
+    - {fileID: 11400000, guid: 702705edd5dff974c9cb75a20df52830, type: 2}
