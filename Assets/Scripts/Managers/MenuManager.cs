@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,6 +6,9 @@ public class MenuManager : MonoBehaviour
 {
     [SerializeField]
     GameObject[] pages;
+
+    [SerializeField]
+    TMP_InputField levelNameInputField;
 
     [SerializeField]
     int startingPage = 0;
@@ -38,6 +42,7 @@ public class MenuManager : MonoBehaviour
 
     public void GoToScene(string sceneName)
     {
+        SaveAndLoadManager.SetCurrentLevelName(levelNameInputField.text);
         SceneManager.LoadScene(sceneName);
     }
 }

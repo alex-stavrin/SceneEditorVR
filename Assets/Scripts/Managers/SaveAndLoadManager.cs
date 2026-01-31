@@ -22,6 +22,8 @@ public class SaveAndLoadManager : MonoBehaviour
 {
     public static SaveAndLoadManager Instance { get; private set; }
 
+    string currentLevelName;
+
 
     void Awake()
     {
@@ -32,6 +34,7 @@ public class SaveAndLoadManager : MonoBehaviour
         }
 
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     static public void Save()
@@ -53,11 +56,16 @@ public class SaveAndLoadManager : MonoBehaviour
         }
 
         string json = JsonUtility.ToJson(actorsData, true);
-        File.WriteAllText(Application.persistentDataPath + "/level.json", json);
+        File.WriteAllText(Application.persistentDataPath + "/" + Instance.currentLevelName + ".json", json);
     }
 
     static public void Load()
     {
         
+    }
+
+    static public void SetCurrentLevelName(string newLevelName)
+    {
+        Instance.currentLevelName = newLevelName;
     }
 }
