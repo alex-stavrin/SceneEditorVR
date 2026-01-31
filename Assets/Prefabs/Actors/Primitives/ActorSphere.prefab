@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4074486433285678484, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -8.3987255
       objectReference: {fileID: 0}
     - target: {fileID: 4074486433285678484, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -13.944327
       objectReference: {fileID: 0}
     - target: {fileID: 4074486433285678484, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 12.151939
       objectReference: {fileID: 0}
     - target: {fileID: 4074486433285678484, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
       propertyPath: m_LocalRotation.w
@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: 6023133098437001688, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: -2432090755550338912, guid: e3d2b0889c85be248b6d5c95f78e02b8, type: 3}
     - target: {fileID: 6425232659809598164, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
       propertyPath: m_Name
       value: ActorSphere
@@ -74,14 +74,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6425232659809598164, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -6845009988131014016}
+      addedObject: {fileID: 1666846809633712832}
   m_SourcePrefab: {fileID: 100100000, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
 --- !u!1 &831685106198958781 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6425232659809598164, guid: eb1854bb94ec9ae49bbad97e5c868811, type: 3}
   m_PrefabInstance: {fileID: 5954249353052334185}
   m_PrefabAsset: {fileID: 0}
---- !u!135 &-6845009988131014016
+--- !u!135 &1666846809633712832
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,5 +100,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1
+  m_Center: {x: 0.0000005066395, y: 0, z: 0.0000005066395}
