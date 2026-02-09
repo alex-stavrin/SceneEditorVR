@@ -13,6 +13,15 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     int startingPage = 0;
 
+    [SerializeField]
+    int loadPageIndex = 2;
+
+    [SerializeField]
+    GameObject levelButton;
+
+    [SerializeField]
+    Transform loadedLevelNamesScrollRoot;
+
     int currentPage = -1;
 
     private void Start()
@@ -29,6 +38,32 @@ public class MenuManager : MonoBehaviour
 
         pages[newPage].SetActive(true);
         currentPage = newPage;
+    }
+
+    public void OpenLoadScreen()
+    {
+        GoToPage(loadPageIndex);
+        string[] levelNames = SaveAndLoadManager.LoadLevelNames();
+        foreach(string levelName in levelNames)
+        {
+            GameObject levelButtonGameobject = Instantiate(levelButton);
+            if(levelButtonGameobject)
+            {
+                levelButtonGameobject.transform.SetParent(loadedLevelNamesScrollRoot);
+                LoadedLevelButton loadedLevelButton = levelButtonGameobject.GetComponent<LoadedLevelButton>();
+                if(loadedLevelButton)
+                {
+                    loadedLevelButton.SetLevelNameText(levelName);
+                }
+
+                RectTransform rect = levelButtonGameobject.GetComponent<RectTransform>();
+                if (rect)
+                {
+                    rect.anchoredPosition3D = new Vector3(0,0,0);
+                    rect.localScale = new Vector3(1, 1, 1);
+                }
+            }
+        }
     }
     
     public void Quit()

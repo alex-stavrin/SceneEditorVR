@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -39,11 +40,17 @@ public class SaveAndLoadManager : MonoBehaviour
 
     static public void Save()
     {
+        string folderPath = Path.Combine(Application.persistentDataPath, "levels");
+
+        if (!Directory.Exists(folderPath))
+        {
+            Directory.CreateDirectory(folderPath);
+        }
 
         ActorsData actorsData = new ActorsData();
-
         List<Actor> actors = ActorsManager.GetActors();
-        foreach(Actor actor in actors)
+
+        foreach (Actor actor in actors)
         {
             ActorData actorData = new ActorData();
             actorData.position = actor.transform.position;
@@ -56,12 +63,24 @@ public class SaveAndLoadManager : MonoBehaviour
         }
 
         string json = JsonUtility.ToJson(actorsData, true);
-        File.WriteAllText(Application.persistentDataPath + "/" + Instance.currentLevelName + ".json", json);
+        string filePath = Path.Combine(folderPath, Instance.currentLevelName + ".json");
+        File.WriteAllText(filePath, json);
     }
 
-    static public void Load()
+    static public string[] LoadLevelNames()
     {
-        
+        string levelsPath = Path.Combine(Application.persistentDataPath, "levels");
+
+        if (Directory.Exists(levelsPath))
+        {
+            return Directory.GetFiles(levelsPath, "*.json")
+                            .Select(Path.GetFileNameWithoutExtension)
+                            .ToArray();
+        }
+        else
+        {
+            return null;
+        }
     }
 
     static public void SetCurrentLevelName(string newLevelName)

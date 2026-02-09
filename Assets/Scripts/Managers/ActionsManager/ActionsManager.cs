@@ -71,8 +71,12 @@ public class ActionsManager : MonoBehaviour
 
     public static void UnselectCurrentsAction()
     {
-        UnselectAction unselectAction = new UnselectAction(SelectionManager.GetSelectedInteractables());
-        ExecuteAndAddAction(unselectAction);
+        List<Interactable> selectedInteractables = SelectionManager.GetSelectedInteractables();
+        if(selectedInteractables.Count > 0)
+        {            
+            UnselectAction unselectAction = new UnselectAction(SelectionManager.GetSelectedInteractables());
+            ExecuteAndAddAction(unselectAction);
+        }
     }
 
     // === Internal functions of ActionsManager === //
