@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class ActorData
@@ -14,7 +17,7 @@ public class ActorData
 }
 
 [System.Serializable]
-public class ActorsData
+public class LevelData
 {
     public List<ActorData> actors = new List<ActorData>();
 }
@@ -24,7 +27,6 @@ public class SaveAndLoadManager : MonoBehaviour
     public static SaveAndLoadManager Instance { get; private set; }
 
     string currentLevelName;
-
 
     void Awake()
     {
@@ -47,7 +49,7 @@ public class SaveAndLoadManager : MonoBehaviour
             Directory.CreateDirectory(folderPath);
         }
 
-        ActorsData actorsData = new ActorsData();
+        LevelData actorsData = new LevelData();
         List<Actor> actors = ActorsManager.GetActors();
 
         foreach (Actor actor in actors)
@@ -74,8 +76,8 @@ public class SaveAndLoadManager : MonoBehaviour
         if (Directory.Exists(levelsPath))
         {
             return Directory.GetFiles(levelsPath, "*.json")
-                            .Select(Path.GetFileNameWithoutExtension)
-                            .ToArray();
+                .Select(Path.GetFileNameWithoutExtension)
+                .ToArray();
         }
         else
         {
@@ -86,5 +88,50 @@ public class SaveAndLoadManager : MonoBehaviour
     static public void SetCurrentLevelName(string newLevelName)
     {
         Instance.currentLevelName = newLevelName;
+    }
+
+    static public void OpenLevel(string levelName, bool bIsLoaded)
+    {
+        Instance.currentLevelName = levelName;
+        SceneManager.LoadScene("Level");
+        if(bIsLoaded)
+        {
+            LoadAndSpawnLevel(levelName);
+        }
+    }
+
+    static public void LoadAndSpawnLevel(string levelName)
+    {
+        Debug.Log(levelName);
+
+        string filePath = Path.Combine(Application.persistentDataPath, "levels", levelName + ".json");
+
+        if(!File.Exists(filePath))
+        {
+            return;
+        }
+
+        string jsonText = File.ReadAllText(filePath);
+        LevelData levelData = JsonUtility.FromJson<LevelData>(jsonText);
+
+        foreach(ActorData actorData in levelData.actors)
+        {
+            Addressables.InstantiateAsync(actorData.path, actorData.position, actorData.rotation).Completed += (handle) =>
+            {
+                if(handle.Status == AsyncOperationStatus.Succeeded)
+                {
+                    GameObject newGameObject = handle.Result;
+                    if(newGameObject)
+                    {
+                        newGameObject.transform.localScale = actorData.scale;
+                        Actor actor = newGameObject.GetComponent<Actor>();
+                        if(actor)
+                        {
+                            ActorsManager.AddActor(actor);
+                        }
+                    }
+                }
+            };
+        }
     }
 }

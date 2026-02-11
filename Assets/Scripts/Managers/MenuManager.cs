@@ -42,6 +42,11 @@ public class MenuManager : MonoBehaviour
 
     public void OpenLoadScreen()
     {
+        foreach(Transform scrollRootChild in loadedLevelNamesScrollRoot)
+        {
+            Destroy(scrollRootChild.gameObject);    
+        }
+
         GoToPage(loadPageIndex);
         string[] levelNames = SaveAndLoadManager.LoadLevelNames();
         foreach(string levelName in levelNames)
@@ -53,7 +58,7 @@ public class MenuManager : MonoBehaviour
                 LoadedLevelButton loadedLevelButton = levelButtonGameobject.GetComponent<LoadedLevelButton>();
                 if(loadedLevelButton)
                 {
-                    loadedLevelButton.SetLevelNameText(levelName);
+                    loadedLevelButton.SetLevelName(levelName);
                 }
 
                 RectTransform rect = levelButtonGameobject.GetComponent<RectTransform>();
@@ -75,9 +80,8 @@ public class MenuManager : MonoBehaviour
         #endif
     }
 
-    public void GoToScene(string sceneName)
+    public void GoToNewScene()
     {
-        SaveAndLoadManager.SetCurrentLevelName(levelNameInputField.text);
-        SceneManager.LoadScene(sceneName);
+        SaveAndLoadManager.OpenLevel(levelNameInputField.text, false);
     }
 }
