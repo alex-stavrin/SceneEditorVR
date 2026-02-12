@@ -19,6 +19,7 @@ public class ActorData
 [System.Serializable]
 public class LevelData
 {
+    public bool directionalLightEnabled;
     public List<ActorData> actors = new List<ActorData>();
 }
 
@@ -49,9 +50,9 @@ public class SaveAndLoadManager : MonoBehaviour
             Directory.CreateDirectory(folderPath);
         }
 
-        LevelData actorsData = new LevelData();
+        LevelData levelData = new LevelData();
+        levelData.directionalLightEnabled = WorldManager.GetDiretionalLightEnabled();
         List<Actor> actors = ActorsManager.GetActors();
-
         foreach (Actor actor in actors)
         {
             ActorData actorData = new ActorData();
@@ -61,10 +62,10 @@ public class SaveAndLoadManager : MonoBehaviour
             actorData.name = actor.GetActorName();
             actorData.path = actor.GetResourcesPath();
             
-            actorsData.actors.Add(actorData);
+            levelData.actors.Add(actorData);
         }
 
-        string json = JsonUtility.ToJson(actorsData, true);
+        string json = JsonUtility.ToJson(levelData, true);
         string filePath = Path.Combine(folderPath, Instance.currentLevelName + ".json");
         File.WriteAllText(filePath, json);
     }
@@ -93,17 +94,24 @@ public class SaveAndLoadManager : MonoBehaviour
     static public void OpenLevel(string levelName, bool bIsLoaded)
     {
         Instance.currentLevelName = levelName;
+        
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        
         SceneManager.LoadScene("Level");
-        if(bIsLoaded)
+
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            LoadAndSpawnLevel(levelName);
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+
+            if (bIsLoaded)
+            {
+                LoadAndSpawnLevel(levelName);
+            }
         }
     }
 
     static public void LoadAndSpawnLevel(string levelName)
     {
-        Debug.Log(levelName);
-
         string filePath = Path.Combine(Application.persistentDataPath, "levels", levelName + ".json");
 
         if(!File.Exists(filePath))
@@ -133,5 +141,7 @@ public class SaveAndLoadManager : MonoBehaviour
                 }
             };
         }
+
+        WorldPanel.SetToggleState(levelData.directionalLightEnabled);
     }
 }

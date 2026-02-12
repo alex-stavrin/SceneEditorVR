@@ -14,6 +14,11 @@ public class DeleteAction : UserAction
     {
         for(int i = 0; i < gameObjects.Count; i++)
         {
+            Actor deleteActor = gameObjects[i].GetComponent<Actor>();
+            if(deleteActor)
+            {
+                ActorsManager.RemoveActor(deleteActor);
+            }
             gameObjects[i].SetActive(false);
         }
     }
@@ -22,6 +27,11 @@ public class DeleteAction : UserAction
     {
         for(int i = 0; i < gameObjects.Count; i++)
         {
+            Actor deleteActor = gameObjects[i].GetComponent<Actor>();
+            if(deleteActor)
+            {
+                ActorsManager.AddActor(deleteActor);
+            }
             gameObjects[i].SetActive(true);
         }
     }

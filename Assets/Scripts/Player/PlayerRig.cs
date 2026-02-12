@@ -40,7 +40,11 @@ public class PlayerRig : MonoBehaviour
     bool canAirGrab = true;
     [SerializeField]
     float grabEndForce = 100f;
-    
+
+    [Header("Restrictions")]
+
+    [SerializeField]
+    public bool menuRestricted = false;    
 
     /// PRIVATE ///
 

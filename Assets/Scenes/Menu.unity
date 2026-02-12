@@ -766,6 +766,10 @@ PrefabInstance:
       propertyPath: canTeleport
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 230353423515609277, guid: eee9194e15154cf47a4fb7aeefa241b4, type: 3}
+      propertyPath: menuRestricted
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2555629790141164455, guid: eee9194e15154cf47a4fb7aeefa241b4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

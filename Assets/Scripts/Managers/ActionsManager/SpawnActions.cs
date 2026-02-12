@@ -92,6 +92,11 @@ public class SpawnAction : UserAction
     {
         foreach(SpawnInfo spawnInfo in spawnedGameObjectsInfo)
         {
+            Actor spawnActor = spawnInfo.spawnedGameObject.GetComponent<Actor>();
+            if(spawnActor)
+            {
+                ActorsManager.RemoveActor(spawnActor);
+            }
             spawnInfo.spawnedGameObject.SetActive(false);
             SelectionManager.UnselectCurrents();
         }

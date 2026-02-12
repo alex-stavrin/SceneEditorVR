@@ -319,6 +319,8 @@ public class Controller : MonoBehaviour
     }
     void NorthButtonPressed(InputAction.CallbackContext context)
     {
+        if(PlayerRig.Instance.menuRestricted == true) return;
+
         if (controllerSide == InputDeviceRole.RightHanded)
         {
             RadialManagerGizmos.Instance.CallRadial(this);
@@ -330,6 +332,8 @@ public class Controller : MonoBehaviour
     }
     void NorthButtonReleased(InputAction.CallbackContext context)
     {
+        if(PlayerRig.Instance.menuRestricted == true) return;
+
         if (controllerSide == InputDeviceRole.RightHanded)
         {
             RadialManagerGizmos.Instance.DismissRadial();
@@ -342,6 +346,8 @@ public class Controller : MonoBehaviour
 
     void SouthButtonPressed(InputAction.CallbackContext context)
     {
+        if(PlayerRig.Instance.menuRestricted == true) return;
+        
         isTryingToMultiSelect = true;
 
         SetRayGradientLastColor(ColorManager.GetRayMultiSelectColor());
@@ -349,6 +355,8 @@ public class Controller : MonoBehaviour
 
     void SouthButtonReleased(InputAction.CallbackContext context)
     {
+        if(PlayerRig.Instance.menuRestricted == true) return;
+        
         isTryingToMultiSelect = false;
 
         SetRayGradientLastColor(ColorManager.GetRayColor());
