@@ -159,7 +159,7 @@ public class Controller : MonoBehaviour
         isMovingMoveable = false;
         if(currentInteractable)
         {
-            InteractableMoveable interactableMoveable = currentInteractable as InteractableMoveable;
+            InteractableMove interactableMoveable = currentInteractable as InteractableMove;
             if (interactableMoveable)
             {
                 if(Mathf.Abs(thumbstickInputValue.y) > 0.1)
@@ -356,7 +356,7 @@ public class Controller : MonoBehaviour
     void SouthButtonReleased(InputAction.CallbackContext context)
     {
         if(PlayerRig.Instance.menuRestricted == true) return;
-        
+
         isTryingToMultiSelect = false;
 
         SetRayGradientLastColor(ColorManager.GetRayColor());
