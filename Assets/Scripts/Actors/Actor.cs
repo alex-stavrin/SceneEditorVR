@@ -30,20 +30,6 @@ public class Actor : MonoBehaviour
         
         interactable.OnStartSelect += OnInteractableStartSelect;
         interactable.OnStopSelect += OnInteractableStopSelect;
-
-        interactable.OnStartHover += OnInteractableStartHover;
-        interactable.OnStopHover += OnInteractableStopHover;
-    }
-
-    public void OnInteractableStartHover()
-    {
-        outline.enabled = true;
-        outline.OutlineColor = Color.white;
-    }
-
-    public void OnInteractableStopHover()
-    {
-        outline.enabled = false;
     }
 
     public void OnInteractableStartSelect()

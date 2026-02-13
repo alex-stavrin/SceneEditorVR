@@ -137,6 +137,13 @@ public class SaveAndLoadManager : MonoBehaviour
                         {
                             ActorsManager.AddActor(actor);
                         }
+                        
+                        InteractableMoveable interactableMoveable = newGameObject.GetComponent<InteractableMoveable>();
+                        if (interactableMoveable)
+                        {
+                            interactableMoveable.isFirst = false;
+                            interactableMoveable.canBeInteractedThroughState = false;
+                        }
                     }
                 }
             };

@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "TableTopRoomCreator.slnx"
+    "dotnet.defaultSolution": "SceneEditorVR.slnx"
 }

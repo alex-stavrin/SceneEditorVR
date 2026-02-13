@@ -49,6 +49,7 @@ public class MenuManager : MonoBehaviour
 
         GoToPage(loadPageIndex);
         string[] levelNames = SaveAndLoadManager.LoadLevelNames();
+        if(levelNames == null) return;
         foreach(string levelName in levelNames)
         {
             GameObject levelButtonGameobject = Instantiate(levelButton);

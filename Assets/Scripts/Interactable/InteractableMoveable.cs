@@ -5,7 +5,7 @@ public class InteractableMoveable : InteractableMove
 {
     Moveable moveable;
 
-    bool isFirst = true;
+    public bool isFirst = true;
 
     public override void Start()
     {

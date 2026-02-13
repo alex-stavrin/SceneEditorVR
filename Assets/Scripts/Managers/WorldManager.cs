@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WorldManager : MonoBehaviour
 {
@@ -31,5 +32,24 @@ public class WorldManager : MonoBehaviour
     public static bool GetDiretionalLightEnabled()
     {
         return Instance.directionalLightEnabled;
+    }
+
+    public static void BackToMenu()
+    {
+        SaveAndLoadManager.Save();
+        SceneManager.LoadScene("Menu");
+    }
+
+    void OnApplicationQuit()
+    {
+        SaveAndLoadManager.Save();
+    }
+
+    void OnApplicationPause(bool pause)
+    {
+        if(pause)
+        {            
+            SaveAndLoadManager.Save();
+        }
     }
 }
