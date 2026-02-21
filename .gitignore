@@ -12,6 +12,10 @@
 /[Uu]ser[Ss]ettings/
 *.log
 
+Android Build
+
+Build
+
 *.apk
 BuildWindows
 TableTopLevelEditor_BurstDebugInformation_DoNotShip
