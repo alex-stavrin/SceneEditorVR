@@ -164,7 +164,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: -2651058931955173380, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    m_Reference: {fileID: -4981579181464455438, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   southButtonAction:
     m_UseReference: 1
     m_Action:
@@ -176,7 +176,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: -8859212643564113769, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    m_Reference: {fileID: 2121106192086610264, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   triggerAction:
     m_UseReference: 1
     m_Action:
@@ -198,7 +198,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: -5982496924579745919, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   settingsAction:
-    m_UseReference: 0
+    m_UseReference: 1
     m_Action:
       m_Name: Settings
       m_Type: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 0}
+    m_Reference: {fileID: 4312472348252780918, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   startingInteractMoveSpeed: 0
   rayRange: 1500
   rayLineRenderer: {fileID: 364160724500201215}
@@ -255,7 +255,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!120 &364160724500201215
 LineRenderer:
-  serializedVersion: 2
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -301,6 +301,7 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
@@ -359,7 +360,6 @@ LineRenderer:
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
-  m_MaskInteraction: 0
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1

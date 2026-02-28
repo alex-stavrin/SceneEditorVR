@@ -260,7 +260,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -382,6 +382,7 @@ MonoBehaviour:
   rightController: {fileID: 5288957902577284575}
   canAirGrab: 1
   grabEndForce: 10
+  menuRestricted: 0
 --- !u!1 &9180987316195927790
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,11 +485,11 @@ PrefabInstance:
     - target: {fileID: 1139880735933221261, guid: fb960abb9a6badc439320cf85a46d05c, type: 3}
       propertyPath: northButtonAction.m_Reference
       value: 
-      objectReference: {fileID: 4828069372409259264, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+      objectReference: {fileID: 4607366225258075866, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     - target: {fileID: 1139880735933221261, guid: fb960abb9a6badc439320cf85a46d05c, type: 3}
       propertyPath: southButtonAction.m_Reference
       value: 
-      objectReference: {fileID: -6932151857054961409, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+      objectReference: {fileID: 6940508627098224833, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     - target: {fileID: 1447512869267103693, guid: fb960abb9a6badc439320cf85a46d05c, type: 3}
       propertyPath: m_Name
       value: Right Controller
@@ -629,7 +630,7 @@ PrefabInstance:
     - target: {fileID: 1139880735933221261, guid: fb960abb9a6badc439320cf85a46d05c, type: 3}
       propertyPath: settingsAction.m_Reference
       value: 
-      objectReference: {fileID: 8071127159479364408, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+      objectReference: {fileID: 4312472348252780918, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     - target: {fileID: 1139880735933221261, guid: fb960abb9a6badc439320cf85a46d05c, type: 3}
       propertyPath: settingsAction.m_UseReference
       value: 1

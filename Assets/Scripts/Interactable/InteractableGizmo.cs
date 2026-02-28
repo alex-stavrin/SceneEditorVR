@@ -119,7 +119,7 @@ public class InteractableGizmo : Interactable
     {
         base.OnHoverStart(controllerInteractor);
 
-        HapticsManager.SendHaptic(controllerInteractor.GetSide(), HapticsManager.GetHoverAmplitude(), HapticsManager.GetHoverDuration());
+        HapticsManager.PlayHapticGizmoHover(controllerInteractor.GetSide());
 
         if (arrowMaterial)
         {

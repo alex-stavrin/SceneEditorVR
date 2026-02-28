@@ -5041,53 +5041,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!1 &1331015721
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1331015722}
-  - component: {fileID: 1331015723}
-  m_Layer: 0
-  m_Name: Haptics Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1331015722
+--- !u!4 &1331015722 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 3529024691896703551, guid: 218d0b63414de6d469e89a0766a1c676, type: 3}
+  m_PrefabInstance: {fileID: 9051709085500107027}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1331015721}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2017972647}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1331015723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1331015721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0be9eae490b9def4e98301d8df17ef8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  disableHaptics: 0
-  hoverAmplitude: 0.1
-  hoverDuration: 0.1
 --- !u!4 &1347353922 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6448213810837471803, guid: 53c48c99786c2c04691f3bdcef441ddd, type: 3}
@@ -7176,6 +7134,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eee9194e15154cf47a4fb7aeefa241b4, type: 3}
+--- !u!1001 &9051709085500107027
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2017972647}
+    m_Modifications:
+    - target: {fileID: 3529024691896703551, guid: 218d0b63414de6d469e89a0766a1c676, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529024691896703551, guid: 218d0b63414de6d469e89a0766a1c676, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529024691896703551, guid: 218d0b63414de6d469e89a0766a1c676, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529024691896703551, guid: 218d0b63414de6d469e89a0766a1c676, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529024691896703551, guid: 218d0b63414de6d469e89a0766a1c676, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529024691896703551, guid: 218d0b63414de6d469e89a0766a1c676, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529024691896703551, guid: 218d0b63414de6d469e89a0766a1c676, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529024691896703551, guid: 218d0b63414de6d469e89a0766a1c676, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529024691896703551, guid: 218d0b63414de6d469e89a0766a1c676, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529024691896703551, guid: 218d0b63414de6d469e89a0766a1c676, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652640097635700267, guid: 218d0b63414de6d469e89a0766a1c676, type: 3}
+      propertyPath: m_Name
+      value: Haptics Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 218d0b63414de6d469e89a0766a1c676, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

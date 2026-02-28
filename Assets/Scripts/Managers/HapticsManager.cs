@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.XR;
 using System.Collections.Generic;
+
 public class HapticsManager : MonoBehaviour
 {
     public static HapticsManager Instance { get; private set; }
@@ -13,13 +14,21 @@ public class HapticsManager : MonoBehaviour
     [SerializeField]
     bool disableHaptics = false;
 
-    [Header("Hover")]
+    [Header("Button Hover")]
 
     [SerializeField]
-    float hoverAmplitude;
+    float buttonHoverHapticAmplitude;
 
     [SerializeField]
-    float hoverDuration;
+    float buttonHoverHapticDuration;
+
+    [Header("Gizmo Hover")]
+    
+    [SerializeField]
+    float gizmoHoverHapticAmplitude;
+
+    [SerializeField]
+    float gizmoHoverHapticDuration;
 
     void Awake()
     {
@@ -107,7 +116,17 @@ public class HapticsManager : MonoBehaviour
         }
     }
 
-    public static void SendHaptic(InputDeviceRole inputDeviceRole, float amplitude, float duration)
+    public static void PlayHapticButtonHover(InputDeviceRole inputDeviceRole)
+    {
+        SendHapticToDevice(inputDeviceRole, Instance.buttonHoverHapticAmplitude, Instance.buttonHoverHapticDuration);
+    }
+
+    public static void PlayHapticGizmoHover(InputDeviceRole inputDeviceRole)
+    {
+        SendHapticToDevice(inputDeviceRole, Instance.gizmoHoverHapticAmplitude, Instance.gizmoHoverHapticDuration);
+    }
+
+    private static void SendHapticToDevice(InputDeviceRole inputDeviceRole, float amplitude, float duration)
     {
         if(inputDeviceRole == InputDeviceRole.LeftHanded && Instance.leftInputDevice.isValid)
         {
@@ -131,14 +150,4 @@ public class HapticsManager : MonoBehaviour
             device.SendHapticImpulse(0, amplitude, duration);
         }
     }
-
-    public static float GetHoverAmplitude()
-    {
-        return Instance.hoverAmplitude;
-    }
-
-    public static float GetHoverDuration()
-    {
-        return Instance.hoverDuration;
-    } 
 }
