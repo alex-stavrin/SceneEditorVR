@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3015764347840514070}
   - component: {fileID: 2869855081243655648}
   - component: {fileID: 4246867695784958488}
+  - component: {fileID: 5135473264868159694}
   m_Layer: 5
   m_Name: Button_C
   m_TagString: Untagged
@@ -100,7 +101,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -134,6 +135,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5135473264868159694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153581810648175549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &165217055198130373
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +250,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -283,6 +297,7 @@ GameObject:
   - component: {fileID: 5041273332291238418}
   - component: {fileID: 16804098504109747}
   - component: {fileID: 7386715592431311513}
+  - component: {fileID: 8536105828715349079}
   m_Layer: 5
   m_Name: Button_I
   m_TagString: Untagged
@@ -370,7 +385,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -404,6 +419,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8536105828715349079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322489233606292252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &391056767924889428
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +444,7 @@ GameObject:
   - component: {fileID: 6102596134546293012}
   - component: {fileID: 3247624794389944006}
   - component: {fileID: 7748893112320503870}
+  - component: {fileID: 6125877388400791303}
   m_Layer: 5
   m_Name: Button_L
   m_TagString: Untagged
@@ -504,7 +532,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -538,6 +566,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6125877388400791303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391056767924889428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &426882435233725621
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,6 +681,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -687,6 +728,7 @@ GameObject:
   - component: {fileID: 2558661707587534436}
   - component: {fileID: 670596672509587568}
   - component: {fileID: 6252181187534910472}
+  - component: {fileID: 2180107144558732542}
   m_Layer: 5
   m_Name: Button_G
   m_TagString: Untagged
@@ -774,7 +816,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -808,6 +850,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2180107144558732542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562431417601094530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &584822928708730525
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,6 +965,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1047,6 +1102,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1183,6 +1239,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1319,6 +1376,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1365,6 +1423,7 @@ GameObject:
   - component: {fileID: 3930175759830589626}
   - component: {fileID: 194521480094331528}
   - component: {fileID: 760711669729881760}
+  - component: {fileID: 1310812942169414251}
   m_Layer: 5
   m_Name: Button_W
   m_TagString: Untagged
@@ -1452,7 +1511,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -1486,6 +1545,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1310812942169414251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450741921586330845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &1455299193125122596
 GameObject:
   m_ObjectHideFlags: 0
@@ -1589,6 +1660,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1725,6 +1797,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1771,6 +1844,7 @@ GameObject:
   - component: {fileID: 150527398816240366}
   - component: {fileID: 118420456136193521}
   - component: {fileID: 3656679723546076878}
+  - component: {fileID: 3838425754130701861}
   m_Layer: 5
   m_Name: Button_D
   m_TagString: Untagged
@@ -1858,7 +1932,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -1892,6 +1966,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3838425754130701861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663049712757028759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &1739720394044879866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1995,6 +2081,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -2273,6 +2360,7 @@ GameObject:
   - component: {fileID: 5893312611261696557}
   - component: {fileID: 1405995587604941690}
   - component: {fileID: 4153394436963119879}
+  - component: {fileID: 2539452533432034208}
   m_Layer: 5
   m_Name: Button_Enter
   m_TagString: Untagged
@@ -2360,7 +2448,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -2394,6 +2482,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2539452533432034208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956399677228834201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &2075122414253475947
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,6 +2597,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -2543,6 +2644,7 @@ GameObject:
   - component: {fileID: 2277645262010402396}
   - component: {fileID: 7556279149782624431}
   - component: {fileID: 6031253516738012306}
+  - component: {fileID: 5484272546049536996}
   m_Layer: 5
   m_Name: Button_1
   m_TagString: Untagged
@@ -2630,7 +2732,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -2664,6 +2766,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5484272546049536996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2150528362560937394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &2183181568006125178
 GameObject:
   m_ObjectHideFlags: 0
@@ -2677,6 +2791,7 @@ GameObject:
   - component: {fileID: 8364469125083910353}
   - component: {fileID: 1361060186602262848}
   - component: {fileID: 2025510224852294235}
+  - component: {fileID: 8719295332891138530}
   m_Layer: 5
   m_Name: Button_2
   m_TagString: Untagged
@@ -2764,7 +2879,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -2798,6 +2913,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8719295332891138530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2183181568006125178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &2247154716218458287
 GameObject:
   m_ObjectHideFlags: 0
@@ -2811,6 +2938,7 @@ GameObject:
   - component: {fileID: 6404701567055550176}
   - component: {fileID: 3661285943247923595}
   - component: {fileID: 889232297088383916}
+  - component: {fileID: 5387990637418859085}
   m_Layer: 5
   m_Name: Button_A
   m_TagString: Untagged
@@ -2898,7 +3026,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -2932,6 +3060,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5387990637418859085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2247154716218458287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &2296400496126771002
 GameObject:
   m_ObjectHideFlags: 0
@@ -2945,6 +3085,7 @@ GameObject:
   - component: {fileID: 2071666342735943658}
   - component: {fileID: 7281672144218244354}
   - component: {fileID: 3056896056542155684}
+  - component: {fileID: 8972566089465958204}
   m_Layer: 5
   m_Name: Button_8
   m_TagString: Untagged
@@ -3032,7 +3173,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -3066,6 +3207,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8972566089465958204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2296400496126771002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &2408156730907931092
 GameObject:
   m_ObjectHideFlags: 0
@@ -3079,6 +3232,7 @@ GameObject:
   - component: {fileID: 5754559126352636379}
   - component: {fileID: 5213965266685757222}
   - component: {fileID: 2710664682093918131}
+  - component: {fileID: 4755121515270853237}
   m_Layer: 5
   m_Name: Button_F
   m_TagString: Untagged
@@ -3166,7 +3320,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -3200,6 +3354,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4755121515270853237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2408156730907931092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &2415553383906154688
 GameObject:
   m_ObjectHideFlags: 0
@@ -3213,6 +3379,7 @@ GameObject:
   - component: {fileID: 5832900116591051003}
   - component: {fileID: 5534429147565564455}
   - component: {fileID: 7781697467639187522}
+  - component: {fileID: 2647938253781136771}
   m_Layer: 5
   m_Name: Button_V
   m_TagString: Untagged
@@ -3300,7 +3467,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -3334,6 +3501,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2647938253781136771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2415553383906154688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &2426375759079775853
 GameObject:
   m_ObjectHideFlags: 0
@@ -3437,6 +3616,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -3483,6 +3663,7 @@ GameObject:
   - component: {fileID: 6252360694225702613}
   - component: {fileID: 5604096736760330958}
   - component: {fileID: 2447085905349570535}
+  - component: {fileID: 2182183506322738960}
   m_Layer: 5
   m_Name: Button_H
   m_TagString: Untagged
@@ -3570,7 +3751,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -3604,6 +3785,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2182183506322738960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2477017773110936173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &2495031027998091725
 GameObject:
   m_ObjectHideFlags: 0
@@ -3749,6 +3942,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -3795,6 +3989,7 @@ GameObject:
   - component: {fileID: 2944074449034749435}
   - component: {fileID: 1044683547854758774}
   - component: {fileID: 3430361295566132633}
+  - component: {fileID: 6623987126906357614}
   m_Layer: 5
   m_Name: Button_S
   m_TagString: Untagged
@@ -3882,7 +4077,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -3916,6 +4111,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6623987126906357614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2783435777083501456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &2933380107048989382
 GameObject:
   m_ObjectHideFlags: 0
@@ -4019,6 +4226,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -4064,6 +4272,7 @@ GameObject:
   - component: {fileID: 8447575379322171675}
   - component: {fileID: 6986372426244341102}
   - component: {fileID: 7311776581334027794}
+  - component: {fileID: 2008788641081181677}
   m_Layer: 5
   m_Name: Button_Backspace
   m_TagString: Untagged
@@ -4151,7 +4360,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -4185,6 +4394,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2008788641081181677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3083401788173182196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &3083824875283484852
 GameObject:
   m_ObjectHideFlags: 0
@@ -4377,6 +4598,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -4513,6 +4735,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -4649,6 +4872,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -4695,6 +4919,7 @@ GameObject:
   - component: {fileID: 2903758130829069965}
   - component: {fileID: 5506033787574479193}
   - component: {fileID: 8389185100427684608}
+  - component: {fileID: 1367839223748831750}
   m_Layer: 5
   m_Name: Button_K
   m_TagString: Untagged
@@ -4782,7 +5007,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -4816,6 +5041,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1367839223748831750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3685853233512797816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &3796475449901761341
 GameObject:
   m_ObjectHideFlags: 0
@@ -4829,6 +5066,7 @@ GameObject:
   - component: {fileID: 6026898854036456575}
   - component: {fileID: 2561143125417004281}
   - component: {fileID: 3188591447908069452}
+  - component: {fileID: 8544057991818042988}
   m_Layer: 5
   m_Name: Button_E
   m_TagString: Untagged
@@ -4916,7 +5154,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -4950,6 +5188,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8544057991818042988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3796475449901761341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &3927670302764624827
 GameObject:
   m_ObjectHideFlags: 0
@@ -4963,6 +5213,7 @@ GameObject:
   - component: {fileID: 2859127772279887143}
   - component: {fileID: 591125094713940895}
   - component: {fileID: 186163562452784350}
+  - component: {fileID: 171166979781736602}
   m_Layer: 5
   m_Name: Button_M
   m_TagString: Untagged
@@ -5050,7 +5301,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -5084,6 +5335,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &171166979781736602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3927670302764624827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &4156424763715922735
 GameObject:
   m_ObjectHideFlags: 0
@@ -5097,6 +5360,7 @@ GameObject:
   - component: {fileID: 4562665977620017120}
   - component: {fileID: 9046285681761775638}
   - component: {fileID: 5132102212628739821}
+  - component: {fileID: 1910184121349253320}
   m_Layer: 5
   m_Name: Button_B
   m_TagString: Untagged
@@ -5184,7 +5448,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -5218,6 +5482,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1910184121349253320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4156424763715922735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &4214025457688533225
 GameObject:
   m_ObjectHideFlags: 0
@@ -5321,6 +5597,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -5457,6 +5734,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -5593,6 +5871,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -5639,6 +5918,7 @@ GameObject:
   - component: {fileID: 7375463605026978595}
   - component: {fileID: 3366560572319770937}
   - component: {fileID: 4780531613265959462}
+  - component: {fileID: 5615378883967662175}
   m_Layer: 5
   m_Name: Button_Y
   m_TagString: Untagged
@@ -5726,7 +6006,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -5760,6 +6040,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5615378883967662175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4392274294831078344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &4570765318809694710
 GameObject:
   m_ObjectHideFlags: 0
@@ -5773,6 +6065,7 @@ GameObject:
   - component: {fileID: 3621286791184407055}
   - component: {fileID: 7257934102026262940}
   - component: {fileID: 3146105878666911224}
+  - component: {fileID: 530038393462467819}
   m_Layer: 5
   m_Name: Button_Z
   m_TagString: Untagged
@@ -5860,7 +6153,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -5894,6 +6187,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &530038393462467819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4570765318809694710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &4793722155695352417
 GameObject:
   m_ObjectHideFlags: 0
@@ -5997,6 +6302,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -6133,6 +6439,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -6179,6 +6486,7 @@ GameObject:
   - component: {fileID: 7220173535748174539}
   - component: {fileID: 7149279513719955791}
   - component: {fileID: 3072380295057003116}
+  - component: {fileID: 4386349672799801593}
   m_Layer: 5
   m_Name: Button_P
   m_TagString: Untagged
@@ -6266,7 +6574,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -6300,6 +6608,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4386349672799801593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5106054509547255054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &5165607794061256748
 GameObject:
   m_ObjectHideFlags: 0
@@ -6403,6 +6723,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -6487,6 +6808,7 @@ GameObject:
   - component: {fileID: 4064760456411530534}
   - component: {fileID: 6488359980037157288}
   - component: {fileID: 1701941234050411176}
+  - component: {fileID: 73055253080637005}
   m_Layer: 5
   m_Name: Button_X
   m_TagString: Untagged
@@ -6574,7 +6896,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -6608,6 +6930,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &73055253080637005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5301992314674202821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &5333233714002023888
 GameObject:
   m_ObjectHideFlags: 0
@@ -6621,6 +6955,7 @@ GameObject:
   - component: {fileID: 1479428098284166447}
   - component: {fileID: 2407797508872915881}
   - component: {fileID: 7799223687291374802}
+  - component: {fileID: 2658307700859001923}
   m_Layer: 5
   m_Name: Button_5
   m_TagString: Untagged
@@ -6708,7 +7043,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -6742,6 +7077,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2658307700859001923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5333233714002023888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &5465222019413860131
 GameObject:
   m_ObjectHideFlags: 0
@@ -6755,6 +7102,7 @@ GameObject:
   - component: {fileID: 607129974097466875}
   - component: {fileID: 1453164815873459692}
   - component: {fileID: 365647886187932164}
+  - component: {fileID: 5443675419840121861}
   m_Layer: 5
   m_Name: Button_7
   m_TagString: Untagged
@@ -6842,7 +7190,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -6876,6 +7224,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5443675419840121861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5465222019413860131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &5654615837730677647
 GameObject:
   m_ObjectHideFlags: 0
@@ -6979,6 +7339,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -7024,6 +7385,7 @@ GameObject:
   - component: {fileID: 4549077435703744590}
   - component: {fileID: 6664711677826845191}
   - component: {fileID: 313275281937485144}
+  - component: {fileID: 7592078789315981494}
   m_Layer: 5
   m_Name: Button_Space
   m_TagString: Untagged
@@ -7111,7 +7473,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -7145,6 +7507,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7592078789315981494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5683559819808165638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &5784480452647436098
 GameObject:
   m_ObjectHideFlags: 0
@@ -7158,6 +7532,7 @@ GameObject:
   - component: {fileID: 1686089084424347388}
   - component: {fileID: 8620642669592774830}
   - component: {fileID: 6840800902020889650}
+  - component: {fileID: 4579021893351380924}
   m_Layer: 5
   m_Name: Button_4
   m_TagString: Untagged
@@ -7245,7 +7620,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -7279,6 +7654,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4579021893351380924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5784480452647436098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &5799562094529899746
 GameObject:
   m_ObjectHideFlags: 0
@@ -7292,6 +7679,7 @@ GameObject:
   - component: {fileID: 2155464051866971662}
   - component: {fileID: 8860646803073900939}
   - component: {fileID: 696673842421042638}
+  - component: {fileID: 8387364294862469022}
   m_Layer: 5
   m_Name: Button_U
   m_TagString: Untagged
@@ -7379,7 +7767,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -7413,6 +7801,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8387364294862469022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5799562094529899746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &5830483965526461883
 GameObject:
   m_ObjectHideFlags: 0
@@ -7516,6 +7916,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -7652,6 +8053,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -7788,6 +8190,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -7924,6 +8327,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -8060,6 +8464,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -8196,6 +8601,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -8288,6 +8694,7 @@ GameObject:
   - component: {fileID: 7890744320499626297}
   - component: {fileID: 6283014192276253761}
   - component: {fileID: 1750886487768648114}
+  - component: {fileID: 4883265718509898901}
   m_Layer: 5
   m_Name: Button_9
   m_TagString: Untagged
@@ -8375,7 +8782,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -8409,6 +8816,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4883265718509898901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6752286551958526900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &6772816990717359810
 GameObject:
   m_ObjectHideFlags: 0
@@ -8512,6 +8931,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -8558,6 +8978,7 @@ GameObject:
   - component: {fileID: 363160960509542872}
   - component: {fileID: 5533815834231349432}
   - component: {fileID: 6860082625668991538}
+  - component: {fileID: 5557223911689205245}
   m_Layer: 5
   m_Name: Button_J
   m_TagString: Untagged
@@ -8645,7 +9066,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -8679,6 +9100,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5557223911689205245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7037724973270397502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &7074895632317427693
 GameObject:
   m_ObjectHideFlags: 0
@@ -8744,6 +9177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableMoveable
   interactImmediately: 1
+  canBeInteractedThroughState: 1
 --- !u!114 &6357614171018818234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8770,6 +9204,7 @@ GameObject:
   - component: {fileID: 6901606690446109109}
   - component: {fileID: 2161644314936247811}
   - component: {fileID: 6256313739308731676}
+  - component: {fileID: 3677444510135980292}
   m_Layer: 5
   m_Name: Button_R
   m_TagString: Untagged
@@ -8857,7 +9292,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -8891,6 +9326,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3677444510135980292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7119743175304371674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &7264049613997927141
 GameObject:
   m_ObjectHideFlags: 0
@@ -8904,6 +9351,7 @@ GameObject:
   - component: {fileID: 5355991618863300328}
   - component: {fileID: 7298057696482689208}
   - component: {fileID: 965026319224176297}
+  - component: {fileID: 2779375392280599693}
   m_Layer: 5
   m_Name: Button_N
   m_TagString: Untagged
@@ -8991,7 +9439,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -9025,6 +9473,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2779375392280599693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7264049613997927141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &7307108422215306655
 GameObject:
   m_ObjectHideFlags: 0
@@ -9128,6 +9588,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -9264,6 +9725,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -9309,6 +9771,7 @@ GameObject:
   - component: {fileID: 3368981823205701641}
   - component: {fileID: 7651268592203949819}
   - component: {fileID: 3545576452380516576}
+  - component: {fileID: 2852302581385230046}
   m_Layer: 5
   m_Name: Button_Caps
   m_TagString: Untagged
@@ -9396,7 +9859,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -9430,6 +9893,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2852302581385230046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7419289736910623612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &7528910505234537640
 GameObject:
   m_ObjectHideFlags: 0
@@ -9533,6 +10008,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -9579,6 +10055,7 @@ GameObject:
   - component: {fileID: 1424211436866818959}
   - component: {fileID: 9142022285300479959}
   - component: {fileID: 8197313622882251347}
+  - component: {fileID: 7683851332775285748}
   m_Layer: 5
   m_Name: Button_Q
   m_TagString: Untagged
@@ -9666,7 +10143,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -9700,6 +10177,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7683851332775285748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7597211427573642954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &7711208799950366388
 GameObject:
   m_ObjectHideFlags: 0
@@ -9803,6 +10292,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -9939,6 +10429,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -10061,6 +10552,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &2154269726797283876
 BoxCollider:
@@ -10186,6 +10678,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -10322,6 +10815,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -10368,6 +10862,7 @@ GameObject:
   - component: {fileID: 2443760559347901870}
   - component: {fileID: 7474323868726663010}
   - component: {fileID: 6192696413767997526}
+  - component: {fileID: 2996844671190368441}
   m_Layer: 5
   m_Name: Button_T
   m_TagString: Untagged
@@ -10455,7 +10950,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -10489,6 +10984,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2996844671190368441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7890985447968374761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &8114587822792143355
 GameObject:
   m_ObjectHideFlags: 0
@@ -10592,6 +11099,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -10638,6 +11146,7 @@ GameObject:
   - component: {fileID: 6227292584877299802}
   - component: {fileID: 4975859939432801606}
   - component: {fileID: 7300940055643896180}
+  - component: {fileID: 348277238002816900}
   m_Layer: 5
   m_Name: Button_0
   m_TagString: Untagged
@@ -10725,7 +11234,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -10759,6 +11268,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &348277238002816900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8261956381395491971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &8406795770023213840
 GameObject:
   m_ObjectHideFlags: 0
@@ -10772,6 +11293,7 @@ GameObject:
   - component: {fileID: 581097275142017594}
   - component: {fileID: 7521557670345620900}
   - component: {fileID: 2435364701396285707}
+  - component: {fileID: 4521026323909822386}
   m_Layer: 5
   m_Name: Button_O
   m_TagString: Untagged
@@ -10859,7 +11381,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -10893,6 +11415,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4521026323909822386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406795770023213840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &8926389195724173517
 GameObject:
   m_ObjectHideFlags: 0
@@ -10906,6 +11440,7 @@ GameObject:
   - component: {fileID: 1902444422564789322}
   - component: {fileID: 7810655844840125744}
   - component: {fileID: 1906380336774064696}
+  - component: {fileID: 7325159828803589875}
   m_Layer: 5
   m_Name: Button_6
   m_TagString: Untagged
@@ -10993,7 +11528,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -11027,6 +11562,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7325159828803589875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8926389195724173517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover
 --- !u!1 &8964713379624686982
 GameObject:
   m_ObjectHideFlags: 0
@@ -11130,6 +11677,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -11268,6 +11816,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -11314,6 +11863,7 @@ GameObject:
   - component: {fileID: 8564355298087432470}
   - component: {fileID: 8715349539422533658}
   - component: {fileID: 5603377996885712630}
+  - component: {fileID: 4387752586082370385}
   m_Layer: 5
   m_Name: Button_3
   m_TagString: Untagged
@@ -11401,7 +11951,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -11435,3 +11985,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccceafbfbd5614fa5910b3294ef477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4387752586082370385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9133675318751601997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc33c76c05e28a468a15cd4d232d523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHapticHover

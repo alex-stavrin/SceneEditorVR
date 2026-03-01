@@ -549,6 +549,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2039652373906824135}
     m_Modifications:
+    - target: {fileID: 98865079783355401, guid: 1ebe70e1029f551428009c1a937a0ff0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2073782346}
+    - target: {fileID: 98865079783355401, guid: 1ebe70e1029f551428009c1a937a0ff0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToPage
+      objectReference: {fileID: 0}
     - target: {fileID: 4034970035768080457, guid: 1ebe70e1029f551428009c1a937a0ff0, type: 3}
       propertyPath: m_Name
       value: Back Button
@@ -579,11 +587,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8890013459868036163, guid: 1ebe70e1029f551428009c1a937a0ff0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 50
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8890013459868036163, guid: 1ebe70e1029f551428009c1a937a0ff0, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8890013459868036163, guid: 1ebe70e1029f551428009c1a937a0ff0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1312,8 +1320,16 @@ PrefabInstance:
       value: Load Scene
       objectReference: {fileID: 0}
     - target: {fileID: 268650235094163743, guid: b4ad10c080fbe8544a0fe427aafca4ec, type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 268650235094163743, guid: b4ad10c080fbe8544a0fe427aafca4ec, type: 3}
       propertyPath: m_fontStyle
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 268650235094163743, guid: b4ad10c080fbe8544a0fe427aafca4ec, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 428045824671491907, guid: b4ad10c080fbe8544a0fe427aafca4ec, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1380,8 +1396,20 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1959305866029073980, guid: b4ad10c080fbe8544a0fe427aafca4ec, type: 3}
+      propertyPath: m_text
+      value: New Scene
+      objectReference: {fileID: 0}
+    - target: {fileID: 1959305866029073980, guid: b4ad10c080fbe8544a0fe427aafca4ec, type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1959305866029073980, guid: b4ad10c080fbe8544a0fe427aafca4ec, type: 3}
       propertyPath: m_fontStyle
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1959305866029073980, guid: b4ad10c080fbe8544a0fe427aafca4ec, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2908226451380799377, guid: b4ad10c080fbe8544a0fe427aafca4ec, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1485,7 +1513,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4789758191588985489, guid: b4ad10c080fbe8544a0fe427aafca4ec, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 50
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789758191588985489, guid: b4ad10c080fbe8544a0fe427aafca4ec, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4789758191588985489, guid: b4ad10c080fbe8544a0fe427aafca4ec, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1581,7 +1613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7597309682800975473, guid: b4ad10c080fbe8544a0fe427aafca4ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7597309682800975473, guid: b4ad10c080fbe8544a0fe427aafca4ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1618,6 +1650,14 @@ PrefabInstance:
     - target: {fileID: 8369549929156499175, guid: b4ad10c080fbe8544a0fe427aafca4ec, type: 3}
       propertyPath: m_text
       value: Load Scene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408113414051605879, guid: b4ad10c080fbe8544a0fe427aafca4ec, type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408113414051605879, guid: b4ad10c080fbe8544a0fe427aafca4ec, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 9165935764753229114, guid: b4ad10c080fbe8544a0fe427aafca4ec, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

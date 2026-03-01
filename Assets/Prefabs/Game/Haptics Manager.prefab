@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   disableHaptics: 0
-  buttonHoverHapticAmplitude: 0.2
+  buttonHoverHapticAmplitude: 0.1
   buttonHoverHapticDuration: 0.1
-  gizmoHoverHapticAmplitude: 0.075
-  gizmoHoverHapticDuration: 0.075
+  gizmoHoverHapticAmplitude: 0.2
+  gizmoHoverHapticDuration: 0.2
