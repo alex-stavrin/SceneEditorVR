@@ -29,6 +29,14 @@ public class ColorManager : MonoBehaviour
     [SerializeField]
     Color zAxisColor;
 
+    [Header("Color Pallette")]
+
+    [SerializeField]
+    Color highlightColor;
+
+    [SerializeField]
+    Color neutralColor;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -47,4 +55,6 @@ public class ColorManager : MonoBehaviour
     public static Color GetXAxisColor() {return Instance.xAxisColor;}
     public static Color GetYAxisColor() {return Instance.yAxisColor;}
     public static Color GetZAxisColor() {return Instance.zAxisColor;}
+    public static Color GetHighlightColor() {return Instance.highlightColor;}
+    public static Color GetNeutralColor() {return Instance.neutralColor;}
 }

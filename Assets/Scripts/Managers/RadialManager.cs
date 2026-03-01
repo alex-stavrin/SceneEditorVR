@@ -64,13 +64,16 @@ public class RadialManager : MonoBehaviour
             if (j == i)
             {
                 if (currentPick != i)
-                {                    
+                {
+                    if(HapticsManager.Instance) HapticsManager.PlayHapticRadialPick(currentController.GetSide());
+                    radialMaterials[j].SetColor("_Color", ColorManager.GetHighlightColor());
                     radialMaterials[j].SetFloat("_Alpha", 1.0f);
                     currentPick = i;
                 }
             }
             else
             {
+                radialMaterials[j].SetColor("_Color", ColorManager.GetNeutralColor());
                 radialMaterials[j].SetFloat("_Alpha", 0.5f);
             }
         }

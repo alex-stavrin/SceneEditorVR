@@ -13,9 +13,6 @@ public class TabManager : MonoBehaviour
     int startingTab;
 
     [SerializeField]
-    Color activeColor;
-
-    [SerializeField]
     Color inactiveColor;
 
     void Start()
@@ -31,7 +28,7 @@ public class TabManager : MonoBehaviour
             {
 
                 tabs[i].gameObject.SetActive(true);
-                SetButtonPrimaryColor(buttons[i], activeColor);
+                SetButtonPrimaryColor(buttons[i], ColorManager.GetHighlightColor());
             }
             else
             {

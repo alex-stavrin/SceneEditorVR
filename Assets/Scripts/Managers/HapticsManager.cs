@@ -30,6 +30,14 @@ public class HapticsManager : MonoBehaviour
     [SerializeField]
     float gizmoHoverHapticDuration;
 
+    [Header("Radial Pick")]
+
+    [SerializeField]
+    float radialPickHapticAmplitude;
+
+    [SerializeField]
+    float radialPickHapticDuration;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -124,6 +132,11 @@ public class HapticsManager : MonoBehaviour
     public static void PlayHapticGizmoHover(InputDeviceRole inputDeviceRole)
     {
         SendHapticToDevice(inputDeviceRole, Instance.gizmoHoverHapticAmplitude, Instance.gizmoHoverHapticDuration);
+    }
+
+    public static void PlayHapticRadialPick(InputDeviceRole inputDeviceRole)
+    {
+        SendHapticToDevice(inputDeviceRole, Instance.radialPickHapticAmplitude, Instance.radialPickHapticDuration);
     }
 
     private static void SendHapticToDevice(InputDeviceRole inputDeviceRole, float amplitude, float duration)
