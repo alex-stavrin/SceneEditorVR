@@ -49,5 +49,7 @@ MonoBehaviour:
   buttonHoverHapticDuration: 0.1
   gizmoHoverHapticAmplitude: 0.2
   gizmoHoverHapticDuration: 0.2
-  radialPickHapticAmplitude: 0.1
-  radialPickHapticDuration: 0.1
+  radialPickHapticAmplitude: 0.075
+  radialPickHapticDuration: 0.075
+  buttonClickHapticAmplitude: 0.075
+  buttonClickHapticDuration: 0.075

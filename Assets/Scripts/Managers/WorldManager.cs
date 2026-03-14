@@ -40,6 +40,16 @@ public class WorldManager : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    public static void Save()
+    {
+        SaveAndLoadManager.Save();
+    }
+
+    public static void Export()
+    {
+        SaveAndLoadManager.ExportScene();
+    }
+
     void OnApplicationQuit()
     {
         SaveAndLoadManager.Save();

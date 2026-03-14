@@ -79,7 +79,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.7490196, g: 0.7882353, b: 0.81960785, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -250,11 +250,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
+  m_RequiresDepthTextureOption: 1
+  m_RequiresOpaqueTextureOption: 1
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 0
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -380,9 +380,9 @@ MonoBehaviour:
   bodyHeightMax: 2
   leftController: {fileID: 4870878855019534909}
   rightController: {fileID: 5288957902577284575}
-  canAirGrab: 1
+  canAirGrab: 0
   grabEndForce: 10
-  menuRestricted: 0
+  menuRestricted: 1
 --- !u!1 &9180987316195927790
 GameObject:
   m_ObjectHideFlags: 0

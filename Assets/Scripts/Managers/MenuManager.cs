@@ -71,14 +71,19 @@ public class MenuManager : MonoBehaviour
             }
         }
     }
-    
-    public void Quit()
+
+    public void ActuallyQuit()
     {
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else         
             Application.Quit();
-        #endif
+        #endif  
+    }
+    
+    public void Quit()
+    {
+        ModalManager.OpenModal("Are you sure you want to quit the application?", "Cancel", "Confirm", ActuallyQuit);
     }
 
     public void GoToNewScene()

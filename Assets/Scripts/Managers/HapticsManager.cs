@@ -38,6 +38,14 @@ public class HapticsManager : MonoBehaviour
     [SerializeField]
     float radialPickHapticDuration;
 
+    [Header("Button Pressed")]
+
+    [SerializeField]
+    float buttonClickHapticAmplitude;
+
+    [SerializeField]
+    float buttonClickHapticDuration;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -137,6 +145,11 @@ public class HapticsManager : MonoBehaviour
     public static void PlayHapticRadialPick(InputDeviceRole inputDeviceRole)
     {
         SendHapticToDevice(inputDeviceRole, Instance.radialPickHapticAmplitude, Instance.radialPickHapticDuration);
+    }
+
+    public static void PlayHapticButtonClick(InputDeviceRole inputDeviceRole)
+    {
+        SendHapticToDevice(inputDeviceRole, Instance.buttonClickHapticAmplitude, Instance.buttonClickHapticDuration);
     }
 
     private static void SendHapticToDevice(InputDeviceRole inputDeviceRole, float amplitude, float duration)
