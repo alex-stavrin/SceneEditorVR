@@ -63,14 +63,6 @@ public class SelectionManager : MonoBehaviour
 
     private void SelectedChanged()
     {
-        if(selected.Count == 1)
-        {            
-            InspectorManager.SetInspected(selected[0].gameObject);
-        }
-        else
-        {
-            InspectorManager.SetInspected(null);
-        }
         OnSelectedChanged?.Invoke();
     }
 

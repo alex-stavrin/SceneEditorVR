@@ -1,17 +1,27 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
+
+    private static MenuManager _instance;
+    public static MenuManager Instance { get { return _instance; } }
+
+    [Header("General")]
     [SerializeField]
     GameObject[] pages;
 
     [SerializeField]
-    TMP_InputField levelNameInputField;
+    int startingPage = 0;
+
+    [Header("New Scene")]
 
     [SerializeField]
-    int startingPage = 0;
+    TMP_InputField levelNameInputField;
+
+    [Header("Load Scene")]
 
     [SerializeField]
     int loadPageIndex = 2;
@@ -20,9 +30,32 @@ public class MenuManager : MonoBehaviour
     GameObject levelButton;
 
     [SerializeField]
+    Button loadLevelButton;
+
+    [SerializeField]
     Transform loadedLevelNamesScrollRoot;
 
+    // # Private
+
+    // ## General
     int currentPage = -1;
+
+    // ## Load Scene
+
+    string selectedLoadedLevelName;
+    LoadedLevelButton lastSelectedLoadedLevelButton = null;
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
 
     private void Start()
     {
@@ -42,6 +75,11 @@ public class MenuManager : MonoBehaviour
 
     public void OpenLoadScreen()
     {
+        if(loadLevelButton)
+        {
+            loadLevelButton.interactable = false;
+        }
+
         foreach(Transform scrollRootChild in loadedLevelNamesScrollRoot)
         {
             Destroy(scrollRootChild.gameObject);    
@@ -89,5 +127,34 @@ public class MenuManager : MonoBehaviour
     public void GoToNewScene()
     {
         SaveAndLoadManager.OpenLevel(levelNameInputField.text, false);
+    }
+
+    public static void SetSelectedLoadedLevelName(LoadedLevelButton selectedLoadedLevelButton, string levelName)
+    {
+        // if same level return
+        if(Instance.selectedLoadedLevelName == levelName) return;
+
+        if(Instance.loadLevelButton)
+        {
+            Instance.loadLevelButton.interactable = true;
+        }
+
+        selectedLoadedLevelButton.SetButtonColor(ColorManager.GetHighlightColor());
+        Instance.selectedLoadedLevelName = levelName;
+        if(Instance.lastSelectedLoadedLevelButton)
+        {
+            Instance.lastSelectedLoadedLevelButton.SetButtonColor(ColorManager.GetNeutralColor());
+        }
+        Instance.lastSelectedLoadedLevelButton = selectedLoadedLevelButton;
+    }
+
+    public void ActuallyLoadScene()
+    {
+        SaveAndLoadManager.OpenLevel(selectedLoadedLevelName, true);
+    }
+
+    public static void LoadScene()
+    {
+        ModalManager.OpenModal("Open scene " + Instance.selectedLoadedLevelName + "?", "Close", "Confirm", Instance.ActuallyLoadScene);
     }
 }

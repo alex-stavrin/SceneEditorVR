@@ -30,6 +30,15 @@ public class LoadedLevelButton : MonoBehaviour
 
     public void OnButtonClicked()
     {
-        SaveAndLoadManager.OpenLevel(levelName, true);
+        MenuManager.SetSelectedLoadedLevelName(this, levelName);
+    }
+
+    public void SetButtonColor(Color color)
+    {
+        ColorBlock cb = button.colors;
+        cb.normalColor = color;
+        cb.pressedColor = color * 0.8f;
+        cb.highlightedColor = color * 0.9f;
+        button.colors = cb;
     }
 }
