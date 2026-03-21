@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: -6847714573171442736}
   m_Layer: 0
   m_Name: Actor
-  m_TagString: Untagged
+  m_TagString: Actor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,4 +177,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableMoveable
   interactImmediately: 0
-  canBeInteracted: 1
+  canBeInteractedThroughState: 1
+  isFirst: 1

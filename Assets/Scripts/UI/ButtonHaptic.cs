@@ -3,7 +3,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.XR;
 
-[RequireComponent(typeof(Button))]
 public class ButtonHaptic : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
 
@@ -16,24 +15,34 @@ public class ButtonHaptic : MonoBehaviour, IPointerEnterHandler, IPointerClickHa
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData is PointerEventDataVR eventDataVR)
+        if (!button) return;
+
+        if(button.interactable)
         {
-            if(HapticsManager.Instance && button.interactable)
+            if (eventData is PointerEventDataVR eventDataVR)
             {
-                InputDeviceRole deviceRole = eventDataVR.controller.GetSide();
-                HapticsManager.PlayHapticButtonClick(deviceRole);
+                if(HapticsManager.Instance)
+                {
+                    InputDeviceRole deviceRole = eventDataVR.controller.GetSide();
+                    HapticsManager.PlayHapticButtonClick(deviceRole);
+                }
             }
         }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (eventData is PointerEventDataVR eventDataVR)
+        if (!button) return;
+
+        if(button.interactable)
         {
-            if(HapticsManager.Instance && button.interactable)
+            if (eventData is PointerEventDataVR eventDataVR)
             {
-                InputDeviceRole deviceRole = eventDataVR.controller.GetSide();
-                HapticsManager.PlayHapticButtonHover(deviceRole);
+                if(HapticsManager.Instance)
+                {
+                    InputDeviceRole deviceRole = eventDataVR.controller.GetSide();
+                    HapticsManager.PlayHapticButtonHover(deviceRole);
+                }
             }
         }
     }

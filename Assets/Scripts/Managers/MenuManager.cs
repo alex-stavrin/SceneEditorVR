@@ -35,6 +35,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     Transform loadedLevelNamesScrollRoot;
 
+    [SerializeField]
+    GameObject noLevelsSavedText;
+
     // # Private
 
     // ## General
@@ -64,9 +67,9 @@ public class MenuManager : MonoBehaviour
 
     public void GoToPage(int newPage)
     {
-        if (currentPage != -1)
+        for(int i = 0; i < pages.Length; i++)
         {
-            pages[currentPage].SetActive(false);
+            pages[i].SetActive(false);
         }
 
         pages[newPage].SetActive(true);
@@ -88,6 +91,8 @@ public class MenuManager : MonoBehaviour
         GoToPage(loadPageIndex);
         string[] levelNames = SaveAndLoadManager.LoadLevelNames();
         if(levelNames == null) return;
+        noLevelsSavedText.SetActive(false);
+        selectedLoadedLevelName = "";
         foreach(string levelName in levelNames)
         {
             GameObject levelButtonGameobject = Instantiate(levelButton);
@@ -107,6 +112,11 @@ public class MenuManager : MonoBehaviour
                     rect.localScale = new Vector3(1, 1, 1);
                 }
             }
+        }
+
+        if(levelNames.Length == 0)
+        {
+            noLevelsSavedText.SetActive(true);
         }
     }
 

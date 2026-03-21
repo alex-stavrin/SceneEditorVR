@@ -45,26 +45,28 @@ public class SaveAndLoadManager : MonoBehaviour
 
     static async public void ExportScene()
     {
-        // 1. Collect all root GameObjects in the active scene
-        var rootObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
+        // 1. Find all GameObjects with a specific tag
+        // Note: This finds all active objects in the scene with the tag
+        var taggedObjects = GameObject.FindGameObjectsWithTag("Actor");
 
-        // 2. Initialize the export settings
+        if (taggedObjects.Length == 0)
+        {
+            Debug.LogWarning("No objects found with the specified tag.");
+            return;
+        }
+
         var exportSettings = new ExportSettings {
-            Format = GltfFormat.Binary // Exports as a single .glb file
+            Format = GltfFormat.Binary 
         };
         
         var gameObjectExportSettings = new GameObjectExportSettings();
-        
-        // 3. Create the exporter instance
         var export = new GameObjectExport(exportSettings, gameObjectExportSettings);
 
-        // 4. Add the scene content
-        export.AddScene(rootObjects, "MyRuntimeScene");
+        // 2. Add only the tagged objects to the scene
+        export.AddScene(taggedObjects, "FilteredExport");
 
-        // 5. Define the save path (e.g., Application.persistentDataPath)
         string path = System.IO.Path.Combine(Application.persistentDataPath, Instance.currentLevelName + ".glb");
 
-        // 6. Save the file and dispose of the exporter
         bool success = await export.SaveToFileAndDispose(path);
     }
 
