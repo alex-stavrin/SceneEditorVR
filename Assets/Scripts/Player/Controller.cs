@@ -30,9 +30,7 @@ public class Controller : MonoBehaviour
     [Header("UI Interactions")]
     [SerializeField] public int pointerId;
 
-    [Header("Snap Turn")]
-    [SerializeField] float snapTurnAmount = 45f;
-    [SerializeField] float snapTurnCooldown = 0.5f;
+
 
     // Raycast global values
     [HideInInspector] public bool bRaycastHit;
@@ -112,14 +110,15 @@ public class Controller : MonoBehaviour
         // read thumbstick input
         thumbstickInputValue = thumbstickAction.action.ReadValue<Vector2>();
         
-
         DoRaycast();
-
-        SnapTurnUpdate();
-
         HoverTest();
-
+        SnapTurnUpdate();
         MoveableHandling();
+    }
+
+    void FixedUpdate()
+    {
+        LocomotionUpdate();
     }
 
     void OnDisable()
@@ -138,6 +137,10 @@ public class Controller : MonoBehaviour
 
     void SnapTurnUpdate()
     {
+        if(controllerSide != InputDeviceRole.RightHanded) return;
+
+        if (pointingAtUI) return;
+
         if (snapTurnTimer > 0)
         {
             snapTurnTimer -= Time.deltaTime;
@@ -149,11 +152,29 @@ public class Controller : MonoBehaviour
             {
                 int direction = thumbstickInputValue.x > 0 ? 1 : -1;
 
-                player.RotateAround(snapTurnAmount * direction);
-                snapTurnTimer = snapTurnCooldown;
+                player.RotateAround(PlayerRig.Instance.snapTurnAmount * direction);
+                snapTurnTimer = PlayerRig.Instance.snapTurnCooldown;
             }
         }
     }
+
+    void LocomotionUpdate()
+    {
+        if (controllerSide != InputDeviceRole.LeftHanded) return;
+
+        if (pointingAtUI) return;
+
+        if (thumbstickInputValue.magnitude < 0.1f) return;
+
+        float thumbstickForward = thumbstickInputValue.y;
+        float thumbstickRight = thumbstickInputValue.x;
+
+        Vector3 movementDirection = new Vector3(thumbstickRight, 0.0f, thumbstickForward);
+        movementDirection.Normalize();
+
+        PlayerRig.Instance.Move(movementDirection);
+    }
+
     void MoveableHandling()
     {
         isMovingMoveable = false;
@@ -195,6 +216,7 @@ public class Controller : MonoBehaviour
                 }
                 else
                 {
+                    HapticsManager.PlayHapticActorSelected(controllerSide);
                     SoundsManager.PlaySelect(currentHoverable.transform.position);
                     if(isTryingToMultiSelect)
                     {

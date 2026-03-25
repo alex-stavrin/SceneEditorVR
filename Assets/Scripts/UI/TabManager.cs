@@ -28,22 +28,22 @@ public class TabManager : MonoBehaviour
             {
 
                 tabs[i].gameObject.SetActive(true);
-                SetButtonPrimaryColor(buttons[i], ColorManager.GetHighlightColor());
+                SetButtonColor(buttons[i], ColorManager.GetHighlightColor());
             }
             else
             {
                 tabs[i].gameObject.SetActive(false);
-                SetButtonPrimaryColor(buttons[i], inactiveColor);
+                SetButtonColor(buttons[i], ColorManager.GetNeutralColor());
             }
         }
     }
-    
-    void SetButtonPrimaryColor(Button button, Color newPrimaryColor)
+
+    public void SetButtonColor(Button button, Color color)
     {
-        ColorBlock colorBlock = button.colors;
-
-        colorBlock.normalColor = newPrimaryColor;
-
-        button.colors = colorBlock;
+        ColorBlock cb = button.colors;
+        cb.normalColor = color;
+        cb.pressedColor = color * 0.8f;
+        cb.highlightedColor = color * 0.9f;
+        button.colors = cb;
     }
 }

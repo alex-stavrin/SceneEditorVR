@@ -45,10 +45,7 @@ public class SaveAndLoadManager : MonoBehaviour
 
     static async public void ExportScene()
     {
-        // 1. Find all GameObjects with a specific tag
-        // Note: This finds all active objects in the scene with the tag
         var taggedObjects = GameObject.FindGameObjectsWithTag("Actor");
-
         if (taggedObjects.Length == 0)
         {
             Debug.LogWarning("No objects found with the specified tag.");
@@ -62,12 +59,13 @@ public class SaveAndLoadManager : MonoBehaviour
         var gameObjectExportSettings = new GameObjectExportSettings();
         var export = new GameObjectExport(exportSettings, gameObjectExportSettings);
 
-        // 2. Add only the tagged objects to the scene
         export.AddScene(taggedObjects, "FilteredExport");
 
         string path = System.IO.Path.Combine(Application.persistentDataPath, Instance.currentLevelName + ".glb");
 
         bool success = await export.SaveToFileAndDispose(path);
+
+        AlertsManager.SpawnAlert("Scene " + Instance.currentLevelName + " exported.");
     }
 
     static public void Save()
@@ -97,6 +95,8 @@ public class SaveAndLoadManager : MonoBehaviour
         string json = JsonUtility.ToJson(levelData, true);
         string filePath = Path.Combine(folderPath, Instance.currentLevelName + ".json");
         File.WriteAllText(filePath, json);
+
+        AlertsManager.SpawnAlert("Scene " + Instance.currentLevelName + " saved.");
     }
 
     static public string[] LoadLevelNames()
@@ -118,6 +118,11 @@ public class SaveAndLoadManager : MonoBehaviour
     static public void SetCurrentLevelName(string newLevelName)
     {
         Instance.currentLevelName = newLevelName;
+    }
+
+    static public string GetCurrentLevelName()
+    {
+        return Instance.currentLevelName;
     }
 
     static public void OpenLevel(string levelName, bool bIsLoaded)
@@ -177,7 +182,5 @@ public class SaveAndLoadManager : MonoBehaviour
                 }
             };
         }
-
-        WorldPanel.SetToggleState(levelData.directionalLightEnabled);
     }
 }

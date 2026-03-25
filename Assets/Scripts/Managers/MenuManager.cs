@@ -131,7 +131,7 @@ public class MenuManager : MonoBehaviour
     
     public void Quit()
     {
-        ModalManager.OpenModal("Are you sure you want to quit the application?", "Cancel", "Confirm", ActuallyQuit);
+        ModalManager.OpenModal("Are you sure you want to quit the application?", "Cancel", "Confirm", ActuallyQuit, false);
     }
 
     public void GoToNewScene()
@@ -165,6 +165,7 @@ public class MenuManager : MonoBehaviour
 
     public static void LoadScene()
     {
-        ModalManager.OpenModal("Open scene " + Instance.selectedLoadedLevelName + "?", "Close", "Confirm", Instance.ActuallyLoadScene);
+        ModalManager.OpenModal("Open scene " + Instance.selectedLoadedLevelName + "?", "Close", "Confirm", Instance.ActuallyLoadScene,
+            false);
     }
 }

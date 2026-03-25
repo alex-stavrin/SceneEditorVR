@@ -34,20 +34,27 @@ public class WorldManager : MonoBehaviour
         return Instance.directionalLightEnabled;
     }
 
-    public static void BackToMenu()
+    public void ModalMainMenu()
+    {
+        ModalManager.OpenModal("Go back to Main Menu?", "Cancel", "Confirm", BackToMainMenu, false);
+    }
+
+    public static void BackToMainMenu()
     {
         SaveAndLoadManager.Save();
         SceneManager.LoadScene("Menu");
     }
 
-    public static void Save()
+    public static void ModalSave()
     {
-        SaveAndLoadManager.Save();
+        ModalManager.OpenModal("Save scene " + SaveAndLoadManager.GetCurrentLevelName() + "?", "Cancel", "Confirm", SaveAndLoadManager.Save,
+            true);
     }
 
-    public static void Export()
+    public void ModalExport()
     {
-        SaveAndLoadManager.ExportScene();
+        ModalManager.OpenModal("Export scene " + SaveAndLoadManager.GetCurrentLevelName() + "?", "Cancel", "Confirm",
+            SaveAndLoadManager.ExportScene, true);
     }
 
     void OnApplicationQuit()

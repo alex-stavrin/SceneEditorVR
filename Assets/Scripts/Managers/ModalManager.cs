@@ -27,7 +27,7 @@ public class ModalManager : MonoBehaviour
     }
 
     public static void OpenModal(string modalText, string negativeButtonText, string positiveButtonText, 
-        UnityAction onPositiveButtonClicked)
+        UnityAction onPositiveButtonClicked, bool closeOnConfirm)
     {
         Instance.modal.gameObject.SetActive(true);
 
@@ -41,6 +41,11 @@ public class ModalManager : MonoBehaviour
 
         Instance.modal.negativeButton.onClick.AddListener(CloseModal);
         Instance.modal.positiveButton.onClick.AddListener(onPositiveButtonClicked);
+
+        if(closeOnConfirm)
+        {
+            Instance.modal.positiveButton.onClick.AddListener(CloseModal);
+        }
     }
 
     public static void CloseModal()

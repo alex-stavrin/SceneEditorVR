@@ -34,6 +34,19 @@ public class PlayerRig : MonoBehaviour
     [SerializeField] 
     Controller rightController;
 
+    [Header("Snap Turn")]
+    [SerializeField]
+    public float snapTurnAmount = 45f;
+    [SerializeField]
+    public float snapTurnCooldown = 0.5f;
+
+    [Header("Locomotion")]
+    [SerializeField]
+    public float maxMoveSpeed = 10.0f;
+
+    [SerializeField]
+    public float acceleration = 5.0f;
+
     [Header("Air Grabbing")]
 
     [SerializeField]
@@ -89,15 +102,6 @@ public class PlayerRig : MonoBehaviour
                 translationVector = currentGrabMovingPoint - rightControllerPosition;
             }
         }
-
-        //DebugDrawVR.DrawCapsule(bodyCollider.center + bodyCollider.transform.position, Quaternion.identity, bodyCollider.radius,
-        //    bodyCollider.height, Color.magenta);
-
-        //    DebugDrawVR.DrawCapsule(transform.position, Quaternion.identity, bodyCollider.radius,
-        //bodyCollider.height, Color.red);
-
-        //DebugDrawVR.DrawCapsule(rb.position, Quaternion.identity, bodyCollider.radius,
-        //    bodyCollider.height, Color.green);
     }
 
     private void FixedUpdate()
@@ -158,6 +162,28 @@ public class PlayerRig : MonoBehaviour
         Vector3 newPosition = newRotation * (rb.position - playerHead.position) + playerHead.position;
 
         rb.MovePosition(newPosition);
+    }
+
+    public void Move(Vector3 movementVector)
+    {
+        Vector3 playerRight = playerHead.right;
+        playerRight.y = 0;
+        playerRight.Normalize();
+
+        Vector3 playerForward = playerHead.forward;
+        playerForward.y = 0;
+        playerForward.Normalize();
+
+        Vector3 targetDirection = (playerRight * movementVector.x) + (playerForward * movementVector.z);
+        Vector3 targetVelocity = targetDirection * maxMoveSpeed;
+
+        Vector3 currentVelocity = rb.linearVelocity;
+        float maxSpeedChange = acceleration * Time.deltaTime;
+
+        float newX = Mathf.MoveTowards(currentVelocity.x, targetVelocity.x, maxSpeedChange);
+        float newZ = Mathf.MoveTowards(currentVelocity.z, targetVelocity.z, maxSpeedChange);
+
+        rb.linearVelocity = new Vector3(newX, currentVelocity.y, newZ);
     }
 
     public Transform GetPlayerHead()

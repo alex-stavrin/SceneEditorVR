@@ -46,6 +46,14 @@ public class HapticsManager : MonoBehaviour
     [SerializeField]
     float buttonClickHapticDuration;
 
+    [Header("Actor Selected")]
+
+    [SerializeField]
+    float actorSelectedHapticAmplitude;
+
+    [SerializeField]
+    float actorSelectedHapticDuration;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -150,6 +158,11 @@ public class HapticsManager : MonoBehaviour
     public static void PlayHapticButtonClick(InputDeviceRole inputDeviceRole)
     {
         SendHapticToDevice(inputDeviceRole, Instance.buttonClickHapticAmplitude, Instance.buttonClickHapticDuration);
+    }
+
+    public static void PlayHapticActorSelected(InputDeviceRole inputDeviceRole)
+    {
+        SendHapticToDevice(inputDeviceRole, Instance.actorSelectedHapticAmplitude, Instance.actorSelectedHapticDuration);
     }
 
     private static void SendHapticToDevice(InputDeviceRole inputDeviceRole, float amplitude, float duration)

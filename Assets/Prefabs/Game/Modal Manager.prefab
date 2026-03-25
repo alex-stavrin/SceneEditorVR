@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8652640097635700267
+--- !u!1 &4429239983965871162
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3529024691896703551}
-  - component: {fileID: 2776980632664838656}
+  - component: {fileID: 6138944955522621583}
+  - component: {fileID: 6520222987580237051}
   m_Layer: 0
-  m_Name: Haptics Manager
+  m_Name: Modal Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3529024691896703551
+--- !u!4 &6138944955522621583
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8652640097635700267}
+  m_GameObject: {fileID: 4429239983965871162}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,26 +32,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2776980632664838656
+--- !u!114 &6520222987580237051
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8652640097635700267}
+  m_GameObject: {fileID: 4429239983965871162}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0be9eae490b9def4e98301d8df17ef8f, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d8f7c1bffed58140820a1106e21f8a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  disableHaptics: 0
-  buttonHoverHapticAmplitude: 0.1
-  buttonHoverHapticDuration: 0.1
-  gizmoHoverHapticAmplitude: 0.1
-  gizmoHoverHapticDuration: 0.1
-  radialPickHapticAmplitude: 0.075
-  radialPickHapticDuration: 0.075
-  buttonClickHapticAmplitude: 0.075
-  buttonClickHapticDuration: 0.075
-  actorSelectedHapticAmplitude: 0.2
-  actorSelectedHapticDuration: 0.2
+  modal: {fileID: 0}
