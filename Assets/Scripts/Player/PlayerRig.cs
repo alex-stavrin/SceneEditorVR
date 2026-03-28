@@ -166,6 +166,8 @@ public class PlayerRig : MonoBehaviour
 
     public void Move(Vector3 movementVector)
     {
+        if (menuRestricted) return;
+
         Vector3 playerRight = playerHead.right;
         playerRight.y = 0;
         playerRight.Normalize();

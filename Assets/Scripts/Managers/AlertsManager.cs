@@ -8,9 +8,6 @@ public class AlertsManager : MonoBehaviour
     [SerializeField]
     Alert alert;
 
-    [SerializeField]
-    Vector2 offsetFromCamera = new Vector2();
-
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -28,25 +25,8 @@ public class AlertsManager : MonoBehaviour
         if (!Instance.alert) return;
 
         Alert alert = Instance.alert;
-
         alert.gameObject.SetActive(true);
-
-        Transform playerHead = PlayerRig.Instance.GetPlayerHead();
-
-        Vector3 flatForward = Vector3.ProjectOnPlane(playerHead.forward, Vector3.up).normalized;
-
-        // new position
-        alert.transform.position =
-            playerHead.position
-            + flatForward * Instance.offsetFromCamera.x
-            + Vector3.up * Instance.offsetFromCamera.y;
-
-        // look at player only yaw
-        Vector3 direction = playerHead.position - alert.transform.position;
-        direction.y = 0;
-        Quaternion lookRotation = Quaternion.LookRotation(-direction);
-        alert.transform.rotation = lookRotation;
-
+        alert.StartTimer();
         alert.SetText(alertText);
     }
 }

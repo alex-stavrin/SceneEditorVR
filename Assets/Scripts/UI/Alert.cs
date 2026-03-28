@@ -13,12 +13,7 @@ public class Alert : MonoBehaviour
     [SerializeField]
     float timeBeforeDisappear = 2.0f;
 
-    float timer;
-
-    void Start()
-    {
-        timer = 0.0f;
-    }
+    float timer = 0.0f;
 
     void Update()
     {
