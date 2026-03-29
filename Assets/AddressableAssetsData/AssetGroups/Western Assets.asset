@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Western Assets
   m_GUID: abb90e413db47b6409796f929135bb9b
   m_SerializeEntries:
+  - m_GUID: 0444a2bb2abfe4e429732f5fffef6c4b
+    m_Address: Assets/Prefabs/Actors/Western/SandGround.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2b6a03ba13dc9af4a9c6b8144c7cca30
     m_Address: Assets/Prefabs/Actors/Western/Table.prefab
     m_ReadOnly: 0
