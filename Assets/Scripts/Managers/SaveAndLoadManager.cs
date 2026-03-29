@@ -21,7 +21,6 @@ public class ActorData
 [System.Serializable]
 public class LevelData
 {
-    public bool directionalLightEnabled;
     public List<ActorData> actors = new List<ActorData>();
 }
 
@@ -45,6 +44,12 @@ public class SaveAndLoadManager : MonoBehaviour
 
     static async public void ExportScene()
     {
+        string folderPath = Path.Combine(Application.persistentDataPath, "scenes/exported");
+        if (!Directory.Exists(folderPath))
+        {
+            Directory.CreateDirectory(folderPath);
+        }
+
         var taggedObjects = GameObject.FindGameObjectsWithTag("Actor");
         if (taggedObjects.Length == 0)
         {
@@ -52,16 +57,13 @@ public class SaveAndLoadManager : MonoBehaviour
             return;
         }
 
-        var exportSettings = new ExportSettings {
-            Format = GltfFormat.Binary 
-        };
-        
+        var exportSettings = new ExportSettings { Format = GltfFormat.Binary };
         var gameObjectExportSettings = new GameObjectExportSettings();
         var export = new GameObjectExport(exportSettings, gameObjectExportSettings);
 
         export.AddScene(taggedObjects, "FilteredExport");
 
-        string path = System.IO.Path.Combine(Application.persistentDataPath, Instance.currentLevelName + ".glb");
+        string path = Path.Combine(folderPath, Instance.currentLevelName + ".glb");
 
         bool success = await export.SaveToFileAndDispose(path);
 
@@ -70,15 +72,13 @@ public class SaveAndLoadManager : MonoBehaviour
 
     static public void Save()
     {
-        string folderPath = Path.Combine(Application.persistentDataPath, "levels");
-
+        string folderPath = Path.Combine(Application.persistentDataPath, "scenes/saved");
         if (!Directory.Exists(folderPath))
         {
             Directory.CreateDirectory(folderPath);
         }
 
         LevelData levelData = new LevelData();
-        levelData.directionalLightEnabled = WorldManager.GetDiretionalLightEnabled();
         List<Actor> actors = ActorsManager.GetActors();
         foreach (Actor actor in actors)
         {
@@ -101,7 +101,7 @@ public class SaveAndLoadManager : MonoBehaviour
 
     static public string[] LoadLevelNames()
     {
-        string levelsPath = Path.Combine(Application.persistentDataPath, "levels");
+        string levelsPath = Path.Combine(Application.persistentDataPath, "scenes/saved");
 
         if (Directory.Exists(levelsPath))
         {
@@ -146,7 +146,7 @@ public class SaveAndLoadManager : MonoBehaviour
 
     static public void LoadAndSpawnLevel(string levelName)
     {
-        string filePath = Path.Combine(Application.persistentDataPath, "levels", levelName + ".json");
+        string filePath = Path.Combine(Application.persistentDataPath, "scenes/saved", levelName + ".json");
 
         if(!File.Exists(filePath))
         {

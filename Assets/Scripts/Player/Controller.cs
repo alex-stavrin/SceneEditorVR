@@ -160,6 +160,8 @@ public class Controller : MonoBehaviour
 
     void LocomotionUpdate()
     {
+        if (isInteracting) return;
+
         if (controllerSide != InputDeviceRole.LeftHanded) return;
 
         if (pointingAtUI) return;

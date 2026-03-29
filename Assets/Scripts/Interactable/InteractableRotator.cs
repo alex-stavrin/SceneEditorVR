@@ -52,8 +52,12 @@ public class InteractableRotator : InteractableGizmo
                         float circleX = Mathf.Sin(angle * Mathf.Deg2Rad);
                         float circleZ = Mathf.Cos(angle * Mathf.Deg2Rad);
 
-                        RotationVisualizerManager.Instance.SetTargetVisualizerLocation(interactionStartingPosition +
-                            new Vector3(visRadius * circleX, 0, visRadius * circleZ));
+
+                        Vector3 targetVisualizerLocation =  interactionStartingPosition +
+                            new Vector3(visRadius * circleX, 0, visRadius * circleZ);
+
+                        RotationVisualizerManager.Instance.SetTargetVisualizerLocation(targetVisualizerLocation);
+                        RotationVisualizerManager.UpdateLineEndWorldToLocal(targetVisualizerLocation);
 
                         rotateableInfo.rotateable.SetRotationAroundAxisAndPoint(interactionCenter,
                             new Vector3(0,1,0), rotateableInfo.startingRotation, rotateableInfo.startingPosition,
@@ -64,8 +68,11 @@ public class InteractableRotator : InteractableGizmo
                         float circleY = Mathf.Cos(angle * Mathf.Deg2Rad);
                         float circleZ = Mathf.Sin(angle * Mathf.Deg2Rad);
 
-                        RotationVisualizerManager.Instance.SetTargetVisualizerLocation(interactionStartingPosition +
-                            new Vector3(0, visRadius * circleY, visRadius * circleZ));
+                        Vector3 targetVisualizerLocation = interactionStartingPosition +
+                            new Vector3(0, visRadius * circleY, visRadius * circleZ);
+
+                        RotationVisualizerManager.Instance.SetTargetVisualizerLocation(targetVisualizerLocation);
+                        RotationVisualizerManager.UpdateLineEndWorldToLocal(targetVisualizerLocation);
 
                         rotateableInfo.rotateable.SetRotationAroundAxisAndPoint(interactionCenter,
                             new Vector3(1,0,0), rotateableInfo.startingRotation, rotateableInfo.startingPosition,
@@ -76,8 +83,11 @@ public class InteractableRotator : InteractableGizmo
                         float circleY = Mathf.Cos(angle * Mathf.Deg2Rad);
                         float circleX = -Mathf.Sin(angle * Mathf.Deg2Rad);
 
-                        RotationVisualizerManager.Instance.SetTargetVisualizerLocation(interactionStartingPosition +
-                            new Vector3(visRadius * circleX, circleY * visRadius, 0));
+                        Vector3 targetVisualizerLocation = interactionStartingPosition +
+                            new Vector3(visRadius * circleX, circleY * visRadius, 0);
+
+                        RotationVisualizerManager.Instance.SetTargetVisualizerLocation(targetVisualizerLocation);
+                        RotationVisualizerManager.UpdateLineEndWorldToLocal(targetVisualizerLocation);
 
                         rotateableInfo.rotateable.SetRotationAroundAxisAndPoint(interactionCenter,
                             new Vector3(0,0,1), rotateableInfo.startingRotation, rotateableInfo.startingPosition,
@@ -94,8 +104,11 @@ public class InteractableRotator : InteractableGizmo
                         float circleX = Mathf.Sin(angle * Mathf.Deg2Rad);
                         float circleZ = Mathf.Cos(angle * Mathf.Deg2Rad);
 
-                        RotationVisualizerManager.Instance.SetTargetVisualizerLocation(interactionStartingPosition +
-                            new Vector3(visRadius * circleX, 0, visRadius * circleZ));
+                        Vector3 targetVisualizerLocation = interactionStartingPosition +
+                            new Vector3(visRadius * circleX, 0, visRadius * circleZ);
+
+                        RotationVisualizerManager.Instance.SetTargetVisualizerLocation(targetVisualizerLocation);
+                        RotationVisualizerManager.UpdateLineEndWorldToLocal(targetVisualizerLocation);
 
                         rotateableInfo.rotateable.SetRotationAroundAxisAndPoint(interactionCenter,
                             new Vector3(0,1,0), rotateableInfo.startingRotation, rotateableInfo.startingPosition,
@@ -106,8 +119,11 @@ public class InteractableRotator : InteractableGizmo
                         float circleY = Mathf.Cos(angle * Mathf.Deg2Rad);
                         float circleZ = Mathf.Sin(angle * Mathf.Deg2Rad);
 
-                        RotationVisualizerManager.Instance.SetTargetVisualizerLocation(interactionStartingPosition +
-                            new Vector3(0, visRadius * circleY, visRadius * circleZ));
+                        Vector3 targetVisualizerLocation = interactionStartingPosition +
+                            new Vector3(0, visRadius * circleY, visRadius * circleZ);
+
+                        RotationVisualizerManager.Instance.SetTargetVisualizerLocation(targetVisualizerLocation);
+                        RotationVisualizerManager.UpdateLineEndWorldToLocal(targetVisualizerLocation);
 
                         rotateableInfo.rotateable.SetRotationAroundAxisAndPoint(interactionCenter,
                             new Vector3(1,0,0), rotateableInfo.startingRotation, rotateableInfo.startingPosition,
@@ -118,8 +134,11 @@ public class InteractableRotator : InteractableGizmo
                         float circleY = Mathf.Cos(angle * Mathf.Deg2Rad);
                         float circleX = -Mathf.Sin(angle * Mathf.Deg2Rad);
 
-                        RotationVisualizerManager.Instance.SetTargetVisualizerLocation(interactionStartingPosition +
-                            new Vector3(visRadius * circleX, circleY * visRadius, 0));
+                        Vector3 targetVisualizerLocation = interactionStartingPosition +
+                            new Vector3(visRadius * circleX, circleY * visRadius, 0);
+
+                        RotationVisualizerManager.Instance.SetTargetVisualizerLocation(targetVisualizerLocation);
+                        RotationVisualizerManager.UpdateLineEndWorldToLocal(targetVisualizerLocation);
 
                         rotateableInfo.rotateable.SetRotationAroundAxisAndPoint(interactionCenter,
                             new Vector3(0,0,1), rotateableInfo.startingRotation, rotateableInfo.startingPosition,
@@ -127,6 +146,7 @@ public class InteractableRotator : InteractableGizmo
                     }
                 }             
             }
+
         }
     }
 
@@ -160,7 +180,8 @@ public class InteractableRotator : InteractableGizmo
 
                 interactionStartingPosition = interactor.gameObject.transform.position - deltaVector;
 
-                RotationVisualizerManager.Instance.InitVisualizers(interactionStartingPosition, ColorManager.GetYAxisColor());
+                RotationVisualizerManager.UpdateLineStartWorldToLocal(interactionStartingPosition);
+                RotationVisualizerManager.Instance.InitVisualizers(interactionStartingPosition, rotatingVector);
             }
             else if (rotatingVector == new Vector3(1, 0, 0)) // x axis
             {
@@ -180,7 +201,8 @@ public class InteractableRotator : InteractableGizmo
 
                 interactionStartingPosition = interactor.gameObject.transform.position - deltaVector;
 
-                RotationVisualizerManager.Instance.InitVisualizers(interactionStartingPosition, ColorManager.GetXAxisColor());
+                RotationVisualizerManager.UpdateLineStartWorldToLocal(interactionStartingPosition); 
+                RotationVisualizerManager.Instance.InitVisualizers(interactionStartingPosition, rotatingVector);
             }
             else if (rotatingVector == new Vector3(0,0,1)) // z axis
             {
@@ -200,7 +222,8 @@ public class InteractableRotator : InteractableGizmo
 
                 interactionStartingPosition = interactor.gameObject.transform.position - deltaVector;
 
-                RotationVisualizerManager.Instance.InitVisualizers(interactionStartingPosition, ColorManager.GetZAxisColor());
+                RotationVisualizerManager.UpdateLineStartWorldToLocal(interactionStartingPosition);
+                RotationVisualizerManager.Instance.InitVisualizers(interactionStartingPosition, rotatingVector);
             }
         }
     }

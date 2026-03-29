@@ -1339,7 +1339,7 @@
                 {
                     "name": "",
                     "id": "d996be8c-5553-4c8c-9a58-19f466924c9c",
-                    "path": "<XRController>{LeftHand}/{SystemButton}",
+                    "path": "<XRController>{LeftHand}/{MenuButton}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
