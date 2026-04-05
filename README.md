@@ -6,7 +6,7 @@ SceneEditorVR is a simple to use 3D scene editor made for VR.
 
 ## Video
 
-https://youtu.be/ZL4JPvvvf-M?si=7wsibiiPMtc706Zg
+[![SceneEditorVR](https://img.youtube.com/vi/ZL4JPvvvf-M/maxresdefault.jpg)](https://www.youtube.com/watch?v=ZL4JPvvvf-M)
 
 ## Features
 
