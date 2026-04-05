@@ -47,12 +47,8 @@ public class PlayerRig : MonoBehaviour
     [SerializeField]
     public float acceleration = 5.0f;
 
-    [Header("Air Grabbing")]
-
     [SerializeField]
-    bool canAirGrab = true;
-    [SerializeField]
-    float grabEndForce = 100f;
+    public float verticalSpeed = 5.0f;
 
     [Header("Restrictions")]
 
@@ -61,12 +57,12 @@ public class PlayerRig : MonoBehaviour
 
     /// PRIVATE ///
 
-    bool isAirGrabbing = false;
-    Vector3 currentGrabMovingPoint;
-    InputDeviceRole currentGrabMovingSide;
-    Vector3 startingGrabOriginPosition;
-    Vector3 translationVector;
     Rigidbody rb;
+
+    /// PUBLIC ///
+    
+    private bool gripLeft = false;
+    private bool gripRight = false;
 
 
     private void Awake()
@@ -87,69 +83,28 @@ public class PlayerRig : MonoBehaviour
         rb.detectCollisions = false;
     }
 
-    void Update()
-    {
-        if (isAirGrabbing && canAirGrab)
-        {
-            if (currentGrabMovingSide == InputDeviceRole.LeftHanded)
-            {
-                Vector3 leftControllerPosition = leftController.transform.position;
-                translationVector = currentGrabMovingPoint - leftControllerPosition;
-            }
-            else if (currentGrabMovingSide == InputDeviceRole.RightHanded)
-            {
-                Vector3 rightControllerPosition = rightController.transform.position;
-                translationVector = currentGrabMovingPoint - rightControllerPosition;
-            }
-        }
-    }
-
     private void FixedUpdate()
     {
         bodyCollider.height = Mathf.Clamp(playerHead.localPosition.y, bodyHeightMin, bodyHeightMax);
         bodyCollider.center = new Vector3(playerHead.localPosition.x, bodyCollider.height / 2,
             playerHead.localPosition.z);
 
-        if (isAirGrabbing && canAirGrab)
+        HandleVerticalGrip();
+    }
+
+    private void HandleVerticalGrip()
+    {
+        if(menuRestricted) return;
+        if(gripLeft && gripRight) return;
+
+        float verticalForce = verticalSpeed;
+        if(gripLeft)
         {
-            Vector3 targetPos = startingGrabOriginPosition + translationVector;
-            Vector3 desiredVel = (targetPos - rb.position) / Time.fixedDeltaTime;
-            rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, desiredVel, 0.5f);
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, verticalForce, rb.linearVelocity.z);
         }
-    }
-
-    public void StartAirGrab(InputDeviceRole controllerSide, Vector3 grabMovingPoint)
-    {
-        if (!canAirGrab) return;
-
-        // if(isAirGrabbing)
-        // {
-            // // if we are requested to start air grab from left handed and we are already grabbing that means right hand
-            // // is doing air grab.
-            // if (controllerSide == InputDeviceRole.LeftHanded)
-            // {
-            //     rightController.StopAirGrab();
-            // }
-            // // if we are requested to start air grab from right handed and we are already grabbing that means left hand
-            // // is doing air grab.
-            // else if (controllerSide == InputDeviceRole.RightHanded)
-            // {
-            //     leftController.StopAirGrab();
-            // }
-        // }
-
-        startingGrabOriginPosition = rb.position;
-        currentGrabMovingPoint = grabMovingPoint;
-        currentGrabMovingSide = controllerSide;
-        isAirGrabbing = true;
-    }
-
-    public void StopAirGrab(InputDeviceRole controllerSide, Vector3 controllerVelocity)
-    {
-        if(controllerSide == currentGrabMovingSide && isAirGrabbing)
+        else if (gripRight)
         {
-            rb.AddForce(-controllerVelocity * grabEndForce, ForceMode.Impulse);
-            isAirGrabbing = false;
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, -verticalForce, rb.linearVelocity.z);
         }
     }
 
@@ -191,5 +146,15 @@ public class PlayerRig : MonoBehaviour
     public Transform GetPlayerHead()
     {
         return playerHead;
+    }
+
+    public static void SetGripLeft(bool value)
+    {
+        Instance.gripLeft = value;
+    }
+
+    public static void SetGripRight(bool value)
+    {
+        Instance.gripRight = value;
     }
 }

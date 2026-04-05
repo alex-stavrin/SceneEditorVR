@@ -20,6 +20,8 @@ public class RadialManager : MonoBehaviour
     private Controller currentController;
     private List<Material> radialMaterials = new List<Material>();
 
+    private bool[] radialActivated;
+
     int currentPick = -1;
 
     void Start()
@@ -34,12 +36,24 @@ public class RadialManager : MonoBehaviour
                 radialMaterials.Add(meshRenderer.material);
             }
         }
+
+        radialActivated = new bool[radials.Length];
+        for (int i = 0; i < radialActivated.Length; i++)
+        {
+            radialActivated[i] = true;
+        }
     }
 
     void Update()
     {
         if (currentController)
         {
+            // 2 == duplicate
+            // 3 == delete
+            bool haveSomethingSelected = SelectionManager.GetSelectedActors().Count >= 1;
+            SetRadialActivation(2, haveSomethingSelected);
+            SetRadialActivation(3, haveSomethingSelected);
+
             Vector3 radialUp = radialsRoot.transform.up;
             Vector3 radialPlane = radialsRoot.transform.forward;
             Vector3 controllerDirection = currentController.transform.position - radialsRoot.transform.position;
@@ -48,7 +62,7 @@ public class RadialManager : MonoBehaviour
 
             for(int i = 0; i < minMaxOptions.Length; i++)
             {
-                if(radialAngle >= minMaxOptions[i].x && radialAngle <= minMaxOptions[i].y)
+                if(radialAngle >= minMaxOptions[i].x && radialAngle <= minMaxOptions[i].y && radialActivated[i])
                 {
                     PickRadial(i);
                     break;
@@ -103,5 +117,10 @@ public class RadialManager : MonoBehaviour
             currentController = null;
             radialsRoot.SetActive(false);
         }
+    }
+
+    public void SetRadialActivation(int radialIndex, bool value)
+    {
+        radialActivated[radialIndex] = value;
     }
 }

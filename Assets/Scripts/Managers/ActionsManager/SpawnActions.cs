@@ -4,11 +4,18 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
+public struct SpawnTransform
+{
+    public Vector3 location;
+    public Vector3 scale;
+    public Quaternion rotation;
+}
+
 public class SpawnInfo
 {
     public string prefabPath;
     public GameObject spawnedGameObject;
-    public Pose spawnPose;
+    public SpawnTransform spawnTransform;
 }
 
 public class SpawnAction : UserAction
@@ -19,14 +26,14 @@ public class SpawnAction : UserAction
 
     int spawnCount = 0;
 
-    public SpawnAction(List<string> prefabsPaths, List<Pose> gameObjectPoses, Controller n_instigator)
+    public SpawnAction(List<string> prefabsPaths, List<SpawnTransform> gameObjectPoses, Controller n_instigator)
     {
         instigator = n_instigator;
         for(int i = 0; i < prefabsPaths.Count; i++)
         {
             SpawnInfo spawnInfo = new SpawnInfo();
             spawnInfo.prefabPath = prefabsPaths[i];
-            spawnInfo.spawnPose = gameObjectPoses[i];
+            spawnInfo.spawnTransform = gameObjectPoses[i];
             spawnInfo.spawnedGameObject = null;
             spawnedGameObjectsInfo.Add(spawnInfo);
         }
@@ -38,13 +45,14 @@ public class SpawnAction : UserAction
         {
             if(spawnInfo.spawnedGameObject == null)
             {
-                Addressables.InstantiateAsync(spawnInfo.prefabPath, spawnInfo.spawnPose.position, spawnInfo.spawnPose.rotation)
+                Addressables.InstantiateAsync(spawnInfo.prefabPath, spawnInfo.spawnTransform.location, spawnInfo.spawnTransform.rotation)
                 .Completed += (handle) => 
                 {
                     if (handle.Status == AsyncOperationStatus.Succeeded)
                     {
                         spawnCount++;
                         spawnInfo.spawnedGameObject = handle.Result;
+                        spawnInfo.spawnedGameObject.transform.localScale = spawnInfo.spawnTransform.scale;
 
                         if(instigator != null) // we are spawning
                         {

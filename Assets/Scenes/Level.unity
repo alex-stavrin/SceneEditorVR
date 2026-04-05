@@ -1260,8 +1260,8 @@ LineRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Positions:
-  - {x: 0, y: 0, z: -2}
-  - {x: 0, y: 0, z: -1.75}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0.25}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -1811,7 +1811,7 @@ Transform:
   m_GameObject: {fileID: 429175114}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.75}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4428,7 +4428,7 @@ Transform:
   m_GameObject: {fileID: 1077464719}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -5018,6 +5018,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 847352632589741849, guid: f6cfdc02c4decdd44a5d6984803a353b, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 881049890999898888, guid: f6cfdc02c4decdd44a5d6984803a353b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5113,6 +5117,10 @@ PrefabInstance:
     - target: {fileID: 931677561487263070, guid: f6cfdc02c4decdd44a5d6984803a353b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 939223364708989054, guid: f6cfdc02c4decdd44a5d6984803a353b, type: 3}
+      propertyPath: m_Camera
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 946450399416995591, guid: f6cfdc02c4decdd44a5d6984803a353b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -10334,6 +10342,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8767881995424240620, guid: f6cfdc02c4decdd44a5d6984803a353b, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8817243137410948759, guid: f6cfdc02c4decdd44a5d6984803a353b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -14305,7 +14317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 230353423515609277, guid: eee9194e15154cf47a4fb7aeefa241b4, type: 3}
       propertyPath: acceleration
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 230353423515609277, guid: eee9194e15154cf47a4fb7aeefa241b4, type: 3}
       propertyPath: grabEndForce
@@ -14313,11 +14325,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 230353423515609277, guid: eee9194e15154cf47a4fb7aeefa241b4, type: 3}
       propertyPath: maxMoveSpeed
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 230353423515609277, guid: eee9194e15154cf47a4fb7aeefa241b4, type: 3}
       propertyPath: menuRestricted
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 374775336538893511, guid: eee9194e15154cf47a4fb7aeefa241b4, type: 3}
+      propertyPath: m_Antialiasing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2555629790141164455, guid: eee9194e15154cf47a4fb7aeefa241b4, type: 3}
       propertyPath: m_LocalPosition.x

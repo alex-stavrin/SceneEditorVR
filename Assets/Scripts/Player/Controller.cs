@@ -27,6 +27,8 @@ public class Controller : MonoBehaviour
 
     [SerializeField] LayerMask gizmoLayer;
 
+    [SerializeField] LayerMask uiLayer;
+
     [Header("UI Interactions")]
     [SerializeField] public int pointerId;
 
@@ -39,11 +41,7 @@ public class Controller : MonoBehaviour
     [Header("Moveable Handling")]
     [SerializeField] float moveableMoveSpeed = 5f;
 
-    /// PRIVATE /// 
-
-    // controller movement tracking (for air grabbing)
-    Vector3 velocity;
-    Vector3 lastPosition;
+    /// PRIVATE ///
 
     // interacting
     Interactable currentInteractable;
@@ -96,12 +94,6 @@ public class Controller : MonoBehaviour
 
     public void Update()
     {
-        // calculate velocity
-        Vector3 currentPosition = transform.position;
-        Vector3 delta = currentPosition - lastPosition;
-        velocity = delta / Time.deltaTime;
-        lastPosition = currentPosition;
-
         // set ray to start
         lineStart = interactPoint.transform.position +
             interactPoint.transform.forward * interactPoint.radius * interactPoint.transform.localScale.x;
@@ -195,13 +187,30 @@ public class Controller : MonoBehaviour
     }
     void GripStarted(InputAction.CallbackContext context)
     {
-        player.StartAirGrab(controllerSide, transform.position);
+        if(controllerSide == InputDeviceRole.LeftHanded)
+        {
+            PlayerRig.SetGripLeft(true);
+            
+        }
+        else
+        {
+            PlayerRig.SetGripRight(true);
+        }
     }
 
     void GripEnded(InputAction.CallbackContext context)
     {
-        player.StopAirGrab(controllerSide, velocity);
+        if(controllerSide == InputDeviceRole.LeftHanded)
+        {
+            PlayerRig.SetGripLeft(false);
+            
+        }
+        else
+        {
+            PlayerRig.SetGripRight(false);
+        } 
     }
+
     void TriggerPressed(InputAction.CallbackContext context)
     {
         if (currentHoverable)
@@ -254,12 +263,15 @@ public class Controller : MonoBehaviour
     }
     void DoRaycast()
     {
-
-        bRaycastHit = Physics.Raycast(interactPoint.transform.position, interactPoint.transform.forward, out rayHitResult, rayRange, gizmoLayer);
+        bRaycastHit = Physics.Raycast(interactPoint.transform.position, interactPoint.transform.forward, out rayHitResult, rayRange, uiLayer);
 
         if(!bRaycastHit)
-        {
-            bRaycastHit = Physics.Raycast(interactPoint.transform.position, interactPoint.transform.forward, out rayHitResult, rayRange);            
+        {            
+            bRaycastHit = Physics.Raycast(interactPoint.transform.position, interactPoint.transform.forward, out rayHitResult, rayRange, gizmoLayer);
+            if(!bRaycastHit)
+            {
+                bRaycastHit = Physics.Raycast(interactPoint.transform.position, interactPoint.transform.forward, out rayHitResult, rayRange);            
+            }
         }
 
         if(bRaycastHit)
@@ -270,8 +282,8 @@ public class Controller : MonoBehaviour
         {
             rayLineRenderer.SetPosition(1, GetMaxRayPosition());
         }
-
     }
+
     public void SettingsButtonPressed(InputAction.CallbackContext context)
     {
         if(ControlPanel.Instance)

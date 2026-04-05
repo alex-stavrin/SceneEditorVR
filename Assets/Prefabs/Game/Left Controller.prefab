@@ -215,9 +215,10 @@ MonoBehaviour:
   gizmoLayer:
     serializedVersion: 2
     m_Bits: 256
+  uiLayer:
+    serializedVersion: 2
+    m_Bits: 32
   pointerId: 1
-  snapTurnAmount: 45
-  snapTurnCooldown: 0.5
   bRaycastHit: 0
   moveableMoveSpeed: 5
   pointingAtUI: 0

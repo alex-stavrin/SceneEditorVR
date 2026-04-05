@@ -2,8 +2,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement;
 
 [RequireComponent(typeof(Button), typeof(Image))]
 public class SpawnerButton :  MonoBehaviour, IPointerDownHandler
@@ -17,9 +15,13 @@ public class SpawnerButton :  MonoBehaviour, IPointerDownHandler
         {
             List<string> paths = new List<string> {prefabPath};
 
-            List<Pose> poses = new List<Pose>();
+            List<SpawnTransform> poses = new List<SpawnTransform>();
             Vector3 spawnPosition = eventDataVR.controller.rayHitResult.point;
-            poses.Add(new Pose(spawnPosition, Quaternion.identity));
+            SpawnTransform spawnTransform;
+            spawnTransform.location = spawnPosition;
+            spawnTransform.rotation = Quaternion.identity;
+            spawnTransform.scale = Vector3.one;
+            poses.Add(spawnTransform);
 
             ActionsManager.SpawnGameObjects(paths, poses, eventDataVR.controller);
         }

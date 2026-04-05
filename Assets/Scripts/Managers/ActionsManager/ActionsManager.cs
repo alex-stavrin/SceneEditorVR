@@ -24,13 +24,17 @@ public class ActionsManager : MonoBehaviour
         if(SelectionManager.GetSelectedInteractables().Count > 0)
         {
             List<string> prefabPaths = new List<string>();
-            List<Pose> poses = new List<Pose>();
+            List<SpawnTransform> poses = new List<SpawnTransform>();
             List<Actor> selectedActors = SelectionManager.GetSelectedActors();
             for(int i = 0; i < SelectionManager.GetSelectedGameobjects().Count; i++)
             {
                 prefabPaths.Add(selectedActors[i].GetResourcesPath());
                 Transform newTransform = selectedActors[i].gameObject.transform;
-                poses.Add(new Pose(newTransform.position, newTransform.rotation));
+                SpawnTransform spawnTransform;
+                spawnTransform.location = newTransform.position;
+                spawnTransform.rotation = newTransform.rotation;
+                spawnTransform.scale = newTransform.localScale;
+                poses.Add(spawnTransform);
             }          
 
             SelectionManager.UnselectCurrents();
@@ -51,9 +55,9 @@ public class ActionsManager : MonoBehaviour
         ExecuteAndAddAction(deleteAction);
     }
 
-    public static void SpawnGameObjects(List<string> prefabPaths, List<Pose> poses, Controller instigator)
+    public static void SpawnGameObjects(List<string> prefabPaths, List<SpawnTransform> spawnTransform, Controller instigator)
     {
-        SpawnAction spawnAction = new SpawnAction(prefabPaths, poses, instigator);
+        SpawnAction spawnAction = new SpawnAction(prefabPaths, spawnTransform, instigator);
         ExecuteAndAddAction(spawnAction);
     }
 
