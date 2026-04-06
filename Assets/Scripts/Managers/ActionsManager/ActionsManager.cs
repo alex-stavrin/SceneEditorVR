@@ -5,8 +5,8 @@ public class ActionsManager : MonoBehaviour
 {
     public static ActionsManager Instance { get; private set; }
 
-    Stack<UserAction> undoStack = new Stack<UserAction>();
-    Stack<UserAction> redoStack = new Stack<UserAction>();
+    public Stack<UserAction> undoStack = new Stack<UserAction>();
+    public Stack<UserAction> redoStack = new Stack<UserAction>();
 
     void Awake()
     {
@@ -40,8 +40,6 @@ public class ActionsManager : MonoBehaviour
             SelectionManager.UnselectCurrents();
 
             SpawnGameObjects(prefabPaths, poses, null);
-
-
         }
     }
 

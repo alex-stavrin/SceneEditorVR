@@ -88,8 +88,6 @@ public class Controller : MonoBehaviour
         southButtonAction.action.canceled += SouthButtonReleased;
 
         snapTurnTimer = 0;
-
-        SetRayGradientLastColor(ColorManager.GetRayColor());
     }
 
     public void Update()
@@ -264,22 +262,37 @@ public class Controller : MonoBehaviour
     void DoRaycast()
     {
         bRaycastHit = Physics.Raycast(interactPoint.transform.position, interactPoint.transform.forward, out rayHitResult, rayRange, uiLayer);
+        if(bRaycastHit) // we hit ui
+        {
+            SetRayGradientLastColor(ColorManager.Instance.rayUIColor);
+            rayLineRenderer.SetPosition(1, rayHitResult.point);
+            return;
+        }
 
         if(!bRaycastHit)
         {            
             bRaycastHit = Physics.Raycast(interactPoint.transform.position, interactPoint.transform.forward, out rayHitResult, rayRange, gizmoLayer);
+            if(bRaycastHit) // we hit gizmo
+            {
+                SetRayGradientLastColor(ColorManager.Instance.rayGizmoHit);
+                rayLineRenderer.SetPosition(1, rayHitResult.point);
+                return;
+            }
+            
             if(!bRaycastHit)
             {
                 bRaycastHit = Physics.Raycast(interactPoint.transform.position, interactPoint.transform.forward, out rayHitResult, rayRange);            
             }
         }
 
-        if(bRaycastHit)
+        if(bRaycastHit) // we hit collider (probably interactable)
         {
+            SetRayGradientLastColor(ColorManager.Instance.rayGizmoHit);
             rayLineRenderer.SetPosition(1, rayHitResult.point);
         }
-        else
+        else // we didn't hit anything
         {
+            SetRayGradientLastColor(ColorManager.Instance.rayNoHitColor);
             rayLineRenderer.SetPosition(1, GetMaxRayPosition());
         }
     }
@@ -384,9 +397,9 @@ public class Controller : MonoBehaviour
     {
         if(PlayerRig.Instance.menuRestricted == true) return;
         
-        isTryingToMultiSelect = true;
-
+        // order here is important
         SetRayGradientLastColor(ColorManager.GetRayMultiSelectColor());
+        isTryingToMultiSelect = true;
     }
 
     void SouthButtonReleased(InputAction.CallbackContext context)
@@ -394,12 +407,13 @@ public class Controller : MonoBehaviour
         if(PlayerRig.Instance.menuRestricted == true) return;
 
         isTryingToMultiSelect = false;
-
-        SetRayGradientLastColor(ColorManager.GetRayColor());
     }
 
     void SetRayGradientLastColor(Color newColor)
     {
+        // multi select color will have higher priority over everthing
+        if(isTryingToMultiSelect) return;
+
         if (rayLineRenderer)
         {
             Gradient gradient = rayLineRenderer.colorGradient;

@@ -65,7 +65,12 @@ public class InputModuleVR : PointerInputModule
         pointerData.scrollDelta = new Vector2(0f, axisY * scrollSpeed);
 
         m_RaycastResultCache.Clear();
-        eventSystem.RaycastAll(pointerData, m_RaycastResultCache);
+
+        if (controller.pointingAtUI) 
+        {
+            eventSystem.RaycastAll(pointerData, m_RaycastResultCache);
+        }
+
         pointerData.pointerCurrentRaycast = FindFirstRaycast(m_RaycastResultCache);
 
         HandlePointerExitAndEnter(pointerData, pointerData.pointerCurrentRaycast.gameObject);

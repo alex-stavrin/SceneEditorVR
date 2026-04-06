@@ -44,16 +44,10 @@ public class RadialManager : MonoBehaviour
         }
     }
 
-    void Update()
+    public virtual void Update()
     {
         if (currentController)
         {
-            // 2 == duplicate
-            // 3 == delete
-            bool haveSomethingSelected = SelectionManager.GetSelectedActors().Count >= 1;
-            SetRadialActivation(2, haveSomethingSelected);
-            SetRadialActivation(3, haveSomethingSelected);
-
             Vector3 radialUp = radialsRoot.transform.up;
             Vector3 radialPlane = radialsRoot.transform.forward;
             Vector3 controllerDirection = currentController.transform.position - radialsRoot.transform.position;
@@ -122,5 +116,10 @@ public class RadialManager : MonoBehaviour
     public void SetRadialActivation(int radialIndex, bool value)
     {
         radialActivated[radialIndex] = value;
+
+        if(!value)
+        {
+            radialMaterials[radialIndex].SetColor("_Color", ColorManager.GetInactiveColor());
+        }
     }
 }

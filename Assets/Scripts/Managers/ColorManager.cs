@@ -12,8 +12,19 @@ public class ColorManager : MonoBehaviour
     [SerializeField]
     public Color inactiveColor = Color.grey;
 
+    [Header("Ray")]
+
     [SerializeField]
-    public Color rayColor = Color.cyan;
+    public Color rayNoHitColor = Color.white;
+
+    [SerializeField]
+    public Color rayUIColor = Color.cyan;
+
+    [SerializeField]
+    public Color rayGizmoColor = Color.yellow;
+
+    [SerializeField]
+    public Color rayGizmoHit = Color.orange;
 
     [SerializeField]
     public Color rayMultiSelectColor = Color.red;
@@ -50,7 +61,6 @@ public class ColorManager : MonoBehaviour
 
     public static Color GetArrowsHoverColor() {return Instance.arrowsHoverColor;}
     public static Color GetInactiveColor() {return Instance.inactiveColor;}
-    public static Color GetRayColor() {return Instance.rayColor;}
     public static Color GetRayMultiSelectColor() {return Instance.rayMultiSelectColor;}
     public static Color GetXAxisColor() {return Instance.xAxisColor;}
     public static Color GetYAxisColor() {return Instance.yAxisColor;}
