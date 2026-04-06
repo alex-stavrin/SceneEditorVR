@@ -172,13 +172,21 @@ public class Controller : MonoBehaviour
         isMovingMoveable = false;
         if(currentInteractable)
         {
-            InteractableMove interactableMoveable = currentInteractable as InteractableMove;
+            InteractableMoveable interactableMoveable = currentInteractable as InteractableMoveable;
             if (interactableMoveable)
             {
-                if(Mathf.Abs(thumbstickInputValue.y) > 0.1)
+                if(Mathf.Abs(thumbstickInputValue.y) > 0.2)
                 {
                     isMovingMoveable = true;
                     interactableMoveable.AddDistanceOffset(thumbstickInputValue.y * Time.deltaTime * moveableMoveSpeed);
+                }
+
+                if (Mathf.Abs(thumbstickInputValue.x) > 0.2 && snapTurnTimer <= 0)
+                {
+                    int direction = thumbstickInputValue.x > 0 ? 1 : -1;
+
+                    interactableMoveable.rotateable.RotateAroundY(direction * PlayerPreferencesManager.Instance.snappingRotationAmount);
+                    snapTurnTimer = PlayerRig.Instance.snapTurnCooldown;
                 }
             }
         }
@@ -419,6 +427,7 @@ public class Controller : MonoBehaviour
             Gradient gradient = rayLineRenderer.colorGradient;
             GradientColorKey[] colorKeys = gradient.colorKeys;
             colorKeys[0].color = newColor;
+            colorKeys[1].color = newColor;
             gradient.colorKeys = colorKeys;
             rayLineRenderer.colorGradient = gradient;
         }

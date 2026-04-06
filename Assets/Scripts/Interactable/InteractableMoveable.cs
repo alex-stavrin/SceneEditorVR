@@ -1,9 +1,12 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Moveable))]
+[RequireComponent(typeof(Rotateable))]
 public class InteractableMoveable : InteractableMove
 {
-    Moveable moveable;
+    public Moveable moveable;
+
+    public Rotateable rotateable;
 
     public bool isFirst = true;
 
@@ -11,6 +14,7 @@ public class InteractableMoveable : InteractableMove
     {
         base.Start();
 
+        rotateable = GetComponent<Rotateable>();
         moveable = GetComponent<Moveable>();
     }
 

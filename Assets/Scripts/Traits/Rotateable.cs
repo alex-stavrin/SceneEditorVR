@@ -7,6 +7,13 @@ public class Rotateable : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(PlayerPreferencesManager.GetIfSnappedAngle(angle), axis) * startingRotation;
     }
 
+    public void RotateAroundY(float delta)
+    {
+        Vector3 currentRotation = transform.eulerAngles;
+        currentRotation.y = PlayerPreferencesManager.GetIfSnappedAngle(currentRotation.y + delta); 
+        transform.eulerAngles = currentRotation;
+    }
+
     public void SetRotationAroundAxisAndPoint(Vector3 point, Vector3 axis, Quaternion startingRotation, Vector3 startingPosition, float angle)
     {
         float finalAngle = PlayerPreferencesManager.GetIfSnappedAngle(angle);
