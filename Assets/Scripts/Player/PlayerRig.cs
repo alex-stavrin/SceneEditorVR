@@ -100,11 +100,11 @@ public class PlayerRig : MonoBehaviour
         float verticalForce = verticalSpeed;
         if(gripLeft)
         {
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, verticalForce, rb.linearVelocity.z);
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, -verticalForce, rb.linearVelocity.z);
         }
         else if (gripRight)
         {
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, -verticalForce, rb.linearVelocity.z);
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, verticalForce, rb.linearVelocity.z);
         }
     }
 

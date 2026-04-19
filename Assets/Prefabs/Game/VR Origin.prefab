@@ -384,7 +384,7 @@ MonoBehaviour:
   rightController: {fileID: 5288957902577284575}
   snapTurnAmount: 45
   snapTurnCooldown: 0.5
-  maxMoveSpeed: 10
+  maxMoveSpeed: 5
   acceleration: 5
   verticalSpeed: 5
   menuRestricted: 1
@@ -614,7 +614,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 0

@@ -6,15 +6,12 @@ public class InteractableMoveable : InteractableMove
 {
     public Moveable moveable;
 
-    public Rotateable rotateable;
-
     public bool isFirst = true;
 
     public override void Start()
     {
         base.Start();
 
-        rotateable = GetComponent<Rotateable>();
         moveable = GetComponent<Moveable>();
     }
 

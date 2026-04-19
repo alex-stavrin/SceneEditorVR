@@ -19,6 +19,12 @@ public class GizmosManager : MonoBehaviour
     [SerializeField]
     float gizmosSizeMultiplier = 0.2f;
 
+    [SerializeField]
+    float minGizmoSize = 0.2f;
+
+    [SerializeField]
+    float maxGizmoSize = 100f;
+
     InteractableArrow[] interactableArrows;
 
     InteractableRotator[] interactableRotators;
@@ -91,9 +97,8 @@ public class GizmosManager : MonoBehaviour
             // scale gizmo size relative to player distance from gizmo
             Vector3 playerPosition = PlayerRig.Instance.gameObject.transform.position;
             float distance = Vector3.Distance(playerPosition, gizmos.transform.position);
-            gizmos.transform.localScale = new Vector3(distance * gizmosSizeMultiplier,distance * gizmosSizeMultiplier,
-                distance * gizmosSizeMultiplier);
-
+            float size = Mathf.Clamp(distance * gizmosSizeMultiplier, minGizmoSize, maxGizmoSize);
+            gizmos.transform.localScale = Vector3.one * size;
 
             // Handle Rotation
             if(SelectionManager.GetSelectedInteractables().Count == 1)

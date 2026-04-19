@@ -20,7 +20,9 @@ public class InteractableScaler : InteractableGizmo
     {
         if (state == InteractableState.IE_INTERACTING)
         {
-            Vector3 interactorOffset = interactor.transform.position - interactorStartingPosition;
+            Vector3 localOffset = interactor.transform.localPosition - interactorStartingPosition;
+            
+            Vector3 worldInteractorOffset = interactor.transform.parent.TransformVector(localOffset);
             
             Vector3 dragDirection = GetWorldVectorBasedOnAxis();
             if(SelectionManager.GetSelectedGameobjects().Count == 1)
@@ -28,7 +30,7 @@ public class InteractableScaler : InteractableGizmo
                dragDirection = GetLocalVectorBasedOnAxis(SelectionManager.GetSelectedGameobjects()[0].transform);
             }
 
-            float dragMagnitude = Vector3.Dot(interactorOffset, dragDirection) * PlayerPreferencesManager.Instance.axisMultiplier;
+            float dragMagnitude = Vector3.Dot(worldInteractorOffset, dragDirection) * PlayerPreferencesManager.Instance.axisMultiplier;
             Vector3 localScaleAdjustment = Vector3.zero;
 
             switch (targetAxis)
@@ -64,7 +66,7 @@ public class InteractableScaler : InteractableGizmo
             scaleableInfo.startingScale = scaleableInfo.scaleable.transform.localScale;
         }
 
-        interactorStartingPosition = interactor.transform.position;
+        interactorStartingPosition = interactor.transform.localPosition;
     }
 
     // On interact end add the ScaleAction to the Actions stack

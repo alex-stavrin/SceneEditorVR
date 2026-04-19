@@ -172,7 +172,7 @@ public class Controller : MonoBehaviour
         isMovingMoveable = false;
         if(currentInteractable)
         {
-            InteractableMoveable interactableMoveable = currentInteractable as InteractableMoveable;
+            InteractableMove interactableMoveable = currentInteractable as InteractableMove;
             if (interactableMoveable)
             {
                 if(Mathf.Abs(thumbstickInputValue.y) > 0.2)

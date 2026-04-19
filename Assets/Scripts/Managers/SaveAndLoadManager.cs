@@ -131,7 +131,7 @@ public class SaveAndLoadManager : MonoBehaviour
         
         SceneManager.sceneLoaded += OnSceneLoaded;
         
-        SceneManager.LoadScene("Level");
+        SceneTransitionManager.FadeOutAndLoad("Level");
 
         void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
