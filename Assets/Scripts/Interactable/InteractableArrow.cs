@@ -15,17 +15,23 @@ public class InteractableArrow : InteractableGizmo
 
     private List<MoveableInfo> moveableInfos = new List<MoveableInfo>();
 
-    public void  Update()
+    public void Update()
     {
         if (state == InteractableState.IE_INTERACTING)
         {
-            Vector3 interactorOffset = interactor.transform.position - interactorStartingPosition;
-            Vector3 direction = GetWorldVectorBasedOnAxis();
+            Vector3 localOffset = interactor.transform.localPosition - interactorStartingPosition;
+            
+            Vector3 worldInteractorOffset = interactor.transform.parent.TransformVector(localOffset);
+            
+            Vector3 moveDirection = GetWorldVectorBasedOnAxis();
             if(moveableInfos.Count == 1)
             {
-                direction = GetLocalVectorBasedOnAxis(moveableInfos[0].moveable.transform);
+                moveDirection = GetLocalVectorBasedOnAxis(moveableInfos[0].moveable.transform);
             }
-            Vector3 projectedOffset = Vector3.Dot(interactorOffset, direction) * direction;
+
+            float magnitude = Vector3.Dot(worldInteractorOffset, moveDirection);    
+            Vector3 projectedOffset = moveDirection * magnitude;
+
             foreach(MoveableInfo moveableInfo in moveableInfos)
             {
                 Moveable currentMoveable = moveableInfo.moveable;
@@ -46,7 +52,7 @@ public class InteractableArrow : InteractableGizmo
             mi.startingPosition = mi.moveable.transform.position;
         }
         
-        interactorStartingPosition = interactor.transform.position;
+        interactorStartingPosition = interactor.transform.localPosition;
     }
 
     public override void OnInteractStop(Controller controllerInteractor)

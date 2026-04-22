@@ -6,10 +6,12 @@ public class InteractableMove : Interactable
     private float currentInteractDistance;
     private Vector3 interactionOffset;
     protected Vector3 newPosition;
+
+    public Rotateable rotateable;
     
     public override void Start()
     {
-        
+        rotateable = GetComponent<Rotateable>();
     }
 
     void Update()

@@ -42,7 +42,7 @@ public class WorldManager : MonoBehaviour
     public static void BackToMainMenu()
     {
         SaveAndLoadManager.Save();
-        SceneManager.LoadScene("Menu");
+        SceneTransitionManager.FadeOutAndLoad("Menu");
     }
 
     public static void ModalSave()
