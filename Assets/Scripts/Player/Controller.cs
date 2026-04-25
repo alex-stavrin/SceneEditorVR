@@ -175,18 +175,28 @@ public class Controller : MonoBehaviour
             InteractableMove interactableMoveable = currentInteractable as InteractableMove;
             if (interactableMoveable)
             {
-                if(Mathf.Abs(thumbstickInputValue.y) > 0.2)
+                if(Mathf.Abs(thumbstickInputValue.y) > 0.1)
                 {
                     isMovingMoveable = true;
                     interactableMoveable.AddDistanceOffset(thumbstickInputValue.y * Time.deltaTime * moveableMoveSpeed);
                 }
 
-                if (Mathf.Abs(thumbstickInputValue.x) > 0.2 && snapTurnTimer <= 0)
+                if (Mathf.Abs(thumbstickInputValue.x) > 0.1 && snapTurnTimer <= 0)
                 {
                     int direction = thumbstickInputValue.x > 0 ? 1 : -1;
 
-                    interactableMoveable.rotateable.RotateAroundY(direction * PlayerPreferencesManager.Instance.snappingRotationAmount);
-                    snapTurnTimer = PlayerRig.Instance.snapTurnCooldown;
+                    if(PlayerPreferencesManager.Instance.snappingRotationAmount > 0)
+                    {
+                        if(snapTurnTimer <= 0)
+                        { 
+                            interactableMoveable.rotateable.RotateAroundY(direction * PlayerPreferencesManager.Instance.snappingRotationAmount);
+                            snapTurnTimer = PlayerRig.Instance.snapTurnCooldown;
+                        }
+                    }
+                    else
+                    {
+                        interactableMoveable.rotateable.RotateAroundY(direction);
+                    }
                 }
             }
         }
