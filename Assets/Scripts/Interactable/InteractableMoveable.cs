@@ -1,7 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Moveable))]
-[RequireComponent(typeof(Rotateable))]
 public class InteractableMoveable : InteractableMove
 {
     public Moveable moveable;
