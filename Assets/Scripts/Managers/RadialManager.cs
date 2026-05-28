@@ -67,22 +67,29 @@ public class RadialManager : MonoBehaviour
 
     void PickRadial(int i)
     {
+        if (currentPick == i) return;
+
+        currentPick = i;
+        if(HapticsManager.Instance) HapticsManager.PlayHapticRadialPick(currentController.GetSide());
+
         for (int j = 0; j < radialMaterials.Count; j++)
         {
             if (j == i)
             {
-                if (currentPick != i)
-                {
-                    if(HapticsManager.Instance) HapticsManager.PlayHapticRadialPick(currentController.GetSide());
-                    radialMaterials[j].SetColor("_Color", ColorManager.GetHighlightColor());
-                    radialMaterials[j].SetFloat("_Alpha", 1.0f);
-                    currentPick = i;
-                }
+                radialMaterials[j].SetColor("_Color", ColorManager.GetHighlightColor());
+                radialMaterials[j].SetFloat("_Alpha", 1.0f);
             }
             else
             {
-                radialMaterials[j].SetColor("_Color", ColorManager.GetNeutralColor());
-                radialMaterials[j].SetFloat("_Alpha", 0.5f);
+                if (radialActivated[j])
+                {
+                    radialMaterials[j].SetColor("_Color", ColorManager.GetNeutralColor());
+                    radialMaterials[j].SetFloat("_Alpha", 0.5f);
+                }
+                else
+                {
+                    radialMaterials[j].SetColor("_Color", ColorManager.GetInactiveColor());
+                }
             }
         }
     }
@@ -98,6 +105,20 @@ public class RadialManager : MonoBehaviour
         direction.Normalize();
         direction.y = 0;
         radialsRoot.transform.rotation = Quaternion.LookRotation(-direction);
+
+        currentPick = -1;
+        for (int j = 0; j < radialMaterials.Count; j++)
+        {
+            if (radialActivated[j])
+            {
+                radialMaterials[j].SetColor("_Color", ColorManager.GetNeutralColor());
+                radialMaterials[j].SetFloat("_Alpha", 0.5f);
+            }
+            else
+            {
+                radialMaterials[j].SetColor("_Color", ColorManager.GetInactiveColor());
+            }
+        }
     }
 
     public void DismissRadial()
@@ -106,7 +127,10 @@ public class RadialManager : MonoBehaviour
         {
             SoundsManager.PlayRadialClose(radialsRoot.transform.position);
 
-            functions[currentPick].Invoke();
+            if (currentPick >= 0 && currentPick < functions.Length)
+            {
+                functions[currentPick].Invoke();
+            }
 
             currentController = null;
             radialsRoot.SetActive(false);
