@@ -1,5 +1,9 @@
 # SceneEditorVR
 
+## Thesis
+
+https://pergamos.lib.uoa.gr/item/uoadl:5424198
+
 ## About
 
 SceneEditorVR is a simple to use 3D scene editor made for VR. 
